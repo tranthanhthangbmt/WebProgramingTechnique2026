@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initTabs();
   initSlidePlayer();
+  initTheaterTranscript();
   initQuizEngine();
   initExerciseHub();
   initCodeRepository();
@@ -516,6 +517,76 @@ function renderSlide(slideNum) {
       </div>
     `;
   }
+}
+
+// ============================================================================
+// THEATER VIEW & TRANSCRIPT CONTROLLER
+// ============================================================================
+function setVideoViewMode(mode) {
+  const theaterContainer = document.getElementById('theaterPlayerContainer');
+  const splitContainer = document.getElementById('splitPlayerContainer');
+  const theaterBtn = document.getElementById('viewModeTheaterBtn');
+  const splitBtn = document.getElementById('viewModeSplitBtn');
+
+  if (mode === 'theater') {
+    if (theaterContainer) theaterContainer.style.display = 'block';
+    if (splitContainer) splitContainer.style.display = 'none';
+    if (theaterBtn) theaterBtn.classList.add('active');
+    if (splitBtn) splitBtn.classList.remove('active');
+  } else {
+    if (theaterContainer) theaterContainer.style.display = 'none';
+    if (splitContainer) splitContainer.style.display = 'grid';
+    if (theaterBtn) theaterBtn.classList.remove('active');
+    if (splitBtn) splitBtn.classList.add('active');
+  }
+}
+window.setVideoViewMode = setVideoViewMode;
+
+function initTheaterTranscript() {
+  const selectEl = document.getElementById('theaterTranscriptSlideSelect');
+  if (!selectEl) return;
+
+  selectEl.innerHTML = '';
+  for (let i = 1; i <= AppState.totalSlides; i++) {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = `Slide ${i}: ${SLIDE_TRANSCRIPTS[i]?.title.substring(0, 36)}...`;
+    selectEl.appendChild(opt);
+  }
+
+  selectEl.addEventListener('change', (e) => {
+    renderTheaterTranscript(parseInt(e.target.value));
+  });
+
+  renderTheaterTranscript(1);
+}
+
+function renderTheaterTranscript(slideNum) {
+  const bodyEl = document.getElementById('theaterTranscriptBody');
+  if (!bodyEl) return;
+
+  const data = SLIDE_TRANSCRIPTS[slideNum] || {
+    title: `Slide ${slideNum}`,
+    speaker1: "Nội dung thuyết minh giảng viên.",
+    speaker2: "Phản hồi của sinh viên."
+  };
+
+  bodyEl.innerHTML = `
+    <div style="margin-bottom: 1rem; padding: 0.75rem 1rem; background: var(--primary-light); border-radius: 6px; font-weight: 700; color: var(--primary-navy); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+      <span>📌 Lời thoại Slide ${slideNum}: ${data.title}</span>
+      <span style="font-size: 0.8rem; font-weight: 400; color: var(--text-muted);">Trích xuất từ Videos/Chapter_01/scriptChapter01.txt</span>
+    </div>
+    <div class="transcript-dialogue-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem;">
+      <div class="dialogue-item dialogue-speaker-1" style="height: 100%;">
+        <span class="speaker-label">👨‍🏫 Người 1 (Giảng viên)</span>
+        <p style="margin-top: 0.5rem; line-height: 1.6;">${data.speaker1}</p>
+      </div>
+      <div class="dialogue-item dialogue-speaker-2" style="height: 100%;">
+        <span class="speaker-label">🧑‍🎓 Người 2 (Sinh viên IT26M)</span>
+        <p style="margin-top: 0.5rem; line-height: 1.6;">${data.speaker2}</p>
+      </div>
+    </div>
+  `;
 }
 
 // ============================================================================

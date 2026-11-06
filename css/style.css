@@ -320,7 +320,7 @@ body.dark-theme .hero-info h2 {
    MAIN CONTENT AREA
    ========================================================================== */
 .main-wrapper {
-  max-width: 1300px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
   flex: 1;
@@ -542,8 +542,145 @@ body.dark-theme .resource-section-title {
 }
 
 /* ==========================================================================
-   TAB 3: VIDEO & SLIDE TRANSCRIPT PLAYER
+   TAB 3: VIDEO & SLIDE TRANSCRIPT PLAYER (THEATER & SPLIT MODES)
    ========================================================================== */
+.mode-tab-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mode-tab-btn:hover {
+  background: var(--primary-light);
+  color: var(--primary-navy);
+  border-color: var(--primary-cyan);
+}
+
+.mode-tab-btn.active {
+  background: var(--primary-navy);
+  color: #fff;
+  border-color: var(--primary-navy);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Video Theater Wrapper (Full Size như Videos/Chapter_01/index.html) */
+.video-theater-wrapper {
+  background: #000;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.theater-top-bar {
+  background: rgba(15, 23, 42, 0.98);
+  color: white;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theater-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.875rem;
+  flex-wrap: wrap;
+}
+
+.pulse-icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #10B981;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: theater-pulse 2s infinite;
+}
+
+@keyframes theater-pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.theater-player-frame {
+  width: 100%;
+  height: 75vh;
+  min-height: 580px;
+  max-height: 850px;
+  background: #000;
+  position: relative;
+}
+
+.theater-player-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.theater-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.theater-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.825rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: var(--transition);
+}
+
+.theater-btn:hover {
+  background: var(--primary-cyan);
+  color: white;
+  border-color: var(--primary-cyan);
+}
+
+.theater-btn-primary {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.theater-btn-primary:hover {
+  background: var(--primary-cyan);
+}
+
 .player-layout {
   display: grid;
   grid-template-columns: 1.2fr 1fr;

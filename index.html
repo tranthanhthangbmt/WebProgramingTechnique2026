@@ -314,7 +314,63 @@
          TAB 3: VIDEO & SLIDE TRANSCRIPT PLAYER
          ---------------------------------------------------------------------- -->
     <div id="tab-video" class="tab-pane">
-      <div class="player-layout">
+      
+      <!-- Thanh công cụ & Chuyển đổi chế độ xem -->
+      <div class="view-mode-tabs" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;">
+        <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+          <button id="viewModeTheaterBtn" class="mode-tab-btn active" onclick="setVideoViewMode('theater')">
+            🎬 Rạp Chiếu Video Mặc Định (Full Size HD)
+          </button>
+          <button id="viewModeSplitBtn" class="mode-tab-btn" onclick="setVideoViewMode('split')">
+            📖 Trình Duyệt Slide & Lời Thoại Đối Chiếu (Split View)
+          </button>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+          <a href="./Videos/Chapter_01/slideChapter_01.pdf" target="_blank" class="slide-btn" style="text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">
+            📄 Mở slideChapter_01.pdf
+          </a>
+          <a href="./Videos/Chapter_01/index.html" target="_blank" class="slide-btn" style="text-decoration: none; font-size: 0.8rem; background: var(--primary-blue); display: inline-flex; align-items: center; gap: 4px;">
+            ↗️ Rạp Chiếu Tab Mới
+          </a>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           CHẾ ĐỘ 1: RẠP CHIẾU TOÀN CẢNH (MẶC ĐỊNH - FULL SIZE NHƯ VIDEOS/CHAPTER_01/INDEX.HTML)
+           ==================================================================== -->
+      <div id="theaterPlayerContainer" class="video-theater-wrapper">
+        <div class="theater-top-bar">
+          <div class="theater-badge">
+            <span class="pulse-icon"></span>
+            <strong>Trình phát Video Bài giảng Chương 1 (Toàn màn hình Chuẩn Mặc Định)</strong>
+            <span style="background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; color: #38bdf8;">
+              slideChapter_01.pdf • 41 Slide HD 1376x768 • Audio & Tự Động Chuyển Slide
+            </span>
+          </div>
+          <div class="theater-actions">
+            <a href="./Videos/Chapter_01/slideChapter_01.pdf" download class="theater-btn">
+              📥 Tải slideChapter_01.pdf
+            </a>
+            <a href="./Videos/Chapter_01/index.html" target="_blank" class="theater-btn theater-btn-primary">
+              🖥️ Phóng To Toàn Màn Hình ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="theater-player-frame">
+          <iframe id="chapterVideoIframe" 
+                  src="./Videos/Chapter_01/index.html" 
+                  title="Trình phát Bài giảng Video Chương 1"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           CHẾ ĐỘ 2: TRÌNH DUYỆT TỪNG TRANG (SPLIT VIEW)
+           ==================================================================== -->
+      <div id="splitPlayerContainer" class="player-layout" style="display: none;">
         
         <!-- Khung Slide Display -->
         <div class="slide-viewer-box">
@@ -324,17 +380,6 @@
                 🎯 Slide: slideChapter_01.pdf
               </span>
               <span style="color: #94a3b8; font-size: 0.8rem;">(41 Trang 1376x768)</span>
-            </div>
-            <div style="display: flex; gap: 0.5rem; align-items: center;">
-              <a href="./Videos/Chapter_01/slideChapter_01.pdf" target="_blank" class="slide-btn" style="text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">
-                📄 Mở PDF gốc
-              </a>
-              <a href="./Videos/Chapter_01/slideChapter_01.pdf" download class="slide-btn" style="text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">
-                📥 Tải về
-              </a>
-              <a href="./Videos/Chapter_01/index.html" target="_blank" class="slide-btn" style="text-decoration: none; font-size: 0.8rem; background: var(--primary-blue); display: inline-flex; align-items: center; gap: 4px;">
-                🎭 Rạp Chiếu Độc Lập ↗
-              </a>
             </div>
           </div>
 
@@ -380,6 +425,30 @@
         </div>
 
       </div>
+
+      <!-- ====================================================================
+           KỊCH BẢN THUYẾT MINH SONG SONG CHI TIẾT (ĐẶT BÊN DƯỚI RẠP CHIẾU)
+           ==================================================================== -->
+      <div id="theaterTranscriptSection" class="academic-card" style="margin-top: 1.5rem;">
+        <div class="card-header-styled" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.5rem;">🎙️</span>
+            <div>
+              <h3 style="margin: 0;">Kịch bản Đối thoại Thuyết minh 41 Slide (Thầy & Trò IT26M)</h3>
+              <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">Đọc lời thoại phân tích bài giảng đồng bộ với tiến trình video ở trên</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <label for="theaterTranscriptSlideSelect" style="font-size: 0.85rem; font-weight: 600;">Chọn Slide:</label>
+            <select id="theaterTranscriptSlideSelect" class="chapter-select" style="padding: 0.3rem 0.75rem; font-size: 0.85rem; min-width: 220px;"></select>
+            <a href="./Videos/Chapter_01/scriptChapter01.txt" target="_blank" class="btn-download" style="padding: 0.3rem 0.75rem; font-size: 0.85rem;">📥 Tải Script (.txt)</a>
+          </div>
+        </div>
+        <div id="theaterTranscriptBody" style="margin-top: 1.25rem;">
+          <!-- Active Dialogue Rendered Dynamically -->
+        </div>
+      </div>
+
     </div>
 
     <!-- ----------------------------------------------------------------------
