@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kỹ thuật Lập trình (4 Tín chỉ) — Cổng Học tập & Quản lý Tài nguyên</title>
+  <meta name="description" content="Cổng học tập trực tuyến môn Kỹ thuật Lập trình (4 Tín chỉ) - Đại học UDA, Khoa CNTT - Lớp IT26M. Tích hợp giáo trình, slide bài giảng, video player, ngân hàng 40 câu trắc nghiệm và bài tập cuối chương.">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+</head>
+<body>
+
+  <!-- ========================================================================
+       SITE HEADER
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="brand-wrapper">
+        <div class="brand-icon">☕</div>
+        <div class="brand-text">
+          <h1>KỸ THUẬT LẬP TRÌNH <span class="credit-badge">4 TÍN CHỈ</span></h1>
+          <p>Khoa Công nghệ Thông tin — Dành cho Lớp IT26M & Khóa 2026</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <select id="chapterSelector" class="chapter-select" title="Chọn chương học">
+          <option value="1" selected>Chương 1: Introduction to Java (Đang mở)</option>
+          <option value="2" disabled>Chương 2: Primitive Data & Loops (Sắp mở)</option>
+          <option value="3" disabled>Chương 3: Parameters & Graphics</option>
+          <option value="4" disabled>Chương 4: Conditional Execution</option>
+          <option value="5" disabled>Chương 5: Indefinite Loops</option>
+          <option value="6" disabled>Chương 6: File Processing</option>
+          <option value="7" disabled>Chương 7: Arrays</option>
+          <option value="8" disabled>Chương 8: Classes & Objects</option>
+          <option value="9" disabled>Chương 9: Inheritance & Interfaces</option>
+          <option value="10" disabled>Chương 10 - 19: Cấu trúc Dữ liệu & Nâng cao</option>
+        </select>
+
+        <button id="themeToggleBtn" class="theme-toggle-btn" title="Chuyển chế độ Sáng/Tối">🌙</button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="site-nav">
+      <div class="nav-container">
+        <button class="nav-tab-btn active" data-tab="overview">
+          <span>📚</span> 1. Đề cương & Lộ trình
+        </button>
+        <button class="nav-tab-btn" data-tab="docs">
+          <span>📑</span> 2. Tài liệu & Tài nguyên
+        </button>
+        <button class="nav-tab-btn" data-tab="video">
+          <span>🎥</span> 3. Video & Slide Player
+        </button>
+        <button class="nav-tab-btn" data-tab="quiz">
+          <span>📝</span> 4. Trắc nghiệm (40 câu)
+        </button>
+        <button class="nav-tab-btn" data-tab="exercises">
+          <span>💻</span> 5. Bài tập cuối chương
+        </button>
+        <button class="nav-tab-btn" data-tab="codes">
+          <span>💾</span> 6. Kho mã nguồn mẫu
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================================
+       HERO BANNER
+       ======================================================================== -->
+  <section class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-info">
+        <h2>CHƯƠNG 1: INTRODUCTION TO JAVA PROGRAMMING</h2>
+        <p class="hero-subtitle">
+          Nền tảng hệ thống tính toán, kiến trúc máy ảo JVM, quy trình Edit-Compile-Run, cú pháp cơ bản, chuỗi ký tự thoát, nghệ thuật gỡ lỗi và tư duy Phân rã thủ tục (DRY).
+        </p>
+      </div>
+      <div class="hero-meta">
+        <span class="meta-pill">⏱️ Thời lượng: 3 Tiết (150')</span>
+        <span class="meta-pill">🎯 5 Chuẩn đầu ra (CLO)</span>
+        <span class="meta-pill">📝 40 Câu trắc nghiệm chuẩn hóa</span>
+        <span class="meta-pill">💻 19 Bài tập & Đồ án</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       MAIN CONTENT CONTAINER (TAB PANES)
+       ======================================================================== -->
+  <main class="main-wrapper">
+
+    <!-- ----------------------------------------------------------------------
+         TAB 1: ĐỀ CƯƠNG & LỘ TRÌNH 4 TÍN CHỈ
+         ---------------------------------------------------------------------- -->
+    <div id="tab-overview" class="tab-pane active">
+      <div class="overview-grid">
+        
+        <!-- Cột 1: Thông tin học phần -->
+        <div class="academic-card">
+          <div class="card-header-styled">
+            <span style="font-size: 1.5rem;">🎓</span>
+            <h3>Thông tin Học phần 4 Tín chỉ</h3>
+          </div>
+          <ul class="clo-list">
+            <li><strong>Tên học phần:</strong> Kỹ thuật Lập trình (Programming Technique)</li>
+            <li><strong>Số tín chỉ:</strong> 4 Tín chỉ (3 LT + 1 TH / Đồ án môn học)</li>
+            <li><strong>Tổng thời lượng:</strong> 75 tiết (45 tiết lý thuyết + 30 tiết thực hành phòng máy)</li>
+            <li><strong>Giáo trình chính:</strong> <em>Building Java Programs: A Back to Basics Approach</em> (Stuart Reges & Marty Stepp)</li>
+            <li><strong>Môi trường phát triển:</strong> Java SE 21 LTS, Visual Studio Code / IntelliJ IDEA</li>
+          </ul>
+        </div>
+
+        <!-- Cột 2: Chuẩn đầu ra môn học Chương 1 -->
+        <div class="academic-card">
+          <div class="card-header-styled">
+            <span style="font-size: 1.5rem;">🎯</span>
+            <h3>Chuẩn đầu ra bài học (CLOs)</h3>
+          </div>
+          <ul class="clo-list">
+            <li class="clo-item">
+              <span class="clo-badge">CLO 1.1</span>
+              <div><strong>Hiểu kiến trúc tính toán:</strong> CPU, RAM, nhị phân, cơ chế JVM và Bytecode (WORA).</div>
+            </li>
+            <li class="clo-item">
+              <span class="clo-badge">CLO 1.2</span>
+              <div><strong>Cú pháp cốt lõi:</strong> Cấu trúc class, hàm main, print/println và escape sequences.</div>
+            </li>
+            <li class="clo-item">
+              <span class="clo-badge">CLO 1.3</span>
+              <div><strong>Chẩn đoán lỗi:</strong> Nhận diện và gỡ 3 loại lỗi (Syntax, Runtime, Logic).</div>
+            </li>
+            <li class="clo-item">
+              <span class="clo-badge">CLO 1.4</span>
+              <div><strong>Tư duy thiết kế:</strong> Phân rã Top-down, phương thức tĩnh, Call Stack và nguyên lý DRY.</div>
+            </li>
+            <li class="clo-item">
+              <span class="clo-badge">CLO 1.5</span>
+              <div><strong>Thực hành sáng tạo:</strong> Độc lập viết, biên dịch CLI và thiết kế đồ họa ASCII phân tầng.</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Cột 3: Tiến trình 3 tiết học -->
+        <div class="academic-card">
+          <div class="card-header-styled">
+            <span style="font-size: 1.5rem;">⏱️</span>
+            <h3>Tiến trình 3 Tiết tích hợp</h3>
+          </div>
+          <div class="roadmap-timeline">
+            <div class="timeline-step">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Tiết 1: Nền tảng & Viết code đầu tiên</h4>
+                <p>Khái niệm máy tính, nhị phân, kiến trúc JVM, cấu trúc Hello.java, Lab 1 thực hành CLI.</p>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Tiết 2: Cú pháp, Ký tự thoát & Debugging</h4>
+                <p>Escape sequences (\n, \t, \", \\), CamelCase, phân loại 3 nhóm lỗi và Lab 2 sửa lỗi.</p>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Tiết 3: Phân rã thủ tục & Case Study</h4>
+                <p>Tư duy Top-down, static methods, Call Stack, phân tích DrawFigures1-3 và Mini-Project Lab 3.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Khung giới thiệu 19 chương môn học -->
+      <div class="academic-card" style="margin-top: 1.5rem;">
+        <div class="card-header-styled">
+          <span style="font-size: 1.5rem;">🗺️</span>
+          <h3>Cây chương trình toàn khóa học (Curriculum Roadmap 19 Chương)</h3>
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Toàn bộ lộ trình 4 tín chỉ bao quát từ nền tảng lập trình cấu trúc đến lập trình hướng đối tượng nâng cao và cấu trúc dữ liệu kinh điển.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; font-size: 0.85rem;">
+          <div style="padding: 0.75rem; background: var(--primary-light); border-radius: 6px; font-weight: 700; color: var(--primary-navy);">
+            ⭐ Chương 1: Introduction to Java (Đang học)
+          </div>
+          <div style="padding: 0.75rem; background: var(--bg-subtle); border-radius: 6px; color: var(--text-muted);">Chương 2: Primitive Data & Definite Loops</div>
+          <div style="padding: 0.75rem; background: var(--bg-subtle); border-radius: 6px; color: var(--text-muted);">Chương 3: Parameters & Graphical UI</div>
+          <div style="padding: 0.75rem; background: var(--bg-subtle); border-radius: 6px; color: var(--text-muted);">Chương 4: Conditional Execution (if/else)</div>
+          <div style="padding: 0.75rem; background: var(--bg-subtle); border-radius: 6px; color: var(--text-muted);">Chương 5: Indefinite Loops (while/boolean)</div>
+          <div style="padding: 0.75rem; background: var(--bg-subtle); border-radius: 6px; color: var(--text-muted);">Chương 6: File Processing (I/O)</div>
+          <div style="padding: 0.75rem; background: var(--bg-subtle); border-radius: 6px; color: var(--text-muted);">Chương 7: Arrays (Mảng 1D & 2D)</div>
+          <div style="padding: 0.75rem; background: var(--bg-subtle); border-radius: 6px; color: var(--text-muted);">Chương 8: Classes & Objects (OOP)</div>
+          <div style="padding: 0.75rem; background: var(--bg-subtle); border-radius: 6px; color: var(--text-muted);">Chương 9: Inheritance & Interfaces</div>
+          <div style="padding: 0.75rem; background: var(--bg-subtle); border-radius: 6px; color: var(--text-muted);">Chương 10 - 19: Collections, Recursion, Trees...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         TAB 2: TÀI LIỆU & TÀI NGUYÊN (DOCUMENTS)
+         ---------------------------------------------------------------------- -->
+    <div id="tab-docs" class="tab-pane">
+      <h3 class="resource-section-title">📖 Sách giáo trình & Slide bài giảng số hóa</h3>
+      <div class="doc-grid">
+        
+        <div class="doc-card">
+          <div>
+            <div class="doc-type-icon">📕</div>
+            <h4>Textbook Chương 1 (Bản gốc tiếng Anh)</h4>
+            <p>Giáo trình <em>Building Java Programs: A Back to Basics Approach</em> - Chương 1: Introduction to Java Programming. 135 trang đầy đủ lý thuyết, bài tập Self-Check và Exercises.</p>
+          </div>
+          <div class="doc-meta">
+            <span>PDF • 632 KB</span>
+            <a href="./Textbook/Chapter_1_Introduction to Java Programming.pdf" target="_blank" class="btn-download">📥 Xem & Tải về</a>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <div>
+            <div class="doc-type-icon">📗</div>
+            <h4>Giáo trình Building Java Programs (Bản dịch tiếng Việt)</h4>
+            <p>Bản dịch tiếng Việt hoàn chỉnh của cuốn giáo trình chuẩn Đại học Mỹ, hỗ trợ sinh viên tra cứu song ngữ và nắm bắt nhanh các thuật ngữ chuyên ngành.</p>
+          </div>
+          <div class="doc-meta">
+            <span>PDF • 27.5 MB</span>
+            <a href="./textbook_vi/Building Java Programs_ A Back - Stuart Reges - Vietnamese.pdf" target="_blank" class="btn-download">📥 Xem & Tải về</a>
+          </div>
+        </div>
+
+        <div class="doc-card" style="border: 2px solid var(--primary-cyan); position: relative;">
+          <div style="position: absolute; top: -10px; right: 12px; background: var(--primary-cyan); color: #fff; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase;">
+            ⭐ Slide Chính Thức Môn Học
+          </div>
+          <div>
+            <div class="doc-type-icon">🎬</div>
+            <h4>Slide Bài giảng Chính thức (slideChapter_01.pdf)</h4>
+            <p>Bộ 41 slide độ phân giải cao (1376x768) chính thức của Chương 1, tích hợp đầy đủ sơ đồ kiến trúc máy tính, máy ảo JVM, luồng gọi hàm Call Stack và 3 bài Hands-on Labs.</p>
+          </div>
+          <div class="doc-meta">
+            <span>PDF • 41 Trang (31.3 MB)</span>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="./Videos/Chapter_01/slideChapter_01.pdf" target="_blank" class="btn-download">📥 Xem & Tải PDF</a>
+              <a href="#tab-video" onclick="switchTab('video')" class="btn-download" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border-color);">▶️ Trình Chiếu</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <div>
+            <div class="doc-type-icon">📊</div>
+            <h4>Slide Bài giảng LaTeX Beamer (Bản in học thuật)</h4>
+            <p>Phiên bản Beamer Widescreen 16:9 được biên dịch từ XeLaTeX hỗ trợ in ấn tài liệu phát tay (handout) và bài tập nhóm.</p>
+          </div>
+          <div class="doc-meta">
+            <span>PDF • 41 Trang</span>
+            <a href="./Slides/Chapter_1_Introduction_to_Java_IT26M.pdf" target="_blank" class="btn-download">📥 Xem Slide Beamer</a>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <div>
+            <div class="doc-type-icon">🎙️</div>
+            <h4>Kịch bản thuyết minh Video (Script Thầy & Trò)</h4>
+            <p>Toàn văn kịch bản đối thoại hai nhân vật (Người 1 - Giảng viên & Người 2 - Sinh viên IT26M) bám sát 100% từng slide cho 41 slide của Chương 1.</p>
+          </div>
+          <div class="doc-meta">
+            <span>Text File • 43.4 KB</span>
+            <a href="./Videos/Chapter_01/scriptChapter01.txt" target="_blank" class="btn-download">📥 Đọc Kịch bản</a>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <div>
+            <div class="doc-type-icon">💻</div>
+            <h4>Bộ mã nguồn mẫu Giáo khoa (BJP5 Official Source)</h4>
+            <p>Toàn bộ các file code mẫu Java từ sách: DrawFigures1-4, DrawBoxes1-3, Bug1-6, FooBarBazMumble, Hello1-3 và các file Lab starter.</p>
+          </div>
+          <div class="doc-meta">
+            <span>Java Source Code</span>
+            <a href="#tab-codes" onclick="switchTab('codes')" class="btn-download">📂 Mở Kho Code</a>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 class="resource-section-title" style="margin-top: 2rem;">🛠️ Hướng dẫn cài đặt Môi trường Phát triển (IDE & JDK)</h3>
+      <div class="academic-card">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; font-size: 0.9rem;">
+          <div style="padding: 1rem; background: var(--bg-subtle); border-radius: 8px;">
+            <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">1. Cài đặt Java JDK 21 LTS</h4>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Cài đặt Java Development Kit (khuyên dùng Oracle JDK hoặc Eclipse Temurin OpenJDK 21 LTS).</p>
+            <code style="background: var(--code-bg); color: #fff; padding: 2px 6px; border-radius: 4px; font-family: monospace;">javac -version</code>
+          </div>
+          <div style="padding: 1rem; background: var(--bg-subtle); border-radius: 8px;">
+            <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">2. Cài đặt VS Code + Java Extension Pack</h4>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Trình soạn thảo mã nguồn nhẹ, mạnh mẽ, cài gói mở rộng Extension Pack for Java của Microsoft.</p>
+            <code style="background: var(--code-bg); color: #fff; padding: 2px 6px; border-radius: 4px; font-family: monospace;">vscjava.vscode-java-pack</code>
+          </div>
+          <div style="padding: 1rem; background: var(--bg-subtle); border-radius: 8px;">
+            <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">3. IntelliJ IDEA Community (Tùy chọn)</h4>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Môi trường phát triển chuyên nghiệp hàng đầu thế giới dành riêng cho Java, hỗ trợ refactor và debug tối ưu.</p>
+            <a href="https://www.jetbrains.com/idea/download/" target="_blank" style="font-weight: 600;">Tải IntelliJ Community ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         TAB 3: VIDEO & SLIDE TRANSCRIPT PLAYER
+         ---------------------------------------------------------------------- -->
+    <div id="tab-video" class="tab-pane">
+      <div class="player-layout">
+        
+        <!-- Khung Slide Display -->
+        <div class="slide-viewer-box">
+          <div class="slide-top-toolbar" style="background: rgba(15, 23, 42, 0.95); padding: 0.6rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="background: var(--primary-cyan); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+                🎯 Slide: slideChapter_01.pdf
+              </span>
+              <span style="color: #94a3b8; font-size: 0.8rem;">(41 Trang 1376x768)</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <a href="./Videos/Chapter_01/slideChapter_01.pdf" target="_blank" class="slide-btn" style="text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">
+                📄 Mở PDF gốc
+              </a>
+              <a href="./Videos/Chapter_01/slideChapter_01.pdf" download class="slide-btn" style="text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">
+                📥 Tải về
+              </a>
+              <a href="./Videos/Chapter_01/index.html" target="_blank" class="slide-btn" style="text-decoration: none; font-size: 0.8rem; background: var(--primary-blue); display: inline-flex; align-items: center; gap: 4px;">
+                🎭 Rạp Chiếu Độc Lập ↗
+              </a>
+            </div>
+          </div>
+
+          <div id="slideDisplayFrame" class="slide-display-frame">
+            <!-- Slide Visual Content Rendered Dynamically -->
+          </div>
+
+          <div class="slide-controls-bar">
+            <button id="prevSlideBtn" class="slide-btn">◀ Slide trước</button>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span id="slideCounterText" class="slide-counter">Slide 1 / 41</span>
+              <select id="slideNumberSelect" class="chapter-select" style="padding: 0.2rem 0.5rem; font-size: 0.8rem;"></select>
+            </div>
+            <button id="nextSlideBtn" class="slide-btn">Slide sau ▶</button>
+          </div>
+
+          <!-- Thanh điều khiển Audio Thuyết Minh -->
+          <div class="slide-audio-bar" style="background: #0f172a; padding: 0.5rem 1rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <button id="slideAudioPlayBtn" class="slide-btn" style="background: var(--accent-green); display: inline-flex; align-items: center; gap: 4px;">
+                ▶️ Nghe Thuyết Minh
+              </button>
+              <span id="audioStatusText" style="font-size: 0.8rem; color: #94a3b8;">Sẵn sàng phát</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <label style="font-size: 0.8rem; color: #cbd5e1; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; user-select: none;">
+                <input type="checkbox" id="autoAdvanceAudioCheck" checked> Tự chuyển slide khi nghe xong
+              </label>
+            </div>
+          </div>
+          <audio id="slideNarrationAudio" preload="none"></audio>
+        </div>
+
+        <!-- Khung Kịch bản Đối thoại Đồng bộ (Interactive Transcript) -->
+        <div class="transcript-box">
+          <div class="transcript-header">
+            <h3>🎙️ Kịch bản Thuyết minh Song song (Thầy & Trò)</h3>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Đồng bộ theo từng slide</span>
+          </div>
+          <div id="transcriptDialogueBody" class="transcript-body">
+            <!-- Dialogue Balloons Rendered Dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         TAB 4: HỆ THỐNG TRẮC NGHIỆM (QUIZ ENGINE)
+         ---------------------------------------------------------------------- -->
+    <div id="tab-quiz" class="tab-pane">
+      
+      <!-- Quiz Dashboard -->
+      <div class="quiz-dashboard">
+        <div class="quiz-stats-row">
+          <div class="stat-item">
+            <span class="stat-label">Tiến độ làm bài</span>
+            <span id="quizStatProgress" class="stat-value">0 / 40</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Kết quả đạt được</span>
+            <span id="quizStatScore" class="stat-value">0 câu đúng</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Tỷ lệ chính xác (Thang điểm 10)</span>
+            <span id="quizStatAccuracy" class="stat-value">0% (0.0 / 10)</span>
+          </div>
+          <div>
+            <button id="resetQuizBtn" class="slide-btn" style="background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border-color);">🔄 Làm lại từ đầu</button>
+          </div>
+        </div>
+
+        <div class="quiz-progress-track">
+          <div id="quizProgressBar" class="quiz-progress-bar"></div>
+        </div>
+
+        <div class="quiz-filter-bar">
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-right: 0.5rem;">Lọc câu hỏi:</span>
+          <button class="quiz-filter-btn active" data-filter="all">Tất cả (40 câu)</button>
+          <button class="quiz-filter-btn" data-filter="correct">Câu đúng</button>
+          <button class="quiz-filter-btn" data-filter="incorrect">Câu sai</button>
+          <button class="quiz-filter-btn" data-filter="unanswered">Chưa làm</button>
+        </div>
+
+        <!-- Question Palette (1-40 Grid) -->
+        <div id="quizQuestionPalette" class="question-palette">
+          <!-- Question Buttons 1..40 Rendered Dynamically -->
+        </div>
+      </div>
+
+      <!-- Active Question Card -->
+      <div id="quizQuestionCard" class="question-card">
+        <!-- Question content rendered dynamically -->
+      </div>
+
+      <!-- Quiz Nav Actions -->
+      <div class="quiz-nav-actions">
+        <button id="prevQuestionBtn" class="slide-btn" style="background: var(--primary-navy); padding: 0.6rem 1.25rem;">◀ Câu trước</button>
+        <button id="nextQuestionBtn" class="slide-btn" style="background: var(--primary-navy); padding: 0.6rem 1.25rem;">Câu kế tiếp ▶</button>
+      </div>
+
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         TAB 5: TRUNG TÂM BÀI TẬP CUỐI CHƯƠNG (EXERCISES HUB)
+         ---------------------------------------------------------------------- -->
+    <div id="tab-exercises" class="tab-pane">
+      
+      <!-- Filter and Search -->
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+        <div class="exercise-filter-bar" style="margin-bottom: 0;">
+          <button class="ex-filter-btn active" data-filter="all">Tất cả bài tập (19)</button>
+          <button class="ex-filter-btn" data-filter="self-check">Self-Check Problems (8)</button>
+          <button class="ex-filter-btn" data-filter="exercise">Exercises (8)</button>
+          <button class="ex-filter-btn" data-filter="project">Programming Projects (3)</button>
+        </div>
+
+        <input type="text" id="exerciseSearchInput" placeholder="🔍 Tìm kiếm bài tập theo tên, số hiệu..." style="padding: 0.5rem 1rem; border-radius: var(--radius-full); border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main); font-family: inherit; font-size: 0.875rem; width: 300px; max-width: 100%;">
+      </div>
+
+      <!-- List of Exercises -->
+      <div id="exerciseListContainer" class="exercise-list">
+        <!-- Rendered dynamically from js/exercises_data.js -->
+      </div>
+
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         TAB 6: KHO MÃ NGUỒN MẪU (CODE REPOSITORY)
+         ---------------------------------------------------------------------- -->
+    <div id="tab-codes" class="tab-pane">
+      <h3 class="resource-section-title">💾 Kho Mã nguồn Mẫu Chương 1 (Sẵn sàng Biên dịch & Chạy)</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
+        Các mã nguồn được tổ chức chuẩn mực theo phong cách lập trình đại học, có chú thích giải thích chi tiết và hỗ trợ sao chép 1-click.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+        <!-- Code 1: Hello.java -->
+        <div class="exercise-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h4 style="color: var(--primary-navy);">1. Hello.java — Chương trình Java kinh điển đầu tiên</h4>
+            <span class="clo-badge">Lab 1</span>
+          </div>
+          <div class="code-container">
+            <button class="btn-copy-code" onclick="copyCode(this, `public class Hello {\n    public static void main(String[] args) {\n        System.out.println(&quot;Hello, world!&quot;);\n    }\n}`)">📋 Copy Code</button>
+            <pre class="code-block"><code>public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Code 2: EscapeChallenge.java -->
+        <div class="exercise-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h4 style="color: var(--primary-navy);">2. EscapeChallenge.java — Thực hành ký tự thoát phức tạp</h4>
+            <span class="clo-badge">Lab 2</span>
+          </div>
+          <div class="code-container">
+            <button class="btn-copy-code" onclick="copyCode(this, `public class EscapeChallenge {\n    public static void main(String[] args) {\n        System.out.println(&quot;--- BẢNG THÔNG SỐ CẤU HÌNH HỆ THỐNG ---&quot;);\n        System.out.println(&quot;STT\\tTham số\\t\\tGiá trị cấu hình&quot;);\n        System.out.println(&quot;1\\tThư mục gốc:\\tC:\\\\Program Files\\\\Java\\\\jdk-21&quot;);\n        System.out.println(&quot;2\\tThông điệp:\\t\\\"Chăm chỉ hôm nay, thành công mai sau!\\\"&quot;);\n        System.out.println(&quot;3\\tKý hiệu thoát:\\tDấu nháy kép (\\\"), Dấu gạch chéo ngược (\\\\)&quot;);\n    }\n}`)">📋 Copy Code</button>
+            <pre class="code-block"><code>public class EscapeChallenge {
+    public static void main(String[] args) {
+        System.out.println("--- BẢNG THÔNG SỐ CẤU HÌNH HỆ THỐNG ---");
+        System.out.println("STT\tTham số\t\tGiá trị cấu hình");
+        System.out.println("1\tThư mục gốc:\tC:\\Program Files\\Java\\jdk-21");
+        System.out.println("2\tThông điệp:\t\"Chăm chỉ hôm nay, thành công mai sau!\"");
+        System.out.println("3\tKý hiệu thoát:\tDấu nháy kép (\"), Dấu gạch chéo ngược (\\)");
+    }
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Code 3: DrawFigures3.java -->
+        <div class="exercise-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h4 style="color: var(--primary-navy);">3. DrawFigures3.java — Phân rã 2 cấp hoàn chỉnh triệt tiêu trùng lặp (DRY)</h4>
+            <span class="clo-badge">Case Study</span>
+          </div>
+          <div class="code-container">
+            <button class="btn-copy-code" onclick="copyCode(this, `public class DrawFigures3 {\n    public static void main(String[] args) {\n        drawDiamond();\n        System.out.println();\n        drawX();\n        System.out.println();\n        drawRocket();\n    }\n    public static void drawDiamond() {\n        drawCone();\n        drawV();\n    }\n    public static void drawX() {\n        drawV();\n        drawCone();\n    }\n    public static void drawRocket() {\n        drawCone();\n        drawBox();\n        drawBox();\n        drawCone();\n    }\n    public static void drawCone() {\n        System.out.println(&quot;   /\\\\&quot;);\n        System.out.println(&quot;  /  \\\\&quot;);\n        System.out.println(&quot; /    \\\\&quot;);\n    }\n    public static void drawV() {\n        System.out.println(&quot; \\\\    /&quot;);\n        System.out.println(&quot;  \\\\  /&quot;);\n        System.out.println(&quot;   \\\\/&quot;);\n    }\n    public static void drawBox() {\n        System.out.println(&quot;+------+&quot;);\n        System.out.println(&quot;|      |&quot;);\n        System.out.println(&quot;|      |&quot;);\n        System.out.println(&quot;+------+&quot;);\n    }\n}`)">📋 Copy Code</button>
+            <pre class="code-block"><code>public class DrawFigures3 {
+    public static void main(String[] args) {
+        drawDiamond();
+        System.out.println();
+        drawX();
+        System.out.println();
+        drawRocket();
+    }
+
+    public static void drawDiamond() {
+        drawCone();
+        drawV();
+    }
+
+    public static void drawX() {
+        drawV();
+        drawCone();
+    }
+
+    public static void drawRocket() {
+        drawCone();
+        drawBox();
+        drawBox();
+        drawCone();
+    }
+
+    public static void drawCone() {
+        System.out.println("   /\\");
+        System.out.println("  /  \\");
+        System.out.println(" /    \\");
+    }
+
+    public static void drawV() {
+        System.out.println(" \\    /");
+        System.out.println("  \\  /");
+        System.out.println("   \\/");
+    }
+
+    public static void drawBox() {
+        System.out.println("+------+");
+        System.out.println("|      |");
+        System.out.println("|      |");
+        System.out.println("+------+");
+    }
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Code 4: FightSong.java -->
+        <div class="exercise-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h4 style="color: var(--primary-navy);">4. FightSong.java — Bài hát cổ động (Exercise 1.12)</h4>
+            <span class="clo-badge">Lab 3</span>
+          </div>
+          <div class="code-container">
+            <button class="btn-copy-code" onclick="copyCode(this, `public class FightSong {\n    public static void main(String[] args) {\n        singGoTeam();\n        System.out.println();\n        singChorus();\n        System.out.println();\n        singChorus();\n        System.out.println();\n        singGoTeam();\n    }\n    public static void singChorus() {\n        singGoTeam();\n        singEncourage();\n        singGoTeam();\n    }\n    public static void singGoTeam() {\n        System.out.println(&quot;Go, team, go!&quot;);\n        System.out.println(&quot;You can do it.&quot;);\n    }\n    public static void singEncourage() {\n        System.out.println(&quot;You're the best,&quot;);\n        System.out.println(&quot;In the West.&quot;);\n    }\n}`)">📋 Copy Code</button>
+            <pre class="code-block"><code>public class FightSong {
+    public static void main(String[] args) {
+        singGoTeam();
+        System.out.println();
+        singChorus();
+        System.out.println();
+        singChorus();
+        System.out.println();
+        singGoTeam();
+    }
+
+    public static void singChorus() {
+        singGoTeam();
+        singEncourage();
+        singGoTeam();
+    }
+
+    public static void singGoTeam() {
+        System.out.println("Go, team, go!");
+        System.out.println("You can do it.");
+    }
+
+    public static void singEncourage() {
+        System.out.println("You're the best,");
+        System.out.println("In the West.");
+    }
+}</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div>
+        <p><strong>Kỹ thuật Lập trình (Programming Technique) — 4 Tín chỉ</strong></p>
+        <p style="font-size: 0.8rem; margin-top: 0.25rem;">Khoa Công nghệ Thông tin • Lớp IT26M • Khóa 2026</p>
+      </div>
+      <div class="footer-links">
+        <a href="#tab-overview" onclick="switchTab('overview')">Đề cương</a>
+        <a href="#tab-docs" onclick="switchTab('docs')">Tài liệu</a>
+        <a href="#tab-video" onclick="switchTab('video')">Video/Slide</a>
+        <a href="#tab-quiz" onclick="switchTab('quiz')">Trắc nghiệm</a>
+        <a href="#tab-exercises" onclick="switchTab('exercises')">Bài tập</a>
+      </div>
+      <div style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6);">
+        Deploy: <strong>GitHub Pages Ready</strong>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       SCRIPTS (DATA & APPLICATION LOGIC)
+       ======================================================================== -->
+  <script src="./js/quiz_data.js"></script>
+  <script src="./js/exercises_data.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
+

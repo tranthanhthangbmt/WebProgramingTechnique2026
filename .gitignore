@@ -1,0 +1,52 @@
+# ==============================================================================
+# .gitignore for WebProgramingTechnique2026
+# ==============================================================================
+
+# Large & External Source Directories
+other source/
+other source/**
+New folder/
+
+# LaTeX Intermediate and Build Artifacts
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.synctex.gz
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+
+# Java Compiled Files
+*.class
+
+# Operating System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE & Editor Configurations
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Temporary and Scratch Files
+*.tmp
+*.bak
+*.orig
