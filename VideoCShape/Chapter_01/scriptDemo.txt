@@ -1,0 +1,184 @@
+Slide 1: KỸ THUẬT LẬP TRÌNH / JAVA - CHƯƠNG 1: INTRODUCTION TO JAVA PROGRAMMING
+Người 1: Chào các em sinh viên lớp IT26M. Hôm nay chúng ta chính thức bắt đầu môn học Kỹ thuật Lập trình với Chương 1: Giới thiệu về Lập trình Java - Introduction to Java Programming. Đây là môn học nền tảng đặc biệt quan trọng, giúp các em chuyển đổi tư duy từ người sử dụng máy tính thành người làm chủ công nghệ, biết cách thiết kế và hiện thực hóa các giải pháp phần mềm chuyên nghiệp.
+Người 2: Dạ chào thầy! Chúng em đã nghe nói rất nhiều về sự phổ biến và sức mạnh của ngôn ngữ Java trong các hệ thống doanh nghiệp lớn, ứng dụng Android và ngân hàng. Chúng em rất háo hức muốn biết hành trình lập trình Java sẽ bắt đầu từ đâu và cần trang bị những tư duy cốt lõi nào ạ.
+
+Slide 2: Mục tiêu học tập bài học (Course Learning Outcomes – CLOs)
+Người 1: Để đảm bảo chất lượng giảng dạy theo chuẩn đại học quốc tế, chúng ta cùng nhìn vào 5 chuẩn đầu ra (CLOs) của buổi học hôm nay. Thứ nhất, các em phải hiểu bản chất kiến trúc tính toán, hệ nhị phân, vai trò của máy ảo JVM và mã Bytecode. Thứ hai, viết thành thạo khung chương trình Java cơ bản, phân biệt lệnh print, println và sử dụng đúng các ký tự thoát. Thứ ba, phân biệt chính xác 3 loại lỗi lập trình và biết cách đọc thông báo compiler để gỡ lỗi. Thứ tư, nắm vững tư duy Phân rã thủ tục và nguyên lý DRY. Và cuối cùng, độc lập viết, biên dịch và chạy được một chương trình vẽ đồ họa ký tự có cấu trúc hoàn chỉnh.
+Người 2: Dạ thưa thầy, các mục tiêu này được thiết kế theo thang đo Bloom từ hiểu, áp dụng đến phân tích và sáng tạo rất rõ ràng. Nó giúp chúng em vừa nắm vững lý thuyết nền tảng, vừa có kỹ năng code thực chiến ngay tại lớp.
+
+Slide 3: Lộ trình buổi học 3 tiết (Tích hợp Lý thuyết & Thực hành)
+Người 1: Buổi học của chúng ta được chia làm 3 tiết học liên tục, tổng cộng 150 phút, theo mô hình đào tạo kỹ thuật hiện đại: Lý thuyết tương tác đi liền với Thực hành tại chỗ. Tiết 1 chúng ta tìm hiểu nền tảng hệ thống, kiến trúc Java và viết chương trình đầu tiên, kèm theo bài Lab 1 làm quen dòng lệnh CLI. Tiết 2 đi sâu vào cú pháp chuỗi, ký tự thoát, quy ước đặt tên và nghệ thuật chẩn đoán lỗi, kèm theo Lab 2 thử thách Debug. Tiết 3 tập trung vào tư duy thiết kế kiến trúc phần mềm, phân rã thủ tục qua Case Study DrawFigures và thực hiện Mini-Project Lab 3.
+Người 2: Thật tuyệt vời ạ! Việc được thực hành trực tiếp trên máy tính ngay sau mỗi phần lý thuyết sẽ giúp sinh viên chúng em hiểu sâu bản chất và không bao giờ bị bỡ ngỡ khi tự làm bài tập về nhà.
+
+Slide 4: TIẾT 1: NỀN TẢNG HỆ THỐNG TÍNH TOÁN, KIẾN TRÚC MÁY ẢO JVM & XÂY DỰNG CHƯƠNG TRÌNH JAVA ĐẦU TIÊN
+Người 1: Chúng ta cùng bước vào Tiết 1: Nền tảng hệ thống tính toán, kiến trúc máy ảo JVM và xây dựng chương trình Java đầu tiên.
+
+Slide 5: 1.1 Tại sao chúng ta cần học lập trình? (Why Programming?)
+Người 1: Mở đầu chương 1 của giáo trình, tác giả trích dẫn một câu nói bất hủ của Giáo sư Donald Knuth - người đoạt giải Turing danh giá: "Người ta thường nói rằng một người không thực sự hiểu điều gì đó cho đến khi dạy nó cho người khác. Nhưng trên thực tế, một người chỉ thực sự hiểu thấu đáo một vấn đề khi dạy nó cho máy tính, tức là diễn đạt nó dưới dạng một thuật toán". Máy tính là một thiết bị vạn năng, và lập trình chính là ngôn ngữ để chúng ta truyền dạy tư duy của mình cho cỗ máy đó.
+Người 2: Lời dạy của Giáo sư Knuth sâu sắc quá thầy ạ. Để dạy được máy tính, ta cần biết cỗ máy đó vận hành thế nào. Thầy có thể điểm qua các thành phần phần cứng cốt lõi được không ạ?
+Người 1: Rất sẵn lòng! Máy tính gồm phần cứng và phần mềm. Phần cứng cốt lõi gồm: CPU - bộ vi xử lý trung tâm, đóng vai trò "bộ não" thực thi mọi phép tính số học và logic; Bộ nhớ chính RAM - nơi lưu trữ dữ liệu tạm thời với tốc độ cực nhanh nhưng dữ liệu sẽ mất khi tắt nguồn; Bộ nhớ thứ cấp như ổ cứng SSD/HDD - lưu trữ thông tin vĩnh viễn; và các thiết bị ngoại vi I/O. Lập trình chính là việc chúng ta viết ra các phần mềm để điều khiển toàn bộ phần cứng này làm việc theo ý muốn của con người.
+
+Slide 6: Thế giới số & Biểu diễn dữ liệu bằng Hệ nhị phân (Binary)
+Người 1: Các em nhìn lên Slide 6. Tại sao từ xưa đến nay máy tính lại sử dụng hệ nhị phân gồm các số 0 và 1 mà không dùng hệ thập phân quen thuộc của con người?
+Người 2: Dạ em nhớ là vì phần cứng bên trong máy tính được tạo nên từ hàng tỷ bóng bán dẫn transistor, và trong vật lý điện tử thì việc phân biệt hai trạng thái bật - tắt hoặc điện áp cao - thấp là đơn giản, bền vững và chống nhiễu tốt nhất phải không thầy?
+Người 1: Hoàn toàn chính xác! Điện áp cao đại diện cho bit 1, điện áp thấp đại diện cho bit 0. Bit là đơn vị thông tin nhỏ nhất, và 8 bit ghép lại thành 1 Byte. Một byte có thể biểu diễn được 2 mũ 8, tức là 256 trạng thái khác nhau từ 0 đến 255. Nhìn vào ví dụ trên slide: số nhị phân 1 0 1 1 trong hệ cơ số 2 được tính bằng 1 nhân 8 cộng 0 nhân 4 cộng 1 nhân 2 cộng 1 nhân 1, cho ra kết quả là số 11 trong hệ thập phân. Mọi văn bản, hình ảnh, âm thanh hay đoạn code Java của các em cuối cùng đều được máy tính chuyển đổi về các chuỗi bit 0 và 1 này để xử lý!
+
+Slide 7: Cơ chế thực thi: Trình biên dịch (Compiler) vs. Thông dịch (Interpreter)
+Người 1: Khi ta viết xong mã nguồn bằng tiếng Anh, làm sao máy tính hiểu được? Ở các ngôn ngữ truyền thống như C hay C++, ta dùng một Trình biên dịch (Compiler) để dịch toàn bộ mã nguồn sang Mã máy trực tiếp (Native Machine Code). Ưu điểm là chương trình chạy cực kỳ nhanh. Nhưng nhược điểm chí tử là gì, các em có biết không?
+Người 2: Dạ, đó là tính phụ thuộc nền tảng ạ! Mã máy được biên dịch cho chip Intel trên hệ điều hành Windows thì đem sang máy Mac chip Apple Silicon hay máy Linux sẽ hoàn toàn không chạy được, bắt buộc phải biên dịch lại từ đầu.
+Người 1: Chuẩn xác! Ngược lại, các ngôn ngữ thông dịch (Interpreter) như Python hay JavaScript thì đọc và chạy trực tiếp từng dòng lệnh, rất linh hoạt nhưng tốc độ thực thi lại chậm hơn nhiều. Điều này đã thôi thúc các nhà khoa học máy tính đi tìm một con đường thứ ba: Vừa chạy nhanh, vừa độc lập với mọi nền tảng phần cứng!
+
+Slide 8: Kiến trúc đột phá của Java: Máy ảo JVM & Mã Bytecode
+Người 1: Và câu trả lời mang tính cách mạng ra đời vào năm 1995 bởi James Gosling và Sun Microsystems, gói gọn trong triết lý bất hủ: "Write Once, Run Anywhere" (WORA) - Viết một lần, chạy mọi nơi. Trình biên dịch Java (javac) không dịch mã nguồn ra mã máy thật của CPU, mà dịch file .java thành một dạng mã trung gian gọi là Java Bytecode chứa trong file .class.
+Người 2: À, em hiểu rồi! Bytecode giống như một ngôn ngữ chuẩn chung của một chiếc máy tính lý thuyết. Và mỗi hệ điều hành như Windows, macOS, Linux chỉ cần cài đặt một cỗ máy ảo Java Virtual Machine (JVM) tương ứng để thông dịch hoặc dịch tức thời JIT Bytecode đó sang mã máy thật!
+Người 1: Rất thông minh! Nhờ đó mà file .class viết trên Windows có thể copy nguyên vẹn sang Linux hay macOS và chạy hoàn hảo mà không cần biên dịch lại một dòng nào. Trên slide các em cần phân biệt rõ bộ ba: JVM là máy ảo thực thi; JRE gồm JVM cộng thư viện chuẩn; còn JDK là bộ công cụ hoàn chỉnh dành cho lập trình viên, bao gồm cả trình biên dịch javac, bộ gỡ lỗi và JRE. Để học lập trình, ta bắt buộc phải cài JDK.
+
+Slide 9: Quy trình phát triển chương trình Java: Edit -> Compile -> Run
+Người 1: Bây giờ, các em hãy quan sát kỹ Hình 1.1 được trích xuất từ trang 21 của giáo trình. Đây là chu trình 3 bước nền tảng mà bất kỳ lập trình viên Java nào cũng phải trải qua hàng ngày. Bước 1: Soạn thảo (Edit) mã nguồn vào file văn bản thuần có đuôi bắt buộc là Hello.java. Bước 2: Biên dịch (Compile) bằng cách gõ lệnh javac Hello.java trong terminal. Trình biên dịch sẽ kiểm tra toàn bộ lỗi cú pháp. Nếu có lỗi, nó dừng lại và báo vị trí; nếu hoàn toàn đúng, nó tạo ra file bytecode Hello.class. Bước 3: Thực thi (Run) bằng cách gõ java Hello để khởi động máy ảo JVM, nạp bytecode và xuất dòng chữ "Hello, world!" ra màn hình.
+Người 2: Sơ đồ trực quan và dễ hiểu quá thầy ạ. Nhìn vào đây là thấy rõ ngay sự chuyển hóa từ file văn bản Hello.java của con người qua bàn tay nhào nặn của javac thành file Hello.class cho máy ảo JVM thực thi.
+
+Slide 10: 1.2 Chương trình Java hoàn chỉnh đầu tiên
+Người 1: Chúng ta cùng phân tích chương trình hoàn chỉnh đầu tiên trên slide 10. Trong Java, có một nguyên tắc vàng bắt buộc: Không có bất kỳ dòng code nào được tồn tại tự do bên ngoài một lớp (class). Mọi thứ đều phải nằm trong class. Và nếu lớp đó được khai báo là public class Hello, thì tên file lưu trên ổ đĩa bắt buộc 100% phải là Hello.java, khớp từng chữ hoa chữ thường.
+Người 2: Dạ thưa thầy, nếu em vô tình lưu tên file là hello.java viết thường chữ h thì có chạy được không ạ?
+Người 1: Trình biên dịch javac sẽ lập tức từ chối và quăng ra thông báo lỗi ngay: "class Hello is public, should be declared in a file named Hello.java". Java phân biệt hoa thường cực kỳ nghiêm ngặt. Tiếp theo, cặp dấu ngoặc nhọn { } đóng vai trò bao bọc phạm vi khối lệnh. Mọi ngoặc mở { đều phải có một ngoặc đóng } tương ứng ở cuối.
+
+Slide 11: Mổ xẻ phương thức main – Điểm bắt đầu của mọi ứng dụng
+Người 1: Dòng lệnh thứ hai chính là cánh cửa dẫn vào chương trình: public static void main(String[] args). Bảng trên slide giải thích cặn kẽ từng từ khóa: public là công khai, cho phép máy ảo JVM gọi từ bên ngoài; static là phương thức tĩnh cấp lớp, JVM gọi trực tiếp mà không cần khởi tạo đối tượng; void là kiểu trả về, báo rằng phương thức thực hiện hành động và không trả lại giá trị số hay chuỗi nào; main là tên phương thức chuẩn mà JVM luôn tìm kiếm đầu tiên; và String[] args là mảng tham số cho phép tiếp nhận dữ liệu dòng lệnh từ bên ngoài.
+Người 2: Mới đầu nhìn dòng khai báo này em thấy khá dài và hơi trừu tượng, nhưng qua bảng phân tích của thầy thì từng từ khóa đều có sứ mệnh riêng và cấu thành một quy ước chặt chẽ.
+
+Slide 12: Lệnh xuất dữ liệu: println vs. print
+Người 1: Bên trong thân hàm main, câu lệnh ta dùng nhiều nhất là in dữ liệu ra màn hình console. Các em hãy chú ý sự khác biệt rất tinh tế giữa println và print trên slide 12. Lệnh System.out.println in chuỗi văn bản ra và tự động nhảy con trỏ xuống một dòng mới (newline). Do đó hai lệnh println sẽ tạo ra hai dòng chữ tách biệt. Trong khi đó, lệnh System.out.print chỉ in nội dung và giữ nguyên con trỏ ở cuối dòng đó, nên lệnh in tiếp theo sẽ nối đuôi xuất hiện ngay liền kề!
+Người 2: Em thấy rõ qua ví dụ rồi ạ: Ba lệnh print chữ "Xin ", "chao ", và println "IT26M!" được ghép lại thành một dòng duy nhất "Xin chao IT26M!". Còn nếu gọi System.out.println() mà không truyền tham số nào thì nó sẽ tạo ra một dòng trống. Và thưa thầy, mọi câu lệnh Java đều phải kết thúc bằng dấu chấm phẩy đúng không ạ?
+Người 1: Đúng vậy! Dấu chấm phẩy ; là điểm phân tách câu lệnh bắt buộc trong Java. Quên dấu chấm phẩy là lỗi phổ biến nhất của các bạn tân sinh viên đấy.
+
+Slide 13: [CHECKPOINT 1] Kiểm tra nhanh lý thuyết Tiết 1
+Người 1: Để chắc chắn cả lớp đã nắm vững kiến thức trước khi gõ code, chúng ta cùng làm nhanh Checkpoint 1. Câu hỏi 1: Trong 4 phương án A, B, C, D trên slide, lệnh in nào viết hoàn toàn hợp lệ trong Java?
+Người 2: Dạ thưa thầy, em chọn phương án C ạ! Vì chữ System bắt buộc phải viết hoa chữ S, out và println viết thường. Còn chuỗi chữ bên trong bắt buộc phải nằm trong cặp ngoặc kép.
+Người 1: Chính xác tuyệt đối! Còn Câu hỏi 2: Bản chất và vai trò của file có đuôi .class là gì?
+Người 2: Dạ là phương án B: File .class chứa mã Java Bytecode độc lập nền tảng, do trình biên dịch javac sinh ra để máy ảo JVM thực thi ạ.
+Người 1: Rất xuất sắc! Các em đã sẵn sàng cho bài thực hành đầu tiên.
+
+Slide 14: [HANDS-ON LAB 1] Thực hành tại chỗ: Viết, biên dịch & chạy Java
+Người 1: Bây giờ là 15 phút thực hành tại chỗ của Tiết 1. Tất cả các em mở Terminal hoặc PowerShell lên. Thầy muốn các em tự tay gõ lệnh javac -version và java -version để xác nhận môi trường JDK. Sau đó tạo thư mục Lab1, dùng VS Code hoặc Notepad viết file WelcomeIT26M.java với nội dung như trên slide. Biên dịch bằng javac WelcomeIT26M.java, gõ dir hoặc ls để tận mắt nhìn thấy file WelcomeIT26M.class vừa ra đời, rồi chạy bằng java WelcomeIT26M. Bắt đầu nào!
+Người 2: Thưa thầy, em vừa chạy thử trên máy của em rồi ạ! Cảm giác tự tay gõ lệnh biên dịch trong terminal, thấy file .class xuất hiện và nhìn dòng chữ "Chao mung lop IT26M den voi Java!" hiện lên màn hình thực sự rất phấn khích thầy ạ!
+Người 1: Tuyệt vời lắm! Chúc mừng các em đã chính thức gia nhập cộng đồng lập trình viên Java toàn cầu.
+
+Slide 15: TIẾT 2: CHUỖI KÝ TỰ, KÝ TỰ THOÁT (ESCAPE SEQUENCES) & KỸ NĂNG CHẨN ĐOÁN, GỠ LỖI LẬP TRÌNH (DEBUGGING)
+Người 1: Chúng ta cùng bước sang Tiết 2: Khám phá chuỗi ký tự, làm chủ các ký tự thoát đặc biệt và trang bị một trong những kỹ năng sống còn của kỹ sư phần mềm: Kỹ năng chẩn đoán và gỡ lỗi (Debugging).
+
+Slide 16: Chuỗi ký tự (String Literals) & Thách thức khi xuất ký tự đặc biệt
+Người 1: Một chuỗi ký tự (String literal) là một dãy ký tự nằm trọn vẹn trong cặp ngoặc kép. Nhưng trong thực tế, nếu ta muốn in ra màn hình một câu có chứa chính dấu ngoặc kép, chẳng hạn: Giáo viên nói: "Java rất thú vị!" thì một rắc rối lớn xuất hiện: Trình biên dịch sẽ nghĩ rằng dấu ngoặc kép trước chữ Java là dấu kết thúc chuỗi, và phần còn lại đằng sau sẽ bị coi là cú pháp sai!
+Người 2: Dạ đúng rồi ạ, nếu máy tính hiểu nhầm dấu ngoặc kép nội dung thành dấu đóng chuỗi thì nó sẽ báo lỗi đỏ lòm ngay. Vậy làm cách nào để báo cho compiler biết rằng đây là dấu ngoặc kép để in ra chứ không phải đóng chuỗi ạ?
+Người 1: Câu trả lời nằm ở khái niệm "Ký tự thoát" - Escape Sequences, với sự xuất hiện của dấu gạch chéo ngược backslash!
+
+Slide 17: Bảng ký tự thoát chuẩn trong Java (Escape Sequences)
+Người 1: Các em nhìn vào bảng quy tắc trên slide 17. Khi dấu gạch chéo ngược \ đi liền trước một ký tự đặc biệt, nó sẽ "tước bỏ" ý nghĩa cú pháp thông thường của ký tự đó và biến nó thành một ký tự hiển thị. Chúng ta có 4 ký tự thoát kinh điển: \t là thêm một khoảng tab thụt đầu dòng để căn cột dữ liệu; \n là nhảy xuống dòng mới; \" là in ra một dấu ngoặc kép; và \\ là in ra một dấu gạch chéo ngược.
+Người 2: À, em hiểu cơ chế rồi! Nếu muốn in ra một dấu gạch chéo ngược, ta phải viết hai dấu gạch chéo liên tiếp là \\. Và muốn xuống dòng giữa chừng thì không cần gọi nhiều lệnh println, chỉ cần chèn ký tự \n vào giữa chuỗi là xong!
+Người 1: Rất chuẩn xác! Ví dụ trên slide minh họa rất rõ: Dòng lệnh in "Cot 1\tCot 2\tCot 3" sẽ căn thẳng tắp 3 cột dữ liệu rất đẹp mắt.
+
+Slide 18: Định danh (Identifiers) & Từ khóa chuẩn Java
+Người 1: Nội dung tiếp theo là Định danh (Identifiers) - tên gọi mà lập trình viên tự đặt cho lớp, phương thức và biến số. Có 3 quy tắc bất di bất dịch mà các em phải ghi nhớ: Thứ nhất, tên chỉ được chứa chữ cái, chữ số, dấu gạch dưới _ và dấu $. Thứ hai, tuyệt đối KHÔNG được bắt đầu bằng chữ số (ví dụ: diem1 thì hợp lệ, nhưng 1diem là phạm luật). Thứ ba, không được trùng với hơn 50 từ khóa dành riêng của ngôn ngữ Java như public, class, static, void, int, double, if, while...
+Người 2: Thưa thầy, nếu em đặt tên biến là TotalScore và totalScore thì Java có coi là hai biến khác nhau không ạ?
+Người 1: Có chứ! Java phân biệt chữ hoa chữ thường cực kỳ rạch ròi. TotalScore, totalScore và TOTALSCORE là 3 định danh hoàn toàn tách biệt. Chính vì vậy, để tránh gây rối loạn cho đồng đội trong dự án, giới lập trình viên quốc tế đã đặt ra một quy ước chung gọi là CamelCase.
+
+Slide 19: Phong cách lập trình chuẩn đại học: Quy ước CamelCase & Comments
+Người 1: Nhìn vào slide 19, đây là tiêu chuẩn phong cách mà sinh viên lớp IT26M bắt buộc phải tuân thủ: Tên Lớp viết theo UpperCamelCase, tức là viết hoa chữ cái đầu của mỗi từ, ví dụ: Hello, DrawFigures3, StudentManager. Tên Phương thức và Biến viết theo lowerCamelCase, tức là chữ đầu viết thường, viết hoa các từ tiếp theo, ví dụ: drawDiamond, calculateTotalScore. Đồng thời, một đoạn code chuyên nghiệp không thể thiếu Chú thích (Comments): Dùng // cho chú thích 1 dòng; dùng /* ... */ cho nhiều dòng; và /** ... */ cho tài liệu Javadoc.
+Người 2: Thầy ơi, em nghe nói việc thụt lề đầu dòng cũng cực kỳ quan trọng phải không ạ?
+Người 1: Rất đúng! Thụt lề nhất quán 4 khoảng trắng cho mỗi cấp khối lệnh { } giúp mắt người đọc quét qua cấu trúc chương trình chỉ trong tích tắc. Hãy nhớ: "Mã nguồn viết ra cho con người đọc hiểu trước, máy tính hiểu sau"!
+
+Slide 20: 1.3 Phân loại lỗi lập trình: 3 nhóm lỗi kinh điển
+Người 1: Giờ chúng ta bước vào phần trọng tâm của Tiết 2: Phân loại lỗi lập trình. Không có lập trình viên nào trên đời viết code mà không gặp lỗi. Nhưng người giỏi là người hiểu rõ bản chất từng loại lỗi để xử lý nhanh nhất. Lỗi trong phần mềm chia làm 3 nhóm: Nhóm 1 là Lỗi cú pháp (Syntax Errors) xuất hiện lúc biên dịch; Nhóm 2 là Lỗi thực thi (Runtime Errors hay Exceptions) xuất hiện khi chương trình đang chạy; và Nhóm 3 là Lỗi ngữ nghĩa / logic (Logic Errors).
+Người 2: Thưa thầy, sự khác biệt bản chất giữa Lỗi thực thi và Lỗi logic là gì ạ?
+Người 1: Câu hỏi rất hay! Lỗi thực thi là khi chương trình đang chạy thì gặp một lệnh bất khả thi, ví dụ chia cho số 0 hoặc truy cập file không tồn tại. Lúc này máy tính bị sập (crash) và ném ra một ngoại lệ Exception báo hiệu dòng bị sập. Còn Lỗi Logic thì cực kỳ nguy hiểm: Chương trình biên dịch trơn tru, chạy từ đầu đến cuối không hề bị sập, nhưng kết quả in ra lại hoàn toàn sai lệch so với yêu cầu! Ví dụ bài toán yêu cầu tính tiền boa 10% mà em lại viết nhầm thành trừ đi 10%. Máy tính không thể biết em tính sai logic, chỉ có con người kiểm tra mới phát hiện ra thôi!
+
+Slide 21: Kỹ năng đọc thông báo lỗi từ Trình biên dịch (javac)
+Người 1: Khi gặp lỗi cú pháp, nhiều bạn tân sinh viên thường hoảng sợ vì thấy terminal hiện ra cả tràng chữ tiếng Anh. Nhưng đừng lo, các em hãy nhìn vào slide 21. Một thông báo lỗi của javac luôn gồm 4 thông tin rõ ràng: Tên file lỗi (Hello.java), Vị trí dòng bị lỗi (dòng số 3), Nội dung lỗi (';' expected - nghĩa là đang thiếu dấu chấm phẩy), và dấu mũ ^ chỉ đích danh vị trí compiler phát hiện vấn đề. Thầy truyền cho các em hai bí kíp vàng: Một là luôn luôn sửa lỗi đầu tiên trong danh sách, vì một lỗi ở dòng trên có thể tạo ra hiệu ứng dây chuyền sinh ra hàng chục lỗi ảo phía dưới. Hai là nếu dòng báo lỗi trông hoàn toàn chuẩn xác, hãy ngước mắt nhìn lên dòng ngay phía trước nó!
+Người 2: Bí kíp này tuyệt quá thầy ạ! Nhìn vào dấu mũ ^ và số dòng là ta biết ngay cần mở file ra sửa ở đâu, không còn cảm giác mò kim đáy bể nữa.
+
+Slide 22: [CHECKPOINT 2] Thử tài thám tử chẩn đoán lỗi
+Người 1: Bây giờ, mời các thám tử IT26M trổ tài ở Checkpoint 2. Trên slide 22 là một đoạn code ngắn nhưng chứa đựng đúng 3 lỗi cú pháp. Em nào có thể chỉ ra và sửa lại cho đúng?
+Người 2: Dạ thưa thầy em xin trả lời ạ! Lỗi thứ nhất ở dòng 1: Khai báo public MyProgram bị thiếu mất từ khóa class, phải sửa thành public class MyProgram. Lỗi thứ hai ở dòng 2: Tên hàm main bị viết hoa chữ M, Java phân biệt hoa thường nên JVM sẽ không nhận ra, phải sửa thành main chữ m thường. Lỗi thứ ba ở dòng 3: Chuỗi in ra bị thiếu dấu ngoặc kép đóng và dấu chấm phẩy kết thúc lệnh, phải sửa thành System.out.println("Lop IT26M"); ạ!
+Người 1: Cực kỳ xuất sắc! Cả 3 lỗi đều được em phát hiện chuẩn xác từng chi tiết. Nắm chắc những lỗi này thì khi tự gõ code các em sẽ tránh được 90% lỗi cơ bản.
+
+Slide 23: [HANDS-ON LAB 2] Thực hành Debug & Chuỗi ký tự thoát
+Người 1: Đã đến giờ thực hành Lab 2! Nhiệm vụ của các em là viết chương trình EscapeChallenge.java để in ra chính xác bảng thông số cấu hình hệ thống trên slide, bao gồm đường dẫn thư mục C:\Java\IT26M, khẩu hiệu trong ngoặc kép "Học là phải hành!" và biểu tượng tam giác ASCII. Yêu cầu căn chỉnh cột bằng \t và xử lý hoàn hảo các dấu gạch chéo ngược \\. Các em có 15 phút thực hiện!
+Người 2: Em hoàn thành rồi thưa thầy! Lúc đầu ở đường dẫn ổ đĩa em chỉ gõ 1 dấu gạch chéo C:\Java\IT26M, trình biên dịch báo lỗi ngay là ký tự thoát không hợp lệ. Em liền sửa thành hai dấu gạch chéo \\ và thêm \" cho câu khẩu hiệu. Kết quả màn hình console hiển thị sắc nét và chuẩn xác từng khoảng tab luôn ạ!
+Người 1: Giỏi lắm! Đó chính là cách tốt nhất để biến kiến thức lý thuyết thành kỹ năng thực tế của bản thân.
+
+Slide 24: TIẾT 3: PHÂN RÃ THỦ TỤC (PROCEDURAL DECOMPOSITION), PHƯƠNG THỨC TĨNH & TIẾN HÓA CASE STUDY DRAWFIGURES
+Người 1: Chào mừng các em đến với Tiết 3 - Tiết học cốt lõi định hình tư duy lập trình viên chuyên nghiệp: Phân rã thủ tục (Procedural Decomposition), làm chủ phương thức tĩnh và theo dõi sự tiến hóa kiến trúc phần mềm qua Case Study DrawFigures.
+
+Slide 25: 1.4 Vấn đề của bài toán lớn & Tư duy Phân rã Top-down
+Người 1: Khi bước vào thế giới phát triển phần mềm thực tế, các bài toán không còn đơn giản chỉ là vài dòng lệnh. Nếu lập trình viên dồn hàng trăm, hàng ngàn dòng lệnh vào một hàm main duy nhất, ta sẽ tạo ra một thảm họa gọi là "chương trình nguyên khối" (Monolithic code). Hậu quả là mã nguồn cực kỳ rối rắm, lặp đi lặp lại khắp nơi, rất khó đọc và không thể bảo trì. Để giải quyết, công nghệ phần mềm sử dụng tư duy Phân rã Top-down (Chia để trị): Chia bài toán lớn thành các bài toán con, rồi lại chia tiếp cho đến khi thành các thao tác nguyên tử đơn giản nhất. Và nguyên tắc vàng các em phải khắc cốt ghi tâm là: DRY - Don't Repeat Yourself - Đừng bao giờ lặp lại chính mình!
+Người 2: Thưa thầy, nguyên lý DRY nghe rất ấn tượng. Nhưng làm thế nào để ta rèn luyện được tư duy chia nhỏ một vấn đề thực tế trong đời sống ạ?
+
+Slide 26: Ví dụ thực tế: Phân rã tác vụ "Làm bánh" (Make Cake)
+Người 1: Các em hãy nhìn vào Hình 1.2 được trích từ trang 66 của giáo trình. Giả sử ta muốn hoàn thành một nhiệm vụ lớn là "Làm một chiếc bánh" (Make cake). Ta không thể nhào bột, nướng bánh và trang trí cùng một lúc. Sơ đồ cấu trúc chỉ ra rằng: Cấp 1 gồm 4 công đoạn lớn: Làm bột (Make batter), Nướng bánh (Bake), Làm kem phủ (Make frosting), và Phủ kem (Frost cake). Ở công đoạn "Làm bột", ta lại chia nhỏ tiếp thành Cấp 2 gồm: Trộn nguyên liệu khô, Đánh bơ và đường, Cho trứng, và Cho bột vào trộn. Trong lập trình Java, mỗi chiếc hộp hình chữ nhật trong sơ đồ này sẽ được hiện thực hóa bằng một Phương thức tĩnh (Static Method) độc lập!
+Người 2: Một ví dụ đời thường vô cùng gần gũi và sáng rõ thưa thầy! Nhìn vào sơ đồ cây này, ta thấy ngay bức tranh toàn cảnh và biết chính xác từng việc nhỏ cần phải làm theo thứ tự nào.
+
+Slide 27: Phương thức tĩnh (Static Methods): Cú pháp Khai báo & Lời gọi
+Người 1: Chính xác! Trên slide 27 là cú pháp của phương thức tĩnh trong Java. Khai báo gồm: public static void tenPhuongThuc() { cac cau lenh; }. Khi muốn máy tính thực hiện, ta chỉ việc gọi tenPhuongThuc();. Ví dụ hàm drawBox() gom 4 lệnh in hình hộp chữ nhật lại làm một. Khi hàm main cần in hai chiếc hộp, ta chỉ cần gọi drawBox() hai lần. Thay vì phải viết 8 câu lệnh println trùng lặp, ta chỉ cần gọi tên hàm ngắn gọn. Lưu ý đặc biệt: Mọi phương thức phải nằm độc lập bên trong lớp, tuyệt đối không được khai báo một hàm nằm lọt thỏm trong ruột của một hàm khác!
+Người 2: Dạ em ghi nhớ rồi ạ. Định nghĩa một lần ở bên ngoài, và có thể tái sử dụng gọi thực thi ở bất kỳ đâu trong chương trình.
+
+Slide 28: Luồng điều khiển khi gọi phương thức (Flow of Control)
+Người 1: Vậy đằng sau hậu trường, CPU thực thi các lời gọi hàm như thế nào? Mời các em quan sát Sơ đồ luồng điều khiển chương trình DrawBoxes trên slide 28 (trích trang 76 giáo trình). Chương trình luôn xuất phát tại dòng đầu tiên của hàm main. Khi gặp lệnh gọi drawBox(), CPU tạm dừng thực thi tại main, chuyển giao quyền điều khiển (transfer of control) nhảy sang dòng đầu tiên của hàm drawBox và thực thi 4 lệnh in. Khi chạm vào ngoặc đóng } kết thúc hàm, CPU tự động quay trở lại (return) đúng vị trí vừa rời đi ở main để chạy tiếp câu lệnh kế tiếp!
+Người 2: Các mũi tên màu xanh đi và về trên sơ đồ minh họa rất trực quan ạ. Nhờ vậy em hiểu rằng luồng chạy của chương trình có thể rẽ nhánh sang hàm con rồi quay về tiếp tục một cách cực kỳ tuần tự và chính xác.
+
+Slide 29: Luồng điều khiển đa cấp & Khái niệm Ngăn xếp gọi hàm (Call Stack)
+Người 1: Bây giờ chúng ta tiến thêm một bước sâu hơn: Điều gì xảy ra nếu hàm main gọi hàm foo, rồi gọi hàm bar, mà bên trong hàm bar lại gọi tiếp hàm baz? Slide 29 (trích trang 82 giáo trình) cho thấy luồng điều khiển lồng nhau đa cấp. Để ghi nhớ thứ tự các điểm cần quay về, máy tính sử dụng một cấu trúc dữ liệu đặc biệt trong bộ nhớ RAM gọi là Ngăn xếp gọi hàm (Call Stack), hoạt động theo nguyên tắc LIFO - Vào sau ra trước. Hàm baz được gọi sau cùng sẽ thực thi xong trước và được đẩy ra khỏi Stack, trả quyền điều khiển về cho bar, và khi bar xong mới quay về main. Kỹ thuật phân rã phương thức này mang lại hai lợi ích vô giá: Tạo cấu trúc mạch lạc (Structure) và Triệt tiêu hoàn toàn sự trùng lặp (Eliminate Redundancy)!
+Người 2: Kiến thức về Call Stack và cơ chế vào sau ra trước này thực sự mở rộng tầm mắt cho chúng em, giúp chúng em hiểu cặn kẽ cách hệ điều hành và CPU quản lý bộ nhớ khi chạy chương trình.
+
+Slide 30: 1.5 Case Study: Bài toán vẽ hình ASCII nghệ thuật (DrawFigures)
+Người 1: Để thấy rõ sự khác biệt giữa một lập trình viên nghiệp dư và một kỹ sư phần mềm thực thụ, chúng ta cùng nghiên cứu Case Study kinh điển trong giáo trình: Bài toán vẽ hình ASCII DrawFigures. Yêu cầu đặt ra là in ra 3 hình đồ họa: Hình Kim cương (Diamond), Hình Chữ X, và Hình Tên lửa vũ trụ (Rocket). Các em hãy quan sát kỹ màn hình console trên slide và tìm xem có những hình khối nhỏ nào xuất hiện lặp lại ở nhiều nơi?
+Người 2: Dạ em quan sát thấy: Hình kim cương cấu tạo từ một chóp nón xuôi ở trên và chóp nón ngược ở dưới. Hình chữ X lại ghép từ chóp nón ngược ở trên và chóp nón xuôi ở dưới. Còn Tên lửa thì có mũi nhọn là chóp nón xuôi, thân là hai chiếc hộp chữ nhật, và đuôi lại là chóp nón xuôi! Rất nhiều hình khối cơ bản bị lặp đi lặp lại giữa các hình lớn thưa thầy!
+Người 1: Con mắt quan sát của em rất tinh tế! Bây giờ chúng ta hãy theo dõi 3 thế hệ thiết kế của bài toán này.
+
+Slide 31: Phiên bản 1 (DrawFigures1): Tiếp cận Ngây thơ (Naïve Approach)
+Người 1: Nhìn vào slide 31, đây là Phiên bản 1 - cách tiếp cận ngây thơ của người mới học: Dồn toàn bộ hơn 30 câu lệnh println vào ruột của hàm main. Hậu quả là khối lệnh vẽ nón xuôi bị copy-paste 3 lần, nón ngược lặp lại 2 lần, thân hộp lặp lại 2 lần. Mã nguồn dài dòng, rối mắt. Hãy thử tưởng tượng nếu khách hàng yêu cầu mở rộng các hình này rộng thêm 2 ký tự khoảng trắng, người viết mã sẽ phải đi tìm và sửa thủ công ở hơn 30 dòng lệnh khác nhau, nguy cơ gõ sót lỗi là gần như chắc chắn!
+Người 2: Thật là một thảm họa khi bảo trì code ạ. Viết kiểu này vừa mất thời gian vừa dễ gây ức chế cho người đọc mã.
+
+Slide 32: Phiên bản 2 (DrawFigures2): Phân rã Cấp 1 theo Khối hình
+Người 1: Để khắc phục, ở Phiên bản 2 (Hình 1.3, trang 92 giáo trình), lập trình viên đã biết áp dụng phân rã cấp 1. Hàm main bây giờ cực kỳ ngắn gọn và sáng sủa: drawDiamond(); drawX(); drawRocket();. Mỗi hình lớn được giao cho một phương thức phụ đảm nhận. Mã nguồn đã có cấu trúc rõ rệt. Tuy nhiên, các em hãy soi kỹ xem bên trong thân của 3 phương thức này vẫn còn tồn tại nhược điểm gì?
+Người 2: Dạ thưa thầy, bên trong thân của drawDiamond, drawX và drawRocket thì các câu lệnh in chóp nón xuôi và nón ngược vẫn bị copy-paste lặp lại giữa các hàm! Tức là mới chỉ giải quyết được bài toán phân rã cấu trúc, chứ chưa triệt tiêu được sự trùng lặp mã nguồn ạ.
+Người 1: Nhận xét vô cùng sắc bén! Và đó chính là động lực để chúng ta tiến hóa lên Phiên bản 3 - đỉnh cao của thiết kế.
+
+Slide 33: Phiên bản 3 (DrawFigures3): Phân rã Hoàn chỉnh 2 Cấp (Triệt tiêu trùng lặp)
+Người 1: Các em hãy chiêm ngưỡng Sơ đồ cấu trúc hoàn chỉnh 2 cấp của DrawFigures3 ở Hình 1.4 (trang 96 giáo trình). Đây là một mô hình kiến trúc 3 tầng mẫu mực: Tầng 1 ở đỉnh là hàm main giữ vai trò nhạc trưởng điều phối toàn bộ chương trình. Tầng 2 là các khối hình hoàn chỉnh: drawDiamond, drawX, drawRocket. Và Tầng 3 ở đáy là các khối nguyên thủy tái sử dụng tối đa: drawCone (nón xuôi), drawV (nón ngược), và drawBox (thân hộp).
+Người 2: Mô hình 3 tầng này đẹp quá thầy ơi! Mỗi tầng có một trách nhiệm duy nhất: Tầng đáy vẽ các nét cơ sở, Tầng giữa lắp ghép các nét đó thành bức tranh hoàn chỉnh, và Tầng đỉnh chỉ việc gọi trình diễn!
+
+Slide 34: Mã nguồn hoàn chỉnh đạt chuẩn: DrawFigures3.java
+Người 1: Toàn văn mã nguồn của DrawFigures3.java được trình bày trên slide 34. Nhìn vào cột bên trái: hàm drawDiamond chỉ gồm 2 dòng gọi drawCone() và drawV(). Hàm drawX chỉ gồm drawV() và drawCone(). Hàm drawRocket chỉ gồm drawCone(), hai lần drawBox(), rồi drawCone(). Cột bên phải chứa các khối nguyên thủy, mỗi khối chỉ viết đúng 1 lần duy nhất!
+Người 2: Dạ thưa thầy, với cách viết này, nếu sau này ta muốn thay đổi kiểu dáng của thân hộp, ta chỉ cần vào sửa đúng 4 dòng lệnh trong hàm drawBox() ở Tầng 3 là ngay lập tức cả hai thân hộp của tên lửa tự động được cập nhật chuẩn xác mà không cần sửa bất kỳ dòng nào ở các hàm khác!
+Người 1: Chính xác tuyệt đối! Đó chính là khả năng bảo trì phần mềm (Maintainability) và khả năng tái sử dụng mã nguồn (Reusability) - hai phẩm chất sống còn của kỹ sư phần mềm chuyên nghiệp.
+
+Slide 35: So sánh & Đánh giá 3 thế hệ thiết kế
+Người 1: Bảng tổng kết trên slide 35 đặt 3 phiên bản lên bàn cân so sánh: DrawFigures1 đơn khối, trùng lặp cao, không tái sử dụng và cực khó bảo trì; DrawFigures2 đã có cấu trúc tốt hơn nhưng vẫn còn lặp code cục bộ; và DrawFigures3 đạt điểm 10 tuyệt đối: Cấu trúc phân tầng rõ ràng, triệt tiêu 100% trùng lặp, tái sử dụng tối đa và sửa đổi tại một điểm duy nhất. Đây là kim chỉ nam mà sinh viên lớp IT26M phải luôn áp dụng trong mọi bài tập và đồ án sau này.
+Người 2: Bảng so sánh trực quan này giúp chúng em thấm nhuần giá trị của việc dành thời gian suy nghĩ thiết kế kiến trúc trước khi đặt tay vào gõ code ạ.
+
+Slide 36: [CHECKPOINT 3] Dự đoán luồng thực thi hàm lồng nhau
+Người 1: Giờ là lúc thử thách tư duy lần vết với Checkpoint 3. Đoạn mã TraceTest trên slide: Hàm main gọi first(), sau đó gọi second(). Trong thân second() in ra số 2, gọi first(), rồi in ra số 3. Màn hình console sẽ xuất hiện các con số theo thứ tự nào?
+Người 2: Em xin lần vết từng bước ạ: Bước 1, main gọi first() in ra số 1. Bước 2, main gọi second(): In ra số 2, sau đó second() gọi first() in ra số 1, rồi second() in tiếp số 3. Như vậy thứ tự hiển thị chính xác phải là: 1, 2, 1, 3. Đáp án đúng là B thưa thầy!
+Người 1: Hoàn hảo! Em đã lần vết luồng điều khiển của CPU qua các tầng hàm cực kỳ chính xác.
+
+Slide 37: [HANDS-ON LAB 3] Mini-Project: Thiết kế chương trình Rocket/FightSong
+Người 1: Bây giờ là 20 phút dành cho bài Lab Mini-Project của Tiết 3 - Phần thi đua lập trình tại lớp! Các em được chọn 1 trong 2 đề tài: Lựa chọn A là xây dựng chương trình SpaceRocket vẽ một trạm không gian gồm 2 tên lửa đứng cạnh nhau, mỗi tên lửa gồm mũi nhọn, thân chứa logo IT26M, khoang máy và đuôi lửa, yêu cầu triệt tiêu 100% trùng lặp code in. Lựa chọn B là bài tập FightSong trong giáo trình (Exercise 12, trang 125) in bài hát cổ động có điệp khúc lặp lại bằng cách phân rã tối thiểu 2 phương thức tĩnh phụ. Thầy sẽ chấm điểm trực tiếp dựa trên cấu trúc phân tầng và chuẩn phong cách viết mã!
+Người 2: Em hào hứng với đề bài SpaceRocket lắm thầy ơi! Em sẽ phân rã thành các hàm nguyên thủy drawNoseCone, drawBodySegment, drawThruster, drawFlame, sau đó ở Tầng 2 tạo hàm drawSingleRocket, và main chỉ việc gọi chạy. Em bắt tay vào code ngay đây ạ!
+Người 1: Rất tự tin và đúng hướng! Chúc toàn thể lớp IT26M hoàn thành xuất sắc những sản phẩm phần mềm đầu tay của mình!
+
+Slide 38: Tổng kết toàn bộ kiến thức Chương 1 (Checklist Chuẩn đầu ra)
+Người 1: Hết giờ làm Lab, thầy trò chúng ta cùng nhìn lại toàn bộ chặng đường đã chinh phục qua Checklist Chuẩn đầu ra trên slide 38. Chúng ta đã làm chủ trọn vẹn cả 5 mục tiêu: Hiểu bản chất phần cứng, nhị phân, JVM và Bytecode (CLO 1.1); Viết thành thạo khung class, hàm main, phân biệt print/println và ký tự thoát (CLO 1.2); Phân loại và gỡ 3 nhóm lỗi lập trình (CLO 1.3); Nắm vững tư duy phân rã Top-down, phương thức tĩnh và Call Stack (CLO 1.4); và Tự tay thiết kế, biên dịch thành công chương trình đa tầng trên CLI và IDE (CLO 1.5).
+Người 2: Nhìn lại checklist này, em thực sự cảm thấy rất tự hào vì chỉ trong 3 tiết học, lớp chúng em đã tiếp thu được một khối lượng tri thức nền tảng đồ sộ và vô cùng bài bản.
+
+Slide 39: Bảng tra cứu nhanh cú pháp cốt lõi (Java Quick Cheatsheet)
+Người 1: Slide 39 là Bảng tra cứu nhanh cú pháp cốt lõi (Cheatsheet) mà thầy đã đúc kết lại thành 2 cột: Cột trái gồm khung chương trình chuẩn và 4 ký tự thoát hay dùng (\n, \t, \", \\). Cột phải gồm cú pháp khai báo, lời gọi phương thức tĩnh và 3 quy tắc vàng cần nhớ. Các em hãy chụp lại màn hình hoặc in ra dán trước bàn học để làm cẩm nang gối đầu giường nhé.
+Người 2: Dạ slide tổng hợp này cực kỳ súc tích và tiện lợi cho chúng em tra cứu nhanh mỗi khi làm bài tập hoặc ôn thi ạ.
+
+Slide 40: Nhiệm vụ tự học & Bài tập về nhà cho lớp IT26M
+Người 1: Để biến kiến thức thành phản xạ tự nhiên, đây là nhiệm vụ về nhà của lớp IT26M: Đọc kỹ lại toàn bộ Chương 1 giáo trình từ trang 1 đến trang 102. Làm các bài tập Self-Check câu 6, 8, 10, 13, 18, 24, 26. Hoàn thành bài tập lập trình Mantra và TwoRockets nộp lên hệ thống LMS trước buổi học tuần sau. Đặc biệt, bạn nào muốn nhận điểm cộng chuyên cần hãy thử sức với Programming Project 1: Viết chương trình in chữ MISSISSIPPI dạng khối lớn với phân rã tối ưu. Và nhớ đọc trước Chương 2: Primitive Data and Definite Loops để tuần sau chúng ta chinh phục Biến, Kiểu dữ liệu và Vòng lặp for nhé!
+Người 2: Vâng thưa thầy, chúng em sẽ hoàn thành đầy đủ bài tập trên hệ thống LMS và nghiên cứu trước tài liệu Chương 2 ạ.
+
+Slide 41: CẢM ƠN CÁC BẠN SINH VIÊN LỚP IT26M!
+Người 1: Thầy xin chân thành cảm ơn tinh thần học tập hăng say, tương tác sôi nổi và sự nỗ lực tuyệt vời của tất cả các bạn sinh viên lớp IT26M trong suốt buổi học 3 tiết ngày hôm nay. Chúc các em luôn nuôi dưỡng niềm say mê với công nghệ và gặt hái nhiều thành công trên con đường trở thành những kỹ sư phần mềm xuất sắc!
+Người 2: Chúng em cảm ơn thầy rất nhiều vì một bài giảng quá đỗi cuốn hút, dễ hiểu và tràn đầy cảm hứng ạ! Kính chúc thầy nhiều sức khỏe và hẹn gặp lại thầy vào buổi học tiếp theo!
+Người 1: Chào tạm biệt các em. Hẹn gặp lại lớp IT26M vào tuần sau!
+

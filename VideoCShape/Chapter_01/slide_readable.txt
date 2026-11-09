@@ -1,0 +1,126 @@
+=== SLIDE 1 ===
+THUÄT LÄp TRINH Chddng 1: Gidi thiéu Gé Måy tinh, Internet vå Visual C# BÄI GIÅNG CHUÄN DAI HQC (3 TI€T TiCH HOP) Giåo trinh: Visual How to Program (Deitel & Deitel) Bån quyén båi giång thuöc Bö mön KY thuät Lip trinh - Phuc vv dåo teo Dei hoc Chinh quy
+
+=== SLIDE 2 ===
+Muc tiéu Bäi hoc & CKuån d'äu ra (CLOs) CLO 1.3 ( Apply): Trinh båy kién trüc Microsoft .NET: Common Language Runtime (CLR), Managed code, JIT Compiler vä tinh déc lip nén tång (.NET Core / .NET 8). CLO 1.2 (Understand): Nåm ving sv tién héa ngån ngü (Machine Assembly * High-Level) Mä cic tru cot cöng nghé döi tuqng (Class, Object, Encapsulation, Inheritance). CLO 1.1 (Understand): Giåi thich kién trüc phän cümg, djnh luät Moore, 6 khöi chCrc näng logic cüa måy tinh vä cäu tric phän cäp dt lieu tir Bit + Database Big Data, CLO 1.5 (Analyze / Create): van dung mö hinh Lip trinh truc quan vå Huong sW kién Pent-Driven) dé thvc hånh Chey thtr (Test-Drive) vå phån tich üng dung Painter. CLOI.4( Apply): Sir dung thånh theo rnöi tnrbng Visual Studio IDE: Solution, Project, Form Designer, Toolbox, Properties Window vå cöng cu gd löi. Phuong phåp tiép can Hoc tich hap: L} thuyét chuyén säu két hop 3 bäi Hands-on Labs thuc hånh tai chö trén méy tinh.
+
+=== SLIDE 3 ===
+Tién trinh Bäi hQC 3 Tiét (150 Phüt Tich hgp) 1 (50') - tång & Dü lieu Phin c(rng vs Phin mbm Dinh luät Moore 6 khöi logic måy tinh Phån cäp dt lieu Do ludng Byte (KB - YB) Khåo såt CPU, [LAB 11 RAM & Sö nhj phån TI€T 2 (50') - oop & Kién trüc .NET Tién h6a ngön ngCr Compiler vs Interpreter Cöng nghé dji ttrqng (OOP) Lich str ngön ngCr C# Nin tång Microsoft .NET CLR, MSIL & JIT Compiler [LAB 21 Bién dich CLI vdi .NET SDK 3 (50') - Visual Studio & GUI Hé dibu hänh Windows Visual Studio IDE Solution & Projects Mö hinh Event-Driven Khåo sét dibu khién GUI [LAB 3] Test-Drive (rng dung Painter T6ng két & Dön dö
+
+=== SLIDE 4 ===
+Tdng quan Vi thécÜa Ngön ngü C# & Nön tång .NET Vi sao chqn C# cho KY scr CNTT Kh6a 2026? Thanh lich & Hién dai Thiét ké bbi Anders Hejlsberg (cha dé Turbo Pascal, Delphi, TypeScript). Hé sinh thåi kh6ng lb Phét trién Web, Desktop, Mobile, Cloud (Azure) vå Game (Unity 3D). Menh mé & Da näng Hb trq da mö hinh löp trinh (00% Event-Driven, Functional, Generic, Async). Hiöu näng vurgt tröi .NET 8 / .NET 9 düng top däu thé gidi vét6c dé xCr 1/0 vå t6i uu bé nh6. Powerful, Elegant, Safe & Cross-Platform Két hqp Sirc rnqnh xt l' phän ctng cåa C++ vdi tinh an toån, näng suät phåt trién siéu töc cüa Java vå Visual Basic.
+
+=== SLIDE 5 ===
+Khåi niém Cöt löi: Phän cüng & Phin mim M6i quan hé céng sinh Phin cüng (Hardware) Lå cåc thiét bj vat II} hl]u hinh cäu thånh nén hé th6ng. Bao gam: Bö vi xCi 19 (CPU), Phän c(fng lå cd båp cung cäp näng IIIc Bö nhd RAM, 6 ccrng (SSD/HDD), tinh toån; Phin rnöm lå bé näo dän dåt vå Män hinh, Bän phim. Thuc thi truc tiép cåc tin hiéu dién tiff vå lénh måy d cäp dö rnqch bån dän. dibu khién mpi hånh vi cüa phän cong. Phän mam (Software) Lä tap hqp cåc chi thi vå Chuang trinh ra lénh cho phän cling låm viéc. Bao gbm Phän mém hé th6ng (Windows, Linux) diéu phöi tåi nguyén vå Phin mbm tng dung (Web, Games) do lap trinh vién xåy dvng.
+
+=== SLIDE 6 ===
+Méy tinh & Internet trong Ddi s6ng vä Nghién cüu H6 sd y té tü (EHR) Sö h6a toån bö bénh {n, ddn thu6c, phän tich gen; cüu s6ng hång tri?u b?nh nhän, Thiét bi bay W hånh (Drones) Ung dung cüu hé cüu nqn, nöng nghiép thöng minh vä giao hång W ding, Dinh vi toån cäu (GPS) tinh tinh toån khoång cåch vå thdi gian, chi didng Chinh xéc theo mili-giäy. Robot & Y téthöng minh Phåu thuöt xäm län töi thiéu chfnh xåc tung micromeg robot thäm dB dåy bién vå vü try. Xe td hånh Hång ty phép tinh mBi giäy xü dÜ lieu til Radar, Lidar, Camera dé diéu khién phildng tien an toån,
+
+=== SLIDE 7 ===
+Phin cirng: T6c dé Tinh toån & Dinh luät Moore Måy tinh cå nhån thvc hién hång t' phép tfnh/giåy (GHz). Siéu måy tinh dat hång tri#u t' phép tinh/giåy (Petaflops). Dinh luät Moore (Gordon Moore - 1965): Sö lugng böng bån dän trén vi mech tich hgp täng gäp döi xäp xi sau möi 18-24 thäng, trong khi giå thånh khöng döi. H? quå döi v6i Läp trinh vién Phin c(rng ngåy cång ré, menh vå nhå gon. Cho phép chey cåc mö hinh A1/Machine Learning vå phän mém db hoa phfrc tep trén måy tinh cå nhån vå smartphone. Döi hdi läp trinh vién phåi viét code t6i tru da lubng (Multi-threading / Async).
+
+=== SLIDE 8 ===
+Td chüc Méy tinh: 6 Kh6i Chüc näng Logic (Phän 1) Input unit (Kh6i nh$p dü lieu) Bö phän tiép nhön thöng tin tt bén ngoåi våo måy tinh. Thiét bj: Bån phim, chuöt, mån hinh cåm tng, micro, cåm bién. Output unit (Kh6i xuät dü lieu) Bé phén chuyén phåt két quå xdr l' ra ngubi düng hoäc hé th6ng khåc. Thiét bj: Mån hinh, måy in, loa thanh. 3 Memory unit (Bé nhd chinh / RAM) Bö phän luu trü tern thöi t6c dö cuc cao. Chüa dt liéu vå lönh dang duqc Chey. Dü liéu mät khi mät dién (volatile)
+
+=== SLIDE 9 ===
+Td chüc Méy tinh: 6 Kh6i Chüc näng Logic (Phän 2) Arithmetic and Logic Unit (ALU) Bé phön nhå måy thuc hiön tOån * so sånh logic (z, >) Central Processing Unit (CPU) Bö näo chi huy diéu ph6i vä giém sat toän bö hoat döng cüa tat cå cäc khoi. (Hién nay CPU tich hgp cå ALU vä Control Unit). Secondary Storage Unit (Bé nhd thü cäp) Kho chüa häng däi hqn, dung ld<ng ldn. Dü liéu van tön tai khi tåt måy (persistent)
+
+=== SLIDE 10 ===
+Sd db Luöng Dü lieu giüa 6 Kh6i Kién trüc Mäy tinh Central Processing Unit (CPU) ALU (Tinh toån & So sånh) Control Unit (Diäu khién & I-enh Fetch / Store Dt liéu våo Tin hieu diéu khién Két quå xuät Input Unit (Bån phim, Chuöt) Memory Unit (RAM Tam thöi) Load Save Output Unit (Män hinh, Lca) Nguyen 19 Väng Mqi dtr lieu mu6n CPU xt IY båt buöc phåi dtrqc nqp Rr Secondary Storage väo RAM. CPU khöng läm viöc trvc tiép vdi 6 cüng SSD/HDD vi chénh lech t6c dé hång nghin län! Secondary Storage (SSD, HDD, USB)
+
+=== SLIDE 11 ===
+Phån cä'p Dü lieu (Data Hierarchy): Tlr Bit dén Big Data Big Data: Dü lieu siéu 16m tdc dö cao (Petabytes). Database (Ca sd dü lieu): T$p hqp nhiiu t$p/bång lién két chät ché. Record (Bån ghi): Nh6m cåc trudng lién quan cüa 1 d6i tl-rqng. Field (Truong DL): Nh6m cåc k' tv mang nghTa. Vi du: 01001010 -> cht J 001 File (Tép): Tap hgp Céc bån ghi cé cüng cäu trüc. Vi dv: Mä SV, HQ tén, Diém Vi dv: Ten: "Judy" Byte / Character: Täp hqp 8 bits; biéu dién 1 kV ur. Bit (Binary Digit); Don vi nhå nhät, mang giå tri 0 hoäc 1.
+
+=== SLIDE 12 ===
+Bång Do ludng Dung Iuqng Dü lieu: Tit KB dén YB Quy Lidc tinh toån hé nhi phån (Iüy thira 2'\10 = 1024) 1024 Bytes 1024 KB 1024 MB 1024 GB 103 Bytes 106 Bytes z 109 Bytes z 1012 Bytes Litu thVc té! Cåc nhå sån xuät 6 ctng thudng tinh 1 GB = 109 bytes, do d6 d cüng 500 GB mua vb hién thi trong Windows chi cön khoång 465 GB!
+
+=== SLIDE 13 ===
+[CHECKPOINT 1] Kidm tra Nhanh Kié'n thüc Tié't 1 Cäu håi 1: Khdi chüc näng nåo thVc hi#n phép so sånh logic (A > B)? 1. Input unit 3. Arithmetic and Logic Unit (ALU) 2. Memory unit (RAM) 4. Secondary storage unit Cåu håi 2: Cäp dé nåo trong phån cä'p dCr lieu bao gbm nhibu trurbng (fields) cé lién quan? 1. Byte 3. Bit 2. Record (Bån ghi 4. Character
+
+=== SLIDE 14 ===
+[HANDS-ON LAB 11 Khåo såt Phin citng & Tinh toån Nhi phån Thdi gian: 15 Phüt tai phöng måy IT 26M. Task 1: Md Task Manager (Ctrl + Shift + Esc) chon tab Performance. Yéu au: Ghi lei Tén CPU, Xung nhip (GHz), Sö nhån (Cores) Sd lubng (Logical Processors). Kiém tra dung luqng RAM vå tdc dö (MHz). C:\> wmic cpu get name, numberofcores, numberoflogicalprocessors, maxclockspeed Name: Intel(R) Core(TM) i7-13700H CPU @ 2.40GHz I MaxCtockSpeed: 2400 | Cores: 14 | LogicatProcessors: 20 Båi tip Nhi phån Chuyén sd nguyén 45 (cd sd 10) sang nhj phån. Dåp {n: 101101 (6 bits)
+
+=== SLIDE 15 ===
+T6ng két Trpng tåm Tiét 1 & Chuan bi Tié't 2 Dinh luät Moore - Déng Wc giüp Phin cüng täng gäp döi hiéu näng sau m6i 18-24 thång. 6 Kh6i logic Input, Output, Memory, ALU, CPU, Secondary Storage. Phån cäp citt liéu Bit -Y Byte Field -5 Record -5 File -5 Database. Låm thé nåo dé ra l#nh cho phän cling måy tfnh låm viéc theo mu6n? Cåc ngön ngu lap trinh dä tién h6a nhd thé nåo? Tei sao Microsoft lei phåt minh ra C# vå nén tång .NET? Giåi lao 5 phüt trudc khi väo Tiét 2!
+
+=== SLIDE 16 ===
+Céc Thé h? Ngön ngü Lip trinh (Language Evolution) 3. Ngan ngü bäc cao (High-Leve!) Dai dién: C C++i Java, Python. Cü phåp gän tiéng Anh vå hiéu toån hoc; hoån toån déc lap vdi phän cong. 60 2. Hqp ngü' (Assembly Language) nhd tiéng Anh (LOAD, ADD, STORE). Cän chUdng trinh Assembler dich sang mä måy. Vån phv thuéc vi xt l', t6c dö viét code rät chäm. 1. Ngan ngff måy (Machine Language) Ngon ngü duy nhät phän cüng CPU hiéu vå thuc thi trVc tiép (Chuöi s6 0 vå 1). Phu thuöc chät ché kién tréc phän ctng. CVC k) kh6 viét, dé sai s6t vå khöng thé båo trii
+
+=== SLIDE 17 ===
+Bién dich (Compiler) vs Thöng dich (Interpreter) Trinh bién dich (Compiler) Dich toån bé mä ngubn thånh tep mä måy trudc khi thVc thi. T6n thöi gian ban diu nhtrng chey nhanh. Båo löi cü phåp toån di$n trudc khi chay. diön: C, C++, Rust, Go. Trinh thöng dich (Interpreter) Doc vå dich tirng dbng lönh mét, chqy trVc tiép rbi mdi sang dång ké. Chey ngay khöng ChB dgi, t6c dé cham hon dång ké. Lbi döng nåo phåt hi$n khi chqy dén döng d6. Dei diön: Python, JavaScript, Ruby, PHP. Cd ché Lai (Hybrid Approach) trong C# I Java Bién dich mä ngudn thånh Mä trung gian (MSIL / Bytecode) Düng JIT Compiler trong måy åo dich sang mä måy siéu t6c ngay khi khöi chqy!
+
+=== SLIDE 18 ===
+Cöng ngh@D6i td4ng (Object Technology) 1. ThuÖc tinh (Attributes I Properties) Måu säc, kich thudc, s6 ddtåi khoån. Thé gidi thVc = Céc D6i tt4ng (Objects): Ö tö, di#n thoqi, con nguöi, tåi khoån. 2. Hånh vi (Behaviors I Methods) Chqy, dung, täng t6c, rüt tiön, chuyén khoån. Myc tiéu T6i thU4ng cüa OOP: Tåi südvng Phdn mém (Software Reuse) Thay vi gö lei tu däu, dung cåc ldp ddi tugng c6 sän det chuan chät Idéng cao -> Täng näng suåt gäp nhiéu lån.
+
+=== SLIDE 19 ===
+Phån bi#t Ldp (Class) vå D6i tugng (Object) Ldp (Class) = Bån vé thiét ké Lå khuön mäu (Blueprint/Template) dinh nghTa cäu trüc dtf lieu vå hånh vi chung. Vf dv: Bån vé thiét kéö tö trén giäy (chi dinh 4 bånh, vd läng, måu son). Bån vé khöng thé tv nd måy hay chqy trén dudng! D6i tuqng (Object) = Thvc thé cu thé Lå möt thé hién cu thé (Instance) duqc ché tao tit bån vé ldp. Vf du: Chiéc xe måu db bién 43A-12345 thuc su län bånh. Tir 1 Class c6 thé teo ra vd s6 Objects vdi giå tri thuéc tinh riéng! Car mycar = Cü phåp khåi teo trong C# // Toän tdr new sinh döi tuqng trong RAM new Car("VinFast VF8", "Do )
+
+=== SLIDE 20 ===
+3 Tre Cöng Ngh# D6i Td4ng Trong C# 1. D6ng g6i (Encapsulation) Gom nh6m dCr liéu vå phuong thifrc våo 1 Class. Che giäu thöng tin: Ngudi låi chi cin dap gar Ikhöng cin biét chi tiét born nhién lieu! Båo ve dü lieu néi bé khång bi can thi$p tråi phép. 2. Ké thira (Inheritance) Teo Class måi dva trén Class cå sån. Thira hubng toån bé thuöc tinh/hånh vi vå b6 sung tinh näng riéng. Vi du: XeDien ké thira tir OTOI thém thuöc tinh DungLuongPin. 3. Da hinh (Polymorphism) Cåc d6i tuqng thuåc cåc ldp khåc nhau phån l.:rng vdi cüng mét thöng diep theo nhCrng cåch riéng bi$t.
+
+=== SLIDE 21 ===
+Internet vå World Wide Web: Céc Cöt M6c Tién Hoa (1989) World Wide Web: Tim Berners-Lee phåt minh HTML & HTTP. www Cloud Computing: Thué näng IVc tinh toån quy mö toån cåu. Azure (1969) ARPANET: Tién thån Internet, tién phong chuyén mech g6i. Giao TCP/IP•. Nén tång két nöi cåc meng måy tinh. (2000s) Web 2.0: Chuyén sang web tddng tåc, Cloud SaaS. Internet of Things Hång ty thiét bj (IOT): thöng minh két n6i.
+
+=== SLIDE 22 ===
+Ngön NgCr C#: Lich Hinh Thånh & Chuan H6a History 2000 Ra måt näm 2000 bdi Microsoft cüng sång kién .NET .NET Thiét ké bdi KY sutnrdng huyén th0?i Anders Hejlsberg Chuan ECMA-334 vå ISO/IEC 23270 Name Origin Ngubn gö'c tén gqi C# Däu thäng (#) muqn tir am nhqc mang 'j nghTa Thäng tién (Sharp). Ghép tir 4 däu + cüa C++ xép lei. Biéu thi sv ké thira hoån håo vå nång cäp toån dién!
+
+=== SLIDE 23 ===
+Däc Trdng C6t Löi Cüa C# Hddng d6i td4ng 100% (Pure OOP) 146 tre lap trinh trVc quan (Visual) Dinh kiéu manh mé An toån-safe) async/ await 1-16 tr4 xd 19 bät d6ng bé (async/await) Thu gom råc tv déng Garbage Collection) Da nén tång Cross-platform
+
+=== SLIDE 24 ===
+Céc Phong Céch Lip Trinh Da Dqng Trong C# 1. Löp trinh HL16ng sv kién Phån höi Céc sv ki#n do nguöi düng kich h0?t: Click chuét, gö gö phim. Lä c6t löi cüa Céc (rng dvng GUI hi#n d?i. 3. I-ép trinh Tdng quåt Viét thuöt toån tdng quåt cho moi kiéu dCt liéu må vån dåm båo Type-Safety (vi dv: List<T>). 2. Lip trinh TrVc quan Kéo-thå cåc diéu khién (Button, TextBox) trVc tiép trén Form Designer thay vi ngöi viét code giao di#n thü cong. 4. Lip trinh Bät ddng bé ThVc thi tåc vv t6n thdi gian (1/0, API, CSDL) må khöng låm dd/treo giao di#n nguöi ding (Async / Await).
+
+=== SLIDE 25 ===
+Nén Tång Microsoft .NET: Täm Nhin Kién Trüc Sing kién Microsoft .NET (2000) Nén tång toån dién dé phåt trién, trién khai vå thvc thi frng dung dé dång trén mang. Thu Ldp (.NET FCL) Hång chuc nghin ldp tdi cru hi$u näng cao. Giåi phåp tron g6i: File 1/0, Meng, CSDL (ADO.NET), Båo Ul. Giüp tiét ki#m 70% thöi gian gö code. Méy åo CLR (Common Language Runtime) Tråi tim vän hånh hé sinh thåi .NET. Ån giäu phän ctng & HDH. Quån IY toån bé vöng ddi: Cäp phåt bé nh6, thu gom råc, båo m$t.
+
+=== SLIDE 26 ===
+Thé Gi6i Code: Quån I-y vs Khöng Quån LY Managed Code (Mä durqc quån 19) Bién dich ra mä trung gian MSIL, chqy dudi sv giåm såt hoån toån cia CLR (C#j VB.NET mäc djnh). Khöng rö ri bé nhd (Memory Leaks). Ngän ghi dé ving nh6 (Buffer Overflow). Båt ngoQi 14 an toån giüa cåc ngön ngü. Unmanaged Code (Mä khöng quån 19) Bién dich trvc tiép sang mä måy nhi phån CPU (C, C++ truyön th6ng). Khöng c6 CLR giåm såt. X trinh vién tv quån l' tung byte (malloc, free), Néu Ibi con trd cé thé låm söp toån bé hé dibu hånh (Crash / BSoD).
+
+=== SLIDE 27 ===
+Kién Trüc Thvc Thi .NET: Hånh Trinh Cüa Döng Code Giai doqn Bién dich - Compile Time Trinh bién dich C# (csc.exe) Mä ngubn (*.cs) Mä trung gian MSIL + Metadata (*.dll) Möi truöng Méy åo CLR - Runtime Execution CLR JIT Compiler (Djch thöi gian thi;rc ngay khi Chey) Mä måy bån dia (Native Code) chay trén CPU. Vai trö cüa MSIL MSIL khöng phåi mä måy cüa Intel hay ARM. Tép *.dll c6 thé mang sang bät ky måy nåo (Windows, Linux, macOS) cé CLR dé chey muqt må!
+
+=== SLIDE 28 ===
+QuyEn Näng Vugt Nén Tång (Platform Independence) Write Once, Run Anywhere Viét & bién dich 1 lin. Moi HDH cé CLR déu chqy duqc tep MSIL må khöng cän scra hay bién dich lei. Tiét ki$m hång tri$u USD chi chuyén d6i (porting). Surtién h6a cüa .NET 2002-2019 .NET Framework .NET Framework (2002-2019): T6i chi yéu cho hé sinh thåi Windows. 2016 .NET Core .NET Core (2016): cot m6c viét lei hoån toån vdi mä ngubn hoqt déng siéu t6c trén Windows, Linux, macOS. Hien dei .NET .NET 9 (Hien d?i): Hqp nhät toän bö hé sinh thåi thänh mét nen tång duy nhät, dång cäp thé gidi.
+
+=== SLIDE 29 ===
+TLtdng Téc Da Ngön Ngü (Language Interoperability) Visual Basic MJSUL Kh6ng bät buöc ding 1 ngön ngü. Module Module VB, Module F# déu bién dich va chung mét chuan mä trung gian! Süc m?nh Tich hqp Khöng bién gidi: Ldp viét bång C# c6 thé ké thira trVc tiép ldp Visual Basic. PhLfdng thüc C# c6 thé båt löi (Exception) do mä F# ném ra. Toån bö thit vién FCL chia sé binh dång, ding chung cho mpi ngön ngÜ trong hé sinh thåi.
+
+=== SLIDE 30 ===
+[CHECKPOINT 2] & [HANDS-ON LAB 2] Kidm tra Nhanh Cåu håi 1: Mä ngubn C# bién dich län däu tao ra mä nåo? Dép ån düng: Mä trung gian (MSIL/CIL) Cåu håi 2: Thånh phän nåo dich MSIL sang mä måy khi Chey? + Dåp ån düng: JIT Compiler ThUc hänh CLI - 10 Phüt C:\> dotnet ——version 8-0.204 C:\> dotnet new console —o HelloIT26M cd HeliolT26M C:\HelloIT26M> dotnet run Hello, World ! I-enh dotnet run tv déng gQi trinh bién dich sinh tep HelloIT26M.dll (chira MSIL), rbi kich hoat CLR dé chqy!
+
+=== SLIDE 31 ===
+Tiét 3 Visual Studio IDE & Test-Drive Ung dvng Dö hqa Painter (GUI)
+
+=== SLIDE 32 ===
+Quån 19 b9 nh6 vå phån bö CPU. Hé th6ng tep tin (NTFS) båo mat cao. Da nhi#m döng thöi (Preemptive Multitasking). Giao diön nguöi ding dd hpa (GUI) trvc quan Windows 718110111 Dién toån 64-bit hién dai, mån hinh cåm tng, tich hép Cloud & A1 Copilot. Windows 95 | 98 | 2000 XP KY nguyén di$n toån 32-bit büng nd toån cåu. Windows 1.0 (1985) -5 3.1 Khdi dåu giao dién dd hpa trén nén DOS.
+
+=== SLIDE 33 ===
+Visual Studio - IDE s61 thé gi6i cho lip trinh vién C# (Tich hqp trpn ven vöng döi phän mém) Soan thåo & Thiét ké Code Editor: Tö måu cü phåp, gqi thöng minh IntelliSense, W döng sta löi. - Form Designer: Thiét ké giao diön trVc quan kéo thå. Quån 19 & Thuöc tinh Solution Explorer. Quån 19 cay thc muc mä ngubn vd thc vién tham chiéu. - Properties Window: Chinh sta kich thudc, måu såc, font chÜ cüa dibu khién. Bién dich & Debug Build System: Bién dich I-click hoäc phim tåt F5 / Ctrl+F5. - Debugger: Döt diém dung (Breakpoints)/ soi bién, theo döi bö nhd.
+
+=== SLIDE 34 ===
+Solution (*.sln) Lä mét thüng chüa (Container) d cäp cao nhät, Project (*.csproj) Chira toån bé mä ngubn C# (*.cs), cäu hinh, hinh ånhj tåi nguyén dé bién dich thånh *.exe hoäc *.dll. Thao tåc chuan Luön nhäp düp våo tep sln dé toån bé dv ån trong Visual Studio.
+
+=== SLIDE 35 ===
+Case Study: (Yng dung Dö hpa Painter (Visual C# GUI) Chon måu CQ (Red, Blue, Green, Black). Chon kich thudc CQ (Small, Medium, Large). Di chuöt trén Panel trång dé tao tranh nghé thuät. Nüt Undo (hoån tåc) & Clear (x6a sech). Båi hoc Su phqm c6t löi Giüp sinh vién thäy ngay thånh quå trVc quan s6ng döng cüa lip trinh C# ngay trong budi hoc däu tién! Khöng cän viét hång träm dbng code db hoa phtc tap tir däu; tån dung cåc diéu khién GUI cé sån trong .NET Framework.
+
+=== SLIDE 36 ===
+1. GroupBox: Khung vién nh6m cåc diéu khién c6 lién quan vdi nhau vé mät ngÜ nghTa (nh6m Color, nh6m Size), 2. RadioButton: Nüt chon trön déc quyén; trong cüng 1 GroupBox, chi cé duy nhät 1 nüt difdc chon tai möt thdi diém. g? Painter File Help Color o All @ Red C) Ornge O Green O Other @ Small O Medum O Large o Iohdo x 3. Panel: Vüng khöng gian nén träng tiép nhån thao tåc vö vå toa dö chuöt. 4. Button: Nüt båm kich hoqt hånh déng titc thi (Undo, Clear).
+
+=== SLIDE 37 ===
+Ca ché Lip trinh Hur6ng sv kiön (Event-Driven Mechanism) Trang thåi "Lång ngheu (Event Loop) Chb dej tuong tåc. Sv ki#n (Event) RadioButton.CheckedChanged Panel.MouseDown Panel.MouseMove Button.Click Xir 19 sv kiön (Event Handler durqc kich h0Qt). Ngcröi dbng tlrøng tåc (He diéu hånh gti thöng diäp). ljng dung khöng chqy tuän tv tÜ.r trén xuöng dudi rbi thoét. Hånh döng (Action) Ddi måu/kfch thudc CQ vé. Nhän biét båt däu nhän chuét xu6ng bé rnät. Båt toe dé (X, Y) lién tuc khi ré chuöt dé vä. Xtr l' x6a tranh (Clear) hoäc hoån téc (Undo).
+
+=== SLIDE 38 ===
+[HANDS-ON LAB 3] Test-Drive (rng deng Painter (Phöng måy - 20 Phüt) Bur6c 1 Vé cånh hoa Chon måu Red + Kich thudc Small > Burdc 2 Vé cånh & cd Chqn måu Green + Kich thu6c Large Bur6c 3 Vé hat mura Chon måu Blue + Kich thudc Medium
+
+=== SLIDE 39 ===
+Chon Red + Small, vé cåc cånh hoa trön u6n lurqn (Hinh 1.11). Chon Green + Large, keo thång vé thån hoa va thåm cd xanh (Hinh 1.12) Chon Blue + Medium, chäm cåc hat mua hoån tät bifrc tranh (Hinh 1.13).
+
+=== SLIDE 40 ===
+[CHECKPOINT 31 Kiém tra Nhanh Kién thüc Tiét 3 Trong üng dyng Painter, diéu khién näo chüa ving vé mäu trang? 1. GroupBox 2. RadioButton 3. Panel 4. Button Phim tåt chuan trong Visual Studio dé bién dich vä chqy üng dung lä gi? 2. FS (hoäc ctrl + FS dé 3. F12 chqy khöng debug) 4. Ctrl + S
+
+=== SLIDE 41 ===
+Tdng két Toån di#n ChLtdng 1: Checklist Chuan Ddu Ra (Ldp IT26M) CLO 1.1: Nåm chåc cäu tric 6 kh6i logic måy tinh vå bång phån cäp dt lieu tir Bit Big Data. CLO 1.2: Phån biét Compiler vs Interpreter; thäu hiéu bån chät Cöng nghé D6i tuqng (Class vs Object, Dång g6i, Kéth&a). CLO 1.3: Giåi thfch co ché thvc thi .NET (C# MSIL CLR JIT Native Machine Code); hiéu Igi thé Managed Code. CLO 1.4: Låm Chü möi truöng Visual Studio IDE (Solution, Project, Form Designer, Toolbox, Properties). CLO 1.5: Tråi nghiém thånh cöng mö hinh I-ép tr)nh trvc quan vå Hudng sv kiön qua Case Study Painter App.
+
+=== SLIDE 42 ===
+Bäi vd nhä - ChUdng 1 1. Dpc ky Chapter 1 trong giäo trinh Visual C# How to Program (trang 41 72). 2. Hoån thånh cäu hdi Self-Review Exercises 1.1 dén 1.29. 3. Cåi dät Visual Studio 2022 Community vdi workload '.NET desktop development'. Chuan bi Chddng 2: Nhöp mön Cü phép C# - Console.WriteLine (Ung dvng Console däu tién). - Cü phåp häm Main, dinh danh, Chü thich. -u Nhöp xuät dü lieu (Console.ReadLine), kiéu dü lieu, toén tü, ré nhénh (if). cÅM dN cÅc BAN SINH Ldp IT26M! Chüc Céc bqn hpc töp t6t vä läm Chü cöng ngh$ C# & .NET. (Håi dép & Thåo luan trVc tiép tai giång dddng / Dién dån LMS mön hQC).
+
