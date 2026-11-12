@@ -11,22 +11,22 @@
 <body>
 
   <!-- ========================================================================
-       SITE HEADER
+       SITE HEADER (COMPACT & MOBILE RESPONSIVE)
        ======================================================================== -->
   <header class="site-header">
     <div class="header-top">
       <div class="brand-wrapper">
-        <div class="brand-icon" style="background: #68217A; color: #fff; font-weight: bold; font-family: sans-serif; display: flex; align-items: center; justify-content: center; border-radius: 8px; width: 42px; height: 42px; font-size: 1.2rem;">C#</div>
+        <div class="brand-icon">C#</div>
         <div class="brand-text">
           <h1>KỸ THUẬT LẬP TRÌNH <span class="credit-badge">4 TÍN CHỈ</span></h1>
-          <p>Khoa Công nghệ Thông tin — Dành cho Lớp IT26M & Khóa 2026</p>
+          <p class="brand-sub">Khoa Công nghệ Thông tin — Dành cho Lớp IT26M & Khóa 2026</p>
         </div>
       </div>
 
       <div class="header-controls">
         <select id="chapterSelector" class="chapter-select" title="Chọn chương học">
-          <option value="1" selected>Chương 1: Introduction to Computers, the Internet and Visual C# (Đang mở)</option>
-          <option value="2" disabled>Chương 2: Introduction to Visual Studio and Visual Programming (Sắp mở)</option>
+          <option value="1">Chương 1: Introduction to Computers, the Internet and Visual C#</option>
+          <option value="2" selected>Chương 2: Introduction to Visual Studio and Visual Programming (Đang mở)</option>
           <option value="3" disabled>Chương 3: Introduction to C# App Programming</option>
           <option value="4" disabled>Chương 4: Introduction to Classes, Objects, Methods and strings</option>
           <option value="5" disabled>Chương 5: Control Statements: Part 1</option>
@@ -41,26 +41,38 @@
       </div>
     </div>
 
-    <!-- Navigation Tabs -->
+    <!-- Navigation Tabs (Touch Swipeable & Compact) -->
     <nav class="site-nav">
       <div class="nav-container">
         <button class="nav-tab-btn active" data-tab="overview">
-          <span>📚</span> 1. Đề cương & Lộ trình
+          <span class="tab-icon">📚</span>
+          <span class="tab-label-full">1. Đề cương & Lộ trình</span>
+          <span class="tab-label-short">1. Đề cương</span>
         </button>
         <button class="nav-tab-btn" data-tab="docs">
-          <span>📑</span> 2. Tài liệu & Tài nguyên
+          <span class="tab-icon">📑</span>
+          <span class="tab-label-full">2. Tài liệu & Tài nguyên</span>
+          <span class="tab-label-short">2. Tài liệu</span>
         </button>
         <button class="nav-tab-btn" data-tab="video">
-          <span>🎥</span> 3. Video & Slide Player
+          <span class="tab-icon">🎥</span>
+          <span class="tab-label-full">3. Video & Slide Player</span>
+          <span class="tab-label-short">3. Video/Slide</span>
         </button>
         <button class="nav-tab-btn" data-tab="quiz">
-          <span>📝</span> 4. Trắc nghiệm (40 câu)
+          <span class="tab-icon">📝</span>
+          <span class="tab-label-full">4. Trắc nghiệm (40 câu)</span>
+          <span class="tab-label-short">4. Trắc nghiệm</span>
         </button>
         <button class="nav-tab-btn" data-tab="exercises">
-          <span>💻</span> 5. Bài tập cuối chương
+          <span class="tab-icon">💻</span>
+          <span class="tab-label-full">5. Bài tập cuối chương</span>
+          <span class="tab-label-short">5. Bài tập</span>
         </button>
         <button class="nav-tab-btn" data-tab="codes">
-          <span>💾</span> 6. Kho mã nguồn mẫu
+          <span class="tab-icon">💾</span>
+          <span class="tab-label-full">6. Kho mã nguồn C#</span>
+          <span class="tab-label-short">6. Mã nguồn</span>
         </button>
       </div>
     </nav>
@@ -326,10 +338,10 @@
           </button>
         </div>
         <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
-          <a href="./VideoCShape/Chapter_01/Slide_Chapter_01.pdf" target="_blank" class="slide-btn" style="text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">
+          <a id="videoTabOpenPdfBtn" href="./VideoCShape/Chapter_01/Slide_Chapter_01.pdf" target="_blank" class="slide-btn" style="text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">
             📄 Mở Slide_Chapter_01.pdf
           </a>
-          <a href="./VideoCShape/Chapter_01/index.html" target="_blank" class="slide-btn" style="text-decoration: none; font-size: 0.8rem; background: var(--primary-blue); display: inline-flex; align-items: center; gap: 4px;">
+          <a id="videoTabOpenTabBtn" href="./VideoCShape/Chapter_01/index.html" target="_blank" class="slide-btn" style="text-decoration: none; font-size: 0.8rem; background: var(--primary-blue); display: inline-flex; align-items: center; gap: 4px;">
             ↗️ Rạp Chiếu Tab Mới
           </a>
         </div>
@@ -342,16 +354,16 @@
         <div class="theater-top-bar">
           <div class="theater-badge">
             <span class="pulse-icon"></span>
-            <strong>Trình phát Video Bài giảng Chương 1 (Toàn màn hình Chuẩn Mặc Định)</strong>
-            <span style="background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; color: #38bdf8;">
+            <strong id="theaterBadgeTitle">Trình phát Video Bài giảng Chương 1 (Toàn màn hình Chuẩn Mặc Định)</strong>
+            <span id="theaterBadgeSubtitle" style="background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; color: #38bdf8;">
               Slide_Chapter_01.pdf • 42 Slide HD • C# .NET • Audio & Tự Động Chuyển Slide
             </span>
           </div>
           <div class="theater-actions">
-            <a href="./VideoCShape/Chapter_01/Slide_Chapter_01.pdf" download class="theater-btn">
+            <a id="theaterDownloadPdfBtn" href="./VideoCShape/Chapter_01/Slide_Chapter_01.pdf" download class="theater-btn">
               📥 Tải Slide_Chapter_01.pdf
             </a>
-            <a href="./VideoCShape/Chapter_01/index.html" target="_blank" class="theater-btn theater-btn-primary">
+            <a id="theaterFullscreenTabBtn" href="./VideoCShape/Chapter_01/index.html" target="_blank" class="theater-btn theater-btn-primary">
               🖥️ Phóng To Toàn Màn Hình ↗
             </a>
           </div>
@@ -376,10 +388,10 @@
         <div class="slide-viewer-box">
           <div class="slide-top-toolbar" style="background: rgba(15, 23, 42, 0.95); padding: 0.6rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
             <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <span style="background: var(--primary-cyan); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+              <span id="splitSlideBadge" style="background: var(--primary-cyan); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
                 🎯 Slide: Slide_Chapter_01.pdf
               </span>
-              <span style="color: #94a3b8; font-size: 0.8rem;">(42 Trang HD)</span>
+              <span id="splitSlideCount" style="color: #94a3b8; font-size: 0.8rem;">(42 Trang HD)</span>
             </div>
           </div>
 
@@ -434,14 +446,14 @@
           <div style="display: flex; align-items: center; gap: 0.75rem;">
             <span style="font-size: 1.5rem;">🎙️</span>
             <div>
-              <h3 style="margin: 0;">Kịch bản Đối thoại Thuyết minh 42 Slide C# (Thầy & Trò IT26M)</h3>
+              <h3 id="theaterTranscriptHeading" style="margin: 0;">Kịch bản Đối thoại Thuyết minh 42 Slide C# (Thầy & Trò IT26M)</h3>
               <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">Đọc lời thoại phân tích bài giảng đồng bộ với tiến trình video ở trên</p>
             </div>
           </div>
           <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
             <label for="theaterTranscriptSlideSelect" style="font-size: 0.85rem; font-weight: 600;">Chọn Slide:</label>
             <select id="theaterTranscriptSlideSelect" class="chapter-select" style="padding: 0.3rem 0.75rem; font-size: 0.85rem; min-width: 220px;"></select>
-            <a href="./VideoCShape/Chapter_01/script.txt" target="_blank" class="btn-download" style="padding: 0.3rem 0.75rem; font-size: 0.85rem;">📥 Tải Script (.txt)</a>
+            <a id="downloadScriptBtn" href="./VideoCShape/Chapter_01/script.txt" target="_blank" class="btn-download" style="padding: 0.3rem 0.75rem; font-size: 0.85rem;">📥 Tải Script (.txt)</a>
           </div>
         </div>
         <div id="theaterTranscriptBody" style="margin-top: 1.25rem;">
@@ -515,10 +527,10 @@
       <!-- Filter and Search -->
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
         <div class="exercise-filter-bar" style="margin-bottom: 0;">
-          <button class="ex-filter-btn active" data-filter="all">Tất cả bài tập (29)</button>
-          <button class="ex-filter-btn" data-filter="self-review">Self-Review Exercises (6)</button>
-          <button class="ex-filter-btn" data-filter="exercises">Exercises (19)</button>
-          <button class="ex-filter-btn" data-filter="making-a-difference">Making-a-Difference (4)</button>
+          <button id="exFilterAll" class="ex-filter-btn active" data-filter="all">Tất cả bài tập</button>
+          <button id="exFilterSelfReview" class="ex-filter-btn" data-filter="self-review">Self-Review</button>
+          <button id="exFilterExercises" class="ex-filter-btn" data-filter="exercises">Exercises</button>
+          <button id="exFilterProjects" class="ex-filter-btn" data-filter="making-a-difference">Making-a-Difference (GUI)</button>
         </div>
 
         <input type="text" id="exerciseSearchInput" placeholder="🔍 Tìm kiếm bài tập theo tên, số hiệu..." style="padding: 0.5rem 1rem; border-radius: var(--radius-full); border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-main); font-family: inherit; font-size: 0.875rem; width: 300px; max-width: 100%;">
@@ -535,144 +547,91 @@
          TAB 6: KHO MÃ NGUỒN MẪU (CODE REPOSITORY)
          ---------------------------------------------------------------------- -->
     <div id="tab-codes" class="tab-pane">
-      <h3 class="resource-section-title">💾 Kho Mã nguồn Mẫu Chương 1 (Sẵn sàng Biên dịch & Chạy)</h3>
+
+      <h3 class="resource-section-title">💾 Kho Mã nguồn Mẫu C# Chương 1 (Sẵn sàng Biên dịch & Chạy)</h3>
       <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
-        Các mã nguồn được tổ chức chuẩn mực theo phong cách lập trình đại học, có chú thích giải thích chi tiết và hỗ trợ sao chép 1-click.
+        Các mã nguồn C# chuẩn mực theo giáo trình Deitel, có chú thích giải thích chi tiết và hỗ trợ sao chép 1-click.
       </p>
 
       <div style="display: flex; flex-direction: column; gap: 1.5rem;">
 
-        <!-- Code 1: Hello.java -->
+        <!-- Code 1: Welcome1.cs -->
         <div class="exercise-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <h4 style="color: var(--primary-navy);">1. Hello.java — Chương trình Java kinh điển đầu tiên</h4>
+            <h4 style="color: var(--primary-navy);">1. Welcome1.cs — Chương trình Visual C# kinh điển đầu tiên</h4>
             <span class="clo-badge">Lab 1</span>
           </div>
           <div class="code-container">
-            <button class="btn-copy-code" onclick="copyCode(this, `public class Hello {\n    public static void main(String[] args) {\n        System.out.println(&quot;Hello, world!&quot;);\n    }\n}`)">📋 Copy Code</button>
-            <pre class="code-block"><code>public class Hello {
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
-    }
-}</code></pre>
+            <button class="btn-copy-code" onclick="copyCode(this, `// Welcome1.cs - Chuong trinh C# dau tien\nusing System;\n\nclass Welcome1 {\n    static void Main() {\n        Console.WriteLine(&quot;Welcome to Visual C#!&quot;);\n    }\n}`)">📋 Copy Code</button>
+            <pre class="code-block"><code>// Welcome1.cs - Chương trình C# đầu tiên xuất văn bản ra màn hình console
+using System;
+
+class Welcome1
+{
+    // Điểm khởi nhập (Entry Point) của ứng dụng C#
+    static void Main()
+    {
+        Console.WriteLine("Welcome to Visual C#!");
+    } // kết thúc phương thức Main
+} // kết thúc lớp Welcome1</code></pre>
           </div>
         </div>
 
-        <!-- Code 2: EscapeChallenge.java -->
+        <!-- Code 2: Welcome4.cs -->
         <div class="exercise-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <h4 style="color: var(--primary-navy);">2. EscapeChallenge.java — Thực hành ký tự thoát phức tạp</h4>
+            <h4 style="color: var(--primary-navy);">2. Welcome4.cs — Định dạng chuỗi nội suy (String Interpolation)</h4>
             <span class="clo-badge">Lab 2</span>
           </div>
           <div class="code-container">
-            <button class="btn-copy-code" onclick="copyCode(this, `public class EscapeChallenge {\n    public static void main(String[] args) {\n        System.out.println(&quot;--- BẢNG THÔNG SỐ CẤU HÌNH HỆ THỐNG ---&quot;);\n        System.out.println(&quot;STT\\tTham số\\t\\tGiá trị cấu hình&quot;);\n        System.out.println(&quot;1\\tThư mục gốc:\\tC:\\\\Program Files\\\\Java\\\\jdk-21&quot;);\n        System.out.println(&quot;2\\tThông điệp:\\t\\\"Chăm chỉ hôm nay, thành công mai sau!\\\"&quot;);\n        System.out.println(&quot;3\\tKý hiệu thoát:\\tDấu nháy kép (\\\"), Dấu gạch chéo ngược (\\\\)&quot;);\n    }\n}`)">📋 Copy Code</button>
-            <pre class="code-block"><code>public class EscapeChallenge {
-    public static void main(String[] args) {
-        System.out.println("--- BẢNG THÔNG SỐ CẤU HÌNH HỆ THỐNG ---");
-        System.out.println("STT\tTham số\t\tGiá trị cấu hình");
-        System.out.println("1\tThư mục gốc:\tC:\\Program Files\\Java\\jdk-21");
-        System.out.println("2\tThông điệp:\t\"Chăm chỉ hôm nay, thành công mai sau!\"");
-        System.out.println("3\tKý hiệu thoát:\tDấu nháy kép (\"), Dấu gạch chéo ngược (\\)");
+            <button class="btn-copy-code" onclick="copyCode(this, `// Welcome4.cs - Dinh dang chuoi noi suy voi $\nusing System;\n\nclass Welcome4 {\n    static void Main() {\n        string person = &quot;IT26M&quot;;\n        Console.WriteLine($&quot;Chao mung cac lap trinh vien lop {person} den voi Visual C#!&quot;);\n    }\n}`)">📋 Copy Code</button>
+            <pre class="code-block"><code>// Welcome4.cs - Định dạng chuỗi hiện đại với tính năng String Interpolation ($)
+using System;
+
+class Welcome4
+{
+    static void Main()
+    {
+        string course = "Kỹ thuật Lập trình";
+        string classId = "IT26M";
+        // Sử dụng toán tử $ để nhúng trực tiếp biến vào chuỗi
+        Console.WriteLine($"Chào mừng sinh viên lớp {classId} đến với học phần {course}!");
     }
 }</code></pre>
           </div>
         </div>
 
-        <!-- Code 3: DrawFigures3.java -->
+        <!-- Code 3: Addition.cs -->
         <div class="exercise-card">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <h4 style="color: var(--primary-navy);">3. DrawFigures3.java — Phân rã 2 cấp hoàn chỉnh triệt tiêu trùng lặp (DRY)</h4>
-            <span class="clo-badge">Case Study</span>
+            <h4 style="color: var(--primary-navy);">3. Addition.cs — Nhập xuất dữ liệu và phép cộng số nguyên</h4>
+            <span class="clo-badge">Lab 2</span>
           </div>
           <div class="code-container">
-            <button class="btn-copy-code" onclick="copyCode(this, `public class DrawFigures3 {\n    public static void main(String[] args) {\n        drawDiamond();\n        System.out.println();\n        drawX();\n        System.out.println();\n        drawRocket();\n    }\n    public static void drawDiamond() {\n        drawCone();\n        drawV();\n    }\n    public static void drawX() {\n        drawV();\n        drawCone();\n    }\n    public static void drawRocket() {\n        drawCone();\n        drawBox();\n        drawBox();\n        drawCone();\n    }\n    public static void drawCone() {\n        System.out.println(&quot;   /\\\\&quot;);\n        System.out.println(&quot;  /  \\\\&quot;);\n        System.out.println(&quot; /    \\\\&quot;);\n    }\n    public static void drawV() {\n        System.out.println(&quot; \\\\    /&quot;);\n        System.out.println(&quot;  \\\\  /&quot;);\n        System.out.println(&quot;   \\\\/&quot;);\n    }\n    public static void drawBox() {\n        System.out.println(&quot;+------+&quot;);\n        System.out.println(&quot;|      |&quot;);\n        System.out.println(&quot;|      |&quot;);\n        System.out.println(&quot;+------+&quot;);\n    }\n}`)">📋 Copy Code</button>
-            <pre class="code-block"><code>public class DrawFigures3 {
-    public static void main(String[] args) {
-        drawDiamond();
-        System.out.println();
-        drawX();
-        System.out.println();
-        drawRocket();
-    }
+            <button class="btn-copy-code" onclick="copyCode(this, `// Addition.cs - Nhap 2 so nguyen tu ban phim va tinh tong\nusing System;\n\nclass Addition {\n    static void Main() {\n        Console.Write(&quot;Nhap so nguyen thu nhat: &quot;);\n        int number1 = int.Parse(Console.ReadLine());\n\n        Console.Write(&quot;Nhap so nguyen thu hai: &quot;);\n        int number2 = int.Parse(Console.ReadLine());\n\n        int sum = number1 + number2;\n        Console.WriteLine($&quot;Tong cua hai so la: {sum}&quot;);\n    }\n}`)">📋 Copy Code</button>
+            <pre class="code-block"><code>// Addition.cs - Nhập 2 số nguyên từ bàn phím bằng Console.ReadLine và tính tổng
+using System;
 
-    public static void drawDiamond() {
-        drawCone();
-        drawV();
-    }
+class Addition
+{
+    static void Main()
+    {
+        Console.Write("Nhập số nguyên thứ nhất: ");
+        int number1 = int.Parse(Console.ReadLine()); // Đọc chuỗi và chuyển đổi sang kiểu số nguyên int
 
-    public static void drawX() {
-        drawV();
-        drawCone();
-    }
+        Console.Write("Nhập số nguyên thứ hai: ");
+        int number2 = int.Parse(Console.ReadLine());
 
-    public static void drawRocket() {
-        drawCone();
-        drawBox();
-        drawBox();
-        drawCone();
-    }
+        int sum = number1 + number2; // Thực hiện phép cộng trong bộ nhớ
 
-    public static void drawCone() {
-        System.out.println("   /\\");
-        System.out.println("  /  \\");
-        System.out.println(" /    \\");
-    }
-
-    public static void drawV() {
-        System.out.println(" \\    /");
-        System.out.println("  \\  /");
-        System.out.println("   \\/");
-    }
-
-    public static void drawBox() {
-        System.out.println("+------+");
-        System.out.println("|      |");
-        System.out.println("|      |");
-        System.out.println("+------+");
-    }
-}</code></pre>
-          </div>
-        </div>
-
-        <!-- Code 4: FightSong.java -->
-        <div class="exercise-card">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <h4 style="color: var(--primary-navy);">4. FightSong.java — Bài hát cổ động (Exercise 1.12)</h4>
-            <span class="clo-badge">Lab 3</span>
-          </div>
-          <div class="code-container">
-            <button class="btn-copy-code" onclick="copyCode(this, `public class FightSong {\n    public static void main(String[] args) {\n        singGoTeam();\n        System.out.println();\n        singChorus();\n        System.out.println();\n        singChorus();\n        System.out.println();\n        singGoTeam();\n    }\n    public static void singChorus() {\n        singGoTeam();\n        singEncourage();\n        singGoTeam();\n    }\n    public static void singGoTeam() {\n        System.out.println(&quot;Go, team, go!&quot;);\n        System.out.println(&quot;You can do it.&quot;);\n    }\n    public static void singEncourage() {\n        System.out.println(&quot;You're the best,&quot;);\n        System.out.println(&quot;In the West.&quot;);\n    }\n}`)">📋 Copy Code</button>
-            <pre class="code-block"><code>public class FightSong {
-    public static void main(String[] args) {
-        singGoTeam();
-        System.out.println();
-        singChorus();
-        System.out.println();
-        singChorus();
-        System.out.println();
-        singGoTeam();
-    }
-
-    public static void singChorus() {
-        singGoTeam();
-        singEncourage();
-        singGoTeam();
-    }
-
-    public static void singGoTeam() {
-        System.out.println("Go, team, go!");
-        System.out.println("You can do it.");
-    }
-
-    public static void singEncourage() {
-        System.out.println("You're the best,");
-        System.out.println("In the West.");
+        Console.WriteLine($"Tổng của {number1} và {number2} là: {sum}");
     }
 }</code></pre>
           </div>
         </div>
 
       </div>
+
     </div>
 
   </main>
@@ -704,6 +663,10 @@
        ======================================================================== -->
   <script src="./js/quiz_data.js"></script>
   <script src="./js/exercises_data.js"></script>
+  <script src="./js/interactive_exercises.js"></script>
+  <script src="./js/transcripts_ch01.js"></script>
+  <script src="./js/transcripts_ch02.js"></script>
+  <script src="./js/chapter_data.js"></script>
   <script src="./js/app.js"></script>
 </body>
 </html>
