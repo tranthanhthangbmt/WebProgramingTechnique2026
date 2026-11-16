@@ -1148,3 +1148,620 @@ const QUIZ_CHAPTER_02 = [
     "explanation": "StretchImage ép hình ảnh co giãn vừa khít toàn bộ diện tích của PictureBox. (Normal cắt xén; AutoSize làm khung phình theo ảnh; CenterImage căn giữa; Zoom co giãn giữ nguyên tỷ lệ Aspect Ratio)."
   }
 ];
+
+
+// ============================================================================
+// NGÂN HÀNG CÂU HỎI TRẮC NGHIỆM CHƯƠNG 3: INTRODUCTION TO C# APP PROGRAMMING
+// (40 CÂU CÂN BẰNG ĐỘ DÀI & ĐÁP ÁN: 10 A, 10 B, 10 C, 10 D; 10 R1, 10 R2, 10 R3, 10 R4)
+// ============================================================================
+const QUIZ_CHAPTER_03 = [
+  {
+    "id": 1,
+    "category": "Cấu trúc Ứng dụng Console",
+    "bloom": "Remember",
+    "question": "Điểm khởi nhập (Entry Point) duy nhất mà máy ảo .NET CLR kích hoạt khi chạy ứng dụng C# là gì?",
+    "options": [
+      "Phương thức Main.",
+      "Lớp cơ sở System.Object được nạp đầu tiên trong bộ nhớ.",
+      "Phương thức khởi tạo constructor của lớp chứa giao diện đồ họa Form.",
+      "Chỉ thị tiền xử lý using directive khai báo ở dòng đầu tiên của tệp mã nguồn."
+    ],
+    "correct": 0,
+    "explanation": "Theo mục 3.2 giáo trình Deitel: Mọi ứng dụng C# đều bắt đầu thực thi từ phương thức Main. Phương thức này phải được khai báo với từ khóa static.",
+    "answer": 0
+  },
+  {
+    "id": 2,
+    "category": "Cú pháp & Chú thích",
+    "bloom": "Understand",
+    "question": "Ký hiệu nào sau đây được dùng để bắt đầu một dòng chú thích đơn (Single-line comment) trong C#?",
+    "options": [
+      "Dấu thăng # đơn độc.",
+      "Cặp dấu gạch chéo // ở đầu chú thích.",
+      "Cặp dấu gạch chéo và dấu hoa thị /* bao bọc khối văn bản chú thích.",
+      "Ký hiệu dấu chấm phẩy ; đặt ở cuối mỗi câu lệnh thực thi trong mã nguồn."
+    ],
+    "correct": 1,
+    "explanation": "Mục 3.2.1 Deitel: Hai dấu gạch chéo // bắt đầu một chú thích một dòng, trình biên dịch C# sẽ bỏ qua mọi ký tự từ // đến cuối dòng đó.",
+    "answer": 1
+  },
+  {
+    "id": 3,
+    "category": "Khai báo Lớp",
+    "bloom": "Remember",
+    "question": "Theo quy ước đặt tên chuẩn của Microsoft và giáo trình Deitel, tên Lớp (Class) trong C# nên tuân theo quy tắc nào?",
+    "options": [
+      "Quy ước camelCase.",
+      "Viết hoa toàn bộ từ đầu đến cuối.",
+      "Quy ước PascalCase viết hoa chữ cái đầu của mỗi từ cấu thành tên lớp.",
+      "Viết thường toàn bộ tên lớp và ngăn cách các từ bằng các dấu gạch dưới snake_case."
+    ],
+    "correct": 2,
+    "explanation": "Mục 3.2.4 Deitel: Tên lớp trong C# sử dụng quy ước PascalCase, viết hoa chữ cái đầu tiên của mỗi từ cấu thành (ví dụ: Welcome1, BankAccount).",
+    "answer": 2
+  },
+  {
+    "id": 4,
+    "category": "Khai báo Lớp",
+    "bloom": "Understand",
+    "question": "Cặp ký tự nào được ngôn ngữ C# quy định để xác định ranh giới bắt đầu và kết thúc của một khối mã lệnh (Block)?",
+    "options": [
+      "Cặp ngoặc tròn ( ).",
+      "Cặp ngoặc vuông [ ].",
+      "Cặp từ khóa BEGIN và END.",
+      "Cặp dấu ngoặc nhọn mở { để bắt đầu và dấu ngoặc nhọn đóng } để kết thúc phạm vi khối mã."
+    ],
+    "correct": 3,
+    "explanation": "Mục 3.2.7 Deitel: Cặp dấu ngoặc nhọn mở { và đóng } tạo thành một khối mã (Block), xác định phạm vi của lớp, phương thức hay cấu trúc điều khiển.",
+    "answer": 3
+  },
+  {
+    "id": 5,
+    "category": "Xuất dữ liệu Console",
+    "bloom": "Remember",
+    "question": "Phương thức nào của lớp Console có chức năng in chuỗi ký tự ra màn hình và đưa con trỏ xuống đầu dòng tiếp theo?",
+    "options": [
+      "Phương thức Console.Write giữ nguyên vị trí con trỏ trên dòng.",
+      "Console.WriteLine.",
+      "Phương thức Console.ReadLine chờ người dùng nhấn phím Enter.",
+      "Phương thức Console.Clear làm sạch toàn bộ cửa sổ giao diện dòng lệnh."
+    ],
+    "correct": 1,
+    "explanation": "Mục 3.2.6 Deitel: Console.WriteLine xuất dòng văn bản ra màn hình console và tự động định vị con trỏ ở đầu dòng mới kế tiếp.",
+    "answer": 1
+  },
+  {
+    "id": 6,
+    "category": "Xuất dữ liệu Console",
+    "bloom": "Understand",
+    "question": "Điểm khác biệt cốt lõi giữa hai phương thức Console.Write và Console.WriteLine trong C# là gì?",
+    "options": [
+      "Write in chậm hơn WriteLine.",
+      "Console.WriteLine chỉ cho phép xuất các số nguyên mà không thể xuất chuỗi ký tự văn bản.",
+      "Console.Write không đưa con trỏ xuống dòng mới sau khi xuất xong.",
+      "Console.Write yêu cầu quyền quản trị viên Administrator hệ thống mới có thể thực thi thành công."
+    ],
+    "correct": 2,
+    "explanation": "Mục 3.4.1 Deitel: Console.Write in chuỗi nhưng không đưa con trỏ xuống dòng mới, trong khi Console.WriteLine tự động gửi thêm ký tự xuống dòng.",
+    "answer": 2
+  },
+  {
+    "id": 7,
+    "category": "Ký tự thoát Escape Sequences",
+    "bloom": "Remember",
+    "question": "Ký tự thoát (Escape Sequence) nào trong chuỗi ký tự C# đại diện cho hành động đưa con trỏ xuống một dòng mới (Newline)?",
+    "options": [
+      "Ký hiệu \\t.",
+      "Ký hiệu \\r lùi đầu dòng.",
+      "Ký hiệu hai dấu gạch chéo ngược \\\\ in ra dấu gạch chéo đơn độc lập trên màn hình.",
+      "Ký tự thoát \\n quy định xuống một dòng mới trong chuỗi văn bản."
+    ],
+    "correct": 3,
+    "explanation": "Mục 3.4.2 Deitel: Ký tự thoát \\n (Newline) đẩy con trỏ xuống đầu dòng tiếp theo; \\ đại diện cho ký tự thoát (Escape character).",
+    "answer": 3
+  },
+  {
+    "id": 8,
+    "category": "Ký tự thoát Escape Sequences",
+    "bloom": "Apply",
+    "question": "Để in ra màn hình chuỗi ký tự chứa dấu ngoặc kép: \"Hello\", câu lệnh C# nào sau đây là hoàn toàn hợp lệ?",
+    "options": [
+      "Console.WriteLine(\"\\\"Hello\\\"\"); sử dụng ký tự thoát \\\" để vô hiệu hóa ý nghĩa kết thúc chuỗi của dấu ngoặc kép.",
+      "Console.WriteLine(\"\"Hello\"\");",
+      "Console.WriteLine('/Hello/');",
+      "Console.WriteLine(@'Hello');"
+    ],
+    "correct": 0,
+    "explanation": "Mục 3.4.2 Deitel: Để nhúng dấu ngoặc kép bên trong một chuỗi ký tự mà không làm đóng chuỗi, ta phải dùng ký tự thoát \\\".",
+    "answer": 0
+  },
+  {
+    "id": 9,
+    "category": "Ký tự thoát Escape Sequences",
+    "bloom": "Remember",
+    "question": "Ký tự thoát nào sau đây được sử dụng để căn lề ngang theo từng bước Tab (Tab stop) trên màn hình Console?",
+    "options": [
+      "Ký hiệu \\b lùi một khoảng trắng.",
+      "Ký hiệu \\r đưa con trỏ về đầu dòng hiện hành.",
+      "Ký tự thoát \\t.",
+      "Ký hiệu \\a phát ra âm thanh cảnh báo hệ thống qua loa máy tính."
+    ],
+    "correct": 2,
+    "explanation": "Mục 3.4.2 Deitel: Ký tự \\t dịch chuyển con trỏ màn hình đến vị trí tab kế tiếp (Horizontal Tab), rất hữu ích khi in các bảng số liệu.",
+    "answer": 2
+  },
+  {
+    "id": 10,
+    "category": "String Interpolation",
+    "bloom": "Remember",
+    "question": "Tính năng Định dạng chuỗi nội suy (String Interpolation) trong C# được kích hoạt bằng ký tự tiền tố nào đặt trước chuỗi?",
+    "options": [
+      "Dấu thăng # ở đầu chuỗi.",
+      "Ký tự dấu chấm hỏi ? đặt trước tên biến bên trong khối ngoặc nhọn.",
+      "Ký tự chữ a còng @ dùng để định dạng chuỗi nguyên văn bỏ qua ký tự thoát.",
+      "Ký tự dollar $ đặt ngay trước dấu mở ngoặc kép của chuỗi."
+    ],
+    "correct": 3,
+    "explanation": "Mục 3.5 Deitel: Ký tự dollar $ đặt ngay trước dấu mở ngoặc kép biến chuỗi thành một chuỗi nội suy (Interpolated string).",
+    "answer": 3
+  },
+  {
+    "id": 11,
+    "category": "String Interpolation",
+    "bloom": "Apply",
+    "question": "Giả sử biến int age = 20; câu lệnh Console.WriteLine($\"Tuoi cua ban la {age}\"); sẽ xuất ra kết quả gì?",
+    "options": [
+      "Dòng văn bản: Tuoi cua ban la 20 hiển thị trọn vẹn trên màn hình.",
+      "Tuoi cua ban la {age}.",
+      "Lỗi biên dịch cú pháp.",
+      "Dòng văn bản: Tuoi cua ban la {20} bao gồm cả hai dấu ngoặc nhọn bao quanh giá trị số."
+    ],
+    "correct": 0,
+    "explanation": "Mục 3.5 Deitel: Trình biên dịch C# thay thế biểu thức nội suy {age} bằng giá trị thực tế của biến age tại thời điểm chạy.",
+    "answer": 0
+  },
+  {
+    "id": 12,
+    "category": "String Interpolation",
+    "bloom": "Understand",
+    "question": "Ưu điểm vượt trội nhất của String Interpolation ($) so với phép nối chuỗi bằng toán tử cộng (+) truyền thống là gì?",
+    "options": [
+      "Cho phép bỏ qua hoàn toàn kiểu dữ liệu.",
+      "Cú pháp trực quan, dễ bảo trì, nhúng trực tiếp biến vào biểu thức và tối ưu hóa cấp phát bộ nhớ hơn phép nối chuỗi cộng.",
+      "Tự động dịch mã sang tệp nhị phân Assembly.",
+      "Không cần sử dụng lớp Console."
+    ],
+    "correct": 1,
+    "explanation": "Mục 3.5 Deitel: String Interpolation giúp mã nguồn trong sáng, dễ đọc, hạn chế lỗi nhầm lẫn dấu cách và được tối ưu hóa hiệu năng biên dịch.",
+    "answer": 1
+  },
+  {
+    "id": 13,
+    "category": "Kiểu Dữ liệu & Biến",
+    "bloom": "Remember",
+    "question": "Kiểu dữ liệu nào trong C# được sử dụng để lưu trữ các giá trị số nguyên trong phạm vi từ khoảng -2.14 tỷ đến +2.14 tỷ?",
+    "options": [
+      "Kiểu dữ liệu bool chỉ lưu giá trị đúng sai.",
+      "Kiểu dữ liệu string chuyên dùng lưu chuỗi văn bản.",
+      "Kiểu dữ liệu double lưu trữ số thực dấu phẩy động 64-bit.",
+      "Kiểu dữ liệu int."
+    ],
+    "correct": 3,
+    "explanation": "Mục 3.6.1 Deitel: Kiểu int trong C# đại diện cho số nguyên có dấu 32-bit (System.Int32), có dải giá trị từ -2,147,483,648 đến +2,147,483,647.",
+    "answer": 3
+  },
+  {
+    "id": 14,
+    "category": "Kiểu Dữ liệu & Biến",
+    "bloom": "Understand",
+    "question": "Quy tắc đặt tên định danh cho biến (Variable Identifier) nào sau đây là KHÔNG hợp lệ trong C#?",
+    "options": [
+      "Tên biến bắt đầu bằng một chữ số như 1stValue hay 2Total.",
+      "Tên biến có chứa dấu gạch dưới.",
+      "Tên biến sử dụng chữ in hoa và chữ in thường kết hợp theo quy ước camelCase.",
+      "Tên biến có độ dài vượt quá 20 ký tự nhưng chỉ bao gồm các chữ cái hợp lệ."
+    ],
+    "correct": 0,
+    "explanation": "Mục 3.6.1 Deitel: Tên định danh trong C# không được bắt đầu bằng chữ số (ví dụ: 1number là bất hợp lệ); chỉ được bắt đầu bằng chữ cái hoặc dấu gạch dưới _.",
+    "answer": 0
+  },
+  {
+    "id": 15,
+    "category": "Nhập liệu Bàn phím",
+    "bloom": "Remember",
+    "question": "Phương thức Console.ReadLine() trong C# trả về kết quả thuộc kiểu dữ liệu nào sau khi người dùng nhấn Enter?",
+    "options": [
+      "Kiểu số nguyên int.",
+      "Kiểu chuỗi ký tự string chứa toàn bộ nội dung dòng văn bản vừa nhập.",
+      "Kiểu logic bool.",
+      "Kiểu mảng nhị phân các byte đại diện cho mã quét phần cứng của từng phím bấm vừa gõ."
+    ],
+    "correct": 1,
+    "explanation": "Mục 3.6.4 Deitel: Console.ReadLine() luôn đọc toàn bộ dòng ký tự từ bàn phím và trả về một đối tượng kiểu chuỗi (string).",
+    "answer": 1
+  },
+  {
+    "id": 16,
+    "category": "Ép kiểu & Phân tích",
+    "bloom": "Apply",
+    "question": "Để chuyển đổi một chuỗi văn bản do Console.ReadLine() trả về sang số nguyên int, phương thức nào sau đây được sử dụng?",
+    "options": [
+      "Phương thức int.Convert().",
+      "Hàm ép kiểu tĩnh (int).",
+      "Phương thức int.Parse() nhận tham số là chuỗi và trả về giá trị số nguyên kiểu int tương ứng nếu cú pháp hợp lệ.",
+      "Phương thức String.ToInt()."
+    ],
+    "correct": 2,
+    "explanation": "Mục 3.6.4 Deitel: int.Parse(string) nhận vào một chuỗi ký tự biểu diễn số và chuyển đổi thành giá trị kiểu int tương ứng.",
+    "answer": 2
+  },
+  {
+    "id": 17,
+    "category": "Xử lý Lỗi Ngoại lệ",
+    "bloom": "Understand",
+    "question": "Hiện tượng gì sẽ xảy ra nếu người dùng nhập chuỗi \"hello\" vào câu lệnh int.Parse(Console.ReadLine())?",
+    "options": [
+      "Ném ngoại lệ FormatException.",
+      "Chương trình tự động gán giá trị 0 cho biến mà không thông báo lỗi.",
+      "Trình biên dịch tự động khởi động lại máy tính để khôi phục trạng thái ban đầu.",
+      "Hệ điều hành chuyển đổi chuỗi hello thành độ dài 5 ký tự và lưu vào biến số nguyên."
+    ],
+    "correct": 0,
+    "explanation": "Mục 3.6.4 Deitel: Nếu chuỗi không thể phân tích cú pháp thành một số nguyên hợp lệ, phương thức int.Parse sẽ ném ra lỗi ngoại lệ FormatException.",
+    "answer": 0
+  },
+  {
+    "id": 18,
+    "category": "Bản chất Bộ nhớ RAM",
+    "bloom": "Understand",
+    "question": "Bản chất kỹ thuật thực sự của một Biến (Variable) trong bộ nhớ máy tính là gì?",
+    "options": [
+      "Một tệp tin lưu trên ổ cứng SSD.",
+      "Tên định danh đại diện cho một vị trí địa chỉ ô nhớ trong bộ nhớ RAM.",
+      "Một chỉ thị lệnh được vi xử lý CPU thực thi trực tiếp trên bo mạch chủ hệ thống.",
+      "Một bản ghi cơ sở dữ liệu được lưu trữ vĩnh viễn trên dịch vụ điện toán đám mây."
+    ],
+    "correct": 1,
+    "explanation": "Mục 3.7 Deitel: Mọi biến đều có tên, kiểu, kích thước và giá trị; biến thực chất là tên định danh đại diện cho một vị trí ô nhớ trong RAM.",
+    "answer": 1
+  },
+  {
+    "id": 19,
+    "category": "Bản chất Bộ nhớ RAM",
+    "bloom": "Understand",
+    "question": "Thao tác gán giá trị mới cho một biến đã tồn tại trong C# (ví dụ: number1 = 99;) tuân theo nguyên lý nào?",
+    "options": [
+      "Nguyên lý Đọc không phá hủy.",
+      "Nguyên lý phân mảnh ô nhớ RAM.",
+      "Nguyên lý Ghi đè phá hủy (Destructive): giá trị cũ trong ô nhớ bị xóa vĩnh viễn để nhường chỗ cho giá trị mới.",
+      "Nguyên lý đồng bộ hóa dữ liệu song song và nhân bản phân tán qua hai tiến trình xử lý ngầm độc lập có giám sát chặt chẽ của hệ thống."
+    ],
+    "correct": 2,
+    "explanation": "Mục 3.7 Deitel: Ghi giá trị vào ô nhớ là thao tác phá hủy (destructive) - giá trị cũ bị xóa hoàn toàn và thay thế bởi giá trị mới.",
+    "answer": 2
+  },
+  {
+    "id": 20,
+    "category": "Bản chất Bộ nhớ RAM",
+    "bloom": "Understand",
+    "question": "Khi CPU đọc giá trị từ biến number1 để thực hiện phép tính cộng sum = number1 + number2, giá trị của number1 trong RAM sẽ ra sao?",
+    "options": [
+      "Bị xóa sạch về giá trị 0.",
+      "Tự động tăng thêm 1 đơn vị.",
+      "Bị hủy giải phóng khỏi RAM.",
+      "Giá trị trong ô nhớ number1 vẫn được giữ nguyên vẹn không hề suy suyển vì thao tác đọc bộ nhớ là không phá hủy (non-destructive)."
+    ],
+    "correct": 3,
+    "explanation": "Mục 3.7 Deitel: Đọc giá trị từ một vị trí bộ nhớ là thao tác không phá hủy (non-destructive) - giá trị gốc trong ô nhớ vẫn được bảo tồn.",
+    "answer": 3
+  },
+  {
+    "id": 21,
+    "category": "Toán tử Số học",
+    "bloom": "Remember",
+    "question": "Ký hiệu nào sau đây được sử dụng để biểu diễn phép toán nhân trong ngôn ngữ C#?",
+    "options": [
+      "Ký tự chữ x viết thường.",
+      "Dấu hoa thị *.",
+      "Ký hiệu dấu chấm ở giữa biểu thức.",
+      "Từ khóa multiply tích hợp sẵn trong thư viện."
+    ],
+    "correct": 1,
+    "explanation": "Mục 3.8 Deitel: Trong C#, phép nhân sử dụng dấu sao *, phép chia dùng dấu gạch chéo /, không dùng dấu nhân x hay dấu chia hai chấm :.",
+    "answer": 1
+  },
+  {
+    "id": 22,
+    "category": "Phép chia Số nguyên",
+    "bloom": "Apply",
+    "question": "Trong C#, kết quả của biểu thức số học 7 / 4 khi cả hai toán hạng đều là số nguyên (int) là bao nhiêu?",
+    "options": [
+      "Giá trị là 1.75.",
+      "Giá trị là 2 do cơ chế tự động làm tròn số lên của hệ điều hành.",
+      "Giá trị 1 vì phần thập phân bị cắt bỏ hoàn toàn.",
+      "Chương trình báo lỗi biên dịch do không chia hết cho nhau."
+    ],
+    "correct": 2,
+    "explanation": "Mục 3.8 Deitel: Phép chia giữa hai số nguyên là phép chia nguyên (Integer division) - phần thập phân bị cắt bỏ hoàn toàn, 7 / 4 bằng 1.",
+    "answer": 2
+  },
+  {
+    "id": 23,
+    "category": "Toán tử Chia lấy dư",
+    "bloom": "Apply",
+    "question": "Toán tử chia lấy phần dư (%) trong C# khi áp dụng cho biểu thức 17 % 5 sẽ cho kết quả là bao nhiêu?",
+    "options": [
+      "Giá trị là 3.",
+      "Giá trị là 3.4.",
+      "Giá trị là 0 do toán tử phần trăm tự động quy đổi biểu thức về dạng tỷ lệ phần trăm.",
+      "Giá trị 2 là phần dư còn lại sau phép chia số nguyên."
+    ],
+    "correct": 3,
+    "explanation": "Mục 3.8 Deitel: Toán tử % (remainder / modulus) trả về phần dư sau phép chia nguyên: 17 chia cho 5 được 3 dư 2.",
+    "answer": 3
+  },
+  {
+    "id": 24,
+    "category": "Thứ tự Ưu tiên Toán tử",
+    "bloom": "Remember",
+    "question": "Thứ tự ưu tiên tính toán của các toán tử số học trong C# tuân theo quy tắc chuẩn mực nào sau đây?",
+    "options": [
+      "Ngoặc đơn () được thực hiện trước tiên, kế đến là các phép nhân (*), chia (/), chia lấy dư (%), sau cùng là cộng (+) và trừ (-).",
+      "Cộng trừ trước, nhân chia sau.",
+      "Tính tuần tự từ phải sang trái.",
+      "Mọi toán tử có độ ưu tiên như nhau."
+    ],
+    "correct": 0,
+    "explanation": "Mục 3.8.3 Deitel: Biểu thức trong ngoặc () ưu tiên cao nhất, kế đến là *, /, %, thấp hơn là +, -, cùng độ ưu tiên thì tính từ trái sang phải.",
+    "answer": 0
+  },
+  {
+    "id": 25,
+    "category": "Thứ tự Ưu tiên Toán tử",
+    "bloom": "Apply",
+    "question": "Giá trị của biểu thức C# sau đây: 2 + 3 * 4 - 6 / 2 là bao nhiêu?",
+    "options": [
+      "Giá trị 10 sau khi tính tuần tự.",
+      "Giá trị 7 do nhầm lẫn thứ tự các phép toán cộng trừ.",
+      "Giá trị 11.",
+      "Giá trị 14 khi các phép tính nhân chia được thực hiện sau cùng."
+    ],
+    "correct": 2,
+    "explanation": "Mục 3.8.3 Deitel: 3 * 4 = 12; 6 / 2 = 3; biểu thức trở thành 2 + 12 - 3 = 11.",
+    "answer": 2
+  },
+  {
+    "id": 26,
+    "category": "Biểu thức Đại số",
+    "bloom": "Apply",
+    "question": "Để tính đa thức đại số bậc 2: y = a*x^2 + b*x + c trong C#, cách viết mã lệnh nào sau đây là chuẩn xác nhất?",
+    "options": [
+      "y = ax^2 + bx + c;",
+      "y = (a * x)^2 + (b * x) + c;",
+      "y = a * (x ^ 2) + b * x + c do ký tự mũ được hiểu là lũy thừa trong toán học.",
+      "y = a * x * x + b * x + c;"
+    ],
+    "correct": 3,
+    "explanation": "Mục 3.8.4 Deitel: Trong C# không có toán tử mũ ^ cho số học (^ là bitwise XOR), do đó x^2 phải viết thành x * x.",
+    "answer": 3
+  },
+  {
+    "id": 27,
+    "category": "Cấu trúc Rẽ nhánh if",
+    "bloom": "Understand",
+    "question": "Biểu thức điều kiện nằm bên trong cặp dấu ngoặc đơn của câu lệnh if trong C# bắt buộc phải thuộc kiểu dữ liệu nào?",
+    "options": [
+      "Kiểu boolean chỉ nhận một trong hai giá trị logic là true hoặc false.",
+      "Kiểu số nguyên int.",
+      "Kiểu chuỗi văn bản string.",
+      "Kiểu con trỏ địa chỉ ô nhớ trỏ trực tiếp đến thanh ghi điều khiển của bộ vi xử lý CPU."
+    ],
+    "correct": 0,
+    "explanation": "Mục 3.9 Deitel: C# yêu cầu điều kiện của câu lệnh if phải là kiểu boolean (chỉ có giá trị true hoặc false), không cho phép số nguyên như C/C++.",
+    "answer": 0
+  },
+  {
+    "id": 28,
+    "category": "Toán tử So sánh Quan hệ",
+    "bloom": "Remember",
+    "question": "Toán tử nào sau đây trong C# được sử dụng để kiểm tra điều kiện 'Hai toán hạng có giá trị bằng nhau hay không'?",
+    "options": [
+      "Một dấu bằng đơn = duy nhất.",
+      "Cặp hai dấu bằng liền nhau == biểu thị phép so sánh bằng, phân biệt hoàn toàn với toán tử gán giá trị một dấu bằng =.",
+      "Ký hiệu hai dấu gạch chéo //.",
+      "Ký hiệu dấu hai chấm bằng :=."
+    ],
+    "correct": 1,
+    "explanation": "Mục 3.9 Deitel: Toán tử kiểm tra bằng nhau trong C# là hai dấu bằng liền nhau ==, còn một dấu bằng đơn = là toán tử gán giá trị.",
+    "answer": 1
+  },
+  {
+    "id": 29,
+    "category": "Toán tử So sánh Quan hệ",
+    "bloom": "Remember",
+    "question": "Ký hiệu nào sau đây trong C# đại diện cho toán tử so sánh 'Khác nhau' (Not equal to)?",
+    "options": [
+      "Ký hiệu cặp ngoặc nhọn <>.",
+      "Ký hiệu dấu ngã bằng ~=.",
+      "Từ khóa notequal tích hợp sẵn trong lớp Console.",
+      "Toán tử !=."
+    ],
+    "correct": 3,
+    "explanation": "Mục 3.9 Deitel: Toán tử khác nhau trong C# là != (dấu chấm than kết hợp dấu bằng).",
+    "answer": 3
+  },
+  {
+    "id": 30,
+    "category": "Toán tử So sánh Quan hệ",
+    "bloom": "Remember",
+    "question": "Toán tử nào sau đây trong C# đại diện cho phép so sánh 'Lớn hơn hoặc bằng'?",
+    "options": [
+      "Toán tử >= với dấu lớn hơn đứng trước dấu bằng.",
+      "Toán tử => ngược lại.",
+      "Ký hiệu hai dấu lớn hơn liền nhau >> biểu thị phép dịch bit.",
+      "Từ khóa greater_or_equal định nghĩa trong thư viện chuẩn .NET FCL."
+    ],
+    "correct": 0,
+    "explanation": "Mục 3.9 Deitel: Toán tử lớn hơn hoặc bằng là >=. Viết => là sai cú pháp (=> là lambda operator trong các phiên bản sau).",
+    "answer": 0
+  },
+  {
+    "id": 31,
+    "category": "Lỗi Lập trình Kinh điển",
+    "bloom": "Analyze",
+    "question": "Hậu quả logic nào sẽ xảy ra nếu lập trình viên vô tình đặt dấu chấm phẩy ngay sau mệnh đề điều kiện của if: if (x == y); Console.WriteLine(\"Bang nhau\");?",
+    "options": [
+      "Trình biên dịch báo lỗi CS1002.",
+      "Dấu chấm phẩy tạo thành câu lệnh rỗng khiến lệnh in luôn luôn được thực thi bất kể x có bằng y hay không.",
+      "Chương trình bị crash ngay lập tức.",
+      "Hệ điều hành Windows sẽ tự động kích hoạt tính năng phục hồi lỗi cú pháp và xóa bỏ dấu chấm phẩy thừa đó của lập trình viên."
+    ],
+    "correct": 1,
+    "explanation": "Mục 3.9 Deitel: Dấu chấm phẩy sau if tạo thành một câu lệnh rỗng (empty statement). Khối lệnh phía sau sẽ luôn luôn được thực thi dù điều kiện đúng hay sai!",
+    "answer": 1
+  },
+  {
+    "id": 32,
+    "category": "Lỗi Lập trình Kinh điển",
+    "bloom": "Understand",
+    "question": "Tại sao trong C#, lỗi gõ nhầm if (x = 7) thay vì if (x == 7) lại được trình biên dịch phát hiện và cảnh báo ngay lập tức?",
+    "options": [
+      "Vì C# cấm sử dụng số 7.",
+      "Vì dấu bằng đơn không có trong C#.",
+      "Vì phép gán x = 7 trả về giá trị số nguyên 7, trong khi câu lệnh if trong C# bắt buộc biểu thức điều kiện phải thuộc kiểu dữ liệu boolean.",
+      "Vì biến x chưa được khai báo kiểu."
+    ],
+    "correct": 2,
+    "explanation": "Mục 3.9 Deitel: Phép gán x = 7 trả về giá trị số nguyên 7, trong khi if bắt buộc điều kiện phải là kiểu bool. Do đó C# báo lỗi type mismatch, tránh được bug nghiêm trọng của C/C++.",
+    "answer": 2
+  },
+  {
+    "id": 33,
+    "category": "Từ khóa C#",
+    "bloom": "Remember",
+    "question": "Từ khóa nào trong C# biểu thị rằng phương thức không trả về bất kỳ giá trị nào cho lời gọi?",
+    "options": [
+      "Từ khóa void.",
+      "Từ khóa null chỉ giá trị rỗng.",
+      "Từ khóa empty khai báo chuỗi rỗng.",
+      "Từ khóa return dừng thực thi khối lệnh."
+    ],
+    "correct": 0,
+    "explanation": "Mục 3.2.5 Deitel: Từ khóa void quy định kiểu trả về rỗng, phương thức sẽ thực hiện tác vụ mà không trả dữ liệu về nơi gọi.",
+    "answer": 0
+  },
+  {
+    "id": 34,
+    "category": "Môi trường Visual Studio",
+    "bloom": "Understand",
+    "question": "Tổ hợp phím tắt nào được sử dụng trong Visual Studio để biên dịch và chạy ứng dụng Console mà giữ cửa sổ không bị đóng ngay?",
+    "options": [
+      "Phím F5 chạy có gỡ lỗi.",
+      "Tổ hợp phím tắt Ctrl + F5 để chạy không gỡ lỗi.",
+      "Tổ hợp phím tắt Alt + F4 dùng để đóng ngay cửa sổ ứng dụng đang mở.",
+      "Tổ hợp phím Ctrl + Shift + B dùng để biên dịch toàn bộ solution mà không chạy."
+    ],
+    "correct": 1,
+    "explanation": "Mục 3.3.4 Deitel: Tổ hợp phím Ctrl + F5 (Start Without Debugging) chạy ứng dụng và tự động hiển thị dòng 'Press any key to continue...' giữ màn hình console.",
+    "answer": 1
+  },
+  {
+    "id": 35,
+    "category": "Môi trường Visual Studio",
+    "bloom": "Remember",
+    "question": "Tính năng nào của Visual Studio tự động liệt kê danh sách các thành viên, phương thức và từ khóa gợi ý khi người dùng đang gõ mã nguồn?",
+    "options": [
+      "Cửa sổ Solution Explorer.",
+      "Cửa sổ Output Log.",
+      "Tính năng trợ giúp thông minh IntelliSense hỗ trợ tự động hoàn thiện mã nguồn.",
+      "Trình biên dịch tức thời Just-In-Time Compiler chạy ngầm bên dưới hệ thống máy ảo CLR."
+    ],
+    "correct": 2,
+    "explanation": "Mục 3.3.3 Deitel: IntelliSense là trợ lý mã nguồn thông minh giúp tự động hoàn thành từ khóa, hiển thị danh sách thành viên và tham số hàm.",
+    "answer": 2
+  },
+  {
+    "id": 36,
+    "category": "Môi trường Visual Studio",
+    "bloom": "Understand",
+    "question": "Cửa sổ nào trong Visual Studio hiển thị danh sách các lỗi cú pháp, số dòng và mô tả chi tiết khi chương trình biên dịch thất bại?",
+    "options": [
+      "Cửa sổ Toolbox kéo thả.",
+      "Cửa sổ Properties thiết lập.",
+      "Cửa sổ Solution Explorer.",
+      "Cửa sổ Error List hiển thị mã lỗi, mô tả chi tiết, số dòng và cho phép nhấp đúp chuột để nhảy đến đúng vị trí mã lỗi."
+    ],
+    "correct": 3,
+    "explanation": "Mục 3.3.5 Deitel: Cửa sổ Error List liệt kê toàn bộ các lỗi cú pháp (Syntax errors) và cảnh báo (Warnings), cho phép nhấp đúp để nhảy ngay đến dòng lỗi.",
+    "answer": 3
+  },
+  {
+    "id": 37,
+    "category": "Thứ tự Ưu tiên Toàn diện",
+    "bloom": "Remember",
+    "question": "Trong tất cả các toán tử sau đây: (+, ==, *, =), toán tử nào có mức độ ưu tiên tính toán THẤP NHẤT?",
+    "options": [
+      "Toán tử nhân *.",
+      "Toán tử gán =.",
+      "Toán tử cộng số học +.",
+      "Toán tử so sánh bằng nhau ==."
+    ],
+    "correct": 1,
+    "explanation": "Mục 3.9 & Hình 3.23 Deitel: Toán tử gán = có độ ưu tiên thấp nhất để đảm bảo toàn bộ phép tính toán và so sánh hoàn tất xong mới gán kết quả vào biến.",
+    "answer": 1
+  },
+  {
+    "id": 38,
+    "category": "Khoảng trắng & Định dạng",
+    "bloom": "Understand",
+    "question": "Khái niệm khoảng trắng (Whitespace) trong C# bao gồm những thành phần nào sau đây?",
+    "options": [
+      "Chỉ bao gồm dấu cách đơn lẻ.",
+      "Chỉ các khối chú thích XML bắt đầu bằng ba dấu gạch chéo /// trong phần đầu tệp tin.",
+      "Các ký tự dấu cách, dấu tab, ký tự xuống dòng và dòng trống trong mã nguồn.",
+      "Toàn bộ các dòng mã lệnh chứa phương thức Main được đánh dấu đặc biệt bởi lập trình viên."
+    ],
+    "correct": 2,
+    "explanation": "Mục 3.2.3 Deitel: Whitespace bao gồm ký tự dấu cách (space), ký tự tab, ký tự xuống dòng (newline) và dòng trống; trình biên dịch bỏ qua các khoảng trắng thừa.",
+    "answer": 2
+  },
+  {
+    "id": 39,
+    "category": "Toán tử Số học",
+    "bloom": "Apply",
+    "question": "Để kết quả phép chia 7 / 4 trong C# nhận được giá trị số thực chính xác là 1.75, lập trình viên cần viết biểu thức như thế nào?",
+    "options": [
+      "Viết phép tính là 7 : 4.",
+      "Thêm dấu chấm phẩy vào sau số 4.",
+      "Bắt buộc phải khai báo lại toàn bộ các biến số nguyên trong chương trình thành kiểu chuỗi ký tự string.",
+      "Viết ít nhất một toán hạng dưới dạng số thực như 7.0 / 4 hoặc (double)7 / 4."
+    ],
+    "correct": 3,
+    "explanation": "Mục 3.8 Deitel: Muốn kết quả phép chia là số thực, ít nhất một trong hai toán hạng phải là số thực (ví dụ: 7.0 / 4 hoặc 7 / 4.0 hoặc ép kiểu (double)7 / 4).",
+    "answer": 3
+  },
+  {
+    "id": 40,
+    "category": "Tổng kết Chương 3",
+    "bloom": "Understand",
+    "question": "Quy trình chuẩn mực 3 bước của một ứng dụng Console nhập dữ liệu, tính toán và hiển thị kết quả trong C# là gì?",
+    "options": [
+      "Bước 1: Nhắc và đọc chuỗi từ bàn phím bằng Console.ReadLine rồi ép kiểu với int.Parse; Bước 2: Thực hiện tính toán số học trong bộ nhớ RAM; Bước 3: Xuất kết quả ra màn hình với Console.WriteLine sử dụng String Interpolation $.",
+      "Bước 1: Tạo Form; Bước 2: Kéo thả Button; Bước 3: Đổi màu BackColor.",
+      "Bước 1: Khởi động máy ảo CLR; Bước 2: Dịch mã sang MSIL; Bước 3: Tắt máy.",
+      "Bước 1: Đọc bàn phím; Bước 2: Ghi dữ liệu ra tệp tin; Bước 3: Gửi email."
+    ],
+    "correct": 0,
+    "explanation": "Mục 3.6 Deitel: Quy trình kinh điển của chương trình Addition.cs gồm: 1) Nhập chuỗi từ bàn phím qua Console.ReadLine và ép kiểu bằng int.Parse; 2) Tính toán số học trong bộ nhớ RAM; 3) Xuất kết quả qua Console.WriteLine bằng String Interpolation $.",
+    "answer": 0
+  }
+];
+
+if (typeof window !== 'undefined') {
+  window.QUIZ_CHAPTER_01 = (typeof QUIZ_CHAPTER_01 !== 'undefined') ? QUIZ_CHAPTER_01 : [];
+  window.QUIZ_CHAPTER_02 = (typeof QUIZ_CHAPTER_02 !== 'undefined') ? QUIZ_CHAPTER_02 : [];
+  window.QUIZ_CHAPTER_03 = QUIZ_CHAPTER_03;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { QUIZ_CHAPTER_01, QUIZ_CHAPTER_02, QUIZ_CHAPTER_03 };
+}

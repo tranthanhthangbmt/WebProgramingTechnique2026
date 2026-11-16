@@ -1,0 +1,45 @@
+Slide 1: KỸ THUẬT LẬP TRÌNH C#
+Slide 2: Mục tiêu Bài học & Chuẩn đầu ra (CLOs) Lộ trình 3 tiết
+Slide 3: Tiến trình Bài học (150 Phút Tích hợp) & Phương pháp Phương pháp sư pham: Hoc qua ví du
+Slide 4: Kiến trúc Cốt lõi: Console (CLI) vs dụng Đồ họa (GUI) Ứng
+Slide 5: TIẾT 1: Chương trình C# Đầu tiên Welcome1.cs
+Slide 6: Cú pháp Căn bản: Chú thích & Chỉ thị using
+Slide 7: Khai báo Lớp (Class), Quy ước Định danh & Từ khóa
+Slide 8: Điểm Khởi nhập static void Main() & Khối lệnh {} Phương thức Main
+Slide 9: Giải phẫu Lệnh Xuất Dữ Liệu: Console WriteLineo)
+Slide 10: Thao tác Visual Studio: Khởi tạo Dự án Console App
+Slide 11: Không gian Soạn thảo Mã (IDE Workspace) comci Mcrosoit Ynusudo Qukk Luncn ulru Tệp Program cs er
+Slide 12: Trợ thủ Lập trình: IntelliSense & Parameter Info Tính năna IntelliSense (Ctrl + Space) Cửa sổ Parameter Info
+Slide 13: Biên dịch và Chạy thử (Run Mode)
+Slide 14: Xử lý Lỗi Biên dịch (Syntax Errors Error List) Mconela' o{ 31a70 Bv Fiee 3,1: Keleeeeia€s U Tert-displayirg *0, Usane Sysice;
+Slide 15: Biến thể Xuất Dữ liệu: Console Write vs WriteLine
+Slide 16: Checkpoint & Thực hành Tiết
+Slide 17: Xuất Nhiều Một Lệnh (Welcome3.cs) Hôn Code (Welcome3 Hôn Kết (Console Dòng Bằng aua
+Slide 18: Bảng Tra cứu Ký tự Thoát Thông dụng (Escape Sequences) Escape sequence Description Newline. Positions the screen cursor at the beginning of the next line.
+Slide 19: Tính Hiện đại C# 6: Nội suy Chuỗi (String Interpolation) Giẻinhễu Cúnhán "t{ năng
+Slide 20: Ưu thế Vượt trội của Nội suy Chuỗi The Old The New Way Way
+Slide 21: dụng Nhập liệu & Tính toán: Addition cs 1. Input (Đầu vào) 2. Process (Xử lý) 3. Output (Đầu ra) Ứng
+Slide 22: Khai báo Biến (Variable) & Kiểu số nguyên int
+Slide 23: Nhập liệu & Chuyển đổi: Console ReadLine() & int Parse() numberl int.Parse(Console.ReadLine( ) )
+Slide 24: Toán tử Gán Giá trị (=) & Luồng Thực thi (<)
+Slide 25: Bản chất Bộ nhớ Máy tính: Cấu trúc nhớ RAM
+Slide 26: Các ô nhớ sau khi tính sum 117 (Hình 3.17): Biến number1 và number2 vẩn giữ nguyên giá trị 45 và 72 sau phép cộng! Cơ chế Đọc Không Phá Hủy vs Ghi Đè Phá Hủy trong RAM
+Slide 27: Các Toán tử Số học Cơ bản trong C# (Arithmetic Operators)
+Slide 28: Phép Chia Số Nguyên (Integer Division Truncation)
+Slide 29: Toán tử Chia lấy dư '% Modulus) dụng kinh điển Ứng
+Slide 30: Quy tắc Thứ tự Ưu tiên Toán tử Số học (Operator Precedence) Order ofevaluation Cấp 1 (Cao nhất)
+Slide 31: Kỹ thuật Sử dụng Dấu ngoặc đơn () & Tránh Lỗi Nhập nhằng Ví dụ: Tính trung bình cộng 3 số a, b, c
+Slide 32: Case Study: Đánh giá Đa thức Bậc hai y = ax2 + bx + c Biểu thức C# tương Giả sử: a = 2,b = 3,c = 7,X= 5 V =a * x X + b * X + c; dương:
+Slide 33: Checkpoint 2: Kiểm tra Nhanh & Thực hành Tiết 2 Quiz Card Quiz Card 2
+Slide 34: TlẾT 3: CẤU TRÚC RẼ NHÁNH IF, TOÁN TỬ SO SÁNH, COMPARISON & THỰC HÀNH TỖNG HỢP Ra Quyết Định trong Phần mềm: Câu lệnh Điều kiện đơn if
+Slide 35: Toán tử Quan hệ (Relational) & Bình đẳng (Equality) Common Programming Error 3.5
+Slide 36: Lỗi Kinh điển #1: Phân biệt còn giữa = và == Sống
+Slide 37: Ứng dụng So sánh Hai Số: Comparison.cs ucing Cucfam
+Slide 38: Màn hình thực thi Comparison
+Slide 39: Phân tích Luồng Thực thi của Comparison.cs Bô test 1: numberl = 777 number2 = 777 Bộ test 2: numberl 1000 number2 = 2000
+Slide 40: Lỗi Kinh điển #2: Cạm bẫy Dấu chấm phẩy Sau if()
+Slide 41: Khối Lệnh Hợp thành (Compound Statement Block {}) Nếu có cặp ngoặc nhọn { } câu lệnh if chỉ kiểm soát câu lệnh duy nhất ngay phía sau nó. không, đúng
+Slide 42: Bảng kết Thứ tự Ưu tiên & Tính kết hợp Tổng
+Slide 43: Quy chuẩn Viết Code Sạch (Microsoft C# Coding Conventions)
+Slide 44: [HANDS-ON LAB 3] Tự Viết & Kiểm thử Chương trình Nhiệm vụ Thực hành Phòng máy (20 Phút)
+Slide 45: Khảo sát Bài tập Lớn, Tổng kết CLOs & Nhiệm vụ Khảo sát Bài tập Lớn & Đổ án

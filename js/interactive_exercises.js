@@ -34,6 +34,449 @@ function matchAnswerKeywords(userInput, acceptableKeywords) {
 // ============================================================================
 const INTERACTIVE_EXERCISES_DATA = {
   // --------------------------------------------------------------------------
+  // CHƯƠNG 3: INTRODUCTION TO C# APP PROGRAMMING
+  // --------------------------------------------------------------------------
+  "3.1": {
+    "mode": "fill-blank",
+    "title": "Self-Review 3.1: Điền vào chỗ trống các khái niệm nền tảng",
+    "items": [
+        {
+            "id": "a1",
+            "label": "a1)",
+            "prefix": "Một",
+            "suffix": "bắt đầu thân của mọi phương thức trong C# (ví dụ: { ).",
+            "acceptable": [
+                "left brace",
+                "leftbrace",
+                "ngoac nhon mo",
+                "ngoặc nhọn mở",
+                "dau ngoac nhon mo",
+                "dấu ngoặc nhọn mở",
+                "{"
+            ],
+            "correctAnswer": "left brace ({) - dấu ngoặc nhọn mở",
+            "explanation": "Mục 3.2.7: Dấu ngoặc nhọn mở { bắt đầu khối mã lệnh của phương thức hoặc lớp."
+        },
+        {
+            "id": "a2",
+            "label": "a2)",
+            "prefix": "Một",
+            "suffix": "kết thúc thân của mọi phương thức trong C# (ví dụ: } ).",
+            "acceptable": [
+                "right brace",
+                "rightbrace",
+                "ngoac nhon dong",
+                "ngoặc nhọn đóng",
+                "dau ngoac nhon dong",
+                "dấu ngoặc nhọn đóng",
+                "}"
+            ],
+            "correctAnswer": "right brace (}) - dấu ngoặc nhọn đóng",
+            "explanation": "Mục 3.2.7: Dấu ngoặc nhọn đóng } kết thúc khối mã lệnh."
+        },
+        {
+            "id": "b",
+            "label": "b)",
+            "prefix": "Hầu hết các câu lệnh thực thi trong C# kết thúc bằng một dấu",
+            "suffix": "(statement terminator).",
+            "acceptable": [
+                "semicolon",
+                "cham phay",
+                "chấm phẩy",
+                "dau cham phay",
+                "dấu chấm phẩy",
+                ";"
+            ],
+            "correctAnswer": "semicolon (;) - dấu chấm phẩy",
+            "explanation": "Mục 3.2.6: Dấu chấm phẩy ; là ký tự kết thúc câu lệnh bắt buộc trong C#."
+        },
+        {
+            "id": "c",
+            "label": "c)",
+            "prefix": "Câu lệnh",
+            "suffix": "được sử dụng để đưa ra quyết định rẽ nhánh logic trong chương trình.",
+            "acceptable": [
+                "if",
+                "if statement",
+                "cau lenh if",
+                "câu lệnh if"
+            ],
+            "correctAnswer": "if - câu lệnh điều kiện if",
+            "explanation": "Mục 3.9: Cấu trúc điều khiển rẽ nhánh if cho phép đưa ra quyết định dựa trên điều kiện boolean."
+        },
+        {
+            "id": "d",
+            "label": "d)",
+            "prefix": "Ký hiệu",
+            "suffix": "bắt đầu một dòng chú thích đơn (single-line comment).",
+            "acceptable": [
+                "//",
+                "hai dau gach cheo",
+                "hai dấu gạch chéo",
+                "double slash"
+            ],
+            "correctAnswer": "// - hai dấu gạch chéo liền nhau",
+            "explanation": "Mục 3.2.1: Ký hiệu // mở đầu chú thích một dòng, trình biên dịch bỏ qua đến cuối dòng."
+        },
+        {
+            "id": "e",
+            "label": "e)",
+            "prefix": "Dòng trống, ký tự dấu cách và ký tự",
+            "suffix": "được gọi chung là khoảng trắng (whitespace).",
+            "acceptable": [
+                "tab",
+                "dau tab",
+                "dấu tab",
+                "tab character",
+                "newline",
+                "xuong dong",
+                "xuống dòng"
+            ],
+            "correctAnswer": "tab (cùng với newline - ký tự xuống dòng)",
+            "explanation": "Mục 3.2.3: Whitespace bao gồm dấu cách (space), phím tab và ký tự xuống dòng (newline)."
+        },
+        {
+            "id": "f",
+            "label": "f)",
+            "prefix": "Các",
+            "suffix": "là những từ ngữ được dành riêng cho ngôn ngữ C# quy định ý nghĩa đặc biệt.",
+            "acceptable": [
+                "keywords",
+                "tu khoa",
+                "từ khóa",
+                "reserved words",
+                "tu danh rieng",
+                "từ dành riêng"
+            ],
+            "correctAnswer": "Keywords (từ khóa / reserved words)",
+            "explanation": "Mục 3.2: Các từ khóa như class, static, void, int, if... được dành riêng cho cú pháp C#."
+        },
+        {
+            "id": "g",
+            "label": "g)",
+            "prefix": "Mọi ứng dụng C# đều bắt đầu thực thi tại phương thức",
+            "suffix": "(Điểm khởi nhập Entry Point).",
+            "acceptable": [
+                "main",
+                "main()",
+                "phuong thuc main",
+                "phương thức main"
+            ],
+            "correctAnswer": "Main (viết hoa chữ M)",
+            "explanation": "Mục 3.2.5: Phương thức static void Main() là điểm khởi nhập duy nhất của ứng dụng C#."
+        },
+        {
+            "id": "h",
+            "label": "h)",
+            "prefix": "Hai phương thức của lớp Console dùng để xuất dữ liệu ra màn hình là Console.Write và",
+            "suffix": ".",
+            "acceptable": [
+                "console.writeline",
+                "writeline",
+                "console.writeline()",
+                "writeline()"
+            ],
+            "correctAnswer": "Console.WriteLine (hoặc Console.Write)",
+            "explanation": "Mục 3.2.6 & 3.4.1: Write và WriteLine là hai phương thức xuất văn bản chuẩn mực."
+        },
+        {
+            "id": "i",
+            "label": "i)",
+            "prefix": "Tính năng",
+            "suffix": "cho phép bạn nhúng trực tiếp giá trị biến vào bên trong chuỗi ký tự bằng dấu tiền tố $.",
+            "acceptable": [
+                "string interpolation",
+                "interpolation",
+                "noi suy chuoi",
+                "nội suy chuỗi",
+                "dinh dang chuoi noi suy",
+                "định dạng chuỗi nội suy"
+            ],
+            "correctAnswer": "string interpolation (định dạng chuỗi nội suy)",
+            "explanation": "Mục 3.5: Tính năng $\"Hello {name}\" nhúng trực tiếp biểu thức vào chuỗi ký tự."
+        }
+    ]
+},
+  "3.2": {
+    "mode": "true-false",
+    "title": "Self-Review 3.2: Nhận định Đúng / Sai và giải thích kỹ thuật",
+    "items": [
+        {
+            "id": "a",
+            "label": "a)",
+            "statement": "Chú thích (Comments) khiến máy tính hiển thị văn bản đứng sau dấu // lên màn hình khi ứng dụng chạy.",
+            "correct": false,
+            "explanation": "Sai (False). Chú thích hoàn toàn không gây ra bất kỳ hành động nào và bị trình biên dịch bỏ qua; chỉ phục vụ tài liệu hóa mã nguồn cho người đọc."
+        },
+        {
+            "id": "b",
+            "label": "b)",
+            "statement": "C# xem hai biến number và NuMbEr là hoàn toàn giống nhau (identical).",
+            "correct": false,
+            "explanation": "Sai (False). Ngôn ngữ C# phân biệt chữ hoa chữ thường (case-sensitive), do đó number và NuMbEr là hai ô nhớ biến hoàn toàn độc lập."
+        },
+        {
+            "id": "c",
+            "label": "c)",
+            "statement": "Toán tử chia lấy dư (%) chỉ có thể được sử dụng với các toán hạng kiểu số nguyên.",
+            "correct": false,
+            "explanation": "Sai (False). Trong C#, toán tử chia lấy dư % hoạt động hoàn hảo trên cả số thực dấu phẩy động (float, double), ví dụ: 7.5 % 2.0 = 1.5."
+        },
+        {
+            "id": "d",
+            "label": "d)",
+            "statement": "Các toán tử số học *, /, %, + và - đều có cùng một mức độ ưu tiên tính toán.",
+            "correct": false,
+            "explanation": "Sai (False). Nhân (*), chia (/), và chia lấy dư (%) có cùng mức ưu tiên cao hơn cộng (+) và trừ (-)."
+        },
+        {
+            "id": "e",
+            "label": "e)",
+            "statement": "Một chuỗi nội suy (interpolated string) bắt buộc phải bắt đầu bằng ký tự $ đặt ngay trước chuỗi.",
+            "correct": true,
+            "explanation": "Đúng (True). Ký tự $ đặt ngay trước dấu mở ngoặc kép báo hiệu cho trình biên dịch kích hoạt cơ chế String Interpolation."
+        }
+    ]
+},
+  "3.4": {
+    "mode": "fill-blank",
+    "title": "Self-Review 3.4: Phát hiện và sửa lỗi cú pháp",
+    "items": [
+        {
+            "id": "a",
+            "label": "a)",
+            "prefix": "Trong câu lệnh if (c < 7); { Console.WriteLine(...); }, lỗi cú pháp là dấu",
+            "suffix": "đặt ngay sau mệnh đề điều kiện tạo thành câu lệnh rỗng.",
+            "acceptable": [
+                "cham phay",
+                "chấm phẩy",
+                "semicolon",
+                ";",
+                "dau cham phay",
+                "dấu chấm phẩy"
+            ],
+            "correctAnswer": "dấu chấm phẩy (semicolon ;) sau (c < 7)",
+            "explanation": "Dấu chấm phẩy sau if kết thúc câu lệnh if ngay lập tức, khiến khối lệnh { ... } phía sau luôn luôn bị chạy!"
+        },
+        {
+            "id": "b",
+            "label": "b)",
+            "prefix": "Trong câu lệnh if (c => 7), toán tử quan hệ đúng theo chuẩn C# phải là",
+            "suffix": "(lớn hơn hoặc bằng).",
+            "acceptable": [
+                ">=",
+                "lon hon hoac bang",
+                "lớn hơn hoặc bằng",
+                "greater than or equal"
+            ],
+            "correctAnswer": ">= (dấu lớn hơn đứng trước dấu bằng)",
+            "explanation": "Trong C#, toán tử so sánh lớn hơn hoặc bằng là >=, còn => là lambda operator."
+        }
+    ]
+},
+  "3.7": {
+    "mode": "fill-blank",
+    "title": "Exercise 3.7: Điền từ còn thiếu vào các nhận định nâng cao",
+    "items": [
+        {
+            "id": "a",
+            "label": "a)",
+            "prefix": "Mỗi chỉ thị using xác định một",
+            "suffix": "chứa các lớp mà ứng dụng C# có thể sử dụng (ví dụ: System).",
+            "acceptable": [
+                "namespace",
+                "khong gian ten",
+                "không gian tên"
+            ],
+            "correctAnswer": "namespace (không gian tên)",
+            "explanation": "Chỉ thị using nạp một namespace chứa các lớp thư viện vào phạm vi mã nguồn."
+        },
+        {
+            "id": "b",
+            "label": "b)",
+            "prefix": "Cặp ký hiệu dùng cho chú thích nhiều dòng (delimited comments) trong C# là /* và",
+            "suffix": ".",
+            "acceptable": [
+                "*/",
+                "dau sao va gach cheo"
+            ],
+            "correctAnswer": "*/ (dấu sao và gạch chéo đóng)",
+            "explanation": "Chú thích khối nhiều dòng bắt đầu bằng /* và kết thúc bằng */."
+        },
+        {
+            "id": "c",
+            "label": "c)",
+            "prefix": "Các toán tử số học có cùng mức độ ưu tiên với phép nhân (*) là phép chia (/) và phép",
+            "suffix": "(ký hiệu %).",
+            "acceptable": [
+                "chia lay du",
+                "chia lấy dư",
+                "remainder",
+                "modulus",
+                "%",
+                "phan du",
+                "phần dư"
+            ],
+            "correctAnswer": "chia lấy dư (%) - remainder / modulus",
+            "explanation": "Ba toán tử *, /, % có cùng mức độ ưu tiên cao trong các phép toán số học."
+        },
+        {
+            "id": "d",
+            "label": "d)",
+            "prefix": "Khi các cặp ngoặc đơn trong biểu thức số học lồng nhau, cặp ngoặc nằm ở vị trí",
+            "suffix": "sẽ được tính toán trước tiên.",
+            "acceptable": [
+                "trong cung",
+                "trong cùng",
+                "innermost",
+                "ben trong",
+                "bên trong"
+            ],
+            "correctAnswer": "trong cùng nhất (innermost)",
+            "explanation": "Quy tắc ngoặc đơn: Cặp ngoặc nằm trong cùng luôn được ưu tiên thực thi đầu tiên."
+        },
+        {
+            "id": "e",
+            "label": "e)",
+            "prefix": "Một vị trí trong bộ nhớ RAM có tên định danh và chứa giá trị thay đổi được gọi là",
+            "suffix": ".",
+            "acceptable": [
+                "bien",
+                "biến",
+                "variable",
+                "bien so",
+                "biến số"
+            ],
+            "correctAnswer": "biến (variable)",
+            "explanation": "Mỗi biến đại diện cho một vị trí ô nhớ trong RAM có tên, kiểu, kích thước và giá trị."
+        }
+    ]
+},
+  "3.9": {
+    "mode": "true-false",
+    "title": "Exercise 3.9: Nhận định Đúng / Sai về tên biến, IntelliSense và void",
+    "items": [
+        {
+            "id": "a",
+            "label": "a)",
+            "statement": "IntelliSense liệt kê các mục bắt đầu bằng hoặc chứa các chữ cái mà người dùng đã gõ.",
+            "correct": true,
+            "explanation": "Đúng (True). IntelliSense hỗ trợ tìm kiếm mờ (fuzzy search), hiển thị cả thành viên bắt đầu hoặc chứa chuỗi ký tự vừa gõ."
+        },
+        {
+            "id": "b",
+            "label": "b)",
+            "statement": "Các tên sau đây đều là tên biến hợp lệ trong C#: _under_bar_, m928134, t5, j7, her_sales, his_account_total, a, b, c, z và z2.",
+            "correct": true,
+            "explanation": "Đúng (True). Tất cả các tên này đều hợp lệ vì bắt đầu bằng chữ cái hoặc dấu gạch dưới _, và chỉ chứa chữ cái, chữ số, dấu gạch dưới."
+        },
+        {
+            "id": "c",
+            "label": "c)",
+            "statement": "Một biểu thức số học C# hợp lệ không chứa dấu ngoặc đơn luôn luôn được tính toán tuần tự từ trái sang phải.",
+            "correct": false,
+            "explanation": "Sai (False). Biểu thức không có ngoặc vẫn phải tuân thủ thứ tự ưu tiên của toán tử: *, /, % luôn được tính trước +, -."
+        },
+        {
+            "id": "d",
+            "label": "d)",
+            "statement": "Từ khóa void chỉ ra rằng phương thức Main sẽ không trả về bất kỳ giá trị nào sau khi hoàn thành nhiệm vụ.",
+            "correct": true,
+            "explanation": "Đúng (True). Từ khóa void quy định kiểu trả về rỗng, phương thức không trả dữ liệu về hệ điều hành."
+        }
+    ]
+},
+  "3.10": {
+    "mode": "fill-blank",
+    "title": "Exercise 3.10: Dự đoán kết quả hiển thị của String Interpolation",
+    "items": [
+        {
+            "id": "a",
+            "label": "a)",
+            "prefix": "Với x = 2, lệnh Console.WriteLine($\"x = {x}\"); in ra dòng chữ:",
+            "suffix": ".",
+            "acceptable": [
+                "x = 2",
+                "x=2"
+            ],
+            "correctAnswer": "x = 2",
+            "explanation": "{x} được thay thế bằng giá trị 2."
+        },
+        {
+            "id": "b",
+            "label": "b)",
+            "prefix": "Với x = 2, lệnh Console.WriteLine($\"Value of {x} + {x} is {x + x}\"); in ra:",
+            "suffix": ".",
+            "acceptable": [
+                "value of 2 + 2 is 4",
+                "value of 2+2 is 4"
+            ],
+            "correctAnswer": "Value of 2 + 2 is 4",
+            "explanation": "{x} là 2, {x + x} tính toán thành 4."
+        },
+        {
+            "id": "c",
+            "label": "c)",
+            "prefix": "Với x = 2, y = 3, lệnh Console.WriteLine($\"{x + y} = {y + x}\"); in ra:",
+            "suffix": ".",
+            "acceptable": [
+                "5 = 5",
+                "5=5"
+            ],
+            "correctAnswer": "5 = 5",
+            "explanation": "{x + y} là 5 và {y + x} cũng là 5."
+        }
+    ]
+},
+  "3.11": {
+    "mode": "fill-blank",
+    "title": "Exercise 3.11: Xác định câu lệnh làm thay đổi giá trị biến (Destructive Write)",
+    "items": [
+        {
+            "id": "a",
+            "label": "a)",
+            "prefix": "Câu lệnh p = i + j + k + 7; có làm thay đổi giá trị của biến nào không? (Trả lời 'co' hoặc 'khong'):",
+            "suffix": ".",
+            "acceptable": [
+                "co",
+                "có",
+                "yes",
+                "p"
+            ],
+            "correctAnswer": "Có (làm thay đổi biến p qua phép gán =)",
+            "explanation": "Biến p ở vế trái toán tử gán nhận giá trị mới, ghi đè giá trị cũ."
+        },
+        {
+            "id": "b",
+            "label": "b)",
+            "prefix": "Câu lệnh Console.WriteLine(\"a = 5\"); có làm thay đổi giá trị của biến nào không? (Trả lời 'co' hoặc 'khong'):",
+            "suffix": ".",
+            "acceptable": [
+                "khong",
+                "không",
+                "no"
+            ],
+            "correctAnswer": "Không (chỉ in chuỗi ký tự cố định ra màn hình)",
+            "explanation": "\"a = 5\" chỉ là chuỗi văn bản thuần túy, không có biến nào bị gán."
+        },
+        {
+            "id": "c",
+            "label": "c)",
+            "prefix": "Câu lệnh value = int.Parse(Console.ReadLine()); có làm thay đổi giá trị của biến value không? (Trả lời 'co' hoặc 'khong'):",
+            "suffix": ".",
+            "acceptable": [
+                "co",
+                "có",
+                "yes"
+            ],
+            "correctAnswer": "Có (ghi giá trị số nguyên mới vào biến value)",
+            "explanation": "Biến value nhận giá trị nhập từ người dùng thông qua toán tử gán =."
+        }
+    ]
+},
+
+
+  // --------------------------------------------------------------------------
   // CHƯƠNG 2
   // --------------------------------------------------------------------------
   "sre-2.1": {
@@ -1095,13 +1538,13 @@ function generateGeneralExerciseUI(item, submission) {
       ${hasSubmitted ? `
         <div class="sub-feedback-correct" style="margin-top: 0.75rem;">
           <span class="sub-badge-correct">✅ Đã hoàn thành nộp bài!</span>
-          <div class="sub-expl-text">Bạn đã hoàn thành bài tập này. Hãy đối chiếu câu trả lời của bạn với lời giải chi tiết bên dưới.</div>
+          <div class="sub-expl-text">Bạn đã hoàn thành và nộp bài làm thành công.</div>
         </div>
       ` : ''}
 
       <div class="ex-action-buttons">
         <button type="button" class="btn-check-exercise" onclick="submitGeneralExercise('${exId}')">
-          🚀 Gửi bài & Mở khóa lời giải chi tiết
+          🚀 Nộp bài & Lưu kết quả
         </button>
         <button type="button" class="btn-reset-exercise" onclick="resetExercise('${exId}')">
           🔄 Làm lại
@@ -1348,10 +1791,6 @@ window.submitGeneralExercise = function(exId) {
   });
 
   refreshExerciseCard(exId);
-
-  // Mở luôn đáp án chi tiết
-  const solEl = document.getElementById(`solution-${exId}`);
-  if (solEl) solEl.classList.add('open');
 };
 
 // 9. Reset bài làm

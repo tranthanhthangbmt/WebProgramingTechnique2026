@@ -1,0 +1,1189 @@
+=== SLIDE 1 ===
+KỸTHUẬT LẬP TRÌNH C#
+Chương 3: Giới thiệu Lập trình Ứng dụng C# (Introduction to C# App
+Programming)
+BÀI GIẢNG CHUẨN ĐẠI HỌC (3 TIẾT TÍCH HỢP)
+Giáo trình: Visual C# How to Program (Deitel & Deitel)
+Khoa Công nghệThông tin – Đại học Đông Á
+Đối tượng: Lớp IT26M (Khóa 2026)
+Học kỳI – Năm học 2026
+Bản quyền bài giảng thuộc Bộmôn Kỹthuật Lập trình – Phục vụđào tạo Đại học chính quy
+
+=== SLIDE 2 ===
+Mục tiêu Bài học & Chuẩn đầu ra (CLOs)
+Chuẩn đầu ra sinh viên cần đạt được sau buổi học 3 tiết:
+CLO 3.1 (Understand): Giải thích kiến trúc ứng dụng Console C#, vai trò của phương thức
+static void Main(), chỉthịusing System;, khối lệnh {} và quy ước PascalCase.
+CLO 3.2 (Apply): Vận dụng thành thạo xuất dữliệu (Console.Write, Console.WriteLine),
+ký tựthoát (\n, \t, \\, \") và Nội suy chuỗi C# 6 ($"...{var}...").
+CLO 3.3 (Apply): Khai báo biến int, nhập dữliệu bằng Console.ReadLine(), ép kiểu
+int.Parse() và hiểu rõ cơ chếô nhớRAM (đọc không phá hủy vs ghi đè phá hủy).
+CLO 3.4 (Apply): Sửdụng các toán tửsốhọc (+, ‐, *, /, %), nắm vững thứtựưu tiên
+(precedence) và chuyển đổi công thức đại sốsang mã C#.
+CLO 3.5 (Create): Xây dựng cấu trúc rẽnhánh ra quyết định với câu lệnh if, kết hợp toán tử
+quan hệ(<, <=, >, >=) và bình đẳng (==, !=).
+Phương pháp sư phạm:
+Học qua ví dụthực chiến (Case-Based Learning): TừWelcome1 →Welcome4 →Addition →
+Comparison.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+2 / 45
+
+=== SLIDE 3 ===
+Tiến trình Bài học 3 Tiết (150 Phút Tích hợp)
+TIẾT 1 (50’)
+Cấu trúc Console App
+Kiến trúc Console vs GUI
+Phân tích Welcome1.cs
+Chú thích & using System;
+Lớp & Phương thức Main()
+Console.WriteLine()
+Tạo Console App trong VS
+IntelliSense & Parameter
+Info
+Xửlý lỗi Error List
+[LAB 1]: Code Welcome1,
+2
+TIẾT 2 (50’)
+Biến, Bộnhớ& Sốhọc
+Escape Sequences
+(Welcome3)
+Nội suy chuỗi (Welcome4)
+Khai báo biến & Kiểu int
+Console.ReadLine() &
+Parse
+Toán tửgán (=)
+Ô nhớ: Non- vs Destructive
+5 Toán tửsốhọc (+, -, *, /,
+%)
+Chia nguyên & Chia dư (%)
+Thứtựưu tiên & Đa thức
+[LAB 2]: Ứng dụng Addition
+TIẾT 3 (50’)
+Rẽnhánh & Thực hành
+Câu lệnh điều kiện đơn if
+Toán tửso sánh (==, !=, <,
+>)
+Phân biệt sống còn = vs ==
+Case Study Comparison.cs
+Cạm bẫy dấu ; sau if
+Khối lệnh {} compound
+Bảng tổng kết toán tử
+Quy chuẩn Clean Code
+[LAB 3]: Đồán Comparison
+Giới thiệu Đồán lớn
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+3 / 45
+
+=== SLIDE 4 ===
+Khái niệm: Ứng dụng Console (CLI) vs Ứng dụng Đồhọa (GUI)
+Ứng dụng Console (Command-Line)
+Giao tiếp qua văn bản thuần túy (Text-based):
+xuất ra màn hình Command Prompt / Terminal
+và nhận nhập liệu từbàn phím.
+Không cần xửlý các sựkiện đồhọa phức tạp
+(chuột, kéo thả, vẽlại cửa sổ).
+Mục đích học tập: Tập trung 100% vào tư
+duy thuật toán, cấu trúc điều khiển, kiểu dữ
+liệu và luồng thực thi logic của C#.
+Dùng phổbiến trong: Dịch vụnền tảng
+(Microservices), Script tựđộng hóa, Điện toán
+đám mây.
+Mối liên hệvới Chương 2 (Windows
+Forms)
+ỞChương 2, chúng ta đã dùng chuột kéo thả
+đểtạo giao diện GUI trực quan (Form, Button,
+Label).
+Bản chất: Phía sau mỗi sựkiện nhấp nút
+(Click Event) đều cần những dòng lệnh logic
+C# thuần túy đểtính toán!
+Chương 3 trang bịcho các em nền tảng lập
+trình mã nguồn nòng cốt đểviết logic bên trong
+các hàm sựkiện đó.
+Thông điệp cốt lõi:
+Một kỹsư phần mềm giỏi phải nắm chắc cách viết code dòng lệnh trước khi xây dựng các hệ
+thống đồhọa hay web quy mô lớn!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+4 / 45
+
+=== SLIDE 5 ===
+TIẾT 1
+CẤU TRÚC CONSOLE APP, WELCOME1 ĐẾN WELCOME4,
+INTELLISENSE & ERROR LIST
+
+=== SLIDE 6 ===
+Chương trình C# Đầu tiên: Welcome1.cs
+Welcome1.cs (Fig. 3.1)
+1
+// Fig. 3.1: Welcome1.cs
+2
+// Text‐displaying app.
+3
+using System;
+4
+5
+class Welcome1
+6
+{
+7
+// Main method begins execution of C# app
+8
+static void Main()
+9
+{
+10
+Console.WriteLine("Welcome to C#
+Programming!");
+11
+} // end Main
+12
+} // end class Welcome1
+Cấu trúc 4 Khối Nòng cốt
+1
+Dòng 1–2: Chú thích tài liệu hóa (//
+Comment).
+2
+Dòng 3: Chỉthịnhập không gian tên
+(using System;).
+3
+Dòng 5–12: Khai báo lớp đối tượng
+(class Welcome1).
+4
+Dòng 8–11: Phương thức thực thi chính
+(static void Main()).
+Màn hình Console Output
+Welcome to C# Programming!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+6 / 45
+
+=== SLIDE 7 ===
+Cú pháp Căn bản: Chú thích (Comments) & Chỉthịusing
+1. Chú thích trong C# (Comments)
+Chú thích một dòng (//): Trình biên dịch C#
+bỏqua tất cảký tựtừ// đến hết dòng.
+Chú thích nhiều dòng (/* ... */): Dùng để
+chú thích một khối văn bản dài hoặc tạm thời
+vô hiệu hóa đoạn mã.
+Vai trò kỹsư: Tăng tính rõ ràng, dễbảo trì cho
+mã nguồn. Không làm tăng kích thước tệp
+.exe được biên dịch.
+Ví dụ:
+// Day la chu thich 1 dong
+/* Chu thich
+nhieu dong lien tiep */
+2. Chỉthịusing System;
+Không gian tên (Namespace): Là tập hợp
+nhóm các lớp có liên quan trong Thư viện Lớp
+Cơ sở(.NET FCL).
+Namespace System chứa các lớp nền tảng
+thiết yếu của C#, bao gồm lớp Console.
+Chỉthịusing System; cho phép ta gọi trực
+tiếp Console.WriteLine() thay vì phải gõ tên
+đầy đủSystem.Console.WriteLine().
+Kết thúc chỉthịbằng dấu chấm phẩy (;).
+Lỗi thường gặp:
+Quên dấu chấm phẩy ; hoặc quên using
+System; sẽdẫn đến lỗi: The name ’Console’
+does not exist in the current context.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+7 / 45
+
+=== SLIDE 8 ===
+Khai báo Lớp (Class), Quy ước Định danh & Bảng Từkhóa
+Khai báo Lớp (class Welcome1)
+Mọi chương trình C# đều phải chứa ít nhất một
+khai báo lớp do lập trình viên định nghĩa.
+Từkhóa class báo hiệu bắt đầu định nghĩa lớp,
+theo sau là tên lớp (định danh - identifier).
+C# phân biệt chữhoa – chữthường
+(case-sensitive): welcome1, Welcome1,
+WELCOME1 là 3 định danh hoàn toàn khác nhau!
+Quy ước PascalCase:
+Theo chuẩn Microsoft, tên lớp luôn viết hoa chữ
+cái đầu của mỗi từ: Welcome1, AccountManager,
+StudentProfile.
+Bảng 77 từkhóa chuẩn C# (Hình 3.2)
+Quy tắc định danh:
+Không được dùng từkhóa C# (class,
+static void
+) làm tên biến/tên lớp và
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+8 / 45
+
+=== SLIDE 9 ===
+Điểm Khởi nhập static void Main(), Cặp ngoặc nhọn & Khối lệnh
+Phương thức Main()
+Cửa ngõ thực thi (Entry Point): Máy ảo CLR
+luôn tìm và bắt đầu thực thi chương trình C# từ
+phương thức Main.
+Từkhóa static: Cho phép CLR gọi thực thi
+phương thức mà không cần tạo đối tượng của
+lớp trước.
+Từkhóa void: Báo hiệu phương thức này
+không trảvềbất kỳdữliệu nào khi hoàn tất tác
+vụ.
+Cặp ngoặc đơn (): Chứa danh sách tham số
+(trong Welcome1 không có tham số).
+Cặp ngoặc nhọn {} & Khối lệnh
+(Block)
+Dấu mởngoặc nhọn {: Đánh dấu bắt đầu phần
+thân (body) của một lớp hoặc một phương
+thức.
+Dấu đóng ngoặc nhọn }: Đánh dấu kết thúc
+phần thân.
+Luôn phải xuất hiện theo từng cặp tương ứng
+khớp nhau (matching pairs).
+Quy chuẩn thụt lề(Indentation):
+Thụt vào 1 tab (3 hoặc 4 dấu cách) cho mỗi
+cấp độkhối lệnh bên trong đểmã nguồn rõ
+ràng, chuyên nghiệp.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+9 / 45
+
+=== SLIDE 10 ===
+Xuất Dữliệu ra Màn hình: Console.WriteLine()
+Cú pháp câu lệnh xuất chuẩn C#
+Console.WriteLine("Welcome to C# Programming!");
+Giải phẫu câu lệnh:
+Console: Lớp đại diện cho cửa sổdòng lệnh
+chuẩn của hệđiều hành.
+Toán tửchấm (.): Toán tửtruy cập thành
+viên, dùng đểgọi phương thức WriteLine của
+lớp Console.
+Đối số(Argument): Chuỗi ký tựnằm trong
+cặp nháy kép "..." được truyền vào cho
+phương thức in ra màn hình.
+Cơ chếhoạt động: In chuỗi văn bản ra cửa sổ
+console và tựđộng đưa con trỏxuống đầu
+dòng kếtiếp.
+Dấu chấm phẩy (;) – Dấu hiệu kết
+thúc câu lệnh
+Mọi câu lệnh đơn trong C# đều bắt buộc phải
+kết thúc bằng dấu chấm phẩy ;.
+Thiếu dấu chấm phẩy là lỗi cú pháp sơ đẳng
+phổbiến nhất của người mới học lập trình!
+Chuỗi ký tự(String Literal):
+Một dãy các ký tựnằm trong cặp nháy kép
+"...". Nháy kép không được in ra màn hình,
+chỉcó nội dung bên trong được hiển thị
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+10 / 45
+
+=== SLIDE 11 ===
+Thao tác Visual Studio: Khởi tạo Dựán Console Application
+Chọn Console Application trong New Project (Hình 3.3)
+Vào File →New →Project... (hoặc Ctrl+Shift+N).
+Chọn mẫu: Visual C# →Windows →Console
+Application.
+Đặt tên dựán: Welcome1, chọn đường dẫn lưu tệp.
+Không gian soạn thảo mã Console App (Hình 3.4)
+IDE tựđộng sinh tệp mã nguồn mẫu Program.cs.
+Đổi tên tệp thành Welcome1.cs trong Solution Explorer (bấm
+Yes khi IDE hỏi đổi tên lớp).
+Khung soạn thảo hỗtrợđánh sốdòng (Line Numbers) và tô
+màu cú pháp.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+11 / 45
+
+=== SLIDE 12 ===
+TrợthủLập trình: Tính năng IntelliSense & Parameter Info
+Cửa sổ
+IntelliSense gợi ý tựđộng (Hình 3.5, 3.6)
+Tính năng IntelliSense (Ctrl + Space)
+Tựđộng hoàn thành mã nguồn khi bạn gõ vài
+ký tựđầu (ví dụ: gõ Con →nhấn Tab đểchọn
+Console).
+Hiển thịdanh sách tất cảthuộc tính, phương
+thức khảdụng kèm mô tảngắn.
+Cửa
+sổParameter Info (Hình 3.7)
+Parameter Info Tooltip:
+Khi gõ dấu mởngoặc đơn ( IDE hiển thịsốlượng
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+12 / 45
+
+=== SLIDE 13 ===
+Biên dịch và Chạy thử: Run Mode (Phím tắt Ctrl + F5)
+Quy trình Thực thi Ứng dụng Console:
+1
+Phím tắt thực thi: Nhấn Ctrl + F5 (Start Without
+Debugging).
+2
+Cơ chếbiên dịch: Trình biên dịch C# kiểm tra cú
+pháp và sinh tệp thực thi Welcome1.exe trong
+thư mục bin/Debug/.
+3
+Khởi chạy: Hệđiều hành mởcửa sổCommand
+Prompt màu đen, thực thi ứng dụng và in kết quả.
+Tại sao dùng Ctrl+F5 thay vì F5?
+Nhấn F5 (Debug) sẽđóng cửa sổConsole ngay khi
+hoàn thành, khiến ta không kịp đọc kết quả. Ctrl+F5
+sẽgiữmàn hình và hiển thịdòng chữ: ”Press any key
+to continue . . .”.
+Màn hình thực thi Welcome1.exe trong Command Prompt
+(Hình 3.8)
+Kết quảmong đợi:
+Welcome to C# Programming!
+Press any key to continue . . .
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+13 / 45
+
+=== SLIDE 14 ===
+Xửlý Lỗi Biên dịch: Syntax Errors & Cửa sổError List
+Gạch lượn sóng đỏvà cửa sổError List (Hình 3.9)
+1. Lỗi cú pháp (Syntax Error)
+Vi phạm quy tắc ngữpháp của C# (thiếu
+dấu ;, sai tên lớp, thừa ngoặc...).
+IDE đánh dấu bằng đường gợn sóng
+đỏ(red squiggly line) ngay dưới vịtrí lỗi.
+2. Cửa sổError List
+Liệt kê mã lỗi (CS1002), mô tảlỗi, tệp tin
+và sốdòng gặp sựcố.
+Mẹo kỹsư: Nhấp đúp chuột vào dòng
+lỗi trong Error List sẽtựđộng nhảy con
+trỏtới đúng vịtrí cần sửa!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+14 / 45
+
+=== SLIDE 15 ===
+Biến thểXuất Dữliệu: Console.Write vs WriteLine
+Welcome2.cs (Fig. 3.10)
+1
+// Fig. 3.10: Welcome2.cs
+2
+// Displaying one line of text with multiple
+statements.
+3
+using System;
+4
+5
+class Welcome2
+6
+{
+7
+static void Main()
+8
+{
+9
+Console.Write("Welcome to ");
+10
+Console.WriteLine("C# Programming!");
+11
+} // end Main
+12
+} // end class Welcome2
+Phân biệt then chốt:
+Console.Write(): In chuỗi ra màn hình
+nhưng giữnguyên con trỏởcùng một
+dòng.
+Console.WriteLine(): In chuỗi ra màn
+hình và đưa con trỏxuống dòng tiếp
+theo.
+Kết quảđầu ra:
+Hai lệnh xuất nối tiếp nhau trên cùng một
+dòng duy nhất:
+Welcome to C# Programming!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+15 / 45
+
+=== SLIDE 16 ===
+Checkpoint 1: Kiểm tra Nhanh & Thực hành Tiết 1
+Câu hỏi 1: Lệnh nào sau đây hợp lệđểin thông điệp và xuống dòng?
+A. console.writeline("Hello");
+B. Console.WriteLine("Hello"); (Đáp án Đúng – PascalCase chuẩn)
+C. Console.writeline("Hello")
+D. System.out.println("Hello");
+Câu hỏi 2: Điều gì xảy ra nếu quên dấu chấm phẩy ; ởcuối câu lệnh?
+Trình biên dịch báo lỗi cú pháp CS1002: ; expected tại cửa sổError List và ngăn chặn biên dịch.
+Hands-on Lab 1 (Phòng máy – 10 phút):
+MởVisual Studio →Tạo Console Application Welcome1 →Gõ mã nguồn →Chạy thửvới Ctrl+F5
+→Thửthay bằng Console.Write và quan sát vịtrí con trỏ!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+16 / 45
+
+=== SLIDE 17 ===
+TIẾT 2
+KÝ TỰTHOÁT, NỘI SUY CHUỖI, BIẾN SỐ, BỘNHỚRAM &
+PHÉP TOÁN SỐHỌC
+
+=== SLIDE 18 ===
+Xuất Nhiều Dòng Bằng Một Lệnh: Welcome3.cs
+Welcome3.cs (Fig. 3.11)
+1
+// Fig. 3.11: Welcome3.cs
+2
+// Displaying multiple lines with a single
+statement.
+3
+using System;
+4
+5
+class Welcome3
+6
+{
+7
+static void Main()
+8
+{
+9
+Console.WriteLine("Welcome\nto\nC#\nProgramming!");
+10
+} // end Main
+11
+} // end class Welcome3
+Cơ chếKý tựThoát \n:
+Ký tựgạch chéo ngược (\) gọi là ký tự
+thoát (Escape character).
+Kết hợp với ký tựđi liền kềtạo thành một
+dãy ký tựthoát (Escape Sequence).
+\n đại diện cho lệnh xuống dòng
+(Newline), chuyển con trỏsang dòng mới.
+Kết quảin ra 4 dòng:
+Welcome
+to
+C#
+Programming!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+18 / 45
+
+=== SLIDE 19 ===
+Bảng Tra cứu Ký tựThoát Thông dụng (Escape Sequences)
+Bảng các ký tựthoát thông dụng trong C# (Hình 3.12)
+Phân tích các Ký tựTiêu biểu:
+\n (Newline): Đưa con trỏxuống đầu
+dòng kếtiếp.
+\t (Horizontal Tab): Đẩy con trỏsang
+điểm dừng tab tiếp theo (thường là 4
+hoặc 8 khoảng trắng).
+\r (Carriage Return): Đưa con trỏvề
+đầu dòng hiện tại.
+\\ (Backslash): In chính ký tựgạch chéo
+ngược \.
+\" (Double Quote): In dấu nháy kép "
+bên trong chuỗi mà không bịnhầm là kết
+thúc chuỗi.
+Ví dụin nháy kép:
+Console.WriteLine("\"C#\""); →in
+"C#"
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+19 / 45
+
+=== SLIDE 20 ===
+Tính năng Hiện đại C# 6: Nội suy Chuỗi (String Interpolation)
+Welcome4.cs (Fig. 3.13)
+1
+// Fig. 3.13: Welcome4.cs
+2
+// Inserting content into a string with string
+interpolation.
+3
+using System;
+4
+5
+class Welcome4
+6
+{
+7
+static void Main()
+8
+{
+9
+string person = "Paul"; // variable that
+stores the name Paul
+10
+Console.WriteLine($"Welcome to C#
+Programming, {person}!");
+11
+} // end Main
+12
+} // end class Welcome4
+Cú pháp Nội suy Chuỗi: $"..."
+Bắt đầu chuỗi bằng ký tựđô-la ($) đặt
+ngay trước dấu nháy kép mở.
+Nhúng trực tiếp biến hoặc biểu thức vào
+bên trong cặp ngoặc nhọn {biểu_thức}.
+Giá trịcủa biểu thức sẽđược tựđộng tính
+toán và chèn vào đúng vịtrí đó!
+Ưu thếso với cách cũ:
+Cách cũ: "Welcome " + person + "!"
+Nội suy C# 6: $"Welcome {person}!"
+→Ngắn gọn, trực quan, chạy nhanh
+hơn và hạn chếlỗi cú pháp!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+20 / 45
+
+=== SLIDE 21 ===
+Ứng dụng Nhập liệu & Tính toán: Addition.cs
+Addition.cs (Fig. 3.14)
+1
+using System;
+2
+3
+class Addition
+4
+{
+5
+static void Main()
+6
+{
+7
+int number1; // declare first number to add
+8
+int number2; // declare second number to add
+9
+int sum;
+// declare sum of number1 and
+number2
+10
+11
+Console.Write("Enter first integer: ");
+12
+number1 = int.Parse(Console.ReadLine());
+13
+14
+Console.Write("Enter second integer: ");
+15
+number2 = int.Parse(Console.ReadLine());
+16
+17
+sum = number1 + number2; // add numbers
+18
+Console.WriteLine($"Sum is {sum}"); //
+display sum
+19
+} // end Main
+20
+} // end class Addition
+Màn hình Console Tương tác
+Enter first integer: 45
+Enter second integer: 72
+Sum is 117
+Quy trình 3 Giai đoạn:
+1
+Input: Nhắc người dùng gõ 2 sốtừbàn
+phím.
+2
+Process: Chuyển chuỗi thành sốvà
+cộng: sum = number1 + number2.
+3
+Output: In kết quảtổng ra màn hình
+bằng nội suy chuỗi.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+21 / 45
+
+=== SLIDE 22 ===
+Khai báo Biến (Variable Declaration) & Kiểu sốnguyên int
+1. Biến (Variable) là gì?
+Một vùng nhớtrong RAM máy tính được đặt
+tên đểlưu trữgiá trịdữliệu cho chương trình
+sửdụng.
+Mọi biến trong C# bắt buộc phải được khai
+báo tên và kiểu dữliệu trước khi sửdụng.
+Cú pháp khai báo:
+int number1;
+int number2, sum; // khai báo nhiều biến
+cùng kiểu
+2. Kiểu dữliệu int
+Đại diện cho sốnguyên (Integer) trong khoảng
+từ−2, 147, 483, 648 đến +2, 147, 483, 647
+(chiếm 32-bit = 4 bytes trong RAM).
+Không chứa phần thập phân (như
+−5, 0, 45, 100).
+Quy ước đặt tên biến (camelCase):
+Chữcái đầu viết thường, các từtiếp theo viết
+hoa chữcái đầu: number1, totalScore,
+itemPrice.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+22 / 45
+
+=== SLIDE 23 ===
+Nhập Liệu từBàn phím: Console.ReadLine() & int.Parse()
+Cú pháp nhập và chuyển đổi kiểu dữliệu
+number1 = int.Parse(Console.ReadLine());
+Bước 1: Console.ReadLine()
+Tạm dừng chương trình và chờngười dùng gõ
+ký tựtừbàn phím.
+Khi người dùng nhấn phím Enter, phương
+thức đọc toàn bộdòng chữvà trảvềmột đối
+tượng string (chuỗi).
+Ví dụgõ 45 →nhận vềchuỗi "45" (văn bản,
+không phải sốhọc!).
+Bước 2: int.Parse()
+Nhận vào chuỗi văn bản và chuyển đổi
+(parse) nó thành giá trịsốnguyên int.
+Chuỗi "45" →biến thành sốnguyên 45 đểcó
+thểthực hiện các phép cộng trừnhân chia.
+Cảnh báo ngoại lệFormatException:
+Nếu người dùng gõ chữcái (ví dụ"abc"), lệnh
+int.Parse sẽbáo lỗi FormatException vì
+không thểchuyển thành số!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+23 / 45
+
+=== SLIDE 24 ===
+Toán tửGán Giá trị(=) & Luồng Thực thi
+Câu lệnh gán: Tính toán vếphải và lưu vào vếtrái
+sum = number1 + number2;
+Cơ chếthực thi: TừPhải sang Trái
+(←)
+1
+Bước 1 (Tính toán vếphải): Lấy giá trịtrong
+ô nhớnumber1 (45) cộng với giá trịtrong ô nhớ
+number2 (72) →kết quảtạm thời là 117.
+2
+Bước 2 (Gán vào vếtrái): Toán tửgán = sao
+chép giá trị117 và đặt vào ô nhớđược đặt tên
+là sum.
+Quy tắc vếtrái (L-value):
+Vếtrái của toán tử= bắt buộc phải là một tên
+biến (vùng nhớcó thểnhận dữliệu). Không
+thểviết number1 + number2 = sum; hoặc 45
+= number1;.
+Tính chất kết hợp phải
+(Right-Associative):
+Các câu lệnh gán liên tiếp a = b = c = 0; sẽ
+được thực hiện từphải sang trái: c = 0, sau
+đó b = c sau đó a = b
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+24 / 45
+
+=== SLIDE 25 ===
+Bản chất BộnhớMáy tính (Memory Concepts): Ô nhớRAM
+Ô nhớsau khi đọc number1 = 45 (Hình 3.15)
+Ô nhớsau khi đọc number2 = 72 (Hình 3.16)
+Cấu trúc một Ô nhớtrong RAM:
+Mỗi biến trong chương trình tương ứng với
+một vùng nhớvật lý gồm 4 yếu tố:
+Tên biến (Name): Ví dụnumber1, dùng cho
+lập trình viên tham chiếu.
+Kiểu dữliệu (Type): Ví dụint, quy định kích
+thước và cách biểu diễn.
+Địa chỉ(Address): Vịtrí nhịphân thực tếtrong
+chip RAM do CLR quản lý.
+Giá trị(Value): Dữliệu nhịphân đang được
+lưu trữbên trong.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+25 / 45
+
+=== SLIDE 26 ===
+Cơ chếĐọc Không Phá Hủy vs Ghi Đè Phá Hủy trong RAM
+Các ô nhớsau khi tính sum = 117 (Hình 3.17)
+Biến number1 và number2 vẫn giữnguyên
+giá trị45 và 72 sau phép cộng!
+1. Đọc Không Phá Hủy
+(Non-destructive)
+Khi một biến xuất hiện ởvếphải phép gán (ví
+dụ: number1 + number2), máy tính chỉđọc
+bản sao giá trịcủa ô nhớ.
+Giá trịban đầu trong ô nhớđược bảo toàn
+nguyên vẹn, không bịmất đi!
+2. Ghi Đè Phá Hủy (Destructive
+Read-in)
+Khi một giá trịmới được đưa vào biến ởvếtrái
+(ví dụ: gán vào sum), giá trịmới sẽghi đè và
+xóa sổvĩnh viễn giá trịcũ trước đó trong ô
+nhớ.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+26 / 45
+
+=== SLIDE 27 ===
+Các Toán tửSốhọc Cơ bản trong C# (Arithmetic Operators)
+5 Toán tửsốhọc trong C# (Hình 3.18)
+Ý nghĩa & Ký hiệu:
+Cộng (+): f + 7
+Trừ(‐): p ‐ c
+Nhân (*): b * m (không dùng dấu ×)
+Chia (/): x / y (không dùng dấu ÷)
+Chia lấy dư (%): r % 5 (toán tử
+Modulus)
+Dạng biểu thức phẳng
+(Straight-Line):
+Trong code C#, mọi biểu thức toán học
+phải viết trên cùng một dòng ngang, ví
+dụ: a
+b phải viết thành a / b.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+27 / 45
+
+=== SLIDE 28 ===
+Phép Chia SốNguyên (Truncation) & Phép Chia Lấy Dư (%)
+1. Phép Chia SốNguyên (Integer
+Division)
+Khi chia hai sốnguyên (int / int), C# trảvề
+một sốnguyên bằng cách vứt bỏtoàn bộ
+phần thập phân (Truncation), hoàn toàn
+không làm tròn!
+Ví dụthực tế:
+7 / 4 cho kết quảlà 1 (bỏmất .75!).
+17 / 5 cho kết quảlà 3 (bỏmất .4!).
+1 / 2 cho kết quảlà 0!
+Muốn có phần thập phân chính xác, ít nhất một
+toán hạng phải là sốthực (7.0 / 4 →1.75).
+2. Toán tửChia lấy dư (% Modulus)
+Cho biết phần dư còn lại sau phép chia số
+nguyên:
+7 % 4 cho kết quảlà 3 (7 = 4 × 1 + 3).
+17 % 5 cho kết quảlà 2 (17 = 5 × 3 + 2).
+8 % 2 cho kết quảlà 0 (8 = 2 × 4 + 0).
+Ứng dụng kinh điển trong CNTT:
+Kiểm tra sốchẵn/lẻ: x % 2 == 0 (chẵn).
+Kiểm tra bội số: x % y == 0 (x chia hết cho y).
+Tách từng chữsốcủa một sốnguyên.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+28 / 45
+
+=== SLIDE 29 ===
+Quy tắc ThứtựƯu tiên Toán tửSốhọc (Operator Precedence)
+Bảng thứtựưu tiên của toán tửsốhọc (Hình 3.19)
+3 Cấp độƯu tiên:
+1
+Cấp 1 (Cao nhất): Dấu ngoặc đơn () –
+biểu thức trong ngoặc luôn được tính
+trước nhất!
+2
+Cấp 2: Nhân (*), Chia (/), Chia dư (%).
+3
+Cấp 3 (Thấp nhất): Cộng (+) và Trừ(‐).
+Tính kết hợp từtrái sang phải:
+Khi các toán tửcó cùng độưu tiên đứng
+cạnh nhau, C# thực hiện từtrái qua phải:
+a * b / c →tính (a * b) trước, rồi
+chia c.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+29 / 45
+
+=== SLIDE 30 ===
+Kỹthuật Sửdụng Dấu ngoặc đơn () & Tránh Lỗi Nhập nhằng
+Ví dụ1: Tính trung bình cộng của 3
+sốa, b, c
+Viết sai: a + b + c / 3;
+→Do / ưu tiên hơn +, máy sẽtính a + b +
+(c / 3) →Sai hoàn toàn kết quả!
+Viết đúng: (a + b + c) / 3;
+→Cặp ngoặc ép máy tính tổng trước rồi mới
+chia 3.
+Dấu ngoặc lồng nhau (Nested
+Parentheses)
+Cặp ngoặc nằm ởvịtrí sâu nhất (trong cùng)
+sẽđược tính toán đầu tiên:
+Ví dụ: ((a + b) * c) / d
+1
+Tính (a + b)
+2
+Lấy kết quảnhân với c
+3
+Lấy kết quảchia cho d
+Lời khuyên Clean Code: Dùng ngoặc dư
+thừa hợp lý đểbiểu thức luôn sáng sủa, không
+bắt đồng nghiệp phải tra bảng ưu tiên!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+30 / 45
+
+=== SLIDE 31 ===
+Case Study: Đánh giá Đa thức Bậc hai y = ax2 + bx + c
+Biểu thức C# tương đương
+y = a * x * x + b * x + c;
+Giảsử: a=2, b=3, c=7, x=5
+1
+Bước 1: 2 * 5 = 10
+2
+Bước 2: 10 * 5 = 50 (ax2)
+3
+Bước 3: 3 * 5 = 15 (bx)
+4
+Bước 4: 50 + 15 = 65
+5
+Bước 5: 65 + 7 = 72
+6
+Bước 6: y = 72 (gán giá trị)
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+31 / 45
+
+=== SLIDE 32 ===
+Checkpoint 2: Kiểm tra Nhanh & Thực hành Tiết 2
+Câu hỏi 1: Kết quảcủa biểu thức 19 % 5 * 2 trong C# là bao nhiêu?
+A. 1.9
+B. 8 (Giải thích: 19 % 5 = 4, sau đó 4 * 2 = 8)
+C. 0
+D. 4
+Câu hỏi 2: Kết quảcủa phép chia sốnguyên 5 / 2 là gì?
+Kết quảlà 2 (do C# vứt bỏphần thập phân .5).
+Hands-on Lab 2 (Phòng máy – 15 phút):
+Tạo dựán Addition →Khai báo 3 biến int →Nhập 2 sốtừbàn phím bằng
+int.Parse(Console.ReadLine()) →Tính tổng và in kết quảbằng nội suy chuỗi $"Sum is
+{sum}"!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+32 / 45
+
+=== SLIDE 33 ===
+TIẾT 3
+CẤU TRÚC RẼNHÁNH IF, TOÁN TỬSO SÁNH, COMPARISON
+& THỰC HÀNH TỔNG HỢP
+
+=== SLIDE 34 ===
+Ra Quyết Định trong Phần mềm: Câu lệnh Điều kiện đơn if
+Nguyên lý Ra quyết định:
+Cho phép chương trình lựa chọn thực thi hoặc bỏ
+qua một hành động dựa trên kết quảcủa một
+điều kiện logic (True hoặc False).
+Cú pháp tổng quát:
+1
+if (condition)
+2
+statement;
+Nếu điều kiện là true: câu lệnh statement được
+thực thi.
+Nếu điều kiện là false: câu lệnh bịbỏqua, tiếp
+tục chạy lệnh kếtiếp.
+Ví dụkiểm tra điểm đậu môn
+1
+if (score >= 50)
+2
+Console.WriteLine("Passed!");
+Đặc điểm điều kiện:
+Biểu thức điều kiện trong ngoặc đơn
+(condition) bắt buộc phải trảvềgiá trị
+kiểu boolean (true hoặc false). C# không
+cho phép dùng sốnguyên thay cho boolean
+như ngôn ngữC/C++.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+34 / 45
+
+=== SLIDE 35 ===
+Toán tửQuan hệ(Relational) & Bình đẳng (Equality)
+Các toán tửquan hệvà bình đẳng trong C# (Hình 3.21)
+1. Toán tửQuan hệ(Cùng ưu
+tiên):
+> (Lớn hơn): x > y
+< (Nhỏhơn): x < y
+>= (Lớn hơn hoặc bằng): x >= y
+<= (Nhỏhơn hoặc bằng): x <= y
+2. Toán tửBình đẳng (Ưu tiên
+thấp hơn):
+== (Bằng nhau): x == y
+!= (Khác nhau / Không bằng): x != y
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+35 / 45
+
+=== SLIDE 36 ===
+Lỗi Kinh điển #1: Phân biệt Sống còn giữa = và ==
+Toán tửGán (=)
+Mục đích: Gán giá trịbiểu thức bên phải vào
+biến bên trái.
+Cú pháp: x = 7;
+Làm thay đổi giá trịcủa ô nhớx.
+Không phải là phép so sánh toán học!
+Toán tửSo sánh bằng (==)
+Mục đích: Kiểm tra xem 2 vếcó bằng nhau
+hay không.
+Cú pháp: if (x == 7)
+Trảvềtrue nếu bằng nhau, false nếu khác.
+Tuyệt đối không làm thay đổi giá trịcủa x.
+Bẫy cú pháp cần ghi nhớsuốt sựnghiệp kỹsư:
+Trong C#, nếu viết nhầm if (x = 7), trình biên dịch sẽchặn ngay lập tức bằng lỗi: Cannot
+implicitly convert type ’int’ to ’bool’ (khác với C/C++ sẽâm thầm gán và gây lỗi logic nghiêm
+trọng).
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+36 / 45
+
+=== SLIDE 37 ===
+Ứng dụng So sánh Hai Số: Comparison.cs
+Comparison.cs (Fig. 3.22)
+1
+using System;
+2
+3
+class Comparison
+4
+{
+5
+static void Main()
+6
+{
+7
+Console.Write("Enter first integer: ");
+8
+int number1 = int.Parse(Console.ReadLine());
+9
+10
+Console.Write("Enter second integer: ");
+11
+int number2 = int.Parse(Console.ReadLine());
+12
+13
+if (number1 == number2)
+14
+Console.WriteLine($"{number1} == {number2}");
+15
+16
+if (number1 != number2)
+17
+Console.WriteLine($"{number1} != {number2}");
+18
+19
+if (number1 < number2)
+20
+Console.WriteLine($"{number1} < {number2}");
+21
+22
+if (number1 > number2)
+23
+Console.WriteLine($"{number1} > {number2}");
+24
+25
+if (number1 <= number2)
+26
+Console.WriteLine($"{number1} <= {number2}");
+27
+28
+if (number1 >= number2)
+29
+Console.WriteLine($"{number1} >= {number2}");
+30
+} // end Main
+Màn hình thực thi Comparison (Hình 3.22)
+Cơ chếthực thi:
+Mỗi câu lệnh if kiểm tra điều kiện độc lập.
+Nếu đúng, in thông điệp so sánh tương ứng.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+37 / 45
+
+=== SLIDE 38 ===
+Phân tích Luồng Thực thi của Comparison.cs
+Bộtest 1: number1 = 777, number2
+= 777
+777 == 777 →True =⇒In: 777 == 777
+777 != 777 →False =⇒Bỏqua
+777 < 777 →False =⇒Bỏqua
+777 > 777 →False =⇒Bỏqua
+777 <= 777 →True =⇒In: 777 <= 777
+777 >= 777 →True =⇒In: 777 >= 777
+Bộtest 2: number1 = 1000, number2
+= 2000
+1000 == 2000 →False =⇒Bỏqua
+1000 != 2000 →True =⇒In: 1000 != 2000
+1000 < 2000 →True =⇒In: 1000 < 2000
+1000 > 2000 →False =⇒Bỏqua
+1000 <= 2000 →True =⇒In: 1000 <= 2000
+1000 >= 2000 →False =⇒Bỏqua
+Bài học tư duy:
+Một sốcó thểđồng thời thỏa mãn nhiều điều kiện quan hệ(ví dụ: vừa khác nhau, vừa nhỏhơn,
+vừa nhỏhơn hoặc bằng).
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+38 / 45
+
+=== SLIDE 39 ===
+Lỗi Kinh điển #2: Cạm bẫy Dấu chấm phẩy ; Sau if(...)
+Mã nguồn sai tai hại (Logic Bug):
+1
+if (score >= 50);
+2
+Console.WriteLine("Passed!");
+Bản chất sựviệc:
+Dấu ; ngay sau if được C# hiểu là một câu
+lệnh rỗng (Empty Statement).
+Nghĩa là: ”Nếu score >= 50 thì không làm gì
+cả!”.
+Lệnh WriteLine ởdòng tiếp theo sẽluôn luôn
+được thực thi bất kểscore bằng bao nhiêu!
+(kểcảkhi score = 10 vẫn in ”Passed!”).
+Mã nguồn chuẩn xác:
+1
+if (score >= 50)
+2
+Console.WriteLine("Passed!");
+Nguyên tắc vàng kỹsư:
+Tuyệt đối KHÔNG bao giờđặt dấu chấm
+phẩy ; ngay sau cặp ngoặc đơn của câu
+lệnh if(...)!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+39 / 45
+
+=== SLIDE 40 ===
+Khối Lệnh Hợp thành (Compound Statement / Block {})
+Khi thân if có nhiều câu lệnh:
+Nếu không có cặp ngoặc nhọn {}, câu lệnh if
+chỉkiểm soát đúng 1 câu lệnh duy nhất ngay
+phía sau nó.
+Muốn thực thi nhiều câu lệnh khi điều kiện
+đúng, bắt buộc phải bao bọc chúng trong cặp
+ngoặc nhọn { }.
+Mã nguồn dùng khối lệnh {}
+1
+if (grade >= 90)
+2
+{
+3
+Console.WriteLine("Xuat sac!");
+4
+Console.WriteLine("Nhan hoc bong!");
+5
+scholarship = 5000000;
+6
+}
+Khuyến nghịthực hành chuẩn doanh nghiệp:
+Ngay cảkhi thân if chỉcó 1 lệnh, nhiều công ty phần mềm lớn (như Microsoft, Google) vẫn
+khuyến khích luôn viết cặp ngoặc nhọn { } đểtránh lỗi thêm lệnh sau này!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+40 / 45
+
+=== SLIDE 41 ===
+Bảng Tổng kết ThứtựƯu tiên & Tính kết hợp (Hình 3.23)
+Bảng tổng kết độưu tiên các toán tửđã học (Hình 3.23)
+ThứtựtừCao xuống Thấp:
+1
+Ngoặc đơn: ()
+2
+Sốhọc nhân chia: *, /, %
+3
+Sốhọc cộng trừ: +, ‐
+4
+Quan hệ: <, <=, >, >=
+5
+Bình đẳng: ==, !=
+6
+Toán tửgán: = (kết hợp phải)
+Ghi nhớ:
+Toán tửsốhọc luôn được tính trước toán
+tửso sánh, và toán tửgán luôn thực hiện
+cuối cùng!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+41 / 45
+
+=== SLIDE 42 ===
+Quy chuẩn Viết Code Sạch (Microsoft C# Coding Conventions)
+1. Quy chuẩn Đặt tên (Naming):
+PascalCase: Dành cho tên Lớp (class
+Welcome1) và tên Phương thức (Main,
+WriteLine).
+camelCase: Dành cho tên biến cục bộ
+(number1, sum) và tham sốphương thức.
+Đặt tên có ý nghĩa gợi nhớ(meaningful
+names): tránh đặt tên cẩu thảnhư a, b, x123.
+2. Khoảng trắng & Bốcục (Layout):
+Đặt dấu cách quanh các toán tửnhịphân: sum
+= a + b; thay vì sum=a+b;.
+Đặt dấu cách sau dấu phẩy: int a, b, c;.
+Thụt lềchuẩn 3 hoặc 4 khoảng trắng cho mỗi
+khối lệnh con.
+Đặt dấu mởngoặc { trên một dòng riêng biệt
+theo phong cách chuẩn Allman của C#.
+Tác phong kỹsư:
+Mã nguồn sạch sẽphản ánh tư duy logic mạch lạc của người kỹsư, giúp giảm 70% thời gian gỡ
+lỗi!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+42 / 45
+
+=== SLIDE 43 ===
+[HANDS-ON LAB 3] TựViết & Kiểm thửChương trình Comparison
+Nhiệm vụThực hành Phòng máy (20 Phút):
+Sinh viên lớp IT26M tựtay thực hiện các bước sau trên Visual Studio:
+1
+Tạo dựán mới Console Application đặt tên là ComparisonApp.
+2
+Đổi tên tệp Program.cs thành Comparison.cs.
+3
+Khai báo 2 biến nguyên number1 và number2. Nhập dữliệu từbàn phím bằng Console.ReadLine()
+kết hợp int.Parse().
+4
+Viết 6 câu lệnh if độc lập kiểm tra tất cả6 toán tử: ==, !=, <, >, <=, >=.
+5
+Sửdụng kỹthuật Nội suy chuỗi C# 6 ($"...") đểin kết quảđịnh dạng rõ nét.
+Kiểm thửvới các bộdữliệu biên (Edge Cases):
+Test 1 (Hai sốbằng nhau): Nhập 50 và 50 →Kiểm tra xem có xuất đúng 3 dòng (==, <=, >=)?
+Test 2 (Sốâm và sốdương): Nhập -15 và 20 →Kiểm tra các toán tử!=, <, <=.
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+43 / 45
+
+=== SLIDE 44 ===
+Khảo sát Bài tập Lớn & Đồán Thực hành Cuối Chương 3
+1. VẽHình Sao (Ex 3.18)
+Dùng các lệnh Console.Write và
+ký tựthoát đểin hình hộp chữ
+nhật, hình bầu dục, mũi tên và kim
+cương bằng dấu hoa thị*.
+2. Bảng Cửu chương
+(Ex 3.29)
+Nhập một sốnguyên từbàn phím
+và in ra bảng nhân 10 dòng bằng
+các phép toán sốhọc và căn lềký
+tựtab \t.
+3. Car-Pool Savings (Ex
+3.32)
+Ứng dụng vì cộng đồng (Making a
+Difference): Nhập quãng đường,
+giá xăng, tiền đỗxe →tính sốtiền
+tiết kiệm hàng ngày khi đi chung
+xe!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+44 / 45
+
+=== SLIDE 45 ===
+Tổng kết 5 Chuẩn đầu ra (CLOs) & Chuẩn bịChương 4
+Bảng Checklist Chuẩn đầu ra Buổi học:
+✓CLO 3.1: Hiểu cấu trúc Console App, Main(), using,
+class.
+✓CLO 3.2: Thành thạo WriteLine, escape sequences
+& String interpolation.
+✓CLO 3.3: Làm chủbiến int, Parse, cơ chếô nhớ
+RAM.
+✓CLO 3.4: Sửdụng 5 phép toán sốhọc, chia nguyên,
+chia dư & thứtựưu tiên.
+✓CLO 3.5: Ra quyết định bằng câu lệnh if và các toán
+tửso sánh.
+Nhiệm vụVềnhà:
+1
+Hoàn thành bài tập Self-Review và
+Exercises 3.7–3.32 trên Cổng Web học
+tập.
+2
+Làm 40 câu trắc nghiệm chuẩn hóa
+Chương 3.
+3
+Đọc trước Chương 4: Introduction to
+Classes, Objects, Methods and strings.
+CẢM ƠN CÁC EM SINH VIÊN
+IT26M!
+Lớp IT26M | Lập trình C# & .NET
+Chương 3: Lập trình Ứng dụng C# Căn bản
+45 / 45
+

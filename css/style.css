@@ -1321,33 +1321,11 @@ body.dark-theme .exercise-title-group h4 {
 }
 
 .solution-toggle-btn {
-  background: none;
-  border: 1px solid var(--border-color);
-  color: var(--primary-cyan);
-  padding: 0.45rem 1rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 0.75rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: var(--transition);
-}
-
-.solution-toggle-btn:hover {
-  background: var(--primary-light);
+  display: none !important;
 }
 
 .solution-content {
-  display: none;
-  margin-top: 1rem;
-  animation: fadeIn 0.25s ease;
-}
-
-.solution-content.open {
-  display: block;
+  display: none !important;
 }
 
 /* ==========================================================================

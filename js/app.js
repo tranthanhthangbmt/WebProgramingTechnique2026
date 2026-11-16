@@ -22,6 +22,9 @@ const AppState = {
 // DYNAMIC MULTI-CHAPTER DATA GETTERS
 // ============================================================================
 function getCurrentQuiz() {
+  if (AppState.currentChapter === 3) {
+    return (typeof QUIZ_CHAPTER_03 !== 'undefined') ? QUIZ_CHAPTER_03 : [];
+  }
   if (AppState.currentChapter === 2) {
     return (typeof QUIZ_CHAPTER_02 !== 'undefined') ? QUIZ_CHAPTER_02 : [];
   }
@@ -29,6 +32,9 @@ function getCurrentQuiz() {
 }
 
 function getCurrentExercises() {
+  if (AppState.currentChapter === 3) {
+    return (typeof EXERCISES_CHAPTER_03 !== 'undefined') ? EXERCISES_CHAPTER_03 : [];
+  }
   if (AppState.currentChapter === 2) {
     return (typeof EXERCISES_CHAPTER_02 !== 'undefined') ? EXERCISES_CHAPTER_02 : [];
   }
@@ -36,6 +42,9 @@ function getCurrentExercises() {
 }
 
 function getCurrentTranscripts() {
+  if (AppState.currentChapter === 3) {
+    return (typeof SLIDE_TRANSCRIPTS_CHAPTER_03 !== 'undefined') ? SLIDE_TRANSCRIPTS_CHAPTER_03 : {};
+  }
   if (AppState.currentChapter === 2) {
     return (typeof SLIDE_TRANSCRIPTS_CHAPTER_02 !== 'undefined') ? SLIDE_TRANSCRIPTS_CHAPTER_02 : {};
   }
@@ -159,8 +168,8 @@ function initChapterSelector() {
   const selector = document.getElementById('chapterSelector');
   if (selector) {
     const initialVal = parseInt(selector.value, 10);
-    if (initialVal === 2) {
-      switchChapter(2);
+    if (initialVal === 2 || initialVal === 3) {
+      switchChapter(initialVal);
     } else {
       updateVideoTab(1);
     }
@@ -289,7 +298,7 @@ function updateChapterStaticContent(chapterNum) {
 
 function switchChapter(ch) {
   const chapterNum = parseInt(ch, 10);
-  if (chapterNum !== 1 && chapterNum !== 2) return;
+  if (chapterNum !== 1 && chapterNum !== 2 && chapterNum !== 3) return;
 
   AppState.currentChapter = chapterNum;
   const meta = getCurrentChapterMeta();
@@ -744,7 +753,7 @@ function renderQuizDashboard() {
   quiz.forEach(q => {
     if (AppState.userAnswers.hasOwnProperty(q.id)) {
       answeredCount++;
-      if (AppState.userAnswers[q.id] === q.correct) {
+      if (AppState.userAnswers[q.id] === (q.correct !== undefined ? q.correct : q.answer)) {
         correctCount++;
       }
     }
@@ -773,7 +782,7 @@ function renderQuestionPalette() {
   const quiz = getCurrentQuiz();
   quiz.forEach((q, idx) => {
     const isAnswered = AppState.userAnswers.hasOwnProperty(q.id);
-    const isCorrect = isAnswered && (AppState.userAnswers[q.id] === q.correct);
+    const isCorrect = isAnswered && (AppState.userAnswers[q.id] === (q.correct !== undefined ? q.correct : q.answer));
     const isIncorrect = isAnswered && !isCorrect;
 
     // Filter logic
@@ -821,7 +830,7 @@ function renderCurrentQuestion() {
   const optionsHtml = q.options.map((optText, optIdx) => {
     let btnClass = 'option-btn';
     if (isAnswered) {
-      if (optIdx === q.correct) {
+      if (optIdx === (q.correct !== undefined ? q.correct : q.answer)) {
         btnClass += ' selected-correct';
       } else if (optIdx === selectedIndex) {
         btnClass += ' selected-incorrect';
@@ -1015,19 +1024,6 @@ function renderExerciseList(searchKeyword = '') {
 
         <!-- KHU VỰC LÀM BÀI TRỰC TIẾP TRÊN WEB CỦA SINH VIÊN -->
         ${interactiveHtml}
-
-        <!-- ĐÁP ÁN CHUẨN MẪU & PHÂN TÍCH TỪ GIÁO TRÌNH -->
-        <div style="margin-top: 1.25rem;">
-          <button class="solution-toggle-btn" onclick="toggleSolution('${item.id}')">
-            <span>📖 Xem lời giải chuẩn & phân tích chi tiết từ giáo trình</span>
-          </button>
-          <div id="solution-${item.id}" class="solution-content">
-            <div class="code-container">
-              <button class="btn-copy-code" onclick="copyCode(this, \`${escapeJsString(solutionOrAnswer)}\`)">📋 Copy Lời giải</button>
-              <pre class="code-block" style="border-left: 4px solid var(--accent-green); background: #0f172a;"><code>${escapeHtml(solutionOrAnswer)}</code></pre>
-            </div>
-          </div>
-        </div>
       </div>
     `;
   }).join('');

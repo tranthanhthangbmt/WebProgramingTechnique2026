@@ -498,3 +498,169 @@ if (typeof window !== 'undefined') {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { EXERCISES_CHAPTER_01, EXERCISES_CHAPTER_02 };
 }
+
+
+// ============================================================================
+// HỆ THỐNG BÀI TẬP CHƯƠNG 3: INTRODUCTION TO C# APP PROGRAMMING
+// ============================================================================
+const EXERCISES_CHAPTER_03 = [
+  {
+    "id": "3.1",
+    "category": "self-review",
+    "title": "Self-Review 3.1: Điền vào chỗ trống các khái niệm nền tảng",
+    "description": "Củng cố các khái niệm cú pháp cơ bản của ứng dụng Console trong C#.",
+    "question": "Điền từ hoặc cụm từ thích hợp vào chỗ trống trong các phát biểu sau:\na) Một _______ bắt đầu thân của mọi phương thức, và một _______ kết thúc thân của mọi phương thức.\nb) Hầu hết các câu lệnh trong C# kết thúc bằng một dấu _______.\nc) Câu lệnh _______ được sử dụng để đưa ra quyết định (rẽ nhánh).\nd) Ký hiệu _______ bắt đầu một dòng chú thích đơn (single-line comment).\ne) Dòng trống, ký tự dấu cách và ký tự _______ được gọi là khoảng trắng (whitespace).\nf) Các _______ là những từ ngữ được dành riêng cho ngôn ngữ C# sử dụng.\ng) Mọi ứng dụng C# đều bắt đầu thực thi tại phương thức _______.\nh) Các phương thức _______ và _______ của lớp Console dùng để hiển thị thông tin ra màn hình.\ni) Tính năng _______ cho phép bạn nhúng trực tiếp giá trị biến vào bên trong một chuỗi ký tự bằng dấu $.",
+    "solution": "Đáp án chuẩn mực theo Giáo trình Deitel (trang 139):\n\na) **left brace ({)** (ngoặc nhọn mở), **right brace (})** (ngoặc nhọn đóng).\nb) **semicolon (;)** (dấu chấm phẩy).\nc) **if** (câu lệnh điều kiện if).\nd) **//** (hai dấu gạch chéo liền nhau).\ne) **tab characters** (ký tự tab, cùng với newline - ký tự xuống dòng).\nf) **Keywords** (từ khóa / reserved words).\ng) **Main** (phương thức Main viết hoa chữ M).\nh) **Console.WriteLine** và **Console.Write**.\ni) **string interpolation** (định dạng chuỗi nội suy với ký tự tiền tố $).",
+    "hints": "Xem lại Mục 3.2 đến 3.5 trong giáo trình Deitel: cấu trúc Welcome1, escape sequences, và string interpolation.",
+    "image": "images/fig3_01_welcome1_app.png"
+  },
+  {
+    "id": "3.2",
+    "category": "self-review",
+    "title": "Self-Review 3.2: Nhận định Đúng / Sai và giải thích kỹ thuật",
+    "description": "Kiểm tra sự thấu hiểu về hành vi của trình biên dịch, toán tử và tính năng chuỗi trong C#.",
+    "question": "Xác định các phát biểu sau là Đúng (True) hay Sai (False). Nếu Sai, hãy giải thích rõ lý do kỹ thuật:\na) Chú thích (Comments) khiến máy tính hiển thị văn bản đứng sau dấu // lên màn hình khi ứng dụng chạy.\nb) C# xem hai biến number và NuMbEr là hoàn toàn giống nhau (identical).\nc) Toán tử chia lấy dư (%) chỉ có thể được sử dụng với các toán hạng kiểu số nguyên.\nd) Các toán tử số học *, /, %, + và - đều có cùng một mức độ ưu tiên tính toán.\ne) Một chuỗi nội suy (interpolated string) bắt buộc phải bắt đầu bằng ký tự $ đặt ngay trước chuỗi.",
+    "solution": "Phân tích và lời giải chuẩn mực theo Giáo trình Deitel (trang 140):\n\na) **False (Sai)**. Chú thích không làm máy tính thực hiện bất kỳ hành động nào và bị trình biên dịch bỏ qua hoàn toàn. Chúng chỉ dùng để giải thích mã nguồn cho con người đọc.\nb) **False (Sai)**. C# là ngôn ngữ phân biệt hoa thường (case-sensitive), do đó `number` và `NuMbEr` là hai biến hoàn toàn khác nhau trong bộ nhớ.\nc) **False (Sai)**. Trong C#, toán tử chia lấy dư `%` có thể áp dụng cho cả số thực dấu phẩy động (float, double), ví dụ: `7.5 % 2.0 = 1.5`.\nd) **False (Sai)**. Các toán tử `*`, `/`, `%` có cùng mức độ ưu tiên cao hơn, còn `+` và `-` có mức độ ưu tiên thấp hơn.\ne) **True (Đúng)**. Chuỗi nội suy bắt buộc phải có ký tự tiền tố `$` đứng ngay trước dấu mở ngoặc kép `$\"...\"`.",
+    "hints": "Phân biệt tính nhạy chữ hoa/thường, cơ chế toán tử % trên số thực trong C#, và thứ tự ưu tiên nhân chia trước cộng trừ sau.",
+    "image": "images/fig3_19_operator_precedence.png"
+  },
+  {
+    "id": "3.3",
+    "category": "self-review",
+    "title": "Self-Review 3.3: Viết câu lệnh thực thi các tác vụ cơ bản",
+    "description": "Thực hành viết các câu lệnh khai báo biến, nhập xuất dữ liệu và so sánh điều kiện.",
+    "question": "Viết câu lệnh C# chuẩn xác để hoàn thành mỗi tác vụ sau:\na) Khai báo các biến c, thisIsAVariable, q76354 và number thuộc kiểu dữ liệu int.\nb) In câu nhắc yêu cầu người dùng nhập một số nguyên: \"Enter an integer: \".\nc) Đọc một số nguyên từ bàn phím và gán kết quả cho biến value kiểu int.\nd) Nếu biến number khác 7, hiển thị thông báo \"The variable number is not equal to 7\".\ne) In chuỗi \"This is a C# app\" trên cùng một dòng trong cửa sổ console.\nf) In chuỗi \"This is a C# app\" trên hai dòng, dòng thứ nhất kết thúc bằng C# sử dụng Console.WriteLine.\ng) Sử dụng String Interpolation để hiển thị tổng của hai biến x và y.",
+    "solution": "Mã nguồn câu lệnh chuẩn mực theo Giáo trình Deitel (trang 140):\n\n```csharp\n// a) Khai bao 4 bien kieu int\nint c;\nint thisIsAVariable;\nint q76354;\nint number;\n\n// b) Cau nhac nhap so nguyen khong xuong dong\nConsole.Write(\"Enter an integer: \");\n\n// c) Nhap chuoi va ep kieu sang int\nint value = int.Parse(Console.ReadLine());\n\n// d) Kiem tra dieu kien khac 7\nif (number != 7)\n{\n   Console.WriteLine(\"The variable number is not equal to 7\");\n}\n\n// e) In tren mot dong\nConsole.WriteLine(\"This is a C# app\");\n\n// f) In tren hai dong bang ky tu thoat \\n\nConsole.WriteLine(\"This is a C#\\napp\");\n\n// g) String Interpolation tinh tong\nConsole.WriteLine($\"The sum of {x} and {y} is {x + y}\");\n```",
+    "hints": "Sử dụng int.Parse(Console.ReadLine()), toán tử khác !=, ký tự thoát \\n và cú pháp nội suy $.",
+    "image": "images/fig3_14_addition_part1.png"
+  },
+  {
+    "id": "3.4",
+    "category": "self-review",
+    "title": "Self-Review 3.4: Phát hiện và sửa lỗi cú pháp trong câu lệnh",
+    "description": "Rèn luyện kỹ năng phân tích lỗi cú pháp (Syntax Errors) và lỗi logic thường gặp.",
+    "question": "Chỉ ra lỗi và sửa lại cho đúng trong mỗi đoạn mã lệnh C# sau:\n\na)\n```csharp\nif (c < 7);\n{\n   Console.WriteLine(\"c is less than 7\");\n}\n```\n\nb)\n```csharp\nif (c => 7)\n{\n   Console.WriteLine(\"c is equal to or greater than 7\");\n}\n```",
+    "solution": "Phân tích lỗi và phương án sửa chuẩn theo Giáo trình Deitel (trang 140):\n\na) **Lỗi:** Dấu chấm phẩy `;` đặt ngay sau dấu đóng ngoặc đơn của mệnh đề điều kiện `(c < 7)`. Dấu chấm phẩy này tạo thành một câu lệnh rỗng, khiến khối lệnh in phía sau luôn luôn được thực thi dù `c` có nhỏ hơn 7 hay không!\n   **Khắc phục:** Xóa bỏ dấu chấm phẩy sau `(c < 7)`:\n   ```csharp\n   if (c < 7)\n   {\n      Console.WriteLine(\"c is less than 7\");\n   }\n   ```\n\nb) **Lỗi:** Toán tử quan hệ viết sai thứ tự `=>`. Trong C#, toán tử lớn hơn hoặc bằng bắt buộc phải là `>=` (dấu `=>` dành riêng cho biểu thức lambda).\n   **Khắc phục:** Đổi `=>` thành `>=`:\n   ```csharp\n   if (c >= 7)\n   {\n      Console.WriteLine(\"c is equal to or greater than 7\");\n   }\n   ```",
+    "hints": "Không bao giờ đặt dấu chấm phẩy ngay sau biểu thức if; toán tử lớn hơn hoặc bằng là >= chứ không phải =>.",
+    "image": "images/fig3_09_syntax_error_ide.png"
+  },
+  {
+    "id": "3.5",
+    "category": "self-review",
+    "title": "Self-Review 3.5: Các bước giải thuật tính tích của ba số nguyên",
+    "description": "Thiết kế giải thuật và viết các dòng lệnh đơn lẻ tính tích 3 số nhập từ bàn phím.",
+    "question": "Viết các khai báo biến, câu lệnh và chú thích thực hiện từng bước sau:\na) Viết chú thích nói rằng ứng dụng sẽ tính tích của ba số nguyên.\nb) Khai báo các biến x, y, z và result thuộc kiểu int.\nc) In câu nhắc yêu cầu người dùng nhập số nguyên thứ nhất.\nd) Đọc số nguyên thứ nhất từ bàn phím và lưu vào biến x.\ne) In câu nhắc và đọc số nguyên thứ hai lưu vào biến y.\nf) In câu nhắc và đọc số nguyên thứ ba lưu vào biến z.\ng) Tính tích của ba số x, y, z và gán kết quả cho biến result.\nh) Hiển thị thông báo \"Product is \" kèm giá trị biến result sử dụng String Interpolation.",
+    "solution": "Mã lệnh từng bước chuẩn mực theo Giáo trình Deitel (trang 140):\n\n```csharp\n// a) Chú thích mô tả mục đích chương trình\n// Calculating the product of three integers\n\n// b) Khai báo 4 biến số nguyên\nint x; int y; int z; int result;\n\n// c & d) Nhập số thứ nhất\nConsole.Write(\"Enter first integer: \");\nx = int.Parse(Console.ReadLine());\n\n// e) Nhập số thứ hai\nConsole.Write(\"Enter second integer: \");\ny = int.Parse(Console.ReadLine());\n\n// f) Nhập số thứ ba\nConsole.Write(\"Enter third integer: \");\nz = int.Parse(Console.ReadLine());\n\n// g) Tính tích ba số nguyên\nresult = x * y * z;\n\n// h) Xuất kết quả bằng String Interpolation\nConsole.WriteLine($\"Product is {result}\");\n```",
+    "hints": "Áp dụng kỹ thuật nhập liệu với int.Parse(Console.ReadLine()) và toán tử nhân * lặp lại cho 3 toán hạng.",
+    "image": "images/fig3_14_addition_part2.png"
+  },
+  {
+    "id": "3.6",
+    "category": "self-review",
+    "title": "Self-Review 3.6: Ứng dụng hoàn chỉnh Product.cs",
+    "description": "Ghép nối các câu lệnh ở Bài 3.5 thành một ứng dụng C# hoàn chỉnh có thể biên dịch và chạy được.",
+    "question": "Từ các câu lệnh đã viết ở Exercise 3.5, hãy đóng gói thành một chương trình C# hoàn chỉnh có tên lớp là Product, chứa phương thức Main và sử dụng không gian tên System. Chạy thử chương trình với ba số nguyên: 10, 20 và 30.",
+    "solution": "Mã nguồn hoàn chỉnh `Product.cs` theo Giáo trình Deitel (Hình 3.24, trang 141):\n\n```csharp\n// Exercise 3.6: Product.cs\n// Calculating the product of three integers.\nusing System;\n\nclass Product\n{\n   static void Main()\n   {\n      int x;      // Lưu số nguyên thứ nhất do người dùng nhập\n      int y;      // Lưu số nguyên thứ hai do người dùng nhập\n      int z;      // Lưu số nguyên thứ ba do người dùng nhập\n      int result; // Lưu tích của ba số\n\n      Console.Write(\"Enter first integer: \");\n      x = int.Parse(Console.ReadLine());\n\n      Console.Write(\"Enter second integer: \");\n      y = int.Parse(Console.ReadLine());\n\n      Console.Write(\"Enter third integer: \");\n      z = int.Parse(Console.ReadLine());\n\n      result = x * y * z; // Thực hiện phép nhân trong bộ nhớ\n\n      Console.WriteLine($\"Product is {result}\");\n   } // kết thúc Main\n} // kết thúc class Product\n```\n\n**Kết quả chạy thử mẫu:**\n```text\nEnter first integer: 10\nEnter second integer: 20\nEnter third integer: 30\nProduct is 6000\n```",
+    "hints": "Tạo dự án Console App trong Visual Studio, dán đoạn mã trên vào Program.cs và bấm Ctrl+F5 để chạy.",
+    "image": "images/fig3_20_polynomial_evaluation.png"
+  },
+  {
+    "id": "3.7",
+    "category": "exercises",
+    "title": "Exercise 3.7: Điền từ còn thiếu vào các nhận định nâng cao",
+    "description": "Các khái niệm nâng cao về chỉ thị using, loại chú thích và thứ tự ngoặc lồng nhau.",
+    "question": "Điền từ hoặc cụm từ thích hợp vào chỗ trống:\na) Mỗi chỉ thị using xác định một _______ chứa các lớp mà ứng dụng C# có thể sử dụng.\nb) Các ký hiệu _______ và _______ được dùng cho chú thích nhiều dòng (delimited comments).\nc) Các phép tính toán trong C# thường được thực hiện bởi các câu lệnh _______.\nd) Các toán tử số học có cùng mức độ ưu tiên với phép nhân (*) là phép chia (/) và phép _______.\ne) Khi các cặp ngoặc đơn trong biểu thức số học lồng nhau, cặp ngoặc _______ sẽ được tính toán trước tiên.\nf) Một vị trí trong bộ nhớ máy tính có thể chứa các giá trị khác nhau tại các thời điểm trong khi ứng dụng chạy được gọi là một _______.",
+    "solution": "Đáp án chuẩn theo Giáo trình Deitel (trang 141):\n\na) **namespace** (không gian tên, ví dụ: System).\nb) **/* ** và ** */** (cặp ký hiệu mở và đóng chú thích khối nhiều dòng).\nc) **assignment** (câu lệnh gán / tính toán số học).\nd) **remainder (%)** (phép chia lấy dư).\ne) **innermost** (cặp ngoặc đơn nằm trong cùng nhất).\nf) **variable** (biến số).",
+    "hints": "Nhớ lại: namespace gom nhóm các lớp; ngoặc trong cùng tính trước; biến lưu trữ giá trị khả biến trong RAM.",
+    "image": "images/fig3_18_arithmetic_operators.png"
+  },
+  {
+    "id": "3.8",
+    "category": "exercises",
+    "title": "Exercise 3.8: Viết câu lệnh in bảng tab và nhúng dấu ngoặc kép",
+    "description": "Ứng dụng ký tự thoát \\t và \\\" trong thực tế định dạng văn bản.",
+    "question": "Viết các câu lệnh C# thực hiện mỗi yêu cầu sau:\na) In dòng chữ \"Roll Number    Student Name    Grade\" trên một dòng đơn, phân cách các cột bằng tab stop.\nb) In ra màn hình ký tự dấu ngoặc kép đôi (\") bên trong một chuỗi văn bản.\nc) Khai báo một biến kiểu chuỗi có tên là courseName và khởi tạo giá trị ban đầu là \"C# Programming\".",
+    "solution": "Mã nguồn câu lệnh C# chuẩn xác:\n\n```csharp\n// a) In tieu de bang bang ky tu thoat \\t\nConsole.WriteLine(\"Roll Number\\tStudent Name\\tGrade\");\n\n// b) In ky tu ngoac kep doi bang \\\"\nConsole.WriteLine(\"He said: \\\"C# is awesome!\\\"\");\n\n// c) Khai bao va khoi tao bien kieu string\nstring courseName = \"C# Programming\";\n```",
+    "hints": "Sử dụng \\t cho tab ngang và \\\" cho dấu ngoặc kép đôi.",
+    "image": "images/fig3_12_escape_sequences_table.png"
+  },
+  {
+    "id": "3.9",
+    "category": "exercises",
+    "title": "Exercise 3.9: Nhận định Đúng / Sai về tên biến, IntelliSense và void",
+    "description": "Đánh giá tính hợp lệ của quy tắc đặt tên định danh và cơ chế IntelliSense.",
+    "question": "Xác định Đúng (True) hay Sai (False). Nếu Sai, hãy giải thích rõ lý do:\na) IntelliSense liệt kê các mục bắt đầu bằng hoặc chứa các chữ cái mà người dùng đã gõ.\nb) Các tên sau đây đều là tên biến hợp lệ trong C#: _under_bar_, m928134, t5, j7, her_sales, his_account_total, a, b, c, z và z2.\nc) Một biểu thức số học C# hợp lệ không chứa dấu ngoặc đơn luôn luôn được tính toán tuần tự từ trái sang phải.\nd) Từ khóa void chỉ ra rằng phương thức Main sẽ không trả về bất kỳ giá trị nào sau khi hoàn thành nhiệm vụ.",
+    "solution": "Phân tích chuẩn xác theo Giáo trình Deitel (trang 141):\n\na) **True (Đúng)**. IntelliSense hỗ trợ tìm kiếm mờ (fuzzy search), hiển thị cả thành viên bắt đầu hoặc chứa chuỗi ký tự vừa gõ.\nb) **True (Đúng)**. Tất cả các tên này đều hợp lệ vì bắt đầu bằng chữ cái hoặc dấu gạch dưới `_`, và chỉ chứa chữ cái, chữ số, dấu gạch dưới.\nc) **False (Sai)**. Biểu thức không có ngoặc vẫn phải tuân thủ thứ tự ưu tiên của toán tử: các toán tử `*`, `/`, `%` được tính trước các toán tử `+`, `-` dù chúng đứng sau trong biểu thức!\nd) **True (Đúng)**. Từ khóa `void` biểu thị kiểu trả về rỗng, phương thức kết thúc mà không truyền giá trị về cho hệ điều hành.",
+    "hints": "Nhớ rằng nhân chia luôn được ưu tiên tính trước cộng trừ dù không có ngoặc đơn; tên biến bắt đầu bằng dấu gạch dưới là hoàn toàn hợp lệ.",
+    "image": "images/fig3_02_keywords_table.png"
+  },
+  {
+    "id": "3.10",
+    "category": "exercises",
+    "title": "Exercise 3.10: Dự đoán kết quả hiển thị của String Interpolation",
+    "description": "Rèn luyện khả năng đọc hiểu mã nguồn và cơ chế tính toán trong chuỗi nội suy $.",
+    "question": "Giả sử biến x = 2 và y = 3, hãy cho biết mỗi câu lệnh sau đây sẽ in ra màn hình nội dung gì:\na) Console.WriteLine($\"x = {x}\");\nb) Console.WriteLine($\"Value of {x} + {x} is {x + x}\");\nc) Console.Write(\"x =\");\nd) Console.WriteLine($\"{x + y} = {y + x}\");",
+    "solution": "Kết quả hiển thị chính xác trên màn hình Console:\n\na) `x = 2`\nb) `Value of 2 + 2 is 4`\nc) `x =` (không xuống dòng)\nd) `5 = 5`\n\n**Giải thích:** Các biểu thức `{x + x}` và `{x + y}` bên trong cặp ngoặc nhọn của chuỗi nội suy được tính toán tự động thành các số nguyên (4 và 5) trước khi chuyển đổi sang chuỗi và ghép vào dòng văn bản.",
+    "hints": "Thay thế x bằng 2, y bằng 3 và tính toán các phép toán số học bên trong { }.",
+    "image": "images/fig3_13_welcome4_interpolation.png"
+  },
+  {
+    "id": "3.11",
+    "category": "exercises",
+    "title": "Exercise 3.11: Xác định câu lệnh làm thay đổi giá trị biến (Ghi đè phá hủy)",
+    "description": "Phân biệt giữa thao tác đọc không phá hủy và thao tác ghi đè phá hủy ô nhớ.",
+    "question": "Trong các câu lệnh C# sau đây, câu lệnh nào làm thay đổi giá trị của một biến (thao tác Destructive Write)?\na) p = i + j + k + 7;\nb) Console.WriteLine(\"variables whose values are modified\");\nc) Console.WriteLine(\"a = 5\");\nd) value = int.Parse(Console.ReadLine());",
+    "solution": "Phân tích và đáp án chuẩn mực theo Giáo trình Deitel (trang 142):\n\n- **Câu a)**: **CÓ thay đổi**. Biến `p` nằm ở vế trái của toán tử gán `=` sẽ nhận giá trị mới từ tổng `i + j + k + 7`, giá trị cũ của `p` bị xóa vĩnh viễn (Destructive Write). Các biến `i`, `j`, `k` chỉ bị đọc nên không đổi.\n- **Câu b)**: **KHÔNG thay đổi**. Chỉ là câu lệnh in một chuỗi văn bản cố định ra màn hình console.\n- **Câu c)**: **KHÔNG thay đổi**. Mặc dù có chữ `a = 5` nhưng đây chỉ là ký tự bên trong chuỗi, không phải câu lệnh gán biến.\n- **Câu d)**: **CÓ thay đổi**. Biến `value` nhận giá trị số nguyên mới do người dùng nhập từ bàn phím thông qua toán tử gán `=`, giá trị cũ trong ô nhớ bị ghi đè hoàn toàn.",
+    "hints": "Chỉ các câu lệnh có toán tử gán = với biến ở vế trái mới làm thay đổi ô nhớ của biến đó.",
+    "image": "images/fig3_15_memory_number1.png"
+  },
+  {
+    "id": "3.12",
+    "category": "exercises",
+    "title": "Exercise 3.12: Chuyển đổi biểu thức toán học sang mã lệnh C#",
+    "description": "Viết biểu thức C# tương đương cho các công thức đại số toán học.",
+    "question": "Chuyển các biểu thức toán học sau sang mã lệnh C# chuẩn xác:\na) Tích của m và n chia cho 2: (m * n) / 2\nb) Biểu thức tính diện tích hình thang: area = (a + b) * h / 2\nc) Biểu thức tính giá trị đa thức bậc 3: y = a * x^3 + 7",
+    "solution": "Mã lệnh C# tương đương chuẩn mực:\n\n```csharp\n// a) Tich m va n chia 2 (neu can so thuc thi dung 2.0)\nint result1 = (m * n) / 2;\n\n// b) Dien tich hinh thang (can ngoac don de cong a + b truoc)\ndouble area = (a + b) * h / 2.0;\n\n// c) Da thuc bac 3 (khong dung dau mu ^ vi ^ la phep toan XOR)\nint y = a * x * x * x + 7;\n```",
+    "hints": "Luôn dùng ngoặc đơn để chỉ rõ thứ tự ưu tiên; lũy thừa x^3 viết thành x * x * x.",
+    "image": "images/fig3_20_polynomial_evaluation.png"
+  },
+  {
+    "id": "3.14",
+    "category": "exercises",
+    "title": "Exercise 3.14: Ứng dụng tính toán Hình tròn (Circle)",
+    "description": "Viết ứng dụng Console cho phép nhập bán kính r (kiểu int) và tính đường kính, chu vi, diện tích.",
+    "question": "Viết một ứng dụng C# cho phép người dùng nhập vào bán kính của một hình tròn (số nguyên r kiểu int) và in ra màn hình:\n- Đường kính (Diameter = 2 * r)\n- Chu vi (Circumference = 2 * Math.PI * r)\n- Diện tích (Area = Math.PI * r * r)\nSử dụng hằng số Math.PI và định dạng chuỗi nội suy $.",
+    "solution": "Mã nguồn hoàn chỉnh `Circle.cs`:\n\n```csharp\nusing System;\n\nclass Circle\n{\n   static void Main()\n   {\n      Console.Write(\"Nhap ban kinh hinh tron (so nguyen): \");\n      int r = int.Parse(Console.ReadLine());\n\n      int diameter = 2 * r;\n      double circumference = 2 * Math.PI * r;\n      double area = Math.PI * r * r;\n\n      Console.WriteLine($\"Duong kinh (Diameter): {diameter}\");\n      Console.WriteLine($\"Chu vi (Circumference): {circumference:F2}\");\n      Console.WriteLine($\"Dien tich (Area): {area:F2}\");\n   }\n}\n```",
+    "hints": "Sử dụng Math.PI có sẵn trong không gian tên System; r * r để tính r bình phương.",
+    "image": "images/fig3_26_multiplication_table.png"
+  },
+  {
+    "id": "3.25",
+    "category": "exercises",
+    "title": "Exercise 3.25: Vẽ các hình khối bằng ký tự hoa thị (*)",
+    "description": "Viết ứng dụng vẽ hình hộp chữ nhật, oval, mũi tên và hình thoi bằng các dấu sao.",
+    "question": "Viết một ứng dụng Console C# sử dụng các câu lệnh Console.WriteLine để in ra 4 hình đồ họa đặt cạnh nhau: Hình hộp chữ nhật, Hình Oval, Mũi tên hướng lên, và Hình thoi (Diamond) như minh họa tại Hình 3.25 trong giáo trình Deitel.",
+    "solution": "Mã nguồn hoàn chỉnh `Shapes.cs` theo Giáo trình Deitel:\n\n```csharp\nusing System;\n\nclass Shapes\n{\n   static void Main()\n   {\n      Console.WriteLine(\"*********     ***       *        *    \");\n      Console.WriteLine(\"*       *   *     *    ***      * *   \");\n      Console.WriteLine(\"*       *  *       *  *****    *   *  \");\n      Console.WriteLine(\"*       *  *       *    *     *     * \");\n      Console.WriteLine(\"*       *  *       *    *    *       *\");\n      Console.WriteLine(\"*       *  *       *    *     *     * \");\n      Console.WriteLine(\"*       *  *       *    *      *   *  \");\n      Console.WriteLine(\"*       *   *     *     *       * *   \");\n      Console.WriteLine(\"*********     ***       *        *    \");\n   }\n}\n```",
+    "hints": "Mỗi dòng lệnh Console.WriteLine in ra một lát cắt ngang của cả 4 hình cùng một lúc.",
+    "image": "images/fig3_25_shapes_output.png"
+  },
+  {
+    "id": "3.26",
+    "category": "exercises",
+    "title": "Exercise 3.26: Bảng tính bình phương và lập phương từ 0 đến 10",
+    "description": "In bảng số nguyên gồm 3 cột: number, square, cube từ 0 đến 10 sử dụng tab \\t.",
+    "question": "Viết một ứng dụng C# tính và hiển thị bình phương (x^2) và lập phương (x^3) của các số từ 0 đến 10. Bảng in ra phải có tiêu đề ba cột: number, square, cube được căn chỉnh thẳng hàng bằng ký tự thoát \\t.",
+    "solution": "Mã nguồn hoàn chỉnh `SquaresAndCubes.cs` theo Giáo trình Deitel:\n\n```csharp\nusing System;\n\nclass SquaresAndCubes\n{\n   static void Main()\n   {\n      Console.WriteLine(\"number\\tsquare\\tcube\");\n      Console.WriteLine($\"0\\t{0*0}\\t{0*0*0}\");\n      Console.WriteLine($\"1\\t{1*1}\\t{1*1*1}\");\n      Console.WriteLine($\"2\\t{2*2}\\t{2*2*2}\");\n      Console.WriteLine($\"3\\t{3*3}\\t{3*3*3}\");\n      Console.WriteLine($\"4\\t{4*4}\\t{4*4*4}\");\n      Console.WriteLine($\"5\\t{5*5}\\t{5*5*5}\");\n      Console.WriteLine($\"6\\t{6*6}\\t{6*6*6}\");\n      Console.WriteLine($\"7\\t{7*7}\\t{7*7*7}\");\n      Console.WriteLine($\"8\\t{8*8}\\t{8*8*8}\");\n      Console.WriteLine($\"9\\t{9*9}\\t{9*9*9}\");\n      Console.WriteLine($\"10\\t{10*10}\\t{10*10*10}\");\n   }\n}\n```",
+    "hints": "Sử dụng String Interpolation $ kết hợp ký tự thoát \\t để căn thẳng các cột số.",
+    "image": "images/fig3_26_multiplication_table.png"
+  }
+];
+
+if (typeof window !== 'undefined') {
+  window.EXERCISES_CHAPTER_01 = (typeof EXERCISES_CHAPTER_01 !== 'undefined') ? EXERCISES_CHAPTER_01 : [];
+  window.EXERCISES_CHAPTER_02 = (typeof EXERCISES_CHAPTER_02 !== 'undefined') ? EXERCISES_CHAPTER_02 : [];
+  window.EXERCISES_CHAPTER_03 = EXERCISES_CHAPTER_03;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { EXERCISES_CHAPTER_01, EXERCISES_CHAPTER_02, EXERCISES_CHAPTER_03 };
+}
