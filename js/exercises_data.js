@@ -1,8 +1,6 @@
 // ============================================================================
 // HỌC PHẦN: KỸ THUẬT LẬP TRÌNH (4 TÍN CHỈ) - IT26M
-// BỘ DỮ LIỆU BÀI TẬP CUỐI CHƯƠNG 1 (VISUAL C# HOW TO PROGRAM - DEITEL & DEITEL - CH.1, TRANG 67-72)
-// GỒM 3 MỤC: SELF-REVIEW EXERCISES, EXERCISES, VÀ MAKING-A-DIFFERENCE EXERCISES
-// TOÀN BỘ ĐÃ ĐƯỢC CHUYỂN NGỮ SANG TIẾNG VIỆT, TÍCH HỢP HÌNH ẢNH MINH HỌA VÀ ĐÁP ÁN ĐẦY ĐỦ
+// EXERCISES DATABASE: CHAPTERS 1, 2, 3, 4
 // ============================================================================
 
 const EXERCISES_CHAPTER_01 = [
@@ -334,22 +332,6 @@ const EXERCISES_CHAPTER_01 = [
   }
 ];
 
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { EXERCISES_CHAPTER_01 };
-}
-
-// ============================================================================
-// HỌC PHẦN: KỸ THUẬT LẬP TRÌNH (4 TÍN CHỈ) - IT26M
-// BỘ DỮ LIỆU BÀI TẬP CUỐI CHƯƠNG 2: INTRODUCTION TO VISUAL STUDIO AND VISUAL PROGRAMMING
-// (VISUAL C# HOW TO PROGRAM - DEITEL & DEITEL - CH.2, TRANG 99-104)
-// GỒM: SELF-REVIEW EXERCISES (2.1 - 2.6) VÀ GUI DESIGN PROJECTS (2.7 - 2.11)
-// ============================================================================
-
-// ============================================================================
-// BÀI TẬP CUỐI CHƯƠNG & ĐỒ ÁN GUI C# - CHƯƠNG 2
-// GIÁO TRÌNH: VISUAL C# HOW TO PROGRAM (DEITEL & DEITEL - 6TH EDITION)
-// BẢN DỊCH TIẾNG VIỆT CHUẨN MỰC, HÌNH ẢNH GỐC & LỜI GIẢI WINDOWS FORMS
-// ============================================================================
 const EXERCISES_CHAPTER_02 = [
   {
     "id": "sre-2.1",
@@ -490,19 +472,6 @@ const EXERCISES_CHAPTER_02 = [
   }
 ];
 
-if (typeof window !== 'undefined') {
-  window.EXERCISES_CHAPTER_01 = EXERCISES_CHAPTER_01;
-  window.EXERCISES_CHAPTER_02 = EXERCISES_CHAPTER_02;
-}
-
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { EXERCISES_CHAPTER_01, EXERCISES_CHAPTER_02 };
-}
-
-
-// ============================================================================
-// HỆ THỐNG BÀI TẬP CHƯƠNG 3: INTRODUCTION TO C# APP PROGRAMMING
-// ============================================================================
 const EXERCISES_CHAPTER_03 = [
   {
     "id": "3.1",
@@ -512,7 +481,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Điền từ hoặc cụm từ thích hợp vào chỗ trống trong các phát biểu sau:\na) Một _______ bắt đầu thân của mọi phương thức, và một _______ kết thúc thân của mọi phương thức.\nb) Hầu hết các câu lệnh trong C# kết thúc bằng một dấu _______.\nc) Câu lệnh _______ được sử dụng để đưa ra quyết định (rẽ nhánh).\nd) Ký hiệu _______ bắt đầu một dòng chú thích đơn (single-line comment).\ne) Dòng trống, ký tự dấu cách và ký tự _______ được gọi là khoảng trắng (whitespace).\nf) Các _______ là những từ ngữ được dành riêng cho ngôn ngữ C# sử dụng.\ng) Mọi ứng dụng C# đều bắt đầu thực thi tại phương thức _______.\nh) Các phương thức _______ và _______ của lớp Console dùng để hiển thị thông tin ra màn hình.\ni) Tính năng _______ cho phép bạn nhúng trực tiếp giá trị biến vào bên trong một chuỗi ký tự bằng dấu $.",
     "solution": "Đáp án chuẩn mực theo Giáo trình Deitel (trang 139):\n\na) **left brace ({)** (ngoặc nhọn mở), **right brace (})** (ngoặc nhọn đóng).\nb) **semicolon (;)** (dấu chấm phẩy).\nc) **if** (câu lệnh điều kiện if).\nd) **//** (hai dấu gạch chéo liền nhau).\ne) **tab characters** (ký tự tab, cùng với newline - ký tự xuống dòng).\nf) **Keywords** (từ khóa / reserved words).\ng) **Main** (phương thức Main viết hoa chữ M).\nh) **Console.WriteLine** và **Console.Write**.\ni) **string interpolation** (định dạng chuỗi nội suy với ký tự tiền tố $).",
     "hints": "Xem lại Mục 3.2 đến 3.5 trong giáo trình Deitel: cấu trúc Welcome1, escape sequences, và string interpolation.",
-    "image": "images/fig3_01_welcome1_app.png"
+    "image": "images/fig3_01_welcome1_app.png",
+    "type": "self-review"
   },
   {
     "id": "3.2",
@@ -522,7 +492,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Xác định các phát biểu sau là Đúng (True) hay Sai (False). Nếu Sai, hãy giải thích rõ lý do kỹ thuật:\na) Chú thích (Comments) khiến máy tính hiển thị văn bản đứng sau dấu // lên màn hình khi ứng dụng chạy.\nb) C# xem hai biến number và NuMbEr là hoàn toàn giống nhau (identical).\nc) Toán tử chia lấy dư (%) chỉ có thể được sử dụng với các toán hạng kiểu số nguyên.\nd) Các toán tử số học *, /, %, + và - đều có cùng một mức độ ưu tiên tính toán.\ne) Một chuỗi nội suy (interpolated string) bắt buộc phải bắt đầu bằng ký tự $ đặt ngay trước chuỗi.",
     "solution": "Phân tích và lời giải chuẩn mực theo Giáo trình Deitel (trang 140):\n\na) **False (Sai)**. Chú thích không làm máy tính thực hiện bất kỳ hành động nào và bị trình biên dịch bỏ qua hoàn toàn. Chúng chỉ dùng để giải thích mã nguồn cho con người đọc.\nb) **False (Sai)**. C# là ngôn ngữ phân biệt hoa thường (case-sensitive), do đó `number` và `NuMbEr` là hai biến hoàn toàn khác nhau trong bộ nhớ.\nc) **False (Sai)**. Trong C#, toán tử chia lấy dư `%` có thể áp dụng cho cả số thực dấu phẩy động (float, double), ví dụ: `7.5 % 2.0 = 1.5`.\nd) **False (Sai)**. Các toán tử `*`, `/`, `%` có cùng mức độ ưu tiên cao hơn, còn `+` và `-` có mức độ ưu tiên thấp hơn.\ne) **True (Đúng)**. Chuỗi nội suy bắt buộc phải có ký tự tiền tố `$` đứng ngay trước dấu mở ngoặc kép `$\"...\"`.",
     "hints": "Phân biệt tính nhạy chữ hoa/thường, cơ chế toán tử % trên số thực trong C#, và thứ tự ưu tiên nhân chia trước cộng trừ sau.",
-    "image": "images/fig3_19_operator_precedence.png"
+    "image": "images/fig3_19_operator_precedence.png",
+    "type": "self-review"
   },
   {
     "id": "3.3",
@@ -532,7 +503,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Viết câu lệnh C# chuẩn xác để hoàn thành mỗi tác vụ sau:\na) Khai báo các biến c, thisIsAVariable, q76354 và number thuộc kiểu dữ liệu int.\nb) In câu nhắc yêu cầu người dùng nhập một số nguyên: \"Enter an integer: \".\nc) Đọc một số nguyên từ bàn phím và gán kết quả cho biến value kiểu int.\nd) Nếu biến number khác 7, hiển thị thông báo \"The variable number is not equal to 7\".\ne) In chuỗi \"This is a C# app\" trên cùng một dòng trong cửa sổ console.\nf) In chuỗi \"This is a C# app\" trên hai dòng, dòng thứ nhất kết thúc bằng C# sử dụng Console.WriteLine.\ng) Sử dụng String Interpolation để hiển thị tổng của hai biến x và y.",
     "solution": "Mã nguồn câu lệnh chuẩn mực theo Giáo trình Deitel (trang 140):\n\n```csharp\n// a) Khai bao 4 bien kieu int\nint c;\nint thisIsAVariable;\nint q76354;\nint number;\n\n// b) Cau nhac nhap so nguyen khong xuong dong\nConsole.Write(\"Enter an integer: \");\n\n// c) Nhap chuoi va ep kieu sang int\nint value = int.Parse(Console.ReadLine());\n\n// d) Kiem tra dieu kien khac 7\nif (number != 7)\n{\n   Console.WriteLine(\"The variable number is not equal to 7\");\n}\n\n// e) In tren mot dong\nConsole.WriteLine(\"This is a C# app\");\n\n// f) In tren hai dong bang ky tu thoat \\n\nConsole.WriteLine(\"This is a C#\\napp\");\n\n// g) String Interpolation tinh tong\nConsole.WriteLine($\"The sum of {x} and {y} is {x + y}\");\n```",
     "hints": "Sử dụng int.Parse(Console.ReadLine()), toán tử khác !=, ký tự thoát \\n và cú pháp nội suy $.",
-    "image": "images/fig3_14_addition_part1.png"
+    "image": "images/fig3_14_addition_part1.png",
+    "type": "self-review"
   },
   {
     "id": "3.4",
@@ -542,7 +514,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Chỉ ra lỗi và sửa lại cho đúng trong mỗi đoạn mã lệnh C# sau:\n\na)\n```csharp\nif (c < 7);\n{\n   Console.WriteLine(\"c is less than 7\");\n}\n```\n\nb)\n```csharp\nif (c => 7)\n{\n   Console.WriteLine(\"c is equal to or greater than 7\");\n}\n```",
     "solution": "Phân tích lỗi và phương án sửa chuẩn theo Giáo trình Deitel (trang 140):\n\na) **Lỗi:** Dấu chấm phẩy `;` đặt ngay sau dấu đóng ngoặc đơn của mệnh đề điều kiện `(c < 7)`. Dấu chấm phẩy này tạo thành một câu lệnh rỗng, khiến khối lệnh in phía sau luôn luôn được thực thi dù `c` có nhỏ hơn 7 hay không!\n   **Khắc phục:** Xóa bỏ dấu chấm phẩy sau `(c < 7)`:\n   ```csharp\n   if (c < 7)\n   {\n      Console.WriteLine(\"c is less than 7\");\n   }\n   ```\n\nb) **Lỗi:** Toán tử quan hệ viết sai thứ tự `=>`. Trong C#, toán tử lớn hơn hoặc bằng bắt buộc phải là `>=` (dấu `=>` dành riêng cho biểu thức lambda).\n   **Khắc phục:** Đổi `=>` thành `>=`:\n   ```csharp\n   if (c >= 7)\n   {\n      Console.WriteLine(\"c is equal to or greater than 7\");\n   }\n   ```",
     "hints": "Không bao giờ đặt dấu chấm phẩy ngay sau biểu thức if; toán tử lớn hơn hoặc bằng là >= chứ không phải =>.",
-    "image": "images/fig3_09_syntax_error_ide.png"
+    "image": "images/fig3_09_syntax_error_ide.png",
+    "type": "self-review"
   },
   {
     "id": "3.5",
@@ -552,7 +525,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Viết các khai báo biến, câu lệnh và chú thích thực hiện từng bước sau:\na) Viết chú thích nói rằng ứng dụng sẽ tính tích của ba số nguyên.\nb) Khai báo các biến x, y, z và result thuộc kiểu int.\nc) In câu nhắc yêu cầu người dùng nhập số nguyên thứ nhất.\nd) Đọc số nguyên thứ nhất từ bàn phím và lưu vào biến x.\ne) In câu nhắc và đọc số nguyên thứ hai lưu vào biến y.\nf) In câu nhắc và đọc số nguyên thứ ba lưu vào biến z.\ng) Tính tích của ba số x, y, z và gán kết quả cho biến result.\nh) Hiển thị thông báo \"Product is \" kèm giá trị biến result sử dụng String Interpolation.",
     "solution": "Mã lệnh từng bước chuẩn mực theo Giáo trình Deitel (trang 140):\n\n```csharp\n// a) Chú thích mô tả mục đích chương trình\n// Calculating the product of three integers\n\n// b) Khai báo 4 biến số nguyên\nint x; int y; int z; int result;\n\n// c & d) Nhập số thứ nhất\nConsole.Write(\"Enter first integer: \");\nx = int.Parse(Console.ReadLine());\n\n// e) Nhập số thứ hai\nConsole.Write(\"Enter second integer: \");\ny = int.Parse(Console.ReadLine());\n\n// f) Nhập số thứ ba\nConsole.Write(\"Enter third integer: \");\nz = int.Parse(Console.ReadLine());\n\n// g) Tính tích ba số nguyên\nresult = x * y * z;\n\n// h) Xuất kết quả bằng String Interpolation\nConsole.WriteLine($\"Product is {result}\");\n```",
     "hints": "Áp dụng kỹ thuật nhập liệu với int.Parse(Console.ReadLine()) và toán tử nhân * lặp lại cho 3 toán hạng.",
-    "image": "images/fig3_14_addition_part2.png"
+    "image": "images/fig3_14_addition_part2.png",
+    "type": "self-review"
   },
   {
     "id": "3.6",
@@ -562,7 +536,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Từ các câu lệnh đã viết ở Exercise 3.5, hãy đóng gói thành một chương trình C# hoàn chỉnh có tên lớp là Product, chứa phương thức Main và sử dụng không gian tên System. Chạy thử chương trình với ba số nguyên: 10, 20 và 30.",
     "solution": "Mã nguồn hoàn chỉnh `Product.cs` theo Giáo trình Deitel (Hình 3.24, trang 141):\n\n```csharp\n// Exercise 3.6: Product.cs\n// Calculating the product of three integers.\nusing System;\n\nclass Product\n{\n   static void Main()\n   {\n      int x;      // Lưu số nguyên thứ nhất do người dùng nhập\n      int y;      // Lưu số nguyên thứ hai do người dùng nhập\n      int z;      // Lưu số nguyên thứ ba do người dùng nhập\n      int result; // Lưu tích của ba số\n\n      Console.Write(\"Enter first integer: \");\n      x = int.Parse(Console.ReadLine());\n\n      Console.Write(\"Enter second integer: \");\n      y = int.Parse(Console.ReadLine());\n\n      Console.Write(\"Enter third integer: \");\n      z = int.Parse(Console.ReadLine());\n\n      result = x * y * z; // Thực hiện phép nhân trong bộ nhớ\n\n      Console.WriteLine($\"Product is {result}\");\n   } // kết thúc Main\n} // kết thúc class Product\n```\n\n**Kết quả chạy thử mẫu:**\n```text\nEnter first integer: 10\nEnter second integer: 20\nEnter third integer: 30\nProduct is 6000\n```",
     "hints": "Tạo dự án Console App trong Visual Studio, dán đoạn mã trên vào Program.cs và bấm Ctrl+F5 để chạy.",
-    "image": "images/fig3_20_polynomial_evaluation.png"
+    "image": "images/fig3_20_polynomial_evaluation.png",
+    "type": "self-review"
   },
   {
     "id": "3.7",
@@ -572,7 +547,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Điền từ hoặc cụm từ thích hợp vào chỗ trống:\na) Mỗi chỉ thị using xác định một _______ chứa các lớp mà ứng dụng C# có thể sử dụng.\nb) Các ký hiệu _______ và _______ được dùng cho chú thích nhiều dòng (delimited comments).\nc) Các phép tính toán trong C# thường được thực hiện bởi các câu lệnh _______.\nd) Các toán tử số học có cùng mức độ ưu tiên với phép nhân (*) là phép chia (/) và phép _______.\ne) Khi các cặp ngoặc đơn trong biểu thức số học lồng nhau, cặp ngoặc _______ sẽ được tính toán trước tiên.\nf) Một vị trí trong bộ nhớ máy tính có thể chứa các giá trị khác nhau tại các thời điểm trong khi ứng dụng chạy được gọi là một _______.",
     "solution": "Đáp án chuẩn theo Giáo trình Deitel (trang 141):\n\na) **namespace** (không gian tên, ví dụ: System).\nb) **/* ** và ** */** (cặp ký hiệu mở và đóng chú thích khối nhiều dòng).\nc) **assignment** (câu lệnh gán / tính toán số học).\nd) **remainder (%)** (phép chia lấy dư).\ne) **innermost** (cặp ngoặc đơn nằm trong cùng nhất).\nf) **variable** (biến số).",
     "hints": "Nhớ lại: namespace gom nhóm các lớp; ngoặc trong cùng tính trước; biến lưu trữ giá trị khả biến trong RAM.",
-    "image": "images/fig3_18_arithmetic_operators.png"
+    "image": "images/fig3_18_arithmetic_operators.png",
+    "type": "exercises"
   },
   {
     "id": "3.8",
@@ -582,7 +558,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Viết các câu lệnh C# thực hiện mỗi yêu cầu sau:\na) In dòng chữ \"Roll Number    Student Name    Grade\" trên một dòng đơn, phân cách các cột bằng tab stop.\nb) In ra màn hình ký tự dấu ngoặc kép đôi (\") bên trong một chuỗi văn bản.\nc) Khai báo một biến kiểu chuỗi có tên là courseName và khởi tạo giá trị ban đầu là \"C# Programming\".",
     "solution": "Mã nguồn câu lệnh C# chuẩn xác:\n\n```csharp\n// a) In tieu de bang bang ky tu thoat \\t\nConsole.WriteLine(\"Roll Number\\tStudent Name\\tGrade\");\n\n// b) In ky tu ngoac kep doi bang \\\"\nConsole.WriteLine(\"He said: \\\"C# is awesome!\\\"\");\n\n// c) Khai bao va khoi tao bien kieu string\nstring courseName = \"C# Programming\";\n```",
     "hints": "Sử dụng \\t cho tab ngang và \\\" cho dấu ngoặc kép đôi.",
-    "image": "images/fig3_12_escape_sequences_table.png"
+    "image": "images/fig3_12_escape_sequences_table.png",
+    "type": "exercises"
   },
   {
     "id": "3.9",
@@ -592,7 +569,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Xác định Đúng (True) hay Sai (False). Nếu Sai, hãy giải thích rõ lý do:\na) IntelliSense liệt kê các mục bắt đầu bằng hoặc chứa các chữ cái mà người dùng đã gõ.\nb) Các tên sau đây đều là tên biến hợp lệ trong C#: _under_bar_, m928134, t5, j7, her_sales, his_account_total, a, b, c, z và z2.\nc) Một biểu thức số học C# hợp lệ không chứa dấu ngoặc đơn luôn luôn được tính toán tuần tự từ trái sang phải.\nd) Từ khóa void chỉ ra rằng phương thức Main sẽ không trả về bất kỳ giá trị nào sau khi hoàn thành nhiệm vụ.",
     "solution": "Phân tích chuẩn xác theo Giáo trình Deitel (trang 141):\n\na) **True (Đúng)**. IntelliSense hỗ trợ tìm kiếm mờ (fuzzy search), hiển thị cả thành viên bắt đầu hoặc chứa chuỗi ký tự vừa gõ.\nb) **True (Đúng)**. Tất cả các tên này đều hợp lệ vì bắt đầu bằng chữ cái hoặc dấu gạch dưới `_`, và chỉ chứa chữ cái, chữ số, dấu gạch dưới.\nc) **False (Sai)**. Biểu thức không có ngoặc vẫn phải tuân thủ thứ tự ưu tiên của toán tử: các toán tử `*`, `/`, `%` được tính trước các toán tử `+`, `-` dù chúng đứng sau trong biểu thức!\nd) **True (Đúng)**. Từ khóa `void` biểu thị kiểu trả về rỗng, phương thức kết thúc mà không truyền giá trị về cho hệ điều hành.",
     "hints": "Nhớ rằng nhân chia luôn được ưu tiên tính trước cộng trừ dù không có ngoặc đơn; tên biến bắt đầu bằng dấu gạch dưới là hoàn toàn hợp lệ.",
-    "image": "images/fig3_02_keywords_table.png"
+    "image": "images/fig3_02_keywords_table.png",
+    "type": "exercises"
   },
   {
     "id": "3.10",
@@ -602,7 +580,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Giả sử biến x = 2 và y = 3, hãy cho biết mỗi câu lệnh sau đây sẽ in ra màn hình nội dung gì:\na) Console.WriteLine($\"x = {x}\");\nb) Console.WriteLine($\"Value of {x} + {x} is {x + x}\");\nc) Console.Write(\"x =\");\nd) Console.WriteLine($\"{x + y} = {y + x}\");",
     "solution": "Kết quả hiển thị chính xác trên màn hình Console:\n\na) `x = 2`\nb) `Value of 2 + 2 is 4`\nc) `x =` (không xuống dòng)\nd) `5 = 5`\n\n**Giải thích:** Các biểu thức `{x + x}` và `{x + y}` bên trong cặp ngoặc nhọn của chuỗi nội suy được tính toán tự động thành các số nguyên (4 và 5) trước khi chuyển đổi sang chuỗi và ghép vào dòng văn bản.",
     "hints": "Thay thế x bằng 2, y bằng 3 và tính toán các phép toán số học bên trong { }.",
-    "image": "images/fig3_13_welcome4_interpolation.png"
+    "image": "images/fig3_13_welcome4_interpolation.png",
+    "type": "exercises"
   },
   {
     "id": "3.11",
@@ -612,7 +591,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Trong các câu lệnh C# sau đây, câu lệnh nào làm thay đổi giá trị của một biến (thao tác Destructive Write)?\na) p = i + j + k + 7;\nb) Console.WriteLine(\"variables whose values are modified\");\nc) Console.WriteLine(\"a = 5\");\nd) value = int.Parse(Console.ReadLine());",
     "solution": "Phân tích và đáp án chuẩn mực theo Giáo trình Deitel (trang 142):\n\n- **Câu a)**: **CÓ thay đổi**. Biến `p` nằm ở vế trái của toán tử gán `=` sẽ nhận giá trị mới từ tổng `i + j + k + 7`, giá trị cũ của `p` bị xóa vĩnh viễn (Destructive Write). Các biến `i`, `j`, `k` chỉ bị đọc nên không đổi.\n- **Câu b)**: **KHÔNG thay đổi**. Chỉ là câu lệnh in một chuỗi văn bản cố định ra màn hình console.\n- **Câu c)**: **KHÔNG thay đổi**. Mặc dù có chữ `a = 5` nhưng đây chỉ là ký tự bên trong chuỗi, không phải câu lệnh gán biến.\n- **Câu d)**: **CÓ thay đổi**. Biến `value` nhận giá trị số nguyên mới do người dùng nhập từ bàn phím thông qua toán tử gán `=`, giá trị cũ trong ô nhớ bị ghi đè hoàn toàn.",
     "hints": "Chỉ các câu lệnh có toán tử gán = với biến ở vế trái mới làm thay đổi ô nhớ của biến đó.",
-    "image": "images/fig3_15_memory_number1.png"
+    "image": "images/fig3_15_memory_number1.png",
+    "type": "exercises"
   },
   {
     "id": "3.12",
@@ -622,7 +602,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Chuyển các biểu thức toán học sau sang mã lệnh C# chuẩn xác:\na) Tích của m và n chia cho 2: (m * n) / 2\nb) Biểu thức tính diện tích hình thang: area = (a + b) * h / 2\nc) Biểu thức tính giá trị đa thức bậc 3: y = a * x^3 + 7",
     "solution": "Mã lệnh C# tương đương chuẩn mực:\n\n```csharp\n// a) Tich m va n chia 2 (neu can so thuc thi dung 2.0)\nint result1 = (m * n) / 2;\n\n// b) Dien tich hinh thang (can ngoac don de cong a + b truoc)\ndouble area = (a + b) * h / 2.0;\n\n// c) Da thuc bac 3 (khong dung dau mu ^ vi ^ la phep toan XOR)\nint y = a * x * x * x + 7;\n```",
     "hints": "Luôn dùng ngoặc đơn để chỉ rõ thứ tự ưu tiên; lũy thừa x^3 viết thành x * x * x.",
-    "image": "images/fig3_20_polynomial_evaluation.png"
+    "image": "images/fig3_20_polynomial_evaluation.png",
+    "type": "exercises"
   },
   {
     "id": "3.14",
@@ -632,7 +613,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Viết một ứng dụng C# cho phép người dùng nhập vào bán kính của một hình tròn (số nguyên r kiểu int) và in ra màn hình:\n- Đường kính (Diameter = 2 * r)\n- Chu vi (Circumference = 2 * Math.PI * r)\n- Diện tích (Area = Math.PI * r * r)\nSử dụng hằng số Math.PI và định dạng chuỗi nội suy $.",
     "solution": "Mã nguồn hoàn chỉnh `Circle.cs`:\n\n```csharp\nusing System;\n\nclass Circle\n{\n   static void Main()\n   {\n      Console.Write(\"Nhap ban kinh hinh tron (so nguyen): \");\n      int r = int.Parse(Console.ReadLine());\n\n      int diameter = 2 * r;\n      double circumference = 2 * Math.PI * r;\n      double area = Math.PI * r * r;\n\n      Console.WriteLine($\"Duong kinh (Diameter): {diameter}\");\n      Console.WriteLine($\"Chu vi (Circumference): {circumference:F2}\");\n      Console.WriteLine($\"Dien tich (Area): {area:F2}\");\n   }\n}\n```",
     "hints": "Sử dụng Math.PI có sẵn trong không gian tên System; r * r để tính r bình phương.",
-    "image": "images/fig3_26_multiplication_table.png"
+    "image": "images/fig3_26_multiplication_table.png",
+    "type": "exercises"
   },
   {
     "id": "3.25",
@@ -642,7 +624,8 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Viết một ứng dụng Console C# sử dụng các câu lệnh Console.WriteLine để in ra 4 hình đồ họa đặt cạnh nhau: Hình hộp chữ nhật, Hình Oval, Mũi tên hướng lên, và Hình thoi (Diamond) như minh họa tại Hình 3.25 trong giáo trình Deitel.",
     "solution": "Mã nguồn hoàn chỉnh `Shapes.cs` theo Giáo trình Deitel:\n\n```csharp\nusing System;\n\nclass Shapes\n{\n   static void Main()\n   {\n      Console.WriteLine(\"*********     ***       *        *    \");\n      Console.WriteLine(\"*       *   *     *    ***      * *   \");\n      Console.WriteLine(\"*       *  *       *  *****    *   *  \");\n      Console.WriteLine(\"*       *  *       *    *     *     * \");\n      Console.WriteLine(\"*       *  *       *    *    *       *\");\n      Console.WriteLine(\"*       *  *       *    *     *     * \");\n      Console.WriteLine(\"*       *  *       *    *      *   *  \");\n      Console.WriteLine(\"*       *   *     *     *       * *   \");\n      Console.WriteLine(\"*********     ***       *        *    \");\n   }\n}\n```",
     "hints": "Mỗi dòng lệnh Console.WriteLine in ra một lát cắt ngang của cả 4 hình cùng một lúc.",
-    "image": "images/fig3_25_shapes_output.png"
+    "image": "images/fig3_25_shapes_output.png",
+    "type": "exercises"
   },
   {
     "id": "3.26",
@@ -652,15 +635,186 @@ const EXERCISES_CHAPTER_03 = [
     "question": "Viết một ứng dụng C# tính và hiển thị bình phương (x^2) và lập phương (x^3) của các số từ 0 đến 10. Bảng in ra phải có tiêu đề ba cột: number, square, cube được căn chỉnh thẳng hàng bằng ký tự thoát \\t.",
     "solution": "Mã nguồn hoàn chỉnh `SquaresAndCubes.cs` theo Giáo trình Deitel:\n\n```csharp\nusing System;\n\nclass SquaresAndCubes\n{\n   static void Main()\n   {\n      Console.WriteLine(\"number\\tsquare\\tcube\");\n      Console.WriteLine($\"0\\t{0*0}\\t{0*0*0}\");\n      Console.WriteLine($\"1\\t{1*1}\\t{1*1*1}\");\n      Console.WriteLine($\"2\\t{2*2}\\t{2*2*2}\");\n      Console.WriteLine($\"3\\t{3*3}\\t{3*3*3}\");\n      Console.WriteLine($\"4\\t{4*4}\\t{4*4*4}\");\n      Console.WriteLine($\"5\\t{5*5}\\t{5*5*5}\");\n      Console.WriteLine($\"6\\t{6*6}\\t{6*6*6}\");\n      Console.WriteLine($\"7\\t{7*7}\\t{7*7*7}\");\n      Console.WriteLine($\"8\\t{8*8}\\t{8*8*8}\");\n      Console.WriteLine($\"9\\t{9*9}\\t{9*9*9}\");\n      Console.WriteLine($\"10\\t{10*10}\\t{10*10*10}\");\n   }\n}\n```",
     "hints": "Sử dụng String Interpolation $ kết hợp ký tự thoát \\t để căn thẳng các cột số.",
-    "image": "images/fig3_26_multiplication_table.png"
+    "image": "images/fig3_26_multiplication_table.png",
+    "type": "exercises"
   }
 ];
+
+const EXERCISES_CHAPTER_04 = [
+  {
+    "id": "4.1",
+    "category": "self-review",
+    "title": "Self-Review 4.1: Điền vào chỗ trống các khái niệm nền tảng OOP C#",
+    "description": "Củng cố các khái niệm cốt lõi: lớp, đối tượng, từ khóa, bổ từ truy cập và kiểu tiền tệ decimal.",
+    "question": "Điền từ hoặc cụm từ thích hợp vào chỗ trống trong các phát biểu sau:\na) Ký tự định dạng _______ được sử dụng để hiển thị các giá trị số dưới định dạng tiền tệ (monetary format).\nb) Mọi khai báo lớp đều bắt đầu bằng từ khóa _______ theo sau ngay là tên của lớp.\nc) Toán tử _______ tạo ra một đối tượng của lớp được chỉ định ở bên phải từ khóa.\nd) Mỗi tham số trong danh sách tham số của phương thức phải chỉ định cả _______ và _______.\ne) Kiểu trả về _______ biểu thị rằng phương thức sẽ không trả về bất kỳ dữ liệu nào khi hoàn tất nhiệm vụ.\nf) Khi mỗi đối tượng của một lớp duy trì bản sao dữ liệu riêng của một thuộc tính, thuộc tính đó được gọi là một _______.\ng) Đối với một _______, trình biên dịch C# tự động sinh ra một biến thể hiện private ẩn cùng các bộ truy cập set và get.\nh) Các biến thuộc kiểu dữ liệu _______ thường được sử dụng chuyên dụng để biểu diễn các số tiền trong tài chính.\ni) Phương thức _______ của kiểu decimal chuyển đổi một chuỗi văn bản thành một giá trị kiểu decimal.\nj) Từ khóa public là một _______ (quy định phạm vi truy cập).",
+    "solution": "Đáp án chuẩn mực theo Giáo trình Deitel (trang 179):\n\na) **C** (Ký tự định dạng tiền tệ Currency).\nb) **class** (từ khóa khai báo lớp).\nc) **new** (toán tử cấp phát bộ nhớ trên Heap và khởi tạo đối tượng).\nd) **type** (kiểu dữ liệu) và **name** (tên tham số).\ne) **void** (kiểu không trả về giá trị).\nf) **instance variable** (biến thể hiện / trường dữ liệu field).\ng) **auto-implemented property** (thuộc tính tự động `{ get; set`).\nh) **decimal** (kiểu số thực 128-bit độ chính xác cao 28-29 chữ số).\ni) **Parse** (phương thức `decimal.Parse`).\nj) **access modifier** (bổ từ truy cập / công cụ sửa đổi phạm vi).",
+    "hints": "Xem lại Mục 4.2 đến 4.9 trong giáo trình Deitel: cấu trúc lớp Account, toán tử new, auto-properties và kiểu decimal.",
+    "image": "images/fig4_03_uml_account.png",
+    "type": "self-review"
+  },
+  {
+    "id": "4.2",
+    "category": "self-review",
+    "title": "Self-Review 4.2: Nhận định Đúng / Sai và phân tích kỹ thuật",
+    "description": "Kiểm tra sự thấu hiểu về quy ước đặt tên, cơ chế thuộc tính, khởi tạo biến và phạm vi truy cập trong C#.",
+    "question": "Xác định các phát biểu sau là Đúng (True) hay Sai (False). Nếu Sai, hãy giải thích rõ lý do kỹ thuật:\na) Theo quy ước, tên phương thức bắt đầu bằng chữ cái thường và các từ tiếp theo viết hoa chữ cái đầu.\nb) Bộ truy cập get của một thuộc tính cho phép phía client sửa đổi giá trị của biến thể hiện tương ứng.\nc) Tất cả các biến thể hiện đều được khởi tạo mặc định là null.\nd) Cặp ngoặc đơn rỗng () theo sau tên phương thức biểu thị phương thức đó không yêu cầu bất kỳ tham số nào.\ne) Số lượng đối số trong lời gọi phương thức bắt buộc phải khớp với số lượng tham số trong khai báo phương thức.\nf) Các biến hoặc phương thức được khai báo với bổ từ private chỉ có thể truy cập bởi các thành viên trong cùng lớp.\ng) Các biến được khai báo trong thân của một phương thức cụ thể được gọi là biến thể hiện và dùng được ở mọi nơi trong lớp.\nh) Một khai báo thuộc tính bắt buộc phải chứa cả hai bộ truy cập get và set.\ni) Thân của mọi phương thức hoặc thuộc tính đều được bao bọc bởi cặp ngoặc nhọn mở và đóng { }.\nj) Các biến cục bộ được tự động khởi tạo giá trị mặc định khi khai báo.",
+    "solution": "Phân tích và lời giải chuẩn mực theo Giáo trình Deitel (trang 179):\n\na) **False (Sai)**. Theo quy ước chuẩn C#, tên phương thức sử dụng PascalCase: viết hoa chữ cái đầu tiên của mọi từ cấu thành (ví dụ: `SetName`, `DisplayAccount`).\nb) **False (Sai)**. Bộ truy cập `get` dùng để ĐỌC (retrieve) giá trị; bộ truy cập `set` mới cho phép SỬA ĐỔI (modify) giá trị.\nc) **False (Sai)**. Biến thể hiện kiểu số được khởi tạo là `0`, kiểu `bool` là `false`, chỉ có các kiểu tham chiếu (reference types) mới khởi tạo là `null`.\nd) **True (Đúng)**. Cặp ngoặc đơn rỗng `()` chỉ ra phương thức không nhận tham số đầu vào.\ne) **True (Đúng)**. Số lượng và kiểu của đối số phải tương thích hoàn toàn với danh sách tham số.\nf) **True (Đúng)**. Bổ từ `private` bảo toàn nguyên lý đóng gói (Encapsulation), ngăn chặn truy cập trực tiếp từ bên ngoài.\ng) **False (Sai)**. Các biến khai báo trong thân phương thức là Biến cục bộ (Local Variables) và chỉ tồn tại trong nội bộ phương thức đó.\nh) **False (Sai)**. Thuộc tính có thể chỉ có `get` (chỉ đọc - read-only), chỉ có `set` (chỉ ghi), hoặc kết hợp `private set`.\ni) **True (Đúng)**. Cặp ngoặc nhọn `{ }` phân định khối mã lệnh (block).\nj) **False (Sai)**. Biến thể hiện mới được khởi tạo mặc định; biến cục bộ KHÔNG có giá trị mặc định và C# báo lỗi biên dịch nếu đọc biến cục bộ chưa gán giá trị.",
+    "hints": "Phân biệt PascalCase vs camelCase, chức năng get/set, giá trị mặc định của biến thể hiện vs biến cục bộ.",
+    "image": "images/fig4_04_conceptual_object.png",
+    "type": "self-review"
+  },
+  {
+    "id": "4.3",
+    "category": "self-review",
+    "title": "Self-Review 4.3: Phân biệt Biến cục bộ (Local Variables) vs Biến thể hiện (Instance Variables)",
+    "description": "Phân tích chuyên sâu về vòng đời, vị trí khai báo, phạm vi hoạt động và cơ chế khởi tạo ô nhớ trong RAM.",
+    "question": "Trình bày sự khác biệt căn bản giữa một Biến cục bộ (Local Variable) và một Biến thể hiện (Instance Variable) trên 4 phương diện kỹ thuật:\n1) Vị trí khai báo trong tệp mã nguồn C#.\n2) Phạm vi hoạt động (Scope) và khả năng nhìn thấy (Visibility).\n3) Vòng đời sinh mệnh (Lifetime) và phân vùng bộ nhớ (Stack vs Heap).\n4) Cơ chế gán giá trị mặc định (Default Initialization).",
+    "solution": "Phân tích chuẩn mực theo Giáo trình Deitel (trang 179 - Mục 4.4.3):\n\n1) **Vị trí khai báo:**\n   - *Biến thể hiện:* Được khai báo trong thân lớp, bên ngoài mọi phương thức (thường có bổ từ `private`).\n   - *Biến cục bộ:* Được khai báo bên trong thân của một phương thức cụ thể hoặc trong danh sách tham số của hàm.\n\n2) **Phạm vi hoạt động:**\n   - *Biến thể hiện:* Có thể được truy cập bởi toàn bộ các phương thức bên trong lớp đó.\n   - *Biến cục bộ:* Chỉ tồn tại và được nhìn thấy duy nhất trong khối lệnh `{ }` bao bọc nó.\n\n3) **Vòng đời & Bộ nhớ:**\n   - *Biến thể hiện:* Được cấp phát trên Managed Heap cùng với đối tượng khi gọi toán tử `new`, tồn tại chừng nào đối tượng còn được tham chiếu.\n   - *Biến cục bộ:* Được cấp phát trên Stack khi phương thức được gọi, và lập tức bị xóa sổ khỏi bộ nhớ khi phương thức kết thúc.\n\n4) **Giá trị mặc định:**\n   - *Biến thể hiện:* Được C# tự động khởi tạo mặc định (`0` cho số, `false` cho boolean, `null` cho tham chiếu).\n   - *Biến cục bộ:* Không có giá trị mặc định; nếu cố tình đọc biến cục bộ chưa gán, trình biên dịch C# sẽ báo lỗi CS0165 ngay lập tức.",
+    "hints": "Vẽ bảng so sánh 4 tiêu chí: Vị trí, Phạm vi (Scope), Vùng nhớ (Heap vs Stack), Giá trị mặc định.",
+    "image": "images/fig4_02_account_class.png",
+    "type": "self-review"
+  },
+  {
+    "id": "4.4",
+    "category": "self-review",
+    "title": "Self-Review 4.4: Bản chất của Tham số Phương thức: Parameter vs Argument",
+    "description": "Làm rõ vai trò truyền dữ liệu vào phương thức và phân biệt rạch ròi giữa Tham số hình thức và Đối số thực tế.",
+    "question": "Giải thích mục đích của Tham số phương thức (Method Parameter). Điểm khác biệt bản chất giữa Tham số (Parameter) và Đối số (Argument) là gì?",
+    "solution": "Phân tích chuẩn mực theo Giáo trình Deitel (trang 179 - Mục 4.4.1):\n\n1) **Mục đích của Tham số:**\n   - Cho phép phương thức tiếp nhận dữ liệu đầu vào từ nơi gọi để thực hiện nhiệm vụ được giao.\n   - Giúp phương thức trở nên tổng quát, linh hoạt và tái sử dụng được với các tập dữ liệu khác nhau.\n\n2) **Phân biệt Parameter vs Argument:**\n   - **Tham số (Parameter / Formal Parameter):** Là biến được khai báo trong phần đầu (header) của phương thức (ví dụ: `accountName` trong `public void SetName(string accountName)`).\n   - **Đối số (Argument / Actual Argument):** Là giá trị thực tế hoặc biểu thức được truyền vào phương thức khi thực hiện lời gọi hàm (ví dụ: `theName` trong `myAccount.SetName(theName)`). Khi hàm chạy, giá trị của đối số được sao chép vào cho tham số sử dụng.",
+    "hints": "Tham số là biến khai báo ở định nghĩa hàm; đối số là giá trị thực tế truyền vào khi gọi hàm.",
+    "image": "images/fig4_01_accounttest_app.png",
+    "type": "self-review"
+  },
+  {
+    "id": "4.5",
+    "category": "exercise",
+    "title": "Exercise 4.5: Mục đích của Hàm tạo (Constructor) trong Lập trình Hướng đối tượng",
+    "description": "Phân tích vai trò của Constructor trong việc bảo toàn trạng thái hợp lệ của đối tượng ngay khi khai sinh.",
+    "question": "Mục đích của Hàm tạo (Constructor) là gì? Tại sao Hàm tạo trong C# không bao giờ có kiểu dữ liệu trả về?",
+    "solution": "Lời giải kỹ thuật theo Giáo trình Deitel (trang 180 - Mục 4.8):\n\n1) **Mục đích của Constructor:**\n   - Khởi tạo trạng thái ban đầu hợp lệ cho các biến thể hiện của đối tượng ngay khi đối tượng được sinh ra bằng toán tử `new`.\n   - Ngăn chặn việc đối tượng rơi vào trạng thái rỗng hoặc dữ liệu rác không nhất quán (inconsistent state).\n   - Thực hiện các thiết lập cần thiết (như mở kết nối, cấp phát tài nguyên) trước khi đối tượng phục vụ các yêu cầu tác vụ.\n\n2) **Tại sao Constructor không có kiểu trả về:**\n   - Constructor không phải là một phương thức thông thường. Nhiệm vụ của nó là cấu hình vùng nhớ đối tượng vừa được toán tử `new` cấp phát trên Heap.\n   - Toán tử `new` luôn tự động trả về một tham chiếu (reference) trỏ tới đối tượng mới được tạo; do đó constructor không cần và không được phép chỉ định bất kỳ kiểu trả về nào (kể cả `void`).",
+    "hints": "Constructor đảm bảo đối tượng sinh ra ở trạng thái hợp lệ; toán tử new đã đảm nhận việc trả về tham chiếu đối tượng.",
+    "image": "images/fig4_08_account_constructor.png",
+    "type": "exercises"
+  },
+  {
+    "id": "4.6",
+    "category": "exercise",
+    "title": "Exercise 4.6: Cơ chế Cấp phát Đối tượng: Toán tử new và Kiểu Giá trị",
+    "description": "Khảo sát cơ chế cấp phát bộ nhớ của C# đối với Kiểu Tham chiếu và Kiểu Giá trị.",
+    "question": "Giải thích cách một chương trình C# cấp phát bộ nhớ cho các biến thuộc Kiểu Giá trị (Value Types) so với Kiểu Tham chiếu (Reference Types) tạo bằng new.",
+    "solution": "Phân tích bộ nhớ theo Giáo trình Deitel (Mục 4.3.2):\n\n1) **Kiểu Giá trị (Value Types - int, double, bool, struct):**\n   - Được cấp phát trực tiếp trên ngăn xếp **Stack** khi khai báo (ví dụ: `int x = 10;`).\n   - Ô nhớ của biến chứa trực tiếp dữ liệu thô, không cần gọi toán tử `new` (trừ một số trường hợp khởi tạo struct).\n   - Khi gán biến này cho biến khác, hệ thống sao chép toàn bộ giá trị nhị phân độc lập.\n\n2) **Kiểu Tham chiếu (Reference Types - class, string, array):**\n   - Bắt buộc phải dùng toán tử `new` để máy ảo CLR cấp phát vùng nhớ trên **Managed Heap** chứa dữ liệu đối tượng.\n   - Biến tham chiếu trên Stack chỉ lưu địa chỉ trỏ tới đối tượng trên Heap. Nếu chưa gọi `new`, biến mang giá trị `null`.",
+    "hints": "So sánh Stack (lưu giá trị trực tiếp) và Heap (cấp phát bởi new, biến chỉ giữ tham chiếu địa chỉ).",
+    "image": "images/fig4_04_conceptual_object.png",
+    "type": "exercises"
+  },
+  {
+    "id": "4.7",
+    "category": "exercise",
+    "title": "Exercise 4.7: Hàm tạo Mặc định (Default Constructor) và Quy tắc Thu hồi của C#",
+    "description": "Hiểu rõ cơ chế tự động cung cấp và tự động loại bỏ Default Constructor của trình biên dịch C#.",
+    "question": "Hàm tạo mặc định (Default Constructor) là gì? Điều gì sẽ xảy ra với hàm tạo mặc định khi bạn tự định nghĩa một hàm tạo có tham số trong lớp?",
+    "solution": "Lời giải chuẩn xác theo Giáo trình Deitel (Mục 4.8.2):\n\n1) **Định nghĩa:**\n   - Hàm tạo mặc định là constructor công khai không có tham số (`public ClassName()`), có thân hàm rỗng, do trình biên dịch C# tự động tạo ra cho một lớp nếu lớp đó không có bất kỳ constructor nào.\n   - Nó khởi tạo các biến thể hiện về giá trị mặc định của hệ thống (`0`, `false`, `null`).\n\n2) **Quy tắc thu hồi:**\n   - Một khi lập trình viên đã tự tay khai báo BẤT KỲ một constructor nào (dù có 1 hay nhiều tham số), trình biên dịch C# sẽ **LẬP TỨC THU HỒI VÀ KHÔNG SINH RA** hàm tạo mặc định nữa!\n   - Khi đó, nếu phía client cố tình gọi `new ClassName()` mà không truyền tham số, chương trình sẽ báo lỗi biên dịch **CS7036: There is no argument given that corresponds to the required parameter**.\n   - Muốn vừa gọi được constructor có tham số, vừa gọi được không tham số, lập trình viên bắt buộc phải tự tay viết cả hai constructor (Constructor Overloading).",
+    "hints": "Nhớ nguyên tắc: Có constructor tự viết -> C# xóa default constructor; muốn dùng cả hai phải tự overload.",
+    "image": "images/fig4_10_uml_constructor.png",
+    "type": "exercises"
+  },
+  {
+    "id": "4.8",
+    "category": "exercise",
+    "title": "Exercise 4.8: Ưu điểm của Thuộc tính (Properties) trong C# so với C++ và Java",
+    "description": "So sánh thiết kế ngôn ngữ C# Properties với các phương thức getter/setter truyền thống.",
+    "question": "Mục đích của các bộ truy cập get và set trong Thuộc tính C# là gì? Thuộc tính C# mang lại ưu điểm vượt trội nào về cú pháp so với các phương thức get/set của Java hoặc C++?",
+    "solution": "Phân tích theo Giáo trình Deitel (Mục 4.6):\n\n1) **Mục đích của get và set:**\n   - Bộ truy cập `get`: Thực thi khi client đọc thuộc tính, trả về giá trị biến thể hiện hoặc kết quả tính toán.\n   - Bộ truy cập `set`: Thực thi khi client gán dữ liệu cho thuộc tính, sử dụng từ khóa ngữ cảnh `value` để nhận giá trị mới và có thể thực hiện kiểm tra tính hợp lệ (Data Validation).\n\n2) **Ưu điểm vượt trội của C# Properties:**\n   - **Cú pháp tự nhiên, thanh lịch:** Trong Java/C++, lập trình viên phải gọi hàm dài dòng: `account.setName(\"Jane\");` và `account.getName();`. Trong C#, ta viết hệt như thao tác với biến thông thường: `account.Name = \"Jane\";` và `Console.WriteLine(account.Name);`.\n   - **Bảo toàn 100% nguyên lý đóng gói:** Mặc dù cú pháp nhìn như truy cập biến trực tiếp, nhưng bên dưới máy ảo vẫn thực thi mã lệnh của `get`/`set`, cho phép bảo vệ dữ liệu, kiểm tra hợp lệ hoặc chỉ cho phép đọc (`private set`).\n   - **Hỗ trợ Auto-Properties:** Cú pháp `{ get; set` siêu ngắn gọn không cần khai báo backing field.",
+    "hints": "Cú pháp tự nhiên như biến thô nhưng bên dưới vẫn chạy logic get/set an toàn; từ khóa ngữ cảnh value.",
+    "image": "images/fig4_06_account_properties.png",
+    "type": "exercises"
+  },
+  {
+    "id": "4.9",
+    "category": "project",
+    "title": "Exercise 4.9: Nâng cấp lớp Account với Phương thức Rút tiền Withdraw",
+    "description": "Cài đặt phương thức Withdraw có cơ chế kiểm tra thấu chi tài khoản (overdraft protection) theo bài tập 4.9 giáo trình.",
+    "question": "Nâng cấp lớp Account (Hình 4.11) để bổ sung phương thức Withdraw rút tiền từ tài khoản. Đảm bảo rằng số tiền rút không được vượt quá số dư hiện có. Nếu vượt quá, số dư không thay đổi và in ra thông báo: \"Withdrawal amount exceeded account balance.\". Nâng cấp tệp AccountTest (Hình 4.12) để kiểm thử phương thức Withdraw.",
+    "solution": "Mã nguồn cài đặt phương thức Withdraw chuẩn mực:\n\n```csharp\n// Bo sung vao lop Account.cs\npublic void Withdraw(decimal withdrawalAmount)\n{\n   if (withdrawalAmount > 0.0m)\n   {\n      if (withdrawalAmount <= Balance)\n      {\n         Balance = Balance - withdrawalAmount; // Tru tien hop le\n      }\n      else\n      {\n         Console.WriteLine(\"Withdrawal amount exceeded account balance.\");\n      }\n   }\n}\n```",
+    "hints": "Kiểm tra 2 điều kiện: số tiền rút phải dương, và withdrawalAmount <= Balance. Nếu lớn hơn thì in cảnh báo và không trừ tiền.",
+    "image": "images/fig4_11_account_balance_p2.png",
+    "type": "making-a-difference"
+  },
+  {
+    "id": "4.10",
+    "category": "project",
+    "title": "Exercise 4.10: Thiết kế Lớp Quản lý Hồ sơ Sinh viên (Student Record Class)",
+    "description": "Tạo lớp Student quản lý mã sinh viên, họ tên và điểm 3 môn học, kiểm tra điểm không âm, tính tổng và phần trăm.",
+    "question": "Tạo lớp Student bao gồm: Id (string), Name (string), và điểm 3 môn thi: Score1, Score2, Score3 (decimal). Cung cấp Constructor khởi tạo 5 giá trị. Thuộc tính cho điểm số phải kiểm tra: nếu giá trị gán là số âm thì giữ nguyên điểm cũ. Xây dựng hai phương thức GetAggregate() tính tổng điểm 3 môn, và GetPercentage() tính tỷ lệ phần trăm (tổng / 50 * 100). Viết chương trình StudentRecordTest kiểm thử toàn bộ tính năng.",
+    "solution": "Mã nguồn lớp Student.cs chuẩn mực:\n\n```csharp\npublic class Student\n{\n   public string Id { get; set\n   public string Name { get; set\n   private decimal score1;\n   private decimal score2;\n   private decimal score3;\n\n   public Student(string id, string name, decimal s1, decimal s2, decimal s3)\n   {\n      Id = id;\n      Name = name;\n      Score1 = s1;\n      Score2 = s2;\n      Score3 = s3;\n   }\n\n   public decimal Score1\n   {\n      get { return score1\n      set { if (value >= 0.0m) score1 = value\n   }\n\n   public decimal Score2\n   {\n      get { return score2\n      set { if (value >= 0.0m) score2 = value\n   }\n\n   public decimal Score3\n   {\n      get { return score3\n      set { if (value >= 0.0m) score3 = value\n   }\n\n   public decimal GetAggregate() => Score1 + Score2 + Score3;\n   public decimal GetPercentage() => (GetAggregate() / 50.0m) * 100.0m;\n}\n```",
+    "hints": "Sử dụng backing field cho 3 điểm thi để validate value >= 0.0m trong bộ truy cập set; phương thức tính toán trả về decimal.",
+    "image": "images/fig4_14_uml_balance.png",
+    "type": "making-a-difference"
+  },
+  {
+    "id": "4.11",
+    "category": "project",
+    "title": "Exercise 4.11: Thiết kế Lớp Quản lý Tài sản Doanh nghiệp (Asset Class)",
+    "description": "Tạo lớp Asset gồm tên tài sản, giá trị và tỷ lệ khấu hao, kiểm tra dữ liệu không âm, tính giá trị sau khấu hao.",
+    "question": "Tạo lớp Asset gồm: AssetName (string), AssetValue (decimal), DepreciationRate (decimal - tỷ lệ khấu hao từ 0.0 đến 1.0). Constructor khởi tạo 3 giá trị. Validation: nếu giá trị hoặc tỷ lệ khấu hao âm thì giữ nguyên giá trị cũ. Viết ứng dụng AssetTest tạo 2 tài sản, hiển thị số tiền khấu hao và giá trị còn lại, sau đó tăng giá trị tài sản thêm 5% và hiển thị lại.",
+    "solution": "Mã nguồn lớp Asset.cs chuẩn mực:\n\n```csharp\npublic class Asset\n{\n   public string AssetName { get; set\n   private decimal assetValue;\n   private decimal depreciationRate;\n\n   public Asset(string name, decimal val, decimal rate)\n   {\n      AssetName = name;\n      AssetValue = val;\n      DepreciationRate = rate;\n   }\n\n   public decimal AssetValue\n   {\n      get => assetValue;\n      set { if (value >= 0.0m) assetValue = value\n   }\n\n   public decimal DepreciationRate\n   {\n      get => depreciationRate;\n      set { if (value >= 0.0m && value <= 1.0m) depreciationRate = value\n   }\n\n   public decimal GetDepreciationAmount() => AssetValue * DepreciationRate;\n   public decimal GetDepreciatedValue() => AssetValue - GetDepreciationAmount();\n}\n```",
+    "hints": "Data validation trong set accessor; phương thức tính khấu hao = AssetValue * DepreciationRate.",
+    "image": "images/fig4_13_format_specifiers.png",
+    "type": "making-a-difference"
+  },
+  {
+    "id": "4.12",
+    "category": "project",
+    "title": "Exercise 4.12: Thiết kế Lớp Coaching với Auto-Implemented Properties",
+    "description": "Áp dụng thuộc tính tự động để thiết kế lớp đào tạo học phần ngắn gọn và thanh lịch.",
+    "question": "Tạo lớp Coaching bao gồm 4 thuộc tính tự động: CourseName (string), InstructorName (string), TuitionFee (decimal), DurationWeeks (int). Viết Constructor và chương trình kiểm thử CoachingTest hiển thị thông tin học phần với định dạng học phí tiền tệ chuẩn :C.",
+    "solution": "Mã nguồn lớp Coaching.cs sử dụng Auto-Properties:\n\n```csharp\npublic class Coaching\n{\n   public string CourseName { get; set\n   public string InstructorName { get; set\n   public decimal TuitionFee { get; set\n   public int DurationWeeks { get; set\n\n   public Coaching(string course, string instructor, decimal fee, int weeks)\n   {\n      CourseName = course;\n      InstructorName = instructor;\n      TuitionFee = fee;\n      DurationWeeks = weeks;\n   }\n}\n```",
+    "hints": "Sử dụng cú pháp { get; set cho cả 4 thuộc tính để mã nguồn ngắn gọn tối đa.",
+    "image": "images/fig4_07_uml_properties.png",
+    "type": "making-a-difference"
+  },
+  {
+    "id": "4.13",
+    "category": "project",
+    "title": "Exercise 4.13: Tái cấu trúc Mã nguồn: Phương thức Dùng chung DisplayAccount (DRY)",
+    "description": "Áp dụng nguyên lý Don't Repeat Yourself để loại bỏ mã in tài khoản lặp lại 4 lần trong AccountTest.",
+    "question": "Trong tệp AccountTest.cs (Hình 4.12), câu lệnh hiển thị tên và số dư tài khoản bị lặp lại nhiều lần. Khai báo phương thức tĩnh DisplayAccount nhận vào tham số là một đối tượng Account và in thông tin định dạng :C. Thay thế tất cả các câu lệnh in lặp trong Main bằng lời gọi đến DisplayAccount.",
+    "solution": "Phương thức tĩnh DisplayAccount chuẩn mực theo Exercise 4.13 Deitel:\n\n```csharp\npublic static void DisplayAccount(Account accountToDisplay)\n{\n   Console.WriteLine($\"{accountToDisplay.Name}'s balance: {accountToDisplay.Balance:C}\");\n}\n\n// Trong Main, thay vi lap lai Console.WriteLine, ta goi:\nDisplayAccount(account1);\nDisplayAccount(account2);\n```",
+    "hints": "Phương thức static nhận đối số kiểu Account; sử dụng string interpolation với định dạng :C.",
+    "image": "images/fig4_12_accounttest_balance_p1.png",
+    "type": "making-a-difference"
+  },
+  {
+    "id": "4.14",
+    "category": "making-a-difference",
+    "title": "Exercise 4.14: Ứng dụng Y tế Số: Bộ Tính Nhịp Tim Mục Tiêu (HeartRates Calculator)",
+    "description": "Xây dựng ứng dụng y tế số tính tuổi, nhịp tim tối đa và dải nhịp tim mục tiêu theo khuyến cáo của Hiệp hội Tim mạch Hoa Kỳ (AHA).",
+    "question": "Theo AHA, nhịp tim tối đa = 220 - tuổi. Dải nhịp tim mục tiêu an toàn khi tập thể thao là từ 50% đến 85% nhịp tim tối đa. Tạo lớp HeartRates gồm: FirstName, LastName, BirthYear, CurrentYear. Constructor nhận dữ liệu này. Cung cấp các thuộc tính tính: Tuổi (Age), Nhịp tim tối đa (MaxHeartRate), Nhịp tim mục tiêu tối thiểu (MinTargetRate = 50%) và tối đa (MaxTargetRate = 85%). Viết app kiểm thử nhập thông tin và in kết quả sức khỏe.",
+    "solution": "Mã nguồn lớp HeartRates.cs y tế số:\n\n```csharp\npublic class HeartRates\n{\n   public string FirstName { get; set\n   public string LastName { get; set\n   public int BirthYear { get; set\n   public int CurrentYear { get; set\n\n   public HeartRates(string firstName, string lastName, int birthYear, int currentYear)\n   {\n      FirstName = firstName;\n      LastName = lastName;\n      BirthYear = birthYear;\n      CurrentYear = currentYear;\n   }\n\n   public int Age => CurrentYear - BirthYear;\n   public int MaxHeartRate => 220 - Age;\n   public double MinTargetRate => MaxHeartRate * 0.50;\n   public double MaxTargetRate => MaxHeartRate * 0.85;\n}\n```",
+    "hints": "Sử dụng expression-bodied properties (=>) để tính tuổi và dải nhịp tim mục tiêu 50%-85%.",
+    "image": "images/fig4_13_format_specifiers.png",
+    "type": "making-a-difference"
+  },
+  {
+    "id": "4.15",
+    "category": "making-a-difference",
+    "title": "Exercise 4.15: Số hóa Hồ sơ Sức khỏe Cá nhân (Computerization of Health Records - HealthProfile)",
+    "description": "Thiết kế hồ sơ sức khỏe điện tử EHR hoàn chỉnh tính BMI, tuổi, nhịp tim mục tiêu và phân loại thể trạng y tế.",
+    "question": "Tạo lớp HealthProfile bao gồm: Họ tên, Giới tính, Ngày tháng năm sinh, Chiều cao (cm) và Cân nặng (kg). Xây dựng các phương thức/thuộc tính tính: Tuổi, Nhịp tim tối đa, Dải nhịp tim mục tiêu, và Chỉ số khối cơ thể BMI = weight / (heightInMeters * heightInMeters). Hiển thị bảng phân loại chuẩn WHO: Gầy (< 18.5), Bình thường (18.5-24.9), Thừa cân (25-29.9), Béo phì (>= 30).",
+    "solution": "Mã nguồn lớp HealthProfile.cs chuẩn y tế quốc tế:\n\n```csharp\npublic class HealthProfile\n{\n   public string Name { get; set\n   public string Gender { get; set\n   public int BirthYear { get; set\n   public int CurrentYear { get; set\n   public double HeightCm { get; set\n   public double WeightKg { get; set\n\n   public HealthProfile(string name, string gender, int birthYear, int currentYear, double height, double weight)\n   {\n      Name = name;\n      Gender = gender;\n      BirthYear = birthYear;\n      CurrentYear = currentYear;\n      HeightCm = height;\n      WeightKg = weight;\n   }\n\n   public int Age => CurrentYear - BirthYear;\n   public int MaxHeartRate => 220 - Age;\n   public double BMI\n   {\n      get\n      {\n         double heightM = HeightCm / 100.0;\n         return WeightKg / (heightM * heightM);\n      }\n   }\n}\n```",
+    "hints": "Tính chiều cao ra mét (HeightCm / 100.0) trước khi tính BMI; kết hợp với công thức nhịp tim AHA.",
+    "image": "images/fig4_13_format_specifiers.png",
+    "type": "making-a-difference"
+  }
+];
+
 
 if (typeof window !== 'undefined') {
   window.EXERCISES_CHAPTER_01 = (typeof EXERCISES_CHAPTER_01 !== 'undefined') ? EXERCISES_CHAPTER_01 : [];
   window.EXERCISES_CHAPTER_02 = (typeof EXERCISES_CHAPTER_02 !== 'undefined') ? EXERCISES_CHAPTER_02 : [];
-  window.EXERCISES_CHAPTER_03 = EXERCISES_CHAPTER_03;
+  window.EXERCISES_CHAPTER_03 = (typeof EXERCISES_CHAPTER_03 !== 'undefined') ? EXERCISES_CHAPTER_03 : [];
+  window.EXERCISES_CHAPTER_04 = (typeof EXERCISES_CHAPTER_04 !== 'undefined') ? EXERCISES_CHAPTER_04 : [];
 }
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { EXERCISES_CHAPTER_01, EXERCISES_CHAPTER_02, EXERCISES_CHAPTER_03 };
+  module.exports = { EXERCISES_CHAPTER_01, EXERCISES_CHAPTER_02, EXERCISES_CHAPTER_03, EXERCISES_CHAPTER_04 };
 }

@@ -22,6 +22,9 @@ const AppState = {
 // DYNAMIC MULTI-CHAPTER DATA GETTERS
 // ============================================================================
 function getCurrentQuiz() {
+  if (AppState.currentChapter === 4) {
+    return (typeof QUIZ_CHAPTER_04 !== 'undefined') ? QUIZ_CHAPTER_04 : [];
+  }
   if (AppState.currentChapter === 3) {
     return (typeof QUIZ_CHAPTER_03 !== 'undefined') ? QUIZ_CHAPTER_03 : [];
   }
@@ -32,6 +35,9 @@ function getCurrentQuiz() {
 }
 
 function getCurrentExercises() {
+  if (AppState.currentChapter === 4) {
+    return (typeof EXERCISES_CHAPTER_04 !== 'undefined') ? EXERCISES_CHAPTER_04 : [];
+  }
   if (AppState.currentChapter === 3) {
     return (typeof EXERCISES_CHAPTER_03 !== 'undefined') ? EXERCISES_CHAPTER_03 : [];
   }
@@ -42,6 +48,9 @@ function getCurrentExercises() {
 }
 
 function getCurrentTranscripts() {
+  if (AppState.currentChapter === 4) {
+    return (typeof SLIDE_TRANSCRIPTS_CHAPTER_04 !== 'undefined') ? SLIDE_TRANSCRIPTS_CHAPTER_04 : {};
+  }
   if (AppState.currentChapter === 3) {
     return (typeof SLIDE_TRANSCRIPTS_CHAPTER_03 !== 'undefined') ? SLIDE_TRANSCRIPTS_CHAPTER_03 : {};
   }
@@ -168,7 +177,7 @@ function initChapterSelector() {
   const selector = document.getElementById('chapterSelector');
   if (selector) {
     const initialVal = parseInt(selector.value, 10);
-    if (initialVal === 2 || initialVal === 3) {
+    if (initialVal >= 2 && initialVal <= 4) {
       switchChapter(initialVal);
     } else {
       updateVideoTab(1);
@@ -298,7 +307,7 @@ function updateChapterStaticContent(chapterNum) {
 
 function switchChapter(ch) {
   const chapterNum = parseInt(ch, 10);
-  if (chapterNum !== 1 && chapterNum !== 2 && chapterNum !== 3) return;
+  if (chapterNum !== 1 && chapterNum !== 2 && chapterNum !== 3 && chapterNum !== 4) return;
 
   AppState.currentChapter = chapterNum;
   const meta = getCurrentChapterMeta();

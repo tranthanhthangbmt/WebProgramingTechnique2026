@@ -1,0 +1,348 @@
+{
+  "4.1": {
+    "mode": "fill-blank",
+    "title": "Self-Review 4.1: Điền vào chỗ trống các khái niệm nền tảng OOP C#",
+    "items": [
+      {
+        "id": "a",
+        "label": "a)",
+        "prefix": "Ký tự định dạng",
+        "suffix": "được sử dụng để hiển thị các giá trị số dưới định dạng tiền tệ quốc tế (Currency).",
+        "acceptable": [
+          "c",
+          "c format specifier",
+          ":c",
+          "ky tu c",
+          "ký tự c",
+          "currency"
+        ],
+        "correctAnswer": "C (hoặc :C) - định dạng tiền tệ Currency",
+        "explanation": "Mục 4.9.2: Ký tự định dạng C hiển thị số theo tiền tệ chuẩn kèm 2 chữ số thập phân."
+      },
+      {
+        "id": "b",
+        "label": "b)",
+        "prefix": "Mọi khai báo lớp đều bắt đầu bằng từ khóa",
+        "suffix": "theo sau ngay là tên của lớp.",
+        "acceptable": [
+          "class",
+          "tu khoa class",
+          "từ khóa class"
+        ],
+        "correctAnswer": "class (từ khóa khai báo lớp)",
+        "explanation": "Mục 4.3: Từ khóa class là bắt buộc để bắt đầu định nghĩa một lớp đối tượng trong C#."
+      },
+      {
+        "id": "c",
+        "label": "c)",
+        "prefix": "Toán tử",
+        "suffix": "tạo ra một đối tượng của lớp được chỉ định ở bên phải từ khóa trên Managed Heap.",
+        "acceptable": [
+          "new",
+          "toan tu new",
+          "toán tử new"
+        ],
+        "correctAnswer": "new (toán tử khởi tạo đối tượng)",
+        "explanation": "Mục 4.3.1: Toán tử new cấp phát bộ nhớ trên Heap và gọi constructor của lớp."
+      },
+      {
+        "id": "d1",
+        "label": "d1)",
+        "prefix": "Mỗi tham số trong phương thức phải chỉ định cả",
+        "suffix": "(ví dụ: string, int) và tên tham số.",
+        "acceptable": [
+          "type",
+          "kieu du lieu",
+          "kiểu dữ liệu",
+          "kieu",
+          "kiểu"
+        ],
+        "correctAnswer": "type (kiểu dữ liệu)",
+        "explanation": "Mục 4.4.1: Mỗi tham số bắt buộc phải có kiểu dữ liệu (type) và tên tham số (name)."
+      },
+      {
+        "id": "d2",
+        "label": "d2)",
+        "prefix": "Mỗi tham số trong phương thức phải chỉ định cả kiểu dữ liệu và",
+        "suffix": "(tên định danh của tham số).",
+        "acceptable": [
+          "name",
+          "ten",
+          "tên",
+          "ten tham so",
+          "tên tham số"
+        ],
+        "correctAnswer": "name (tên tham số)",
+        "explanation": "Mục 4.4.1: Tên tham số dùng để nhận giá trị đối số truyền vào."
+      },
+      {
+        "id": "e",
+        "label": "e)",
+        "prefix": "Kiểu trả về",
+        "suffix": "biểu thị rằng phương thức sẽ không trả về bất kỳ dữ liệu nào khi hoàn tất nhiệm vụ.",
+        "acceptable": [
+          "void",
+          "tu khoa void",
+          "từ khóa void"
+        ],
+        "correctAnswer": "void (không trả về giá trị)",
+        "explanation": "Mục 4.4.1: Kiểu void chỉ ra phương thức chỉ thực hiện hành động chứ không sinh kết quả trả về."
+      },
+      {
+        "id": "f",
+        "label": "f)",
+        "prefix": "Khi mỗi đối tượng của một lớp duy trì bản sao dữ liệu riêng của một thuộc tính, nó được gọi là một",
+        "suffix": "(Field).",
+        "acceptable": [
+          "instance variable",
+          "bien the hien",
+          "biến thể hiện",
+          "field",
+          "truong du lieu",
+          "trường dữ liệu"
+        ],
+        "correctAnswer": "instance variable (biến thể hiện / field)",
+        "explanation": "Mục 4.4: Biến thể hiện thuộc về từng đối tượng cụ thể được tạo ra từ lớp."
+      },
+      {
+        "id": "g",
+        "label": "g)",
+        "prefix": "Đối với một",
+        "suffix": ", trình biên dịch C# tự động sinh ra một biến thể hiện private ẩn cùng các bộ get/set.",
+        "acceptable": [
+          "auto-implemented property",
+          "auto implemented property",
+          "thuoc tinh tu dong",
+          "thuộc tính tự động",
+          "auto property",
+          "auto-property"
+        ],
+        "correctAnswer": "auto-implemented property (thuộc tính tự động)",
+        "explanation": "Mục 4.7: Cú pháp { get; set; } giúp C# tự động tạo backing field và logic get/set."
+      },
+      {
+        "id": "h",
+        "label": "h)",
+        "prefix": "Các biến thuộc kiểu dữ liệu 128-bit",
+        "suffix": "thường được sử dụng chuyên dụng để biểu diễn các số tiền trong tài chính.",
+        "acceptable": [
+          "decimal",
+          "kieu decimal",
+          "kiểu decimal"
+        ],
+        "correctAnswer": "decimal (kiểu số thực tài chính chính xác cao)",
+        "explanation": "Mục 4.9: Kiểu decimal loại bỏ hoàn toàn sai số làm tròn nhị phân của double/float."
+      },
+      {
+        "id": "i",
+        "label": "i)",
+        "prefix": "Phương thức",
+        "suffix": "của kiểu decimal chuyển đổi một chuỗi văn bản thành một giá trị số kiểu decimal.",
+        "acceptable": [
+          "parse",
+          "decimal.parse",
+          "parse()",
+          "decimal.parse()"
+        ],
+        "correctAnswer": "Parse (decimal.Parse)",
+        "explanation": "Mục 4.9.2: decimal.Parse() chuyển đổi chuỗi chuỗi ký tự thành số thực decimal."
+      },
+      {
+        "id": "j",
+        "label": "j)",
+        "prefix": "Từ khóa public hoặc private được gọi là một",
+        "suffix": "(quy định phạm vi truy cập).",
+        "acceptable": [
+          "access modifier",
+          "bo tu truy cap",
+          "bổ từ truy cập",
+          "access specifier"
+        ],
+        "correctAnswer": "access modifier (bổ từ truy cập)",
+        "explanation": "Mục 4.4: Access modifiers kiểm soát quyền truy cập thành viên của lớp."
+      }
+    ]
+  },
+  "4.2": {
+    "mode": "true-false",
+    "title": "Self-Review 4.2: Nhận định Đúng / Sai và phân tích kỹ thuật",
+    "items": [
+      {
+        "id": "a",
+        "label": "a)",
+        "statement": "Theo quy ước, tên phương thức trong C# bắt đầu bằng chữ cái thường và các từ tiếp theo viết hoa chữ cái đầu.",
+        "correct": false,
+        "explanation": "Sai (False). C# quy định tên phương thức dùng PascalCase: viết hoa chữ cái đầu tiên của mọi từ (ví dụ: SetName, GetName, Main)."
+      },
+      {
+        "id": "b",
+        "label": "b)",
+        "statement": "Bộ truy cập get của một thuộc tính cho phép phía client sửa đổi giá trị của biến thể hiện tương ứng.",
+        "correct": false,
+        "explanation": "Sai (False). Bộ truy cập get dùng để ĐỌC dữ liệu; bộ truy cập set mới dùng để SỬA ĐỔI dữ liệu."
+      },
+      {
+        "id": "c",
+        "label": "c)",
+        "statement": "Tất cả các biến thể hiện đều được khởi tạo mặc định là null.",
+        "correct": false,
+        "explanation": "Sai (False). Kiểu số nguyên int/decimal khởi tạo là 0, kiểu bool là false, chỉ kiểu tham chiếu mới khởi tạo là null."
+      },
+      {
+        "id": "d",
+        "label": "d)",
+        "statement": "Cặp ngoặc đơn rỗng () theo sau tên phương thức biểu thị phương thức đó không yêu cầu bất kỳ tham số nào.",
+        "correct": true,
+        "explanation": "Đúng (True). Cặp ngoặc đơn rỗng () xác định danh sách tham số của phương thức là rỗng."
+      },
+      {
+        "id": "e",
+        "label": "e)",
+        "statement": "Số lượng đối số trong lời gọi phương thức bắt buộc phải khớp với số lượng tham số trong khai báo phương thức.",
+        "correct": true,
+        "explanation": "Đúng (True). C# yêu cầu số lượng và kiểu của đối số phải tương thích với danh sách tham số."
+      },
+      {
+        "id": "f",
+        "label": "f)",
+        "statement": "Các biến hoặc phương thức được khai báo với bổ từ private chỉ có thể truy cập bởi các thành viên trong cùng lớp.",
+        "correct": true,
+        "explanation": "Đúng (True). Đây là nguyên lý ẩn giấu thông tin (Information Hiding) và đóng gói trong OOP."
+      },
+      {
+        "id": "g",
+        "label": "g)",
+        "statement": "Các biến được khai báo trong thân của một phương thức cụ thể được gọi là biến thể hiện và dùng được ở mọi nơi trong lớp.",
+        "correct": false,
+        "explanation": "Sai (False). Biến khai báo trong thân hàm là Biến cục bộ (Local Variable) và chỉ dùng được trong nội bộ hàm đó."
+      },
+      {
+        "id": "h",
+        "label": "h)",
+        "statement": "Một khai báo thuộc tính bắt buộc phải chứa cả hai bộ truy cập get và set.",
+        "correct": false,
+        "explanation": "Sai (False). Thuộc tính có thể chỉ có get (read-only), chỉ có set, hoặc kết hợp private set."
+      },
+      {
+        "id": "i",
+        "label": "i)",
+        "statement": "Thân của mọi phương thức hoặc thuộc tính đều được bao bọc bởi cặp ngoặc nhọn mở và đóng { }.",
+        "correct": true,
+        "explanation": "Đúng (True). Cặp ngoặc nhọn { } phân định khối mã lệnh (block) thực thi."
+      },
+      {
+        "id": "j",
+        "label": "j)",
+        "statement": "Các biến cục bộ được tự động khởi tạo giá trị mặc định khi khai báo.",
+        "correct": false,
+        "explanation": "Sai (False). Chỉ có biến thể hiện mới được C# khởi tạo mặc định; biến cục bộ chưa gán giá trị sẽ gây lỗi biên dịch nếu đọc."
+      }
+    ]
+  },
+  "4.9": {
+    "mode": "csharp-code",
+    "title": "Exercise 4.9: Nâng cấp lớp Account với Phương thức Rút tiền Withdraw",
+    "checklist": [
+      {
+        "id": "step1",
+        "text": "Khai báo phương thức public void Withdraw(decimal withdrawalAmount) trong lớp Account"
+      },
+      {
+        "id": "step2",
+        "text": "Kiểm tra điều kiện withdrawalAmount > 0.0m để đảm bảo số tiền rút là số dương"
+      },
+      {
+        "id": "step3",
+        "text": "Kiểm tra withdrawalAmount <= Balance: nếu hợp lệ thì Balance = Balance - withdrawalAmount"
+      },
+      {
+        "id": "step4",
+        "text": "Nếu vượt quá số dư, in dòng thông báo: 'Withdrawal amount exceeded account balance.' và không đổi số dư"
+      },
+      {
+        "id": "step5",
+        "text": "Viết mã kiểm thử trong AccountTest thử rút tiền hợp lệ và thử rút thấu chi"
+      }
+    ],
+    "codeKeywords": [
+      "Withdraw",
+      "decimal",
+      "Balance",
+      "Withdrawal amount exceeded account balance.",
+      "Console.WriteLine"
+    ],
+    "sampleCode": "public void Withdraw(decimal withdrawalAmount)\n{\n   if (withdrawalAmount > 0.0m)\n   {\n      if (withdrawalAmount <= Balance)\n      {\n         Balance = Balance - withdrawalAmount;\n      }\n      else\n      {\n         Console.WriteLine(\"Withdrawal amount exceeded account balance.\");\n      }\n   }\n}"
+  },
+  "4.13": {
+    "mode": "csharp-code",
+    "title": "Exercise 4.13: Tái cấu trúc Mã nguồn: Phương thức Dùng chung DisplayAccount",
+    "checklist": [
+      {
+        "id": "step1",
+        "text": "Khai báo phương thức tĩnh public static void DisplayAccount(Account accountToDisplay)"
+      },
+      {
+        "id": "step2",
+        "text": "Sử dụng String Interpolation $ kết hợp định dạng tiền tệ :C để in tên và số dư"
+      },
+      {
+        "id": "step3",
+        "text": "Thay thế các dòng in tài khoản lặp đi lặp lại trong Main bằng lời gọi DisplayAccount(account1), DisplayAccount(account2)"
+      },
+      {
+        "id": "step4",
+        "text": "Chạy thử để kiểm tra kết quả in ra màn hình hoàn toàn trùng khớp với Hình 4.12"
+      }
+    ],
+    "codeKeywords": [
+      "DisplayAccount",
+      "Account",
+      "accountToDisplay",
+      "Console.WriteLine",
+      ":C",
+      "Balance"
+    ],
+    "sampleCode": "public static void DisplayAccount(Account accountToDisplay)\n{\n   Console.WriteLine($\"{accountToDisplay.Name}'s balance: {accountToDisplay.Balance:C}\");\n}"
+  },
+  "4.14": {
+    "mode": "csharp-code",
+    "title": "Exercise 4.14: Ứng dụng Y tế Số: Bộ Tính Nhịp Tim Mục Tiêu (HeartRates Calculator)",
+    "checklist": [
+      {
+        "id": "step1",
+        "text": "Khai báo các thuộc tính: FirstName, LastName, BirthYear, CurrentYear"
+      },
+      {
+        "id": "step2",
+        "text": "Xây dựng Constructor nhận 4 tham số khởi tạo đối tượng HeartRates"
+      },
+      {
+        "id": "step3",
+        "text": "Tính Tuổi: Age = CurrentYear - BirthYear"
+      },
+      {
+        "id": "step4",
+        "text": "Tính Nhịp tim tối đa theo AHA: MaxHeartRate = 220 - Age"
+      },
+      {
+        "id": "step5",
+        "text": "Tính Dải nhịp tim mục tiêu: 50% đến 85% nhịp tim tối đa"
+      },
+      {
+        "id": "step6",
+        "text": "Chạy thử kiểm tra nhập thông tin cá nhân và hiển thị dải nhịp tim an toàn"
+      }
+    ],
+    "codeKeywords": [
+      "HeartRates",
+      "BirthYear",
+      "CurrentYear",
+      "Age",
+      "MaxHeartRate",
+      "220",
+      "0.50",
+      "0.85"
+    ],
+    "sampleCode": "public class HeartRates\n{\n   public string FirstName { get; set; }\n   public string LastName { get; set; }\n   public int BirthYear { get; set; }\n   public int CurrentYear { get; set; }\n\n   public HeartRates(string fName, string lName, int bYear, int cYear)\n   {\n      FirstName = fName;\n      LastName = lName;\n      BirthYear = bYear;\n      CurrentYear = cYear;\n   }\n\n   public int Age => CurrentYear - BirthYear;\n   public int MaxHeartRate => 220 - Age;\n   public double MinTargetRate => MaxHeartRate * 0.50;\n   public double MaxTargetRate => MaxHeartRate * 0.85;\n}"
+  }
+}
