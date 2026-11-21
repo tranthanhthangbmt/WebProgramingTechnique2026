@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuizEngine();
   initExerciseHub();
   initCodeRepository();
+  initNavScroll();
 });
 
 // ============================================================================
@@ -151,6 +152,8 @@ function switchTab(tabId) {
   document.querySelectorAll('.nav-tab-btn').forEach(btn => {
     if (btn.getAttribute('data-tab') === tabId) {
       btn.classList.add('active');
+      // Tự động cuộn tab đang chọn vào vùng nhìn thấy
+      btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     } else {
       btn.classList.remove('active');
     }
@@ -399,6 +402,11 @@ function switchChapter(ch) {
   const searchInput = document.getElementById('exerciseSearchInput');
   if (searchInput) searchInput.value = '';
   renderExerciseList();
+
+  // Cập nhật trạng thái các nút cuộn tab
+  if (typeof updateNavScrollButtons === 'function') {
+    setTimeout(updateNavScrollButtons, 150);
+  }
 
   // Reset filter buttons active state
   document.querySelectorAll('.quiz-filter-btn').forEach(b => {
@@ -1147,3 +1155,112 @@ function setLabDoc(docKey) {
   }
 }
 window.setLabDoc = setLabDoc;
+
+// ============================================================================
+// NAV TABS DRAG-TO-SCROLL, WHEEL SCROLL & ARROW BUTTONS
+// ============================================================================
+function initNavScroll() {
+  const navContainer = document.getElementById('navTabsContainer');
+  const leftBtn = document.getElementById('navScrollLeft');
+  const rightBtn = document.getElementById('navScrollRight');
+  if (!navContainer) return;
+
+  let isDown = false;
+  let startX = 0;
+  let scrollLeftPos = 0;
+  let hasDragged = false;
+
+  function updateScrollButtons() {
+    if (!leftBtn || !rightBtn) return;
+    const maxScroll = navContainer.scrollWidth - navContainer.clientWidth;
+    if (maxScroll <= 5) {
+      leftBtn.classList.remove('visible');
+      rightBtn.classList.remove('visible');
+      return;
+    }
+    if (navContainer.scrollLeft > 10) {
+      leftBtn.classList.add('visible');
+    } else {
+      leftBtn.classList.remove('visible');
+    }
+    if (navContainer.scrollLeft < maxScroll - 10) {
+      rightBtn.classList.add('visible');
+    } else {
+      rightBtn.classList.remove('visible');
+    }
+  }
+
+  window.updateNavScrollButtons = updateScrollButtons;
+
+  navContainer.addEventListener('scroll', updateScrollButtons, { passive: true });
+  window.addEventListener('resize', updateScrollButtons, { passive: true });
+  setTimeout(updateScrollButtons, 300);
+
+  // Nút mũi tên trái/phải
+  if (leftBtn) {
+    leftBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      navContainer.scrollBy({ left: -220, behavior: 'smooth' });
+      setTimeout(updateScrollButtons, 350);
+    });
+  }
+  if (rightBtn) {
+    rightBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      navContainer.scrollBy({ left: 220, behavior: 'smooth' });
+      setTimeout(updateScrollButtons, 350);
+    });
+  }
+
+  // Cuộn bằng con lăn chuột ngang
+  navContainer.addEventListener('wheel', (e) => {
+    if (e.deltaY !== 0) {
+      navContainer.scrollLeft += e.deltaY * 0.9;
+      e.preventDefault();
+      updateScrollButtons();
+    }
+  }, { passive: false });
+
+  // Kéo chuột mượt mà (Mouse Drag-to-Scroll)
+  navContainer.addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return; // Chỉ chuột trái
+    isDown = true;
+    hasDragged = false;
+    navContainer.classList.add('is-dragging');
+    startX = e.pageX - navContainer.offsetLeft;
+    scrollLeftPos = navContainer.scrollLeft;
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDown) return;
+    isDown = false;
+    navContainer.classList.remove('is-dragging');
+    setTimeout(updateScrollButtons, 100);
+  });
+
+  navContainer.addEventListener('mouseleave', () => {
+    if (!isDown) return;
+    isDown = false;
+    navContainer.classList.remove('is-dragging');
+  });
+
+  navContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - navContainer.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    if (Math.abs(x - startX) > 6) {
+      hasDragged = true;
+    }
+    navContainer.scrollLeft = scrollLeftPos - walk;
+  });
+
+  // Chặn kích hoạt nhầm nút tab khi người dùng đang kéo chuột
+  navContainer.addEventListener('click', (e) => {
+    if (hasDragged) {
+      e.stopPropagation();
+      e.preventDefault();
+      hasDragged = false;
+    }
+  }, true);
+}

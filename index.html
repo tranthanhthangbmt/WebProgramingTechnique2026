@@ -41,9 +41,11 @@
       </div>
     </div>
 
-    <!-- Navigation Tabs (Touch Swipeable & Compact) -->
+    <!-- Navigation Tabs (Touch Swipeable, Mouse Drag-Scrollable & Scroll Buttons) -->
     <nav class="site-nav">
-      <div class="nav-container">
+      <div class="nav-wrapper">
+        <button class="nav-scroll-btn nav-scroll-left" id="navScrollLeft" title="Cuộn tab sang trái" aria-label="Cuộn sang trái">‹</button>
+        <div class="nav-container" id="navTabsContainer">
         <button class="nav-tab-btn active" data-tab="overview">
           <span class="tab-icon">📚</span>
           <span class="tab-label-full">1. Đề cương & Lộ trình</span>
@@ -79,6 +81,8 @@
           <span class="tab-label-full">7. Thực hành Lab 01</span>
           <span class="tab-label-short">7. Lab 01</span>
         </button>
+        </div>
+        <button class="nav-scroll-btn nav-scroll-right" id="navScrollRight" title="Cuộn tab sang phải" aria-label="Cuộn sang phải">›</button>
       </div>
     </nav>
   </header>
