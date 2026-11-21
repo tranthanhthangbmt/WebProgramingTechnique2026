@@ -177,6 +177,10 @@ function initChapterSelector() {
   const selector = document.getElementById('chapterSelector');
   if (selector) {
     const initialVal = parseInt(selector.value, 10);
+    const labTabBtn = document.getElementById('navTabBtnLab');
+    if (labTabBtn) {
+      labTabBtn.style.display = (initialVal === 3) ? 'inline-flex' : 'none';
+    }
     if (initialVal >= 2 && initialVal <= 4) {
       switchChapter(initialVal);
     } else {
@@ -303,6 +307,16 @@ function updateChapterStaticContent(chapterNum) {
   if (tabCodes && meta.codesHtml) {
     tabCodes.innerHTML = meta.codesHtml;
   }
+
+  // Tab 7: Lab 01 (Dành riêng cho Chương 3)
+  const tabLab = document.getElementById('tab-lab');
+  if (tabLab) {
+    if (chapterNum === 3 && meta.labHtml) {
+      tabLab.innerHTML = meta.labHtml;
+    } else {
+      tabLab.innerHTML = '';
+    }
+  }
 }
 
 function switchChapter(ch) {
@@ -353,7 +367,20 @@ function switchChapter(ch) {
     }
   }
 
-  // Update static tab contents (Overview, Docs, Codes) & Hero Banner
+  // Hiển thị nút Tab Lab 01 riêng cho Chương 3
+  const labTabBtn = document.getElementById('navTabBtnLab');
+  if (labTabBtn) {
+    if (chapterNum === 3) {
+      labTabBtn.style.display = 'inline-flex';
+    } else {
+      labTabBtn.style.display = 'none';
+      if (AppState.currentTab === 'lab') {
+        switchTab('overview');
+      }
+    }
+  }
+
+  // Update static tab contents (Overview, Docs, Codes, Lab) & Hero Banner
   updateChapterStaticContent(chapterNum);
 
   // Re-populate slide dropdown options (1..42 or 1..45)
@@ -1076,3 +1103,47 @@ function escapeJsString(str) {
 function initCodeRepository() {
   // Ready for code viewer enhancements
 }
+
+// ============================================================================
+// LAB 01 DOCUMENT SWITCHER (SLIDE VS GIÁO TRÌNH)
+// ============================================================================
+function setLabDoc(docKey) {
+  const iframe = document.getElementById('labPdfViewerIframe');
+  const titleDisplay = document.getElementById('labDocTitleDisplay');
+  const externalLink = document.getElementById('labDocExternalLink');
+  const btnSlide = document.getElementById('btnLabDocSlide');
+  const btnGuide = document.getElementById('btnLabDocGuide');
+
+  if (docKey === 'guide') {
+    const guideUrl = './Lab/Huong-Dan-Thuc-Hanh-Lap-Trinh-CSharp-Chuong-1-den-3-v2.pdf';
+    if (iframe) iframe.src = guideUrl;
+    if (titleDisplay) titleDisplay.innerHTML = 'Đang xem: Giáo trình Hướng dẫn Thực hành v2.0 (Huong-Dan-Thuc-Hanh-Lap-Trinh-CSharp-Chuong-1-den-3-v2.pdf)';
+    if (externalLink) externalLink.href = guideUrl;
+    if (btnGuide) {
+      btnGuide.style.background = 'var(--primary-navy)';
+      btnGuide.style.color = 'white';
+      btnGuide.style.borderColor = 'var(--primary-navy)';
+    }
+    if (btnSlide) {
+      btnSlide.style.background = 'var(--bg-subtle)';
+      btnSlide.style.color = 'var(--text-color)';
+      btnSlide.style.borderColor = 'var(--border-color)';
+    }
+  } else {
+    const slideUrl = './Lab/slide%20Chuong%2003%20-%20Lab%2001_v2.pdf';
+    if (iframe) iframe.src = slideUrl;
+    if (titleDisplay) titleDisplay.innerHTML = 'Đang xem: Slide Hướng dẫn Thực hành Lab (slide Chuong 03 - Lab 01_v2.pdf)';
+    if (externalLink) externalLink.href = slideUrl;
+    if (btnSlide) {
+      btnSlide.style.background = '#68217a';
+      btnSlide.style.color = 'white';
+      btnSlide.style.borderColor = '#68217a';
+    }
+    if (btnGuide) {
+      btnGuide.style.background = 'var(--bg-subtle)';
+      btnGuide.style.color = 'var(--text-color)';
+      btnGuide.style.borderColor = 'var(--border-color)';
+    }
+  }
+}
+window.setLabDoc = setLabDoc;

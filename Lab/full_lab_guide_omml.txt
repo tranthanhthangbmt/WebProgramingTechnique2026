@@ -1,0 +1,212 @@
+[0] (Heading 1) TÀI LIỆU HƯỚNG DẪN THỰC HÀNH VÀ BÀI TẬP LẬP TRÌNH C# CƠ BẢN
+[1] (Heading 2) LẬP TRÌNH THỦ TỤC VÀ TƯ DUY THUẬT TOÁN (CHƯƠNG 1 ĐẾN CHƯƠNG 3)
+[2] (Heading 3) PHIÊN BẢN 2.0 (BỔ SUNG BÀI TẬP TỰ LUYỆN PHÒNG LAB & HỆ THỐNG BÀI TẬP VỀ NHÀ)
+[3] (First Paragraph) Môn học: Lập trình Cơ bản / Nhập môn Lập trình C#Đối tượng: Sinh viên năm nhất ngành Công nghệ Thông tin (chưa có nền tảng lập trình)Thời lượng thực hành đề xuất: 01 buổi lab trên máy (180 phút) + Hệ thống tự luyện tại nhàMôi trường phát triển: Microsoft Visual Studio / Visual Studio Community (.NET Console Application)
+[5] (Heading 1) PHẦN I: PHÂN TÍCH LOGIC SƯ PHẠM VÀ LỘ TRÌNH THỰC HÀNH
+[6] (First Paragraph) Tài liệu này được xây dựng nhằm giúp sinh viên năm nhất vượt qua rào cản tâm lý ban đầu, làm chủ hoàn toàn tư duy lập trình thủ tục (Procedural Programming) trước khi tiếp cận các khái niệm trừu tượng của Lập trình hướng đối tượng (OOP) ở Chương 4.
+[7] (Heading 2) 1. Rào cản nhận thức của sinh viên mới bắt đầu sau Chương 3
+[8] (Compact) Khủng hoảng cú pháp và môi trường phát triển: Sinh viên chưa từng lập trình dễ bối rối trước cấu trúc boilerplate mặc định của C# (using System;, namespace, class Program, static void Main()), hay quên dấu chấm phẩy (;), hoặc đặt sai vị trí các cặp ngoặc nhọn {}.
+[9] (Compact) Hiểu lầm về luồng dữ liệu (Input/Output Stream): Chưa phân biệt được bản chất giữa luồng văn bản thô đọc từ bàn phím (Console.ReadLine() luôn trả về kiểu string) và dữ liệu số cần thiết để tính toán số học (int.Parse() hoặc double.Parse()).
+[10] (Compact) Chưa có tư duy chia nguyên / và chia dư %: Người học thường áp dụng thói quen toán học thông thường (5/2=2.5) mà bỏ quên quy tắc chia hai số nguyên trong máy tính (5/2=2). Toán tử chia lấy phần dư % là công cụ cốt lõi trong thuật toán nhưng sinh viên thường lúng túng khi ứng dụng.
+[11] (Compact) Luồng thực thi tuần tự và điều kiện rẽ nhánh: Cần xây dựng tư duy phân tích từng bước (Step-by-step Execution): chương trình chạy từ trên xuống dưới, gặp cấu trúc rẽ nhánh if...else thì đánh giá biểu thức logic để quyết định khối lệnh thực thi.
+[12] (Heading 2) 2. Phân bổ thời gian buổi thực hành phòng lab (180 phút)
+[14] (Heading 1) PHẦN II: GIAI ĐOẠN 1 - CHUẨN HÓA MÔI TRƯỜNG & CẤU TRÚC PROJECT (30 PHÚT)
+[15] (Heading 2) 1. Mục tiêu thực hành
+[16] (Compact) Sinh viên tự tạo được dự án Console Application (.NET) đúng cấu trúc thư mục quy định.
+[17] (Compact) Nắm vững vai trò của cửa sổ quản lý tệp tin Solution Explorer và cửa sổ phát hiện lỗi Error List.
+[18] (Compact) Thuần thục thao tác biên dịch và thực thi bằng phím tắt Ctrl + F5 (Start Without Debugging).
+[19] (Heading 2) 2. Quy trình thao tác chuẩn trên Visual Studio
+[20] (Compact) Khởi tạo Project: Mở Visual Studio → Chọn Create a new project → Tìm kiếm template Console App (chọn ngôn ngữ C#) → Đặt tên dự án theo quy ước (ví dụ: ThucHanh_Ch01_03) → Chọn thư mục lưu trữ rõ ràng trên ổ đĩa học tập.
+[21] (Compact) Quản lý Solution Explorer: Mở cửa sổ View > Solution Explorer (hoặc nhấn Ctrl + Alt + L). Đổi tên tệp tin Program.cs thành tên phản ánh nội dung bài toán (ví dụ: BaiTap1.cs).
+[22] (Compact) Thao tác với Error List: Mở cửa sổ View > Error List (phím tắt Ctrl + \ , E). Khi chương trình xuất hiện gạch đỏ lượn sóng, nhấp đúp chuột trực tiếp vào dòng thông báo lỗi trong bảng Error List để con trỏ soạn thảo nhảy ngay đến vị trí dòng bị lỗi.
+[23] (Heading 2) 3. Mã nguồn mẫu tối thiểu và giải mã cấu trúc file Console
+[24] (First Paragraph) Mỗi chương trình C# Console chuẩn mực đều có khung cấu trúc tối thiểu như sau:
+[25] (Source Code) // Chuong trinh C# dau tienusing System;class BaiTap1{    static void Main()    {        Console.WriteLine("Chao mung ban den voi buoi thuc hanh C#!");    }}
+[26] (Compact) using System;: Khai báo sử dụng không gian tên System chứa các lớp cơ bản của .NET Framework, bao gồm lớp Console.
+[27] (Compact) class BaiTap1: Định nghĩa một lớp (class) đóng vai trò là khối xây dựng cơ bản của chương trình.
+[28] (Compact) static void Main(): Điểm nhập cuộc (Entry Point) của mọi ứng dụng Console C#. Khi chương trình bắt đầu chạy, hệ thống sẽ thực thi các câu lệnh bên trong cặp ngoặc nhọn {} của phương thức Main.
+[29] (Compact) Console.WriteLine(...): Gọi phương thức in chuỗi ký tự ra màn hình console và tự động xuống dòng mới.
+[30] (Heading 2) 4. Kỹ thuật nhận diện và gỡ lỗi cú pháp cơ bản
+[31] (Compact) Lỗi thiếu dấu chấm phẩy (CS1002: ; expected): Mọi câu lệnh đơn trong C# bắt buộc phải kết thúc bằng dấu ;.
+[32] (Compact) Lỗi lệch cặp ngoặc nhọn {} (CS1513: } expected): Khối lệnh luôn đi theo cặp. Hãy rèn luyện thói quen thụt đầu dòng (Indentation) bằng phím Tab để dễ dàng kiểm soát cấu trúc lồng nhau.
+[33] (Compact) Phân biệt chữ hoa và chữ thường (Case-sensitive): C# phân biệt tuyệt đối chữ hoa và chữ thường. Ví dụ: Main khác main, Console khác console.
+[35] (Heading 1) PHẦN III: GIAI ĐOẠN 2 - NHẬP/XUẤT CHUẨN, BIẾN VÀ PHÉP TOÁN SỐ HỌC (60 PHÚT)
+[36] (Heading 2) 1. Trọng tâm lý thuyết thực hành
+[37] (Compact) Phương thức xuất dữ liệu:
+[38] (Compact) Console.Write(...): In nội dung ra màn hình nhưng giữ con trỏ tại cuối dòng (không xuống dòng). Thích hợp dùng làm câu nhắc nhập liệu (prompt).
+[39] (Compact) Console.WriteLine(...): In nội dung và tự động di chuyển con trỏ xuống đầu dòng tiếp theo.
+[40] (Compact) Kỹ thuật nội suy chuỗi (String Interpolation - C# 6):
+[41] (Compact) Sử dụng ký tự $ đứng trước chuỗi: $"Xin chao {hoTen}, ban {tuoi} tuoi.".
+[42] (Compact) Định dạng số thực chuyên nghiệp: {diem:F2} (làm tròn 2 chữ số thập phân), {tien:N0} (phân cách hàng nghìn dấu phẩy).
+[43] (Compact) Cơ chế đọc và ép kiểu dữ liệu:
+[44] (Compact) Console.ReadLine(): Dừng màn hình chờ người dùng nhập văn bản và nhấn Enter. Giá trị trả về luôn luôn là kiểu chuỗi string.
+[45] (Compact) Muốn tính toán số học, bắt buộc phải chuyển đổi chuỗi sang số: int.Parse(Console.ReadLine()) cho số nguyên hoặc double.Parse(Console.ReadLine()) cho số thực.
+[46] (Compact) Bản chất phép chia trong lập trình:
+[47] (Compact) Phép chia nguyên /: Khi hai toán hạng là số nguyên (int / int), kết quả luôn là số nguyên và phần thập phân bị loại bỏ hoàn toàn (5/2=2).
+[48] (Compact) Phép chia thực: Để có kết quả số thực (5/2=2.5), ít nhất một trong hai toán hạng phải là số thực (5.0 / 2 hoặc (double)a / b).
+[49] (Compact) Phép chia lấy phần dư %: Trả về phần dư của phép chia (5%2=1). Đây là công cụ nền tảng để kiểm tra số chẵn lẻ, kiểm tra chia hết và tách các chữ số.
+[50] (Heading 2) 2. Bài thực hành mẫu có hướng dẫn: Thông tin sinh viên
+[51] (First Paragraph) Chương trình dưới đây hướng dẫn sinh viên cách nhập họ tên, năm sinh, tính tuổi và in ra màn hình có định dạng:
+[52] (Source Code) using System;class ThongTinSinhVien{    static void Main()    {        // 1. Nhap ho va ten        Console.Write("Nhap ho va ten: ");        string hoTen = Console.ReadLine();        // 2. Nhap nam sinh va chuyen doi sang kieu int        Console.Write("Nhap nam sinh: ");        int namSinh = int.Parse(Console.ReadLine());        // 3. Tinh toan tuoi        int namHienTai = DateTime.Now.Year;        int tuoi = namHienTai - namSinh;        // 4. Xuat ket qua bang String Interpolation        Console.WriteLine("\n--- THONG TIN SINH VIEN ---");        Console.WriteLine($"Xin chao: {hoTen}");        Console.WriteLine($"Nam sinh: {namSinh} | Tuoi hien tai: {tuoi}");    }}
+[53] (Heading 2) 3. Hệ thống bài tập có hướng dẫn trên lớp (Guided Exercises)
+[54] (Heading 3) Bài tập 1: Tính chu vi và diện tích hình chữ nhật
+[55] (Compact) Mục tiêu: Rèn luyện khai báo biến, nhập số nguyên/thực, thực hiện biểu thức số học cơ bản.
+[56] (Compact) Công thức toán học:
+[57] (Compact) Chu vi=a+b×2
+[58] (Compact) Diện tích=a×b
+[59] (Compact) Yêu cầu: Nhập chiều dài a và chiều rộng b (dạng số thực double). Tính và in chu vi, diện tích làm tròn 2 chữ số thập phân.
+[60] (Heading 3) Bài tập 2: Tính toán chu vi và diện tích hình tròn
+[61] (Compact) Mục tiêu: Sử dụng kiểu số thực double và hằng số toán học Math.PI.
+[62] (Compact) Công thức toán học:
+[63] (Compact) Đường kính=2r
+[64] (Compact) Chu vi=2×π×r
+[65] (Compact) Diện tích=π×r2
+[66] (Compact) Yêu cầu: Nhập bán kính r (số thực dương). Tính đường kính, chu vi và diện tích hình tròn.
+[67] (Heading 3) Bài tập 3: Phép chia nguyên và chia dư - Quy đổi tổng số giây
+[68] (Compact) Mục tiêu: Vận dụng linh hoạt toán tử / và toán tử %.
+[69] (Compact) Yêu cầu: Nhập vào tổng số giây nguyên (ví dụ: 3665 giây). Quy đổi và in ra định dạng: X giờ, Y phút, Z giây.
+[70] (Compact) Phân tích thuật toán:
+[71] (Compact) Số giờ: gio = tongGiay / 3600;
+[72] (Compact) Số giây còn lại: giayConLai = tongGiay % 3600;
+[73] (Compact) Số phút: phut = giayConLai / 60;
+[74] (Compact) Số giây: giay = giayConLai % 60;
+[75] (Heading 3) Bài tập 4: Tách các chữ số của số nguyên 3 chữ số và tính tổng
+[76] (Compact) Mục tiêu: Phát triển tư duy thuật toán thủ tục kết hợp liên tiếp các phép chia / và %.
+[77] (Compact) Yêu cầu: Nhập vào một số nguyên có 3 chữ số (ví dụ: 842).
+[78] (Compact) In ra từng chữ số cách nhau bởi 3 khoảng trắng: 8   4   2.
+[79] (Compact) Tính và in ra tổng các chữ số: 8+4+2=14.
+[80] (Compact) Phân tích thuật toán:
+[81] (Compact) Hàng trăm: tram = n / 100;
+[82] (Compact) Hàng chục: chuc = (n % 100) / 10;
+[83] (Compact) Hàng đơn vị: donVi = n % 10;
+[84] (Compact) Tổng chữ số: tong = tram + chuc + donVi;
+[86] (Heading 1) PHẦN IV: GIAI ĐOẠN 3 - CẤU TRÚC RẼ NHÁNH VÀ TOÁN TỬ SO SÁNH (50 PHÚT)
+[87] (Heading 2) 1. Trọng tâm lý thuyết & Bẫy lỗi logic kinh điển
+[88] (Compact) 6 toán tử quan hệ và đẳng thức: <, <=, >, >=, == (so sánh bằng), != (so sánh khác).
+[89] (Compact) Các toán tử logic kết hợp: && (VÀ logic - cả hai điều kiện cùng đúng), || (HOẶC logic - một trong hai điều kiện đúng), ! (PHỦ ĐỊNH).
+[90] (Compact) Bẫy kinh điển số 1: Nhầm lẫn giữa = và ==:
+[91] (Compact) Toán tử = là toán tử gán giá trị: x = 5;.
+[92] (Compact) Toán tử == là toán tử kiểm tra so sánh: if (x == 5). Trình biên dịch C# sẽ báo lỗi nếu viết if (x = 5) với kiểu số nguyên.
+[93] (Compact) Bẫy kinh điển số 2: Dấu chấm phẩy ; ngay sau if:
+[94] (Compact) Viết if (x > 0); sẽ tạo ra một câu lệnh rỗng (empty statement). Khối lệnh phía dưới sẽ luôn luôn được chạy bất kể điều kiện đúng hay sai!
+[95] (Compact) Bẫy kinh điển số 3: Lỗi chia cho 0 (DivideByZeroException):
+[96] (Compact) Luôn phải kiểm tra mẫu số khác 0 trước khi thực hiện phép chia nguyên hoặc chia lấy dư.
+[97] (Heading 2) 2. Hệ thống bài tập có hướng dẫn trên lớp (Guided Exercises)
+[98] (Heading 3) Bài tập 5: Kiểm tra tính Chẵn / Lẻ (Odd or Even)
+[99] (Source Code) using System;class KiemTraChanLe{    static void Main()    {        Console.Write("Nhap mot so nguyen: ");        int n = int.Parse(Console.ReadLine());        if (n % 2 == 0)        {            Console.WriteLine($"{n} la so CHAN.");        }        else        {            Console.WriteLine($"{n} la so LE.");        }    }}
+[100] (Heading 3) Bài tập 6: Kiểm tra Bội số & Xử lý điều kiện biên
+[101] (Source Code) using System;class KiemTraBoiSo{    static void Main()    {        Console.Write("Nhap so thu nhat (a): ");        int a = int.Parse(Console.ReadLine());        Console.Write("Nhap so thu hai (b): ");        int b = int.Parse(Console.ReadLine());        if (b == 0)        {            Console.WriteLine("Loi nghiem trong: Khong the chia cho 0!");        }        else if (a % b == 0)        {            Console.WriteLine($"{a} la boi so cua {b} (chia het).");        }        else        {            Console.WriteLine($"{a} KHONG phai la boi so cua {b}.");        }    }}
+[102] (Heading 3) Bài tập 7: Phân loại học tập sinh viên (Cấu trúc if...else if...else đa nhánh)
+[103] (Source Code) using System;class XepLoaiSinhVien{    static void Main()    {        Console.Write("Nhap diem trung binh (0.0 - 10.0): ");        double diem = double.Parse(Console.ReadLine());        if (diem < 0.0 || diem > 10.0)        {            Console.WriteLine("Loi: Diem trung binh phai nam trong khoang tu 0.0 den 10.0!");        }        else if (diem >= 8.5)        {            Console.WriteLine($"Diem {diem:F1} -> Xep loai: XUAT SAC");        }        else if (diem >= 7.0)        {            Console.WriteLine($"Diem {diem:F1} -> Xep loai: KHA");        }        else if (diem >= 5.0)        {            Console.WriteLine($"Diem {diem:F1} -> Xep loai: TRUNG BINH");        }        else        {            Console.WriteLine($"Diem {diem:F1} -> Xep loai: YEU (Can co gang hon)");        }    }}
+[105] (Heading 2) 3. BỘ BÀI TẬP TỰ LUYỆN TẠI LỚP (SELF-PRACTICE EXERCISES)
+[106] (First Paragraph) (Dành cho sinh viên tự tư duy và lập trình độc lập tại phòng lab - Không có mã nguồn giải sẵn)
+[107] (Heading 3) Bài tập tự luyện 1: Tìm số lớn nhất trong 3 số nguyên (Find Maximum of Three Numbers)
+[108] (Compact) Mục tiêu: Rèn luyện tư duy so sánh lồng nhau hoặc kết hợp toán tử logic &&.
+[109] (Compact) Yêu cầu: Nhập từ bàn phím 3 số nguyên a, b, c. Sử dụng cấu trúc rẽ nhánh if...else để tìm và in ra giá trị lớn nhất (Max) trong 3 số đó.
+[110] (Compact) Bộ dữ liệu kiểm thử (Test Cases):
+[112] (Heading 3) Bài tập tự luyện 2: Kiểm tra năm nhuận (Leap Year Checker)
+[113] (Compact) Mục tiêu: Nắm vững quy tắc kết hợp nhiều biểu thức quan hệ bằng toán tử && và || kết hợp phép chia dư %.
+[114] (Compact) Quy tắc lịch thiên văn:
+[115] (Compact) Một năm là năm nhuận nếu: Năm đó chia hết cho 400, HOẶC chia hết cho 4 nhưng KHÔNG chia hết cho 100.
+[116] (Compact) Yêu cầu: Nhập vào năm nguyên dương. In ra thông báo: Nam [X] la nam NHUAN. hoặc Nam [X] KHONG phai la nam nhuan..
+[117] (Compact) Bộ dữ liệu kiểm thử (Test Cases):
+[119] (Heading 3) Bài tập tự luyện 3: Giải và biện luận phương trình bậc nhất ax+b=0
+[120] (Compact) Mục tiêu: Rèn luyện tư duy rà soát triệt để các trường hợp biên đặc biệt (Edge Cases).
+[121] (Compact) Quy tắc biện luận toán học:
+[122] (Compact) Nếu a=0 và b=0: Phương trình có VÔ SỐ NGHIỆM.
+[123] (Compact) Nếu a=0 và b≠0: Phương trình VÔ NGHIỆM.
+[124] (Compact) Nếu a≠0: Phương trình có nghiệm duy nhất x=−b/a.
+[125] (Compact) Yêu cầu: Nhập 2 hệ số thực a,b từ bàn phím. In ra kết luận và nghiệm làm tròn 2 chữ số thập phân ({x:F2}).
+[126] (Compact) Bộ dữ liệu kiểm thử (Test Cases):
+[128] (Heading 3) Bài tập tự luyện 4: Tính tiền cước Taxi theo lũy tiến km
+[129] (Compact) Mục tiêu: Áp dụng mô hình tính giá cước bậc thang thực tế với cấu trúc if...else if...else.
+[130] (Compact) Biểu giá cước Taxi quy định:
+[131] (Compact) Giá mở cửa (1 km đầu tiên): 15.000 VNĐ.
+[132] (Compact) Từ km thứ 2 đến km thứ 5: 13.500 VNĐ/km.
+[133] (Compact) Từ km thứ 6 trở đi: 11.000 VNĐ/km.
+[134] (Compact) Chính sách khuyến mãi: Nếu tổng quãng đường di chuyển trên 120 km, khách hàng được giảm thêm 10% trên tổng số tiền cước.
+[135] (Compact) Yêu cầu: Nhập số km di chuyển (số thực dương). Tính và in số tiền cước khách hàng phải trả (định dạng phân cách hàng nghìn).
+[136] (Compact) Bộ dữ liệu kiểm thử (Test Cases):
+[138] (Heading 3) Bài tập tự luyện 5: Kiểm tra tính hợp lệ và phân loại tam giác
+[139] (Compact) Mục tiêu: Rèn luyện kiểm tra điều kiện hình học và cấu trúc if lồng nhau (nested if).
+[140] (Compact) Quy tắc hình học:
+[141] (Compact) Ba số thực dương a,b,c lập thành tam giác khi và chỉ khi: a+b>c VÀ a+c>b VÀ b+c>a.
+[142] (Compact) Phân loại:
+[143] (Compact) Tam giác đều: Ba cạnh bằng nhau (a=b VÀ b=c).
+[144] (Compact) Tam giác cân: Có ít nhất 2 cạnh bằng nhau (a=b HOẶC b=c HOẶC a=c).
+[145] (Compact) Tam giác vuông: Thỏa mãn định lý Pytago (a2+b2=c2 hoặc a2+c2=b2 hoặc b2+c2=a2).
+[146] (Compact) Tam giác thường: Các trường hợp còn lại.
+[147] (Compact) Bộ dữ liệu kiểm thử (Test Cases):
+[149] (Heading 1) PHẦN V: GIAI ĐOẠN 4 - THỬ THÁCH TỔNG HỢP CUỐI BUỔI (MINI-CHALLENGE - 40 PHÚT)
+[150] (Heading 2) 1. Thử thách mẫu tại lớp: Phần mềm tính toán chỉ số khối cơ thể (BMI Calculator)
+[151] (Compact) Ý nghĩa thực tế: Tích hợp nhập xuất, kiểm tra ràng buộc số dương, công thức số học và rẽ nhánh.
+[152] (Compact) Công thức y tế chuẩn:
+[153] (Compact) BMI=Cân nặng (kg)Chiều cao (m)2
+[154] (Compact) Bảng phân loại chỉ số BMI theo chuẩn y tế:
+[155] (Compact) BMI<18.5: Thiếu cân (Underweight)
+[156] (Compact) 18.5≤BMI<25.0: Trọng lượng bình thường (Normal weight)
+[157] (Compact) 25.0≤BMI<30.0: Thừa cân (Overweight)
+[158] (Compact) BMI≥30.0: Béo phì (Obese)
+[159] (Heading 3) Mã nguồn hoàn chỉnh dành cho Giảng viên hướng dẫn:
+[160] (Source Code) using System;class BmiCalculator{    static void Main()    {        Console.WriteLine("==================================================");        Console.WriteLine("      HE THONG TINH TOAN VA DANH GIA CHI SO BMI   ");        Console.WriteLine("==================================================");        // 1. Nhap du lieu dau vao        Console.Write("Nhap ho va ten: ");        string hoTen = Console.ReadLine();        Console.Write("Nhap can nang (don vi kg, vi du: 65.5): ");        double canNang = double.Parse(Console.ReadLine());        Console.Write("Nhap chieu cao (don vi met, vi du: 1.72): ");        double chieuCao = double.Parse(Console.ReadLine());        // 2. Kiem tra tinh hop le cua du lieu        if (canNang <= 0 || chieuCao <= 0)        {            Console.WriteLine("\nLoi: Can nang va chieu cao phai lon hon 0!");            return; // Dung chuong trinh        }        // 3. Tinh toan chi so BMI        double bmi = canNang / (chieuCao * chieuCao);        // 4. Danh gia tinh trang the trang        string ketLuan = "";        if (bmi < 18.5)        {            ketLuan = "Thieu can (Underweight)";        }        else if (bmi < 25.0)        {            ketLuan = "Binh thuong (Normal weight)";        }        else if (bmi < 30.0)        {            ketLuan = "Thua can (Overweight)";        }        else        {            ketLuan = "Beo phi (Obese)";        }        // 5. In phieu ket qua chuyen nghiep        Console.WriteLine("\n----------------- PHIEU KET QUA -----------------");        Console.WriteLine($"Ho va ten : {hoTen}");        Console.WriteLine($"Can nang  : {canNang:F1} kg");        Console.WriteLine($"Chieu cao : {chieuCao:F2} m");        Console.WriteLine($"Chi so BMI: {bmi:F2}");        Console.WriteLine($"Danh gia  : {ketLuan}");        Console.WriteLine("-------------------------------------------------");    }}
+[162] (Heading 2) 2. ĐỀ BÀI THỬ THÁCH ĐÁNH GIÁ ĐỘC LẬP TẠI LAB (KHÔNG CÓ CODE SẴN)
+[163] (Heading 3) Đề bài: Hệ thống Tính tiền Điện sinh hoạt bậc thang & In hóa đơn Console
+[164] (Compact) Mục tiêu đánh giá: Đo lường khả năng làm việc độc lập của sinh viên sau 3 chương đầu. Sinh viên tự tổ chức cấu trúc chương trình, xử lý kiểm tra chỉ số công tơ, tính toán lũy tiến theo từng khoảng bậc thang và in hóa đơn đẹp mắt.
+[165] (Compact) Biểu phí tiền điện sinh hoạt bậc thang quy định:
+[166] (Compact) Bậc 1 (Cho 50 kWh đầu tiên, từ 0 – 50 kWh): 1.806 VNĐ/kWh
+[167] (Compact) Bậc 2 (Cho 50 kWh tiếp theo, từ 51 – 100 kWh): 1.866 VNĐ/kWh
+[168] (Compact) Bậc 3 (Cho 100 kWh tiếp theo, từ 101 – 200 kWh): 2.167 VNĐ/kWh
+[169] (Compact) Bậc 4 (Từ kWh 201 trở lên): 2.729 VNĐ/kWh
+[170] (Compact) Quy tắc tính toán chi tiết:
+[171] (Compact) Người dùng nhập: Họ tên khách hàng, Chỉ số công tơ cũ và Chỉ số công tơ mới (dạng số nguyên).
+[172] (Compact) Số điện tiêu thụ: Số điện=Chỉ số mới−Chỉ số cũ.
+[173] (Compact) Kiểm tra tính hợp lệ: Nếu chỉ số mới < chỉ số cũ hoặc các chỉ số âm, thông báo lỗi và kết thúc chương trình.
+[174] (Compact) Thuế giá trị gia tăng (VAT): Tính 8% trên tổng tiền điện trước thuế.
+[175] (Compact) Tổng tiền thanh toán: Tổng tiền=Tiền điện trước thuế+Thuế VAT.
+[176] (Compact) Bộ dữ liệu kiểm thử đánh giá sinh viên (Test Cases):
+[178] (Heading 2) 3. Khung tiêu chí chấm điểm và đánh giá năng lực thực hành (Rubric 10 Điểm)
+[180] (Heading 1) PHẦN VI: HỆ THỐNG BÀI TẬP TỰ LUYỆN VỀ NHÀ (HOMEWORK PROJECTS)
+[181] (First Paragraph) (Rèn luyện độc lập sau buổi lab để củng cố toàn diện kỹ năng trước khi học OOP)
+[182] (Heading 2) Bài tập về nhà 1: Máy tính chuyển đổi hệ đơn vị đo lường (Metric Converter)
+[183] (Compact) Mục tiêu: Rèn luyện xây dựng menu lựa chọn bằng if...else if...else kết hợp xử lý số thực double.
+[184] (Compact) Mô tả bài toán: Viết chương trình hiển thị menu 3 chức năng chuyển đổi:
+[185] (Compact) Chuyển từ Độ Celsius (​∘C) sang Độ Fahrenheit (​∘F):
+[186] (Compact) F=C×95+32
+[187] (Compact) Chuyển từ Chiều dài Mét (m) sang Feet (ft):
+[188] (Compact) 1 m≈3.28084 ft
+[189] (Compact) Chuyển từ Cân nặng Kilogram (kg) sang Pound (lbs):
+[190] (Compact) 1 kg≈2.20462 lbs
+[191] (Compact) Yêu cầu: Người dùng chọn mã chức năng (1,2,3), nhập giá trị số thực cần quy đổi. In kết quả chính xác 2 chữ số thập phân ({val:F2}). Nếu nhập mã ngoài 1−3, in thông báo Lua chon khong hop le!.
+[192] (Compact) Bộ dữ liệu kiểm thử (Test Cases):
+[194] (Heading 2) Bài tập về nhà 2: Mô phỏng Máy rút tiền ATM đơn giản (Cash Withdrawal Breakdown)
+[195] (Compact) Mục tiêu: Vận dụng triệt để thuật toán chia nguyên / và chia dư % theo thứ tự ưu tiên giá trị giảm dần.
+[196] (Compact) Mô tả bài toán: Khách hàng cần rút một số tiền nguyên N (VNĐ) từ cây ATM. Cây ATM hiện đang chứa 4 loại mệnh giá tiền: 500.000, 200.000, 100.000 và 50.000 VNĐ.
+[197] (Compact) Quy tắc giải thuật:
+[198] (Compact) Số tiền rút bắt buộc phải là bội số của 50.000 VNĐ và lớn hơn 0. Nếu không thỏa mãn, in thông báo từ chối giao dịch.
+[199] (Compact) Ưu tiên đổi các tờ tiền có mệnh giá lớn nhất trước để giảm thiểu tối đa tổng số lượng tờ tiền máy phải nhả ra.
+[200] (Compact) Yêu cầu đầu ra: In bảng danh sách số tờ tiền của từng loại mệnh giá nhả ra cho khách hàng.
+[201] (Compact) Bộ dữ liệu kiểm thử (Test Cases):
+[203] (Heading 2) Bài tập về nhà 3: Phần mềm kiểm tra ngày hợp lệ và Tìm ngày tiếp theo
+[204] (Compact) Mục tiêu: Rèn luyện tư duy rẽ nhánh đa tầng (nested conditions), kết hợp chặt chẽ quy tắc năm nhuận và cấu trúc số ngày trong tháng.
+[205] (Compact) Mô tả bài toán: Nhập vào 3 số nguyên dương đại diện cho ngay, thang, nam.
+[206] (Compact) Yêu cầu thuật toán:
+[207] (Compact) Kiểm tra tính hợp lệ của ngày nhập:
+[208] (Compact) Tháng 1,3,5,7,8,10,12 có tối đa 31 ngày.
+[209] (Compact) Tháng 4,6,9,11 có tối đa 30 ngày.
+[210] (Compact) Tháng 2: Có 29 ngày nếu là năm nhuận; có 28 ngày nếu là năm thường.
+[211] (Compact) Năm phải lớn hơn 0.
+[212] (Compact) Nếu không hợp lệ, in thông báo Ngay thang nam khong ton tai!.
+[213] (Compact) Nếu hợp lệ, tính toán và in ra ngày kế tiếp (Next Day) theo định dạng dd/MM/yyyy (chú ý đặc biệt trường hợp ngày cuối tháng và ngày cuối năm 31/12).
+[214] (Compact) Bộ dữ liệu kiểm thử (Test Cases):
+[216] (Heading 2) Bài tập về nhà 4: Trò chơi Oẳn Tù Tì với máy tính (Rock-Paper-Scissors)
+[217] (Compact) Mục tiêu: Rèn luyện so sánh logic nhiều trường hợp đồng thời và làm quen với phát sinh dữ liệu ngẫu nhiên trong C# (Random).
+[218] (Compact) Mô tả bài toán:
+[219] (Normal) Người chơi nhập lựa chọn từ bàn phím: 1 (Kéo), 2 (Búa), 3 (Bao).
+[220] (Normal) Máy tính tự động sinh một số nguyên ngẫu nhiên từ 1 đến 3 thông qua lớp Random:
+[221] (Source Code) int mayChon = new Random().Next(1, 4); // Sinh so ngau nhien tu 1 den 3
+[222] (Normal) So sánh quy tắc trò chơi: Búa thắng Kéo, Kéo thắng Bao, Bao thắng Búa. Hai bên chọn giống nhau thì kết quả Hòa.
+[223] (Compact) Yêu cầu đầu ra: In rõ người chọn gì, máy chọn gì và thông báo kết quả: Nguoi choi THANG!, May tinh THANG! hoặc Ket qua HOA!.
+[225] (Heading 1) PHẦN VII: TỔNG KẾT VÀ ĐỊNH HƯỚNG CẦU NỐI SANG LẬP TRÌNH HƯỚNG ĐỐI TƯỢNG (OOP)
+[226] (First Paragraph) Khi hoàn thành trọn vẹn toàn bộ các bài tập trong giáo trình thực hành này, sinh viên đã nắm vững 3 trụ cột của lập trình thủ tục: 1. Lập trình tuần tự (Sequential): Hiểu rõ cơ chế bộ nhớ, kiểu dữ liệu và luồng thực thi từng câu lệnh. 2. Xử lý số học & Toán tử (Arithmetic & Modulo): Làm chủ kỹ thuật tính toán, chuyển đổi thời gian và bóc tách dữ liệu số nguyên. 3. Điều khiển rẽ nhánh (Selection/Branching): Tự tin viết các cấu trúc quyết định phức tạp, xử lý triệt để các điều kiện biên.
+[227] (Heading 2) Cầu nối tư duy sang Chương 4 (Lập trình hướng đối tượng - OOP):
+[228] (First Paragraph) Trong các bài toán thủ tục đã làm (như bài tính BMI hay Tiền điện), dữ liệu (cân nặng, chiều cao, chỉ số điện) và hàm tính toán đang nằm rời rạc trong phương thức Main. * Khi bước sang Chương 4, sinh viên sẽ học cách đóng gói (Encapsulation) tất cả các thành phần này vào một thực thể duy nhất gọi là Đối tượng (Object) thuộc một Lớp (Class): * Thuộc tính (Properties): Lưu trữ dữ liệu đối tượng (CanNang, ChieuCao, HoTen). * Phương thức (Methods): Chứa các câu lệnh thủ tục tự động tính toán và trả về kết quả ngay bên trong đối tượng đó (TinhBmi(), XepLoaiTheTrang()). * Nắm vững lập trình thủ tục chính là chiếc chìa khóa vững chắc nhất để sinh viên tự tin làm chủ lập trình hướng đối tượng.

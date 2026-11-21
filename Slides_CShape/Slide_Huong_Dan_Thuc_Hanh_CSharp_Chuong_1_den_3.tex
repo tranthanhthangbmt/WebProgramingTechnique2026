@@ -1,0 +1,1713 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+% --- GÓI HỌC THUẬT & FONT TIẾNG VIỆT CHO XELATEX ---
+\usepackage{fontspec}
+\setmainfont{Arial}
+\setsansfont{Arial}
+\setmonofont{Consolas}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable,listings}
+
+% --- ĐỊNH NGHĨA MÀU SẮC CHUẨN ĐẠI HỌC & C# .NET ---
+\definecolor{UniNavy}{RGB}{15, 44, 89}        % Xanh hải quân chủ đạo (#0F2C59)
+\definecolor{UniBlue}{RGB}{29, 93, 155}       % Xanh Slate (#1D5D9B)
+\definecolor{CSharpPurple}{RGB}{104, 33, 122} % Tím nhận diện C# & Visual Studio (#68217A)
+\definecolor{UniLightBlue}{RGB}{232, 241, 252}% Nền xanh nhạt
+\definecolor{UniOrange}{RGB}{225, 112, 18}    % Cam nhấn mạnh (#E17012)
+\definecolor{UniGreen}{RGB}{30, 132, 73}      % Xanh lá thực hành (#1E8449)
+\definecolor{UniDark}{RGB}{33, 37, 41}        % Màu chữ chính / nền console
+\definecolor{CodeBg}{RGB}{248, 249, 250}      % Nền code
+\definecolor{CSharpKeyword}{RGB}{0, 0, 255}   % Xanh dương từ khóa C#
+\definecolor{CSharpString}{RGB}{163, 21, 21}  % Đỏ chuỗi C#
+\definecolor{CSharpComment}{RGB}{0, 128, 0}   % Xanh lá chú thích C#
+\definecolor{AlertRed}{RGB}{192, 57, 43}
+
+% --- CẤU HÌNH THEME BEAMER MADRID WIDESCREEN ---
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+\setbeamercolor{palette primary}{bg=UniNavy, fg=white}
+\setbeamercolor{palette secondary}{bg=CSharpPurple, fg=white}
+\setbeamercolor{palette tertiary}{bg=UniNavy!85, fg=white}
+\setbeamercolor{palette quaternary}{bg=UniNavy, fg=white}
+
+\setbeamercolor{structure}{fg=UniNavy}
+\setbeamercolor{titlelike}{parent=structure, fg=UniNavy}
+\setbeamercolor{frametitle}{bg=UniNavy, fg=white}
+\setbeamercolor{frametitle continuation}{fg=white}
+\setbeamercolor{normal text}{fg=UniDark}
+
+% Cấu hình khối thông tin (Blocks)
+\setbeamercolor{block title}{bg=UniNavy, fg=white}
+\setbeamercolor{block body}{bg=UniLightBlue!40, fg=UniDark}
+\setbeamercolor{block title example}{bg=UniGreen, fg=white}
+\setbeamercolor{block body example}{bg=UniGreen!10, fg=UniDark}
+\setbeamercolor{block title alerted}{bg=AlertRed, fg=white}
+\setbeamercolor{block body alerted}{bg=AlertRed!10, fg=UniDark}
+
+% Cấu hình Footline chuyên nghiệp
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=1.1ex,left,leftskip=2ex]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\textbf{Lớp IT26M} | Thực hành C\#
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=1.1ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}Hướng Dẫn Lab Lập Trình Thủ Tục
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=1.1ex,right,rightskip=2ex]{date in head/foot}%
+      \usebeamerfont{date in head/foot}\insertframenumber{} / \inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+
+% --- CẤU HÌNH GÓI LISTINGS CHO C# ---
+\lstdefinelanguage{CSharpCustom}{
+  keywords={abstract, as, base, bool, break, byte, case, catch, char, checked, class, const, continue, decimal, default, delegate, do, double, else, enum, event, explicit, extern, false, finally, fixed, float, for, foreach, goto, if, implicit, in, int, interface, internal, is, lock, long, namespace, new, null, object, operator, out, override, params, private, protected, public, readonly, ref, return, sbyte, sealed, short, sizeof, stackalloc, static, string, struct, switch, this, throw, true, try, typeof, uint, ulong, unchecked, unsafe, ushort, using, virtual, void, volatile, while, async, await, var},
+  keywordstyle=\color{CSharpKeyword}\bfseries,
+  ndkeywords={Console, String, Math, Convert, int, double, float, char, bool, DateTime, Random},
+  ndkeywordstyle=\color{CSharpPurple}\bfseries,
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{CSharpComment}\itshape,
+  stringstyle=\color{CSharpString},
+  morestring=[b]",
+  morestring=[b]'
+}
+
+\lstset{
+  language=CSharpCustom,
+  basicstyle=\ttfamily\scriptsize,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=6pt,
+  backgroundcolor=\color{CodeBg},
+  frame=single,
+  rulecolor=\color{black!20},
+  tabsize=4,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=true,
+  columns=flexible,
+  keepspaces=true,
+  xleftmargin=12pt,
+  framexleftmargin=10pt
+}
+
+% --- THÔNG TIN TRANG TIÊU ĐỀ ---
+\title[\textbf{Thực hành C\# (Chương 1 - 3)}]{\textbf{\LARGE BÀI GIẢNG HƯỚNG DẪN THỰC HÀNH PHÒNG LAB}}
+\subtitle{\textbf{\large Lập Trình Thủ Tục \& Tư Duy Thuật Toán C\# Căn Bản (Chương 1 đến 3)}}
+\author[\textbf{Khoa CNTT -- IT26M}]{\textbf{KỸ THUẬT LẬP TRÌNH / LẬP TRÌNH C\# \& .NET}\\\textit{Phiên bản 2.0: Bổ sung Bài tập tự luyện phòng lab \& Hệ thống bài tập về nhà}}
+\institute[\textbf{Lớp IT26M}]{\textbf{Khoa Công nghệ Thông tin -- Đại học Đông Á}\\\textbf{Đối tượng:} Lớp IT26M (Khóa 2026) | \textbf{Thời lượng:} 180 phút trên máy}
+\date[\textbf{2026}]{\textbf{Học kỳ I -- Năm học 2026}}
+
+\begin{document}
+
+% ==============================================================================
+% SLIDE 1: TIÊU ĐỀ
+% ==============================================================================
+\begin{frame}[plain]
+  \titlepage
+  \begin{center}
+    \scriptsize\color{UniNavy}\textbf{Môi trường phát triển:} Microsoft Visual Studio 2022 / .NET 8.0 Console Application
+  \end{center}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 2: MỤC TIÊU VÀ CHUẨN ĐẦU RA BUỔI LAB
+% ==============================================================================
+\begin{frame}{Mục Tiêu \& Chuẩn Đầu Ra Buổi Thực Hành (CLOs)}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\textbf{Mục Tiêu Cốt Lõi}}
+        \begin{itemize}
+          \item Giúp sinh viên năm nhất vượt qua rào cản tâm lý ban đầu với cú pháp C\#.
+          \item Làm chủ hoàn toàn tư duy \textbf{Lập trình thủ tục (Procedural Programming)} trước khi học Hướng đối tượng ở Chương 4.
+          \item Rèn luyện kỹ năng gỡ lỗi (debugging) độc lập trên Visual Studio.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{\textbf{Chuẩn Đầu Ra Kỳ Vọng (CLOs)}}
+        \begin{itemize}
+          \item \textbf{CLO 1.1:} Khởi tạo, cấu hình và quản trị thành thạo dự án Console trên Visual Studio.
+          \item \textbf{CLO 2.1:} Phân biệt bản chất I/O Stream và áp dụng chính xác ép kiểu \texttt{int.Parse}, \texttt{double.Parse}.
+          \item \textbf{CLO 3.1:} Làm chủ thuật toán chia nguyên \texttt{/} và chia dư \texttt{\%}.
+          \item \textbf{CLO 3.2:} Xây dựng cấu trúc rẽ nhánh \texttt{if...else} kiểm soát 100\% các điều kiện biên.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 3: 4 RÀO CẢN NHẬN THỨC CỦA SINH VIÊN MỚI
+% ==============================================================================
+\begin{frame}{4 Rào Cản Nhận Thức Lớn Của Sinh Viên Mới Bắt Đầu}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{\textbf{1. Khủng hoảng cú pháp boilerplate}}
+        Bối rối trước cấu trúc mặc định (\texttt{using System;}, \texttt{class}, \texttt{Main()}), hay quên dấu chấm phẩy (\texttt{;}) và đặt sai cặp ngoặc nhọn \texttt{\{\}}.
+      \end{alertblock}
+      \begin{alertblock}{\textbf{2. Hiểu lầm luồng dữ liệu (I/O Stream)}}
+        Chưa hiểu bản chất văn bản thô đọc từ bàn phím: \texttt{Console.ReadLine()} luôn trả về \texttt{string}, muốn tính toán phải ép kiểu sang số.
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{\textbf{3. Bối rối phép chia nguyên và chia dư}}
+        Thói quen toán học ($5/2 = 2.5$) gây lỗi khi máy tính thực hiện \texttt{int / int} ra $2$. Chưa biết vận dụng toán tử \texttt{\%} trong thuật toán bóc tách dữ liệu.
+      \end{alertblock}
+      \begin{alertblock}{\textbf{4. Luồng tuần tự \& Điều kiện biên rẽ nhánh}}
+        Chưa hình thành tư duy thực thi từng dòng (step-by-step), dễ bỏ sót các trường hợp biên đặc biệt (mẫu số bằng 0, số âm, tam giác suy biến).
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 4: CHIẾN LƯỢC SƯ PHẠM VÀ PHƯƠNG PHÁP HỌC TẬP
+% ==============================================================================
+\begin{frame}{Chiến Lược Sư Phạm \& Phương Pháp Thực Hành Hiệu Quả}
+  \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniNavy,title=\textbf{Quy Trình 3 Bước Tiếp Cận Mọi Bài Toán Lập Trình}]
+    \begin{enumerate}
+      \item \textbf{Phân tích trên giấy trước khi gõ phím (I-P-O Model):}
+        \begin{itemize}
+          \item \textbf{Input:} Người dùng cần nhập những dữ liệu gì? Kiểu dữ liệu tương ứng là gì?
+          \item \textbf{Process:} Công thức toán học, thuật toán và điều kiện logic cần kiểm tra.
+          \item \textbf{Output:} Kết quả cần xuất ra màn hình theo định dạng nào?
+        \end{itemize}
+      \item \textbf{Viết mã nguồn từng phần \& Biên dịch liên tục (Incremental Coding):}
+        \begin{itemize}
+          \item Không viết toàn bộ 50 dòng rồi mới bấm chạy. Hãy viết phần nhập liệu $\to$ in thử $\to$ viết tính toán $\to$ in thử $\to$ hoàn thiện.
+        \end{itemize}
+      \item \textbf{Chủ động đọc lỗi trong Error List:}
+        \begin{itemize}
+          \item Nhấp đúp trực tiếp vào thông báo lỗi để con trỏ nhảy ngay đến dòng phát sinh lỗi.
+        \end{itemize}
+    \end{enumerate}
+  \end{tcolorbox}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 5: PHÂN BỔ THỜI GIAN BUỔI LAB 180 PHÚT
+% ==============================================================================
+\begin{frame}{Phân Bổ Thời Gian Buổi Thực Hành Phòng Lab (180 Phút)}
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabularx}{\textwidth}{lcp{4.5cm}X}
+      \toprule
+      \textbf{Giai đoạn} & \textbf{Thời lượng} & \textbf{Nội dung trọng tâm} & \textbf{Đầu ra kỳ vọng của sinh viên} \\
+      \midrule
+      \textbf{Giai đoạn 1} & 30 phút & Chuẩn hóa Visual Studio, Project Console \& Gỡ lỗi & Tạo project chuẩn, quản lý Solution Explorer, sửa lỗi Error List, chạy Ctrl+F5. \\
+      \addlinespace
+      \textbf{Giai đoạn 2} & 60 phút & Nhập/Xuất chuẩn, Ép kiểu dữ liệu \& Toán tử số học & Dùng thành thạo Write, WriteLine, ReadLine, Parse, String Interpolation \$"" và phép toán /, \%. \\
+      \addlinespace
+      \textbf{Giai đoạn 3} & 50 phút & Cấu trúc rẽ nhánh if...else \& Bài tập tự luyện & Làm chủ toán tử quan hệ, tránh bẫy dấu ; và =, tự giải 5 bài tập rẽ nhánh độc lập. \\
+      \addlinespace
+      \textbf{Giai đoạn 4} & 40 phút & Thử thách tổng hợp (Mini-Challenge) \& Đánh giá & Hoàn thành phần mềm tính tiền điện bậc thang độc lập theo chuẩn Rubric 10 điểm. \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+% ==============================================================================
+% SLIDE 6: NỘI DUNG TỔNG THỂ CỦA BÀI HƯỚNG DẪN
+% ==============================================================================
+\begin{frame}{Cấu Trúc Giáo Trình \& Lộ Trình Chi Tiết}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\textbf{Nội Dung Tại Phòng Lab (180 Phút)}}
+        \begin{itemize}
+          \item \textbf{Phần I:} Phân tích Logic Sư phạm \& Kế hoạch
+          \item \textbf{Phần II:} Chuẩn hóa Môi trường \& Cấu trúc Project
+          \item \textbf{Phần III:} Nhập/Xuất Chuẩn, Biến \& Số học (4 Bài tập có hướng dẫn)
+          \item \textbf{Phần IV:} Cấu trúc Rẽ nhánh \texttt{if...else} (3 Bài tập có hướng dẫn + 5 Bài tự luyện)
+          \item \textbf{Phần V:} Thử thách tổng hợp (BMI Calculator \& Đề thi Tính tiền điện)
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{\textbf{Nội Dung Tự Luyện Về Nhà \& Cầu Nối}}
+        \begin{itemize}
+          \item \textbf{Phần VI: Hệ thống Bài tập Về nhà (4 Đồ án):}
+            \begin{enumerate}
+              \item Máy tính chuyển đổi đơn vị đo (Metric Converter)
+              \item Mô phỏng máy rút tiền ATM (Cash Breakdown)
+              \item Kiểm tra ngày hợp lệ \& Tìm ngày tiếp theo
+              \item Trò chơi Oẳn Tù Tì với máy tính (Random)
+            \end{enumerate}
+          \item \textbf{Phần VII: Tổng kết \& Định hướng Cầu nối sang OOP (Chương 4):}
+            \begin{itemize}
+              \item Đóng gói dữ liệu (Properties) \& Hành vi (Methods)
+            \end{itemize}
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ==============================================================================
+% PHẦN II: GIAI ĐOẠN 1
+% ==============================================================================
+\section{Phần II: Giai Đoạn 1 - Chuẩn Hóa Môi Trường \& Cấu Trúc Project}
+
+% SLIDE 7: MỤC TIÊU GIAI ĐOẠN 1
+\begin{frame}{Giai Đoạn 1: Chuẩn Hóa Môi Trường \& Cấu Trúc Project (30 Phút)}
+  \begin{block}{\textbf{Mục Tiêu Thực Hành Cụ Thể}}
+    \begin{itemize}
+      \item Tự tạo được dự án Console Application (.NET) đúng cấu trúc thư mục quy định.
+      \item Nắm vững vai trò và sự liên kết giữa các tệp tin trong \textbf{Solution Explorer} (\texttt{.sln}, \texttt{.csproj}, \texttt{Program.cs}).
+      \item Sử dụng thành thạo cửa sổ phát hiện lỗi \textbf{Error List} để chẩn đoán vị trí lỗi lập tức.
+      \item Thuần thục thao tác biên dịch và thực thi bằng phím tắt \textbf{Ctrl + F5} (Start Without Debugging).
+    \end{itemize}
+  \end{block}
+  \begin{tcolorbox}[colback=UniGreen!10,colframe=UniGreen,title=\textbf{Chuẩn Quy Ước Đặt Tên Tại Khoa CNTT}]
+    \begin{itemize}
+      \item Tên Solution: \texttt{ThucHanh\_Ch01\_03\_HoTenSinhVien}
+      \item Tên Project: \texttt{BaiTap01}, \texttt{BaiTap02},... hoặc chia theo từng giai đoạn.
+      \item Thư mục lưu trữ: Tuyệt đối không lưu trên \texttt{Desktop} hoặc thư mục tạm \texttt{Temp}; phải lưu vào phân vùng ổ đĩa học tập (ví dụ: \texttt{D:\textbackslash IT26M\textbackslash...}).
+    \end{itemize}
+  \end{tcolorbox}
+\end{frame}
+
+% SLIDE 8: QUY TRÌNH THAO TÁC TRÊN VISUAL STUDIO
+\begin{frame}{Quy Trình Khởi Tạo Project Chuẩn Trên Visual Studio}
+  \begin{enumerate}
+    \item \textbf{Mở Visual Studio 2022} $\to$ Chọn \textbf{Create a new project}.
+    \item \textbf{Bộ lọc Template:} Chọn ngôn ngữ \textbf{C\#}, nền tảng \textbf{Windows}, loại dự án \textbf{Console}.
+    \item \textbf{Chọn Template:} Chọn chính xác \textbf{Console App} (sử dụng .NET Core / .NET 8 mới nhất, hỗ trợ đa nền tảng) hoặc \textbf{Console App (.NET Framework)}.
+    \item \textbf{Cấu hình thông tin:}
+      \begin{itemize}
+        \item \textbf{Project name:} \texttt{Lab01\_CoBan}
+        \item \textbf{Location:} Chọn thư mục học tập trên ổ đĩa của bạn.
+        \item \textbf{Solution name:} \texttt{ThucHanh\_CSharp\_IT26M}
+      \end{itemize}
+    \item \textbf{Additional information:} Chọn Framework \textbf{.NET 8.0 (Long Term Support)}. Có thể bỏ tích chọn \textit{"Do not use top-level statements"} nếu muốn học theo cấu trúc lớp truyền thống chuẩn mực.
+  \end{enumerate}
+\end{frame}
+
+% SLIDE 9: QUẢN LÝ SOLUTION EXPLORER VÀ ERROR LIST
+\begin{frame}{Làm Chủ Solution Explorer \& Error List}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\textbf{Solution Explorer (Ctrl + Alt + L)}}
+        \begin{itemize}
+          \item Là cây thư mục quản lý toàn bộ tài nguyên của giải pháp.
+          \item \textbf{.sln (Solution file):} Tệp điều phối tập hợp các dự án con.
+          \item \textbf{.csproj (C\# Project file):} Chứa thông tin cấu hình biên dịch và các thư viện phụ thuộc.
+          \item \textbf{Program.cs:} Tệp chứa mã nguồn C\# thực thi chính.
+          \item \textbf{Mẹo:} Nhấp chuột phải vào tệp $\to$ \textbf{Rename} (phím F2) để đổi tên tệp (ví dụ: \texttt{BaiTap1.cs}).
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{\textbf{Error List (Ctrl + \textbackslash, E)}}
+        \begin{itemize}
+          \item Bảng thông báo tất cả các lỗi cú pháp khi gõ mã nguồn.
+          \item \textbf{Mã lỗi chuẩn (Error Code):} Bắt đầu bằng \texttt{CS} kèm 4 chữ số (ví dụ: \texttt{CS1002}, \texttt{CS1513}).
+          \item \textbf{Thao tác vàng:} Nhấp đúp chuột trực tiếp vào dòng thông báo lỗi $\to$ con trỏ soạn thảo sẽ lập tức nhảy đến đúng dòng và cột phát sinh lỗi!
+          \item Giúp sinh viên tiết kiệm thời gian dò tìm lỗi thủ công.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 10: PHÍM TẮT VÀ VÒNG ĐỜI BIÊN DỊCH
+\begin{frame}{Thao Tác Thực Thi: F5 vs Ctrl + F5}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\textbf{Ctrl + F5 (Start Without Debugging)}}
+        \begin{itemize}
+          \item \textbf{Khuyên dùng tuyệt đối cho người mới bắt đầu!}
+          \item Biên dịch và chạy ứng dụng ở chế độ độc lập.
+          \item Khi chương trình kết thúc, cửa sổ Console sẽ tự động dừng lại kèm thông báo: \textit{"Press any key to close this window . . ."}
+          \item Giúp sinh viên quan sát trọn vẹn kết quả hiển thị mà không bị đóng cửa sổ tức thì.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{\textbf{F5 (Start Debugging)}}
+        \begin{itemize}
+          \item Chạy ứng dụng dưới sự giám sát của bộ gỡ lỗi (Debugger).
+          \item Phù hợp khi cần đặt điểm dừng (\textbf{Breakpoint - F9}) để theo dõi giá trị biến từng dòng lệnh.
+          \item \textbf{Lưu ý:} Nếu không đặt điểm dừng ở cuối chương trình hoặc cấu hình tắt màn hình, cửa sổ Console có thể chớp tắt và biến mất ngay khi lệnh cuối kết thúc.
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 11: MÃ NGUỒN MẪU TỐI THIỂU
+\begin{frame}[fragile]{Mã Nguồn Mẫu Tối Thiểu Và Cấu Trúc Khung C\#}
+\begin{lstlisting}
+// Chuong trinh C# dau tien
+using System;
+
+class BaiTap1
+{
+    static void Main()
+    {
+        Console.WriteLine("Chao mung ban den voi buoi thuc hanh C\#!");
+    }
+}
+\end{lstlisting}
+\begin{tcolorbox}[colback=UniDark,colframe=UniNavy,title=\textbf{Kết quả thực thi trên cửa sổ Console}]
+\color{white}\ttfamily Chao mung ban den voi buoi thuc hanh C\#!\\
+Press any key to continue . . .
+\end{tcolorbox}
+\end{frame}
+
+% SLIDE 12: GIẢI MÃ CẤU TRÚC FILE CONSOLE
+\begin{frame}{Giải Mã Cấu Trúc File Console C\# Cơ Bản}
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabularx}{\textwidth}{lp{3.5cm}X}
+      \toprule
+      \textbf{Thành phần cú pháp} & \textbf{Ý nghĩa kỹ thuật} & \textbf{Giải thích chi tiết cho sinh viên mới} \\
+      \midrule
+      \texttt{using System;} & Khai báo Không gian tên & Chỉ định chương trình sử dụng thư viện nền tảng \texttt{System} của .NET, nơi cung cấp lớp \texttt{Console} để nhập/xuất dữ liệu. \\
+      \addlinespace
+      \texttt{class BaiTap1} & Định nghĩa Lớp (Class) & Trong C\#, mọi đoạn mã và biến số đều bắt buộc phải nằm bên trong một lớp (tính bao gói). Tên lớp viết hoa chữ cái đầu (\textbf{PascalCase}). \\
+      \addlinespace
+      \texttt{static void Main()} & Điểm nhập cảnh (Entry Point) & Phương thức đặc biệt được hệ điều hành kích hoạt đầu tiên khi ứng dụng khởi chạy. Không có \texttt{Main()}, chương trình không thể thực thi. \\
+      \addlinespace
+      \texttt{Console.WriteLine()} & Lệnh xuất dữ liệu & Gọi phương thức xuất chuỗi văn bản ra màn hình và tự động xuống dòng sau khi in xong. \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+% SLIDE 13: 3 LỖI CÚ PHÁP CƠ BẢN (CS1002, CS1513)
+\begin{frame}[fragile]{Kỹ Thuật Nhận Diện \& Gỡ Lỗi Cú Pháp Cơ Bản (1/2)}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{\textbf{1. Lỗi CS1002: ; expected}}
+        \textbf{Nguyên nhân:} Quên dấu chấm phẩy (\texttt{;}) kết thúc câu lệnh.\\
+        Trong C\#, dấu chấm phẩy là ký tự báo hiệu kết thúc một câu lệnh thực thi độc lập.
+\begin{lstlisting}
+// Sai:
+int a = 10
+// Sua dung:
+int a = 10;
+\end{lstlisting}
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{\textbf{2. Lỗi CS1513: \} expected}}
+        \textbf{Nguyên nhân:} Lệch cặp ngoặc nhọn \texttt{\{\}} mở và đóng khối lệnh.\\
+        Mọi cặp ngoặc nhọn phải luôn đi kèm đầy đủ.
+\begin{lstlisting}
+// Loi thieu ngoac dong:
+class Program {
+    static void Main() {
+        Console.WriteLine("Hello");
+} // Thieu 1 dau } o day!
+\end{lstlisting}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+  \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniBlue]
+    \textbf{Quy tắc vàng:} Rèn luyện thói quen thụt lề chuẩn (\textbf{Indentation}) bằng phím \textbf{Tab} hoặc tổ hợp phím tự động căn lề trong Visual Studio: \textbf{Ctrl + K, Ctrl + D}.
+  \end{tcolorbox}
+\end{frame}
+
+% SLIDE 14: LỖI CS0103 VÀ PHÂN BIỆT HOA THƯỜNG
+\begin{frame}[fragile]{Kỹ Thuật Nhận Diện \& Gỡ Lỗi Cú Pháp Cơ Bản (2/2)}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{\textbf{3. Lỗi CS0103: The name does not exist}}
+        \textbf{Nguyên nhân:} Gọi tên biến hoặc hàm không tồn tại trong phạm vi hiện tại (Scope).
+        \begin{itemize}
+          \item Do gõ sai chính tả.
+          \item Do vi phạm tính phân biệt chữ HOA / chữ thường (\textbf{Case-Sensitivity}) của C\#.
+        \end{itemize}
+\begin{lstlisting}
+// Khai bao bien:
+int myAge = 19;
+
+// Sai: Khong ton tai bien MyAge
+Console.WriteLine(MyAge); 
+
+// Sai: console viet thuong
+console.WriteLine(myAge); 
+\end{lstlisting}
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\textbf{Quy Ước Đặt Tên Chuẩn C\#}}
+        \begin{itemize}
+          \item \textbf{camelCase (Lạc đà):} Dùng cho biến cục bộ, tham số phương thức. Chữ cái đầu viết thường, các từ sau viết hoa chữ đầu.\\
+            $\to$ Ví dụ: \texttt{diemTrungBinh}, \texttt{hoTen}, \texttt{tongSoGiay}.
+          \item \textbf{PascalCase:} Dùng cho tên Lớp (Class), Tên Phương thức (Method), Tên Thuộc tính (Property).\\
+            $\to$ Ví dụ: \texttt{Program}, \texttt{BmiCalculator}, \texttt{Main}.
+          \item \textbf{Ý nghĩa biểu đạt:} Tên biến phải có nghĩa rõ ràng, không đặt bừa bãi như \texttt{a1}, \texttt{b2}, \texttt{xxy}.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ==============================================================================
+% PHẦN III: GIAI ĐOẠN 2
+% ==============================================================================
+\section{Phần III: Giai Đoạn 2 - Nhập/Xuất Chuẩn, Biến \& Số Học}
+
+% SLIDE 15: TỔNG QUAN GIAI ĐOẠN 2
+\begin{frame}{Giai Đoạn 2: Nhập/Xuất Chuẩn, Biến \& Toán Tử Số Học (60 Phút)}
+  \begin{block}{\textbf{Trọng Tâm Kiến Thức Cần Đạt}}
+    \begin{itemize}
+      \item Phân biệt sự khác nhau giữa \texttt{Console.Write()} và \texttt{Console.WriteLine()}.
+      \item Hiểu rõ bản chất luồng ký tự của \texttt{Console.ReadLine()} và nắm vững kỹ thuật ép kiểu (\textbf{Type Parsing}) bằng \texttt{int.Parse()} và \texttt{double.Parse()}.
+      \item Nắm vững bản chất phép chia trong lập trình:
+        \begin{itemize}
+          \item Phép chia nguyên \texttt{/}: Bỏ phần thập phân khi chia 2 số nguyên.
+          \item Phép chia thực: Ép ít nhất 1 toán hạng về kiểu \texttt{double}.
+          \item Phép chia lấy phần dư \texttt{\%}: Chiếc chìa khóa của tư duy thuật toán bóc tách dữ liệu.
+        \end{itemize}
+      \item Định dạng dữ liệu đầu ra chuyên nghiệp bằng \textbf{String Interpolation (\$""}) và các mã định dạng (\texttt{:F2}, \texttt{:N0}).
+      \item Hoàn thành 4 bài tập có hướng dẫn trên lớp (Guided Exercises 1 - 4).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+% SLIDE 16: XUẤT DỮ LIỆU
+\begin{frame}[fragile]{Xuất Dữ Liệu: Console.Write() vs Console.WriteLine()}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\textbf{Console.Write()}}
+        \begin{itemize}
+          \item In chuỗi văn bản ra màn hình.
+          \item \textbf{Con trỏ dừng lại ngay cuối chuỗi}, không tự động xuống dòng mới.
+          \item \textbf{Ứng dụng chính:} Dùng khi in câu thông báo nhắc người dùng nhập liệu trên cùng một dòng.
+        \end{itemize}
+\begin{lstlisting}
+Console.Write("Nhap tuoi: ");
+// Con tro cho ngay sau dau hai cham
+\end{lstlisting}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\textbf{Console.WriteLine()}}
+        \begin{itemize}
+          \item In chuỗi văn bản ra màn hình.
+          \item \textbf{Tự động đưa con trỏ xuống dòng tiếp theo} sau khi in xong chuỗi.
+          \item Có thể gọi \texttt{Console.WriteLine();} không tham số để in một dòng trống.
+        \end{itemize}
+\begin{lstlisting}
+Console.WriteLine("Ket qua tinh toan:");
+Console.WriteLine("Tong la: 100");
+\end{lstlisting}
+      \end{block}
+    \end{column}
+  \end{columns}
+  \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniBlue,title=\textbf{Ký tự thoát (Escape Sequences) thông dụng}]
+    \texttt{\textbackslash n}: Xuống dòng mới \quad | \quad \texttt{\textbackslash t}: Thụt đầu dòng 1 khoảng Tab (khoảng 4--8 dấu cách) \quad | \quad \texttt{\textbackslash\textbackslash}: In ký tự gạch chéo
+  \end{tcolorbox}
+\end{frame}
+
+% SLIDE 17: NHẬP DỮ LIỆU VÀ ÉP KIỂU
+\begin{frame}[fragile]{Nhập Dữ Liệu \& Kỹ Thuật Ép Kiểu (Type Parsing)}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{alertblock}{\textbf{Bản Chất Của Console.ReadLine()}}
+        \begin{itemize}
+          \item \texttt{Console.ReadLine()} đọc toàn bộ chuỗi ký tự người dùng gõ từ bàn phím cho đến khi nhấn phím \textbf{Enter}.
+          \item \textbf{Giá trị trả về LUÔN LUÔN là kiểu chuỗi (\texttt{string})!}
+          \item Nếu người dùng gõ số \texttt{25}, máy tính chỉ hiểu đó là chuỗi hai ký tự \texttt{"25"}, hoàn toàn không thể thực hiện phép cộng trừ nhân chia!
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \begin{exampleblock}{\textbf{Cú Pháp Ép Kiểu Chuẩn}}
+\begin{lstlisting}
+// 1. Nhap chuoi ho ten:
+string name = Console.ReadLine();
+
+// 2. Nhap va ep sang so nguyen:
+int age = int.Parse(Console.ReadLine());
+
+// 3. Nhap va ep sang so thuc:
+double diem = double.Parse(Console.ReadLine());
+\end{lstlisting}
+      \end{exampleblock}
+      \begin{tcolorbox}[colback=AlertRed!10,colframe=AlertRed]
+        \textbf{Cảnh báo:} Nếu người dùng nhập chữ cái (ví dụ \texttt{"abc"}), lệnh \texttt{Parse} sẽ ném ngoại lệ \texttt{FormatException} gây sập chương trình.
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 18: BẢN CHẤT PHÉP CHIA NGUYÊN VÀ CHIA THỰC
+\begin{frame}[fragile]{Bản Chất Phép Chia Trong Lập Trình Máy Tính}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{\textbf{Phép Chia Nguyên (/ giữa 2 số nguyên)}}
+        \begin{itemize}
+          \item Khi cả hai toán hạng đều là số nguyên (\texttt{int / int}), kết quả \textbf{luôn luôn là số nguyên}.
+          \item Phần thập phân bị cắt bỏ hoàn toàn (Truncation), không làm tròn!
+        \end{itemize}
+\begin{lstlisting}
+int a = 5, b = 2;
+int k1 = a / b;       // k1 = 2 (mat 0.5!)
+double k2 = a / b;    // k2 = 2.0 (van bi cat truoc khi gan!)
+\end{lstlisting}
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{\textbf{Phép Chia Thực (Cần ít nhất 1 số thực)}}
+        \begin{itemize}
+          \item Để giữ lại phần thập phân, ít nhất một trong hai toán hạng phải thuộc kiểu số thực (\texttt{double} hoặc \texttt{float}).
+          \item Dùng kỹ thuật ép kiểu tường minh \texttt{(double)}.
+        \end{itemize}
+\begin{lstlisting}
+int a = 5, b = 2;
+double k3 = (double)a / b; // 2.5
+double k4 = 5.0 / 2;       // 2.5
+\end{lstlisting}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 19: TOÁN TỬ CHIA LẤY PHẦN DƯ (%)
+\begin{frame}[fragile]{Toán Tử Chia Lấy Phần Dư (\%): Trái Tim Thuật Toán}
+  \begin{block}{\textbf{Định Nghĩa Toán Học}}
+    Toán tử \texttt{\%} (Modulo) trả về \textbf{phần dư} còn lại sau phép chia nguyên giữa hai số:
+    \[ r = a \pmod b \implies a = b \times q + r \quad (0 \le r < b) \]
+  \end{block}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{\textbf{Ứng Dụng 1: Kiểm Tra Tính Chia Hết}}
+        \begin{itemize}
+          \item \texttt{n \% 2 == 0}: Số chẵn.
+          \item \texttt{n \% 2 != 0}: Số lẻ.
+          \item \texttt{a \% b == 0}: $a$ là bội số của $b$ ($a$ chia hết cho $b$).
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{\textbf{Ứng Dụng 2: Bóc Tách Chữ Số \& Chu Kỳ}}
+        \begin{itemize}
+          \item \texttt{n \% 10}: Lấy chữ số hàng đơn vị của số nguyên $n$.
+          \item \texttt{n / 10}: Cắt bỏ chữ số hàng đơn vị.
+          \item \texttt{giay \% 60}: Quy đổi số giây lẻ trong phút.
+          \item \texttt{ngay \% 7}: Xác định thứ trong tuần.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 20: ĐỊNH DẠNG XUẤT VỚI STRING INTERPOLATION
+\begin{frame}[fragile]{Chuỗi Nội Suy (String Interpolation) \& Định Dạng Số}
+  \begin{block}{\textbf{Cú Pháp Chuỗi Nội Suy \$""}}
+    Đặt ký tự \texttt{\$} trước dấu ngoặc kép mở. Cho phép chèn trực tiếp tên biến hoặc biểu thức tính toán vào trong cặp ngoặc nhọn \texttt{\{biến\}} một cách trực quan, mạch lạc.
+  \end{block}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+\begin{lstlisting}
+string hoTen = "Nguyen Van A";
+int tuoi = 19;
+double diem = 8.7562;
+
+// Cu phap String Interpolation hien dai:
+Console.WriteLine($"SV: {hoTen}, Tuoi: {tuoi}");
+Console.WriteLine($"Diem: {diem:F2}");
+\end{lstlisting}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{table}[h]
+        \centering
+        \scriptsize
+        \begin{tabularx}{\textwidth}{lX}
+          \toprule
+          \textbf{Mã định dạng} & \textbf{Kết quả hiển thị minh họa} \\
+          \midrule
+          \texttt{\{diem:F2\}} & Làm tròn 2 số lẻ thập phân (\texttt{8.76}) \\
+          \addlinespace
+          \texttt{\{tien:N0\}} & Phân cách hàng nghìn bằng dấu chấm/phẩy (\texttt{1.500.000}) \\
+          \addlinespace
+          \texttt{\{lai:P1\}} & Định dạng phần trăm (\texttt{8.5\%}) \\
+          \addlinespace
+          \texttt{\{gia:C0\}} & Định dạng tiền tệ theo văn hóa hệ thống \\
+          \bottomrule
+        \end{tabularx}
+      \end{table}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 21: BÀI THỰC HÀNH MẪU: THÔNG TIN SINH VIÊN
+\begin{frame}[fragile]{Bài Thực Hành Mẫu: Nhập Xuất Thông Tin Sinh Viên}
+\begin{lstlisting}
+using System;
+
+class ThongTinSinhVien
+{
+    static void Main()
+    {
+        // 1. Nhap ho va ten (kieu string)
+        Console.Write("Nhap ho va ten: ");
+        string hoTen = Console.ReadLine();
+
+        // 2. Nhap nam sinh va chuyen doi sang kieu int
+        Console.Write("Nhap nam sinh: ");
+        int namSinh = int.Parse(Console.ReadLine());
+
+        // 3. Tinh toan tuoi dua tren nam hien tai cua he thong
+        int namHienTai = DateTime.Now.Year;
+        int tuoi = namHienTai - namSinh;
+
+        // 4. Xuat ket qua chuyen nghiep bang String Interpolation
+        Console.WriteLine("\n--- THONG TIN SINH VIEN ---");
+        Console.WriteLine($"Xin chao   : {hoTen}");
+        Console.WriteLine($"Nam sinh   : {namSinh} | Tuoi hien tai: {tuoi}");
+    }
+}
+\end{lstlisting}
+\end{frame}
+
+% SLIDE 22: BÀI TẬP 1 (GUIDED): HÌNH CHỮ NHẬT
+\begin{frame}[fragile]{Bài Tập 1 (Guided): Tính Chu Vi \& Diện Tích Hình Chữ Nhật}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \begin{block}{\textbf{Mục Tiêu \& Công Thức}}
+        \begin{itemize}
+          \item Rèn luyện khai báo biến số thực \texttt{double}, nhập dữ liệu và áp dụng biểu thức số học cơ bản.
+          \item Chu vi: $P = (a + b) \times 2$
+          \item Diện tích: $S = a \times b$
+          \item Định dạng kết quả làm tròn 2 chữ số thập phân (\texttt{:F2}).
+        \end{itemize}
+      \end{block}
+      \begin{table}[h]
+        \centering
+        \scriptsize
+        \begin{tabularx}{\textwidth}{XXX}
+          \toprule
+          \textbf{Dài ($a$)} & \textbf{Rộng ($b$)} & \textbf{Kết quả} \\
+          \midrule
+          $5.5$ & $3.2$ & $P = 17.40, S = 17.60$ \\
+          $10.0$ & $4.5$ & $P = 29.00, S = 45.00$ \\
+          \bottomrule
+        \end{tabularx}
+      \end{table}
+    \end{column}
+    \begin{column}{0.53\textwidth}
+\begin{lstlisting}
+using System;
+
+class ChuViDienTichHCN
+{
+    static void Main()
+    {
+        Console.Write("Nhap chieu dai: ");
+        double dai = double.Parse(Console.ReadLine());
+
+        Console.Write("Nhap chieu rong: ");
+        double rong = double.Parse(Console.ReadLine());
+
+        double chuVi = (dai + rong) * 2;
+        double dienTich = dai * rong;
+
+        Console.WriteLine($"Chu vi    = {chuVi:F2}");
+        Console.WriteLine($"Dien tich = {dienTich:F2}");
+    }
+}
+\end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 23: BÀI TẬP 2 (GUIDED): HÌNH TRÒN
+\begin{frame}[fragile]{Bài Tập 2 (Guided): Tính Chu Vi \& Diện Tích Hình Tròn}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \begin{block}{\textbf{Mục Tiêu \& Công Thức}}
+        \begin{itemize}
+          \item Khai thác hằng số toán học chính xác cao \texttt{Math.PI} trong thư viện \texttt{System}.
+          \item Đường kính: $d = 2 \times r$
+          \item Chu vi: $C = 2 \times \pi \times r$
+          \item Diện tích: $S = \pi \times r^2$
+        \end{itemize}
+      \end{block}
+      \begin{table}[h]
+        \centering
+        \scriptsize
+        \begin{tabularx}{\textwidth}{XX}
+          \toprule
+          \textbf{Bán kính ($r$)} & \textbf{Kết quả mong đợi} \\
+          \midrule
+          $3.0$ & $d = 6.00, C = 18.85, S = 28.27$ \\
+          $5.5$ & $d = 11.00, C = 34.56, S = 95.03$ \\
+          \bottomrule
+        \end{tabularx}
+      \end{table}
+    \end{column}
+    \begin{column}{0.53\textwidth}
+\begin{lstlisting}
+using System;
+
+class TinhHinhTron
+{
+    static void Main()
+    {
+        Console.Write("Nhap ban kinh r: ");
+        double r = double.Parse(Console.ReadLine());
+
+        double duongKinh = 2 * r;
+        double chuVi = 2 * Math.PI * r;
+        double dienTich = Math.PI * r * r;
+
+        Console.WriteLine($"Duong kinh = {duongKinh:F2}");
+        Console.WriteLine($"Chu vi     = {chuVi:F2}");
+        Console.WriteLine($"Dien tich  = {dienTich:F2}");
+    }
+}
+\end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 24: BÀI TẬP 3 (GUIDED): QUY ĐỔI THỜI GIAN
+\begin{frame}[fragile]{Bài Tập 3 (Guided): Phép Chia Nguyên \& Dư - Đổi Số Giây}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \begin{block}{\textbf{Phân Tích Thuật Toán}}
+        \small Nhập tổng số giây nguyên $T$ ($3665$ s):
+        \begin{itemize}\setlength{\itemsep}{2pt}
+          \item Giờ: $\text{gio} = T / 3600$
+          \item Dư giờ: $\text{giayDu} = T \% 3600$
+          \item Phút: $\text{phut} = \text{giayDu} / 60$
+          \item Giây: $\text{giay} = \text{giayDu} \% 60$
+        \end{itemize}
+      \end{block}
+      \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniBlue]
+        \scriptsize \textbf{Kiểm thử mẫu:}\\
+        $3665$ s $\to$ \textbf{1 giờ 1 phút 5 giây}\\
+        $7322$ s $\to$ \textbf{2 giờ 2 phút 2 giây}
+      \end{tcolorbox}
+    \end{column}
+    \begin{column}{0.53\textwidth}
+\begin{lstlisting}
+using System;
+
+class QuyDoiThoiGian
+{
+    static void Main()
+    {
+        Console.Write("Nhap tong so giay: ");
+        int tongGiay = int.Parse(Console.ReadLine());
+
+        int gio = tongGiay / 3600;
+        int giayConLai = tongGiay % 3600;
+        int phut = giayConLai / 60;
+        int giay = giayConLai % 60;
+
+        Console.WriteLine($"Quy doi: {gio} gio, {phut} phut, {giay} giay.");
+    }
+}
+\end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 25: BÀI TẬP 4 (GUIDED): TÁCH CHỮ SỐ
+\begin{frame}[fragile]{Bài Tập 4 (Guided): Tách Các Chữ Số Của Số Nguyên 3 Chữ Số}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \begin{block}{\textbf{Phân Tích Thuật Toán}}
+        Nhập số nguyên $n$ có 3 chữ số (ví dụ: $n = 842$).
+        \begin{itemize}
+          \item Lấy chữ số hàng trăm:
+            \[ \text{tram} = n / 100 \implies 8 \]
+          \item Lấy phần dư 2 chữ số rồi chia 10 lấy hàng chục:
+            \[ \text{chuc} = (n \% 100) / 10 \implies 4 \]
+          \item Lấy chữ số hàng đơn vị:
+            \[ \text{donVi} = n \% 10 \implies 2 \]
+          \item Tổng: $\text{tong} = 8 + 4 + 2 = 14$
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.53\textwidth}
+\begin{lstlisting}
+using System;
+
+class TachChuSo
+{
+    static void Main()
+    {
+        Console.Write("Nhap so co 3 chu so: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int tram = n / 100;
+        int chuc = (n % 100) / 10;
+        int donVi = n % 10;
+        int tong = tram + chuc + donVi;
+
+        Console.WriteLine($"Tung chu so: {tram}   {chuc}   {donVi}");
+        Console.WriteLine($"Tong cac chu so = {tong}");
+    }
+}
+\end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ==============================================================================
+% PHẦN IV: GIAI ĐOẠN 3
+% ==============================================================================
+\section{Phần IV: Giai Đoạn 3 - Cấu Trúc Rẽ Nhánh \& Toán Tử So Sánh}
+
+% SLIDE 26: TỔNG QUAN GIAI ĐOẠN 3
+\begin{frame}{Giai Đoạn 3: Cấu Trúc Rẽ Nhánh \& Toán Tử So Sánh (50 Phút)}
+  \begin{block}{\textbf{Trọng Tâm Kiến Thức Cần Đạt}}
+    \begin{itemize}
+      \item Nắm vững 6 toán tử quan hệ: \texttt{<}, \texttt{<=}, \texttt{>}, \texttt{>=}, \texttt{==} (so sánh bằng), \texttt{!=} (so sánh khác).
+      \item Kết hợp nhiều điều kiện phức hợp bằng 3 toán tử logic:
+        \begin{itemize}
+          \item \texttt{\&\&} (\textbf{VÀ logic - AND}): Cả hai vế bắt buộc phải đồng thời đúng.
+          \item \texttt{||} (\textbf{HOẶC logic - OR}): Chỉ cần một trong hai vế đúng là biểu thức đúng.
+          \item \texttt{!} (\textbf{PHỦ ĐỊNH - NOT}): Đảo ngược giá trị chân lý của biểu thức.
+        \end{itemize}
+      \item Khắc phục triệt để \textbf{3 bẫy lỗi logic kinh điển}:
+        \begin{enumerate}
+          \item Nhầm lẫn giữa toán tử gán \texttt{=} và so sánh bằng \texttt{==}.
+          \item Đặt dấu chấm phẩy \texttt{;} ngay sau biểu thức \texttt{if}.
+          \item Lỗi chia cho 0 (\texttt{DivideByZeroException}).
+        \end{enumerate}
+      \item Hoàn thành 3 bài tập có hướng dẫn (5, 6, 7) + Thực chiến 5 bài tập tự luyện tại lớp.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+% SLIDE 27: 3 BẪY LỖI KINH ĐIỂN
+\begin{frame}[fragile]{3 Bẫy Lỗi Logic Kinh Điển Khi Viết Câu Lệnh If}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \begin{alertblock}{\textbf{Bẫy 1: Nhầm = và ==}}
+        \begin{itemize}
+          \item \texttt{x = 5;} là lệnh gán giá trị.
+          \item \texttt{x == 5} là biểu thức so sánh trả về \texttt{bool}.
+          \item C\# sẽ báo lỗi biên dịch nếu viết \texttt{if (x = 5)} với số nguyên.
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \begin{alertblock}{\textbf{Bẫy 2: Dấu ; sau if}}
+        \begin{itemize}
+          \item Viết \texttt{if (x > 0);}:
+          \item Tạo ra một câu lệnh rỗng (\textbf{empty statement}).
+          \item Khối lệnh bên dưới sẽ \textbf{luôn luôn chạy} bất kể điều kiện đúng hay sai!
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \begin{alertblock}{\textbf{Bẫy 3: Chia cho 0}}
+        \begin{itemize}
+          \item Thực hiện \texttt{a / 0} hoặc \texttt{a \% 0} với số nguyên sẽ làm ứng dụng sập ngay lập tức!
+          \item Bắt buộc kiểm tra \texttt{b != 0} trước khi thực hiện phép chia.
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 28: BÀI TẬP 5 (GUIDED): KIỂM TRA CHẴN LẺ
+\begin{frame}[fragile]{Bài Tập 5 (Guided): Kiểm Tra Tính Chẵn / Lẻ (Odd or Even)}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \begin{block}{\textbf{Phân Tích Giải Thuật}}
+        \begin{itemize}
+          \item Nhập số nguyên $n$ từ bàn phím.
+          \item Đánh giá biểu thức dư: \texttt{n \% 2 == 0}.
+          \item Nếu điều kiện \textbf{True}: $n$ là số Chẵn.
+          \item Ngược lại (\textbf{False}): $n$ là số Lẻ.
+        \end{itemize}
+      \end{block}
+      \begin{exampleblock}{\textbf{Mẹo Kiểm Thử}}
+        Kiểm tra với cả số dương, số âm và số 0:
+        \begin{itemize}
+          \item $n = 4 \to$ Số CHẴN
+          \item $n = -7 \to$ Số LẺ
+          \item $n = 0 \to$ Số CHẴN
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.53\textwidth}
+\begin{lstlisting}
+using System;
+
+class KiemTraChanLe
+{
+    static void Main()
+    {
+        Console.Write("Nhap mot so nguyen: ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n % 2 == 0)
+        {
+            Console.WriteLine($"{n} la so CHAN.");
+        }
+        else
+        {
+            Console.WriteLine($"{n} la so LE.");
+        }
+    }
+}
+\end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 29: BÀI TẬP 6 (GUIDED): KIỂM TRA BỘI SỐ & XỬ LÝ BIÊN
+\begin{frame}[fragile]{Bài Tập 6 (Guided): Kiểm Tra Bội Số \& Chống Sập Do Chia Cho 0}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \begin{block}{\textbf{Tư Duy Phòng Vệ (Defensive)}}
+        \begin{itemize}
+          \item Nhập hai số nguyên $a$ và $b$.
+          \item Muốn kiểm tra $a$ có là bội của $b$ hay không, ta xét \texttt{a \% b == 0}.
+          \item \textbf{Cạm bẫy:} Nếu người dùng nhập $b = 0$, biểu thức \texttt{a \% 0} sẽ ném ra ngoại lệ \texttt{DivideByZeroException}.
+          \item \textbf{Giải pháp:} Đặt nhánh kiểm tra \texttt{b == 0} ở vị trí đầu tiên!
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.53\textwidth}
+\begin{lstlisting}[basicstyle=\ttfamily\tiny]
+using System;
+
+class KiemTraBoiSo {
+    static void Main() {
+        Console.Write("Nhap so thu nhat (a): ");
+        int a = int.Parse(Console.ReadLine());
+
+        Console.Write("Nhap so thu hai (b): ");
+        int b = int.Parse(Console.ReadLine());
+
+        if (b == 0) {
+            Console.WriteLine("Loi: Khong the chia cho 0!");
+        }
+        else if (a % b == 0) {
+            Console.WriteLine($"{a} la boi so cua {b}.");
+        }
+        else {
+            Console.WriteLine($"{a} KHONG phai boi so cua {b}.");
+        }
+    }
+}
+\end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 30: BÀI TẬP 7 (GUIDED): PHÂN LOẠI HỌC TẬP SINH VIÊN
+\begin{frame}[fragile]{Bài Tập 7 (Guided): Xếp Loại Học Tập (Cấu Trúc if...else Đa Nhánh)}
+  \begin{columns}[T]
+    \begin{column}{0.45\textwidth}
+      \begin{block}{\textbf{Quy Tắc Thang Điểm 10}}
+        \begin{itemize}
+          \item Kiểm tra tính hợp lệ: Điểm phải nằm trong đoạn $[0.0, 10.0]$.
+          \item Điểm $\ge 8.5$: Xuất Sắc
+          \item Điểm $\ge 7.0$: Khá
+          \item Điểm $\ge 5.0$: Trung Bình
+          \item Điểm $< 5.0$: Yếu
+        \end{itemize}
+      \end{block}
+      \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniBlue]
+        \textbf{Nguyên lý dòng chảy:} Khi một nhánh \texttt{else if} khớp, toàn bộ các nhánh phía dưới sẽ bị bỏ qua. Do đó điều kiện chỉ cần viết \texttt{diem >= 7.0} mà không cần lặp lại \texttt{diem < 8.5}.
+      \end{tcolorbox}
+    \end{column}
+    \begin{column}{0.53\textwidth}
+\begin{lstlisting}[basicstyle=\ttfamily\tiny]
+using System;
+
+class XepLoaiSinhVien {
+    static void Main() {
+        Console.Write("Nhap diem (0.0 - 10.0): ");
+        double diem = double.Parse(Console.ReadLine());
+
+        if (diem < 0.0 || diem > 10.0) {
+            Console.WriteLine("Loi: Diem khong hop le!");
+        }
+        else if (diem >= 8.5) {
+            Console.WriteLine($"Diem {diem:F1} -> XUAT SAC");
+        }
+        else if (diem >= 7.0) {
+            Console.WriteLine($"Diem {diem:F1} -> KHA");
+        }
+        else if (diem >= 5.0) {
+            Console.WriteLine($"Diem {diem:F1} -> TRUNG BINH");
+        }
+        else {
+            Console.WriteLine($"Diem {diem:F1} -> YEU");
+        }
+    }
+}
+\end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 31: GIỚI THIỆU 5 BÀI TẬP TỰ LUYỆN TẠI LỚP
+\begin{frame}{Hệ Thống 5 Bài Tập Tự Luyện Tại Phòng Lab (Self-Practice)}
+  \begin{tcolorbox}[colback=UniNavy,colframe=UniNavy,title=\color{white}\textbf{Yêu Cầu Tự Luyện Độc Lập Tại Lớp (Không Có Mã Nguồn Giải Sẵn)}]
+    \begin{itemize}
+      \item Sinh viên tự tư duy giải thuật, thiết kế cấu trúc mã nguồn và kiểm thử.
+      \item Giảng viên và trợ giảng chỉ hỗ trợ định hướng tư duy, không can thiệp viết code thay.
+    \end{itemize}
+  \end{tcolorbox}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{block}{\textbf{Danh Sách 5 Bài Tập Tự Luyện}}
+        \begin{enumerate}
+          \item \textbf{Bài 1:} Tìm số lớn nhất trong 3 số nguyên (\textit{Find Maximum of Three}).
+          \item \textbf{Bài 2:} Kiểm tra năm nhuận (\textit{Leap Year Checker}).
+          \item \textbf{Bài 3:} Giải và biện luận phương trình bậc nhất $ax + b = 0$.
+          \item \textbf{Bài 4:} Tính tiền cước Taxi theo lũy tiến km.
+          \item \textbf{Bài 5:} Kiểm tra tính hợp lệ và phân loại tam giác.
+        \end{enumerate}
+      \end{block}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \begin{exampleblock}{\textbf{Tiêu Chí Hoàn Thành}}
+        \begin{itemize}
+          \item Biên dịch $100\%$ không phát sinh lỗi cú pháp.
+          \item Xử lý triệt để tất cả các trường hợp biên (\textbf{Edge Cases}).
+          \item Khớp đúng $100\%$ với các bộ dữ liệu kiểm thử quy định (\textbf{Test Cases}).
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 32: BÀI TỰ LUYỆN 1: TÌM MAX TRONG 3 SỐ
+\begin{frame}{Bài Tự Luyện 1: Tìm Số Lớn Nhất Trong 3 Số Nguyên}
+  \begin{block}{\textbf{Yêu Cầu Bài Toán}}
+    Nhập từ bàn phím 3 số nguyên $a, b, c$. Tìm và in ra giá trị lớn nhất ($Max$) trong 3 số đó.
+  \end{block}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniBlue,title=\textbf{Gợi Ý Thuật Toán Lính Canh}]
+        \small
+        \begin{itemize}\setlength{\itemsep}{1pt}
+          \item Giả định: \texttt{int max = a;}
+          \item So sánh $b$: \texttt{if (b > max) max = b;}
+          \item So sánh $c$: \texttt{if (c > max) max = c;}
+          \item In kết quả: \texttt{Console.WriteLine(\$"Max: \{max\}");}
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{table}[h]
+        \centering
+        \scriptsize
+        \begin{tabularx}{\textwidth}{lXXp{1.8cm}}
+          \toprule
+          \textbf{Test} & \textbf{Input} & \textbf{Out} & \textbf{Mục đích} \\
+          \midrule
+          Test 1 & $15, 42, 28$ & $42$ & Max ở giữa ($b$) \\
+          \addlinespace
+          Test 2 & $99, 99, 12$ & $99$ & 2 số bằng nhau \\
+          \addlinespace
+          Test 3 & $-5,-12,-2$ & $-2$ & Toàn bộ số âm \\
+          \bottomrule
+        \end{tabularx}
+      \end{table}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 33: BÀI TỰ LUYỆN 2: KIỂM TRA NĂM NHUẬN
+\begin{frame}{Bài Tự Luyện 2: Kiểm Tra Năm Nhuận (Leap Year Checker)}
+  \begin{block}{\textbf{Quy Tắc Lịch Thiên Văn Học}}
+    Một năm dương lịch là năm nhuận khi và chỉ khi:
+    \begin{itemize}
+      \item Năm đó \textbf{chia hết cho 400} (thế kỷ nhuận), \textbf{HOẶC}:
+      \item Năm đó \textbf{chia hết cho 4} nhưng \textbf{KHÔNG chia hết cho 100}.
+    \end{itemize}
+  \end{block}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniBlue,title=\textbf{Biểu Thức Logic C\#}]
+        Kết hợp toán tử \texttt{\%}, \texttt{==}, \texttt{!=}, \texttt{\&\&}, \texttt{||}:
+        \begin{center}
+          \ttfamily
+          (year \% 400 == 0) || \\
+          (year \% 4 == 0 \&\& year \% 100 != 0)
+        \end{center}
+      \end{tcolorbox}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{table}[h]
+        \centering
+        \scriptsize
+        \begin{tabularx}{\textwidth}{lp{1.2cm}p{2.5cm}X}
+          \toprule
+          \textbf{Test} & \textbf{Năm} & \textbf{Kết quả mong đợi} & \textbf{Giải thích logic} \\
+          \midrule
+          Test 1 & $2024$ & Nam 2024 la nam NHUAN. & Chia hết cho 4, không chia hết 100 \\
+          \addlinespace
+          Test 2 & $1900$ & Nam 1900 KHONG phai nam nhuan. & Chia hết 100 nhưng không chia hết 400 \\
+          \addlinespace
+          Test 3 & $2000$ & Nam 2000 la nam NHUAN. & Chia hết cho 400 \\
+          \bottomrule
+        \end{tabularx}
+      \end{table}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 34: BÀI TỰ LUYỆN 3: GIẢI VÀ BIỆN LUẬN PT BẬC NHẤT
+\begin{frame}{Bài Tự Luyện 3: Giải Và Biện Luận Phương Trình Bậc Nhất}
+  \begin{block}{\textbf{Phương Trình Tổng Quát: $ax + b = 0$}}
+    Rèn luyện tư duy rà soát triệt để các trường hợp biên đặc biệt (\textbf{Edge Cases}) của toán học:
+    \begin{itemize}
+      \item Trường hợp 1: Nếu $a = 0$ và $b = 0 \implies$ Phương trình có \textbf{VÔ SỐ NGHIỆM} ($0x + 0 = 0$ luôn đúng).
+      \item Trường hợp 2: Nếu $a = 0$ và $b \neq 0 \implies$ Phương trình \textbf{VÔ NGHIỆM} ($0x + b = 0$ vô lý).
+      \item Trường hợp 3: Nếu $a \neq 0 \implies$ Phương trình có nghiệm duy nhất: $x = -\frac{b}{a}$.
+    \end{itemize}
+  \end{block}
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabularx}{0.9\textwidth}{lXXX}
+      \toprule
+      \textbf{Bộ Test} & \textbf{Hệ số nhập vào ($a, b$)} & \textbf{Kết quả xuất mong đợi} & \textbf{Ghi chú kiểm thử} \\
+      \midrule
+      \textbf{Test 1} & $a = 0, b = 5$ & \texttt{Phuong trinh VO NGHIEM.} & $a = 0$ và $b \neq 0$ \\
+      \addlinespace
+      \textbf{Test 2} & $a = 0, b = 0$ & \texttt{Phuong trinh co VO SO NGHIEM.} & $0x + 0 = 0$ luôn thỏa mãn \\
+      \addlinespace
+      \textbf{Test 3} & $a = 2, b = -5$ & \texttt{Phuong trinh co nghiem x = 2.50} & $x = -(-5) / 2 = 2.50$ \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+% SLIDE 35: BÀI TỰ LUYỆN 4: TÍNH TIỀN CƯỚC TAXI LŨY TIẾN
+\begin{frame}{Bài Tự Luyện 4: Tính Tiền Cước Taxi Theo Lũy Tiến Km}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\textbf{Biểu Giá Cước Taxi Quy Định}}
+        \begin{itemize}
+          \item \textbf{Giá mở cửa (1 km đầu tiên):} $15.000$ VNĐ.
+          \item \textbf{Từ km thứ 2 đến km thứ 5:} $13.500$ VNĐ/km.
+          \item \textbf{Từ km thứ 6 trở đi:} $11.000$ VNĐ/km.
+          \item \textbf{Khuyến mãi đường dài:} Nếu tổng quãng đường di chuyển $> 20$ km, khách hàng được giảm thêm $10\%$ trên tổng số tiền cước.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{table}[h]
+        \centering
+        \scriptsize
+        \begin{tabularx}{\textwidth}{p{1cm}p{1.4cm}Xp{1.7cm}}
+          \toprule
+          \textbf{Test} & \textbf{Km} & \textbf{Cách tính chi tiết} & \textbf{Phải trả} \\
+          \midrule
+          Test 1 & $0.8$ km & Trong km đầu tiên & $15.000$ VNĐ \\
+          \addlinespace
+          Test 2 & $4.0$ km & $15.000 + 3 \times 13.500$ & $55.500$ VNĐ \\
+          \addlinespace
+          Test 3 & $10.0$ km & $15.000 + 4 \times 13.500 + 5 \times 11.000$ & $124.000$ VNĐ \\
+          \bottomrule
+        \end{tabularx}
+      \end{table}
+      \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniBlue]
+        \textbf{Gợi ý lập trình:} Nhập số km dạng \texttt{double}. Sử dụng biến tích lũy \texttt{tongTien} tính lần lượt từng chặng theo cấu trúc \texttt{if...else}.
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 36: BÀI TỰ LUYỆN 5: KIỂM TRA & PHÂN LOẠI TAM GIÁC
+\begin{frame}{Bài Tự Luyện 5: Kiểm Tra Tính Hợp Lệ \& Phân Loại Tam Giác}
+  \begin{block}{\textbf{Quy Tắc Hình Học Bất Biến}}
+    Nhập 3 số thực dương $a, b, c$.
+    \begin{itemize}
+      \item \textbf{Điều kiện hợp lệ (Bất đẳng thức tam giác):} $a+b>c$ \textbf{VÀ} $a+c>b$ \textbf{VÀ} $b+c>a$.
+      \item \textbf{Phân loại chi tiết nếu hợp lệ:}
+        \begin{itemize}
+          \item \textbf{Tam giác đều:} $a == b$ \textbf{VÀ} $b == c$.
+          \item \textbf{Tam giác vuông:} Thỏa định lý Pytago: $a^2+b^2 \approx c^2$ HOẶC $a^2+c^2 \approx b^2$ HOẶC $b^2+c^2 \approx a^2$.
+          \item \textbf{Tam giác cân:} $a == b$ HOẶC $a == c$ HOẶC $b == c$.
+          \item \textbf{Tam giác thường:} Các trường hợp còn lại.
+        \end{itemize}
+    \end{itemize}
+  \end{block}
+  \begin{table}[h]
+    \centering
+    \scriptsize
+    \begin{tabularx}{0.9\textwidth}{lXXX}
+      \toprule
+      \textbf{Bộ Test} & \textbf{Ba cạnh ($a, b, c$)} & \textbf{Kết quả kiểm tra} & \textbf{Phân loại tam giác} \\
+      \midrule
+      Test 1 & $1, 2, 5$ & Ba canh khong tao thanh tam giac. & Vi phạm bất đẳng thức ($1 + 2 < 5$) \\
+      \addlinespace
+      Test 2 & $3, 4, 5$ & Tam giac hop le. & Tam giac VUONG ($3^2 + 4^2 = 5^2$) \\
+      \addlinespace
+      Test 3 & $5, 5, 5$ & Tam giac hop le. & Tam giac DEU \\
+      \addlinespace
+      Test 4 & $6, 6, 8$ & Tam giac hop le. & Tam giac CAN \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+% ==============================================================================
+% PHẦN V: GIAI ĐOẠN 4
+% ==============================================================================
+\section{Phần V: Giai Đoạn 4 - Thử Thách Tổng Hợp Cuối Buổi}
+
+% SLIDE 37: TỔNG QUAN GIAI ĐOẠN 4
+\begin{frame}{Giai Đoạn 4: Thử Thách Tổng Hợp Cuối Buổi (40 Phút)}
+  \begin{block}{\textbf{Mục Tiêu Đánh Giá Năng Lực Lập Trình Thực Chiến}}
+    \begin{itemize}
+      \item Đo lường khả năng vận dụng tổng hợp toàn bộ kiến thức của 3 chương:
+        \begin{itemize}
+          \item Cấu trúc dự án và quy ước lập trình chuyên nghiệp.
+          \item Nhập xuất luồng văn bản, ép kiểu an toàn và định dạng chuỗi.
+          \item Biểu thức số học phức tạp và cấu trúc rẽ nhánh đa tầng.
+        \end{itemize}
+      \item \textbf{Cấu trúc Giai đoạn 4:}
+        \begin{enumerate}
+          \item \textbf{Thử thách mẫu giảng viên trình diễn:} Phần mềm tính chỉ số khối cơ thể (\textbf{BMI Calculator}).
+          \item \textbf{Thử thách độc lập của sinh viên:} Hệ thống tính tiền điện sinh hoạt bậc thang \& In hóa đơn thanh toán Console (Chấm điểm theo thang Rubric 10 điểm).
+        \end{enumerate}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+% SLIDE 38: THỬ THÁCH MẪU: BMI CALCULATOR
+\begin{frame}{Thử Thách Mẫu: Phần Mềm Đánh Giá Chỉ Số BMI}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\textbf{Công Thức Y Tế Chuẩn}}
+        \[ \text{BMI} = \frac{\text{Cân nặng (kg)}}{\text{Chiều cao (m)}^2} \]
+      \end{block}
+      \begin{table}[h]
+        \centering
+        \scriptsize
+        \begin{tabularx}{\textwidth}{lX}
+          \toprule
+          \textbf{Chỉ số BMI} & \textbf{Phân loại thể trạng (WHO)} \\
+          \midrule
+          $\text{BMI} < 18.5$ & Thiếu cân (Underweight) \\
+          \addlinespace
+          $18.5 \le \text{BMI} < 25.0$ & Trọng lượng bình thường (Normal) \\
+          \addlinespace
+          $25.0 \le \text{BMI} < 30.0$ & Thừa cân (Overweight) \\
+          \addlinespace
+          $\text{BMI} \ge 30.0$ & Béo phì (Obese) \\
+          \bottomrule
+        \end{tabularx}
+      \end{table}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{\textbf{Yêu Cầu Thiết Kế Chuyên Nghiệp}}
+        \begin{itemize}
+          \item Nhập họ tên, cân nặng (kg) và chiều cao (m).
+          \item Bắt buộc kiểm tra ràng buộc số dương: nếu cân nặng hoặc chiều cao $\le 0$, in thông báo lỗi và dừng chương trình bằng lệnh \texttt{return;}.
+          \item In phiếu đánh giá kết quả có viền trang trí đẹp mắt, số liệu căn lề rõ ràng.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 39: BMI SOURCE CODE (PHẦN 1)
+\begin{frame}[fragile]{Mã Nguồn Mẫu BMI Calculator (Phần 1: Nhập \& Kiểm Tra Biên)}
+\begin{lstlisting}
+using System;
+
+class BmiCalculator
+{
+    static void Main()
+    {
+        Console.WriteLine("==================================================");
+        Console.WriteLine("      HE THONG TINH TOAN VA DANH GIA CHI SO BMI   ");
+        Console.WriteLine("==================================================");
+
+        // 1. Nhap du lieu dau vao
+        Console.Write("Nhap ho va ten: ");
+        string hoTen = Console.ReadLine();
+
+        Console.Write("Nhap can nang (don vi kg, vi du: 65.5): ");
+        double canNang = double.Parse(Console.ReadLine());
+
+        Console.Write("Nhap chieu cao (don vi met, vi du: 1.72): ");
+        double chieuCao = double.Parse(Console.ReadLine());
+
+        // 2. Kiem tra tinh hop le cua du lieu (Defensive Programming)
+        if (canNang <= 0 || chieuCao <= 0)
+        {
+            Console.WriteLine("\nLoi nghiem trong: Can nang va chieu cao phai lon hon 0!");
+            return; // Dung chuong trinh lap tuc
+        }
+\end{lstlisting}
+\end{frame}
+
+% SLIDE 40: BMI SOURCE CODE (PHẦN 2)
+\begin{frame}[fragile]{Mã Nguồn Mẫu BMI Calculator (Phần 2: Xử Lý \& In Phiếu)}
+\begin{lstlisting}
+        // 3. Tinh toan chi so BMI
+        double bmi = canNang / (chieuCao * chieuCao);
+
+        // 4. Danh gia the trang bang if...else if...else
+        string ketLuan = "";
+        if (bmi < 18.5) ketLuan = "Thieu can (Underweight)";
+        else if (bmi < 25.0) ketLuan = "Binh thuong (Normal weight)";
+        else if (bmi < 30.0) ketLuan = "Thua can (Overweight)";
+        else ketLuan = "Beo phi (Obese)";
+
+        // 5. In phieu ket qua chuyen nghiep
+        Console.WriteLine("\n----------------- PHIEU KET QUA -----------------");
+        Console.WriteLine($"Ho va ten : {hoTen}");
+        Console.WriteLine($"Can nang  : {canNang:F1} kg");
+        Console.WriteLine($"Chieu cao : {chieuCao:F2} m");
+        Console.WriteLine($"Chi so BMI: {bmi:F2}");
+        Console.WriteLine($"Danh gia  : {ketLuan}");
+        Console.WriteLine("-------------------------------------------------");
+    }
+}
+\end{lstlisting}
+\end{frame}
+
+% SLIDE 41: ĐỀ BÀI ĐÁNH GIÁ ĐỘC LẬP: TÍNH TIỀN ĐIỆN BẬC THANG
+\begin{frame}{Thử Thách Đánh Giá Độc Lập Tại Lớp: Tính Tiền Điện Bậc Thang}
+  \begin{block}{\textbf{Mô Tả Bài Toán Thực Tế}}
+    Viết chương trình C\# Console tính toán tiền điện sinh hoạt cho hộ gia đình theo biểu giá bậc thang lũy tiến của Tổng công ty Điện lực và in hóa đơn chi tiết.
+  \end{block}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{table}[h]
+        \centering
+        \scriptsize
+        \begin{tabularx}{\textwidth}{p{1.2cm}p{2.3cm}X}
+          \toprule
+          \textbf{Bậc thang} & \textbf{Mức tiêu thụ} & \textbf{Đơn giá (VNĐ/kWh)} \\
+          \midrule
+          \textbf{Bậc 1} & Cho $50$ kWh đầu tiên ($0 - 50$) & $1.806$ \\
+          \addlinespace
+          \textbf{Bậc 2} & Cho $50$ kWh tiếp theo ($51 - 100$) & $1.866$ \\
+          \addlinespace
+          \textbf{Bậc 3} & Cho $100$ kWh tiếp theo ($101 - 200$) & $2.167$ \\
+          \addlinespace
+          \textbf{Bậc 4} & Từ kWh thứ $201$ trở lên & $2.729$ \\
+          \bottomrule
+        \end{tabularx}
+      \end{table}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{\textbf{Quy Tắc Nghiệp Vụ \& Công Thức}}
+        \begin{itemize}
+          \item Nhập: Họ tên khách hàng, Chỉ số công tơ cũ, Chỉ số công tơ mới.
+          \item Số điện: $\text{kwh} = \text{chiSoMoi} - \text{chiSoCu}$.
+          \item Kiểm tra hợp lệ: Nếu chỉ số mới $<$ chỉ số cũ hoặc $<0$, báo lỗi và thoát.
+          \item Thuế VAT: $8\%$ trên tổng tiền trước thuế.
+          \item Tổng thanh toán: Tiền trước thuế $+$ Thuế VAT.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 42: BẢNG DỮ LIỆU KIỂM THỬ TÍNH TIỀN ĐIỆN
+\begin{frame}{Bộ Dữ Liệu Kiểm Thử Hệ Thống Tính Tiền Điện (Test Cases)}
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabularx}{\textwidth}{lp{3.2cm}p{2.8cm}p{2.2cm}p{2.0cm}X}
+      \toprule
+      \textbf{Test} & \textbf{Chỉ số Cũ / Mới} & \textbf{Số kWh tiêu thụ} & \textbf{Trước thuế} & \textbf{VAT (8\%)} & \textbf{Tổng tiền} \\
+      \midrule
+      \textbf{Test 1} & Cũ: $150$, Mới: $120$ & Âm (Không hợp lệ) & -- & -- & Báo lỗi \\
+      \addlinespace
+      \textbf{Test 2} & Cũ: $100$, Mới: $140$ & $40$ kWh (Bậc 1) & $72.240$ đ & $5.779$ đ & $78.019$ đ \\
+      \addlinespace
+      \textbf{Test 3} & Cũ: $200$, Mới: $285$ & $85$ kWh (Bậc 2) & $155.610$ đ & $12.449$ đ & $168.059$ đ \\
+      \addlinespace
+      \textbf{Test 4} & Cũ: $500$, Mới: $750$ & $250$ kWh (Bậc 4) & $537.150$ đ & $42.972$ đ & $580.122$ đ \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+  \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniBlue]
+    \textbf{Chi tiết tính Test 4 (250 kWh):}
+    $50 \times 1.806 + 50 \times 1.866 + 100 \times 2.167 + 50 \times 2.729 = 90.300 + 93.300 + 216.700 + 136.450 = 537.150$ đ.\\
+    Thuế VAT ($8\%$) $= 537.150 \times 0.08 = 42.972$ đ $\implies$ Tổng $= 580.122$ đ.
+  \end{tcolorbox}
+\end{frame}
+
+% SLIDE 43: KHUNG TIÊU CHÍ CHẤM ĐIỂM (RUBRIC 10 ĐIỂM)
+\begin{frame}{Khung Tiêu Chí Chấm Điểm Năng Lực Thực Hành (Rubric 10 Điểm)}
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabularx}{\textwidth}{lcp{9.5cm}}
+      \toprule
+      \textbf{Tiêu chí đánh giá} & \textbf{Trọng số} & \textbf{Yêu cầu đạt chuẩn chi tiết} \\
+      \midrule
+      \textbf{1. Thao tác \& Biên dịch} & 2.0 điểm & Tạo đúng Solution/Project Console C\#. Đặt tên biến chuẩn camelCase. Biên dịch thành công 100\%, không có cảnh báo cú pháp. \\
+      \addlinespace
+      \textbf{2. Nhập/Xuất \& Ép kiểu} & 2.5 điểm & Dùng đúng Console.Write khi nhập liệu. Đọc chuỗi và ép kiểu chính xác bằng int.Parse. Bắt lỗi dữ liệu âm và chỉ số mới < cũ. \\
+      \addlinespace
+      \textbf{3. Thuật toán \& Biểu thức} & 2.5 điểm & Áp dụng đúng công thức tính lũy tiến từng bậc. Đảm bảo đúng thứ tự ưu tiên phép toán, không bị lỗi mất phần thập phân khi tính thuế VAT. \\
+      \addlinespace
+      \textbf{4. Cấu trúc rẽ nhánh if} & 2.0 điểm & Sử dụng if...else if...else bao quát mọi khoảng tiêu thụ, không để sót nhánh và không viết điều kiện thừa thãi. \\
+      \addlinespace
+      \textbf{5. Trình bày hóa đơn} & 1.0 điểm & Chuỗi nội suy (\$""\"), phân cách hàng nghìn (\{tien:N0\}), giao diện phiếu thu tiền điện rõ ràng, chuyên nghiệp. \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+% ==============================================================================
+% PHẦN VI: HỆ THỐNG BÀI TẬP VỀ NHÀ
+% ==============================================================================
+\section{Phần VI: Hệ Thống Bài Tập Tự Luyện Về Nhà (Homework Projects)}
+
+% SLIDE 44: TỔNG QUAN BÀI TẬP VỀ NHÀ
+\begin{frame}{Hệ Thống 4 Bài Tập Tự Luyện Về Nhà (Homework Projects)}
+  \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniNavy,title=\textbf{Mục Đích Của Bài Tập Tự Luyện Về Nhà}]
+    Củng cố tư duy thuật toán thủ tục, nâng cao khả năng tự giải quyết vấn đề và chuẩn bị tâm thế vững chắc nhất trước khi bước sang mô hình \textbf{Lập trình hướng đối tượng (OOP)} ở Chương 4.
+  \end{tcolorbox}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\textbf{2 Dự Án Tính Toán Nghiệp Vụ}}
+        \begin{itemize}
+          \item \textbf{Bài 1: Metric Converter} -- Máy tính chuyển đổi hệ đơn vị đo lường đa năng (Menu lựa chọn).
+          \item \textbf{Bài 2: ATM Cash Breakdown} -- Thuật toán phân rã mệnh giá tiền tối ưu tại cây rút tiền ATM.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{\textbf{2 Dự Án Logic \& Trò Chơi}}
+        \begin{itemize}
+          \item \textbf{Bài 3: Next Day Calculator} -- Kiểm tra tính hợp lệ của ngày tháng năm và tìm ngày tiếp theo.
+          \item \textbf{Bài 4: Rock-Paper-Scissors} -- Trò chơi Oẳn Tù Tì với máy tính áp dụng lớp \texttt{Random}.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 45: BÀI TẬP VỀ NHÀ 1: METRIC CONVERTER
+\begin{frame}{Bài Tập Về Nhà 1: Máy Tính Chuyển Đổi Hệ Đơn Vị Đo Lường}
+  \begin{block}{\textbf{Mô Tả Bài Toán \& Menu Chức Năng}}
+    Xây dựng menu lựa chọn chuyển đổi đơn vị đo lường:
+    \begin{enumerate}
+      \item Độ Celsius ($^\circ\text{C}$) sang Độ Fahrenheit ($^\circ\text{F}$): \quad $F = (C \times \frac{9}{5}) + 32$
+      \item Mét ($\text{m}$) sang Feet ($\text{ft}$): \quad $\text{ft} = m \times 3.28084$
+      \item Kilogram ($\text{kg}$) sang Pound ($\text{lbs}$): \quad $\text{lbs} = kg \times 2.20462$
+    \end{enumerate}
+    Người dùng chọn mã chức năng ($1, 2, 3$) và nhập giá trị thực cần đổi. Nếu nhập ngoài $1-3$, in thông báo lỗi.
+  \end{block}
+  \begin{table}[h]
+    \centering
+    \small
+    \begin{tabularx}{0.85\textwidth}{ccccX}
+      \toprule
+      \textbf{Mã chức năng} & \textbf{Giá trị nhập} & \textbf{Đơn vị nguồn} & \textbf{Kết quả mong đợi} & \textbf{Ý nghĩa} \\
+      \midrule
+      \textbf{1} & $37.0$ & $^\circ\text{C}$ & \texttt{98.60 \textdegree F} & Thân nhiệt bình thường \\
+      \addlinespace
+      \textbf{2} & $10.0$ & $\text{m}$ & \texttt{32.81 ft} & Chiều dài \\
+      \addlinespace
+      \textbf{3} & $68.5$ & $\text{kg}$ & \texttt{151.02 lbs} & Cân nặng \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+% SLIDE 46: BÀI TẬP VỀ NHÀ 2: MÁY RÚT TIỀN ATM
+\begin{frame}{Bài Tập Về Nhà 2: Mô Phỏng Máy Rút Tiền ATM (Cash Breakdown)}
+  \begin{block}{\textbf{Mô Tả Giải Thuật Phân Bổ Mệnh Giá}}
+    Khách hàng cần rút số tiền nguyên $N$ (VNĐ). Cây ATM có 4 mệnh giá: $500.000$, $200.000$, $100.000$ và $50.000$ VNĐ.
+    \begin{itemize}
+      \item \textbf{Điều kiện hợp lệ:} $N > 0$ và $N$ bắt buộc phải là bội số của $50.000$ VNĐ ($N \% 50000 == 0$).
+      \item \textbf{Giải thuật tối ưu:} Ưu tiên đổi các tờ mệnh giá lớn nhất trước bằng phép chia nguyên \texttt{/} và cập nhật số tiền còn lại bằng phép chia dư \texttt{\%}.
+    \end{itemize}
+  \end{block}
+  \begin{table}[h]
+    \centering
+    \scriptsize
+    \begin{tabularx}{\textwidth}{p{2.5cm}Xp{2.8cm}}
+      \toprule
+      \textbf{Số tiền yêu cầu rút} & \textbf{Kết quả phân bổ các tờ tiền nhả ra} & \textbf{Trạng thái giao dịch} \\
+      \midrule
+      $123.000$ VNĐ & \texttt{So tien rut phai la boi so cua 50.000 VND!} & Từ chối giao dịch \\
+      \addlinespace
+      $1.850.000$ VNĐ & $3$ tờ $500\text{k} + 1$ tờ $200\text{k} + 1$ tờ $100\text{k} + 1$ tờ $50\text{k}$ & Thành công (Tổng $6$ tờ) \\
+      \addlinespace
+      $2.400.000$ VNĐ & $4$ tờ $500\text{k} + 2$ tờ $200\text{k} + 0$ tờ $100\text{k} + 0$ tờ $50\text{k}$ & Thành công (Tổng $6$ tờ) \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+% SLIDE 47: BÀI TẬP VỀ NHÀ 3: KIỂM TRA NGÀY HỢP LỆ & TÌM NGÀY TIẾP THEO
+\begin{frame}{Bài Tập Về Nhà 3: Kiểm Tra Ngày Hợp Lệ \& Tìm Ngày Kế Tiếp}
+  \begin{block}{\textbf{Mục Tiêu \& Quy Tắc Lịch Pháp}}
+    Nhập vào 3 số nguyên: \texttt{ngay}, \texttt{thang}, \texttt{nam}.
+    \begin{itemize}
+      \item Tháng $1, 3, 5, 7, 8, 10, 12$: Có tối đa $31$ ngày.
+      \item Tháng $4, 6, 9, 11$: Có tối đa $30$ ngày.
+      \item Tháng $2$: Có $29$ ngày nếu là năm nhuận, $28$ ngày nếu là năm thường.
+      \item \textbf{Tìm ngày kế tiếp (Next Day):} Chú ý trường hợp chuyển ngày cuối tháng và chuyển giao thừa $31/12 \to 01/01$ năm mới.
+    \end{itemize}
+  \end{block}
+  \begin{table}[h]
+    \centering
+    \scriptsize
+    \begin{tabularx}{\textwidth}{ccccX}
+      \toprule
+      \textbf{Ngày nhập vào} & \textbf{Tính hợp lệ} & \textbf{Ngày kế tiếp} & \textbf{Giải thích tình huống} \\
+      \midrule
+      $29/02/2024$ & Hợp lệ & \texttt{01/03/2024} & Năm 2024 nhuận, ngày cuối tháng 2 chuyển sang 01/03 \\
+      \addlinespace
+      $29/02/2026$ & Không hợp lệ & -- & Năm 2026 không nhuận (tháng 2 chỉ có 28 ngày) \\
+      \addlinespace
+      $30/04/2026$ & Hợp lệ & \texttt{01/05/2026} & Ngày cuối cùng của tháng 4 \\
+      \addlinespace
+      $31/12/2026$ & Hợp lệ & \texttt{01/01/2027} & Ngày cuối năm, tăng năm lên 1 đơn vị \\
+      \bottomrule
+    \end{tabularx}
+  \end{table}
+\end{frame}
+
+% SLIDE 48: BÀI TẬP VỀ NHÀ 4: TRÒ CHƠI OẲN TÙ TÌ
+\begin{frame}[fragile]{Bài Tập Về Nhà 4: Trò Chơi Oẳn Tù Tì Với Máy Tính (Random)}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\textbf{Mô Tả Quy Tắc Trò Chơi}}
+        \begin{itemize}
+          \item Người chơi chọn: \textbf{1 (Kéo)}, \textbf{2 (Búa)}, \textbf{3 (Bao)}.
+          \item Máy tính tự động chọn ngẫu nhiên bằng lớp \texttt{Random} trong C\#:
+\begin{lstlisting}
+// Sinh so ngau nhien tu 1 den 3:
+int may = new Random().Next(1, 4);
+\end{lstlisting}
+          \item \textbf{Quy tắc:} Búa thắng Kéo, Kéo thắng Bao, Bao thắng Búa. Chọn giống nhau $\implies$ Hòa.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{\textbf{Cấu Trúc Logic So Sánh Kết Quả}}
+\begin{lstlisting}
+if (nguoi == may) {
+    Console.WriteLine("Ket qua: HOA!");
+}
+else if ((nguoi == 1 && may == 3) || 
+         (nguoi == 2 && may == 1) || 
+         (nguoi == 3 && may == 2)) {
+    Console.WriteLine("Ban THANG!");
+}
+else {
+    Console.WriteLine("May tinh THANG!");
+}
+\end{lstlisting}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ==============================================================================
+% PHẦN VII: TỔNG KẾT & CẦU NỐI OOP
+% ==============================================================================
+\section{Phần VII: Tổng Kết \& Cầu Nối Sang Lập Trình Hướng Đối Tượng (Chương 4)}
+
+% SLIDE 49: 3 TRỤ CỘT CỦA LẬP TRÌNH THỦ TỤC
+\begin{frame}{Tổng Kết 3 Trụ Cột Của Lập Trình Thủ Tục}
+  \begin{columns}[T]
+    \begin{column}{0.32\textwidth}
+      \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniNavy,title=\textbf{1. Tuần Tự (Sequence)}]
+        \begin{itemize}
+          \item Luồng chương trình chạy tuần tự từ trên xuống dưới.
+          \item Khai báo biến, cấp phát ô nhớ, gán giá trị và luồng nhập/xuất chuẩn.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \begin{tcolorbox}[colback=UniLightBlue!30,colframe=CSharpPurple,title=\textbf{2. Số Học \& Chia Dư}]
+        \begin{itemize}
+          \item Làm chủ phép chia nguyên \texttt{/} và chia dư \texttt{\%}.
+          \item Bóc tách dữ liệu số nguyên, quy đổi thời gian, phân rã mệnh giá tiền tệ.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniGreen,title=\textbf{3. Rẽ Nhánh (Branch)}]
+        \begin{itemize}
+          \item Cấu trúc \texttt{if...else} đưa ra quyết định thông minh.
+          \item Kiểm soát chặt chẽ 100\% các điều kiện biên và bảo vệ an toàn cho hệ thống.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
+  \vskip10pt
+  \begin{center}
+    \textbf{\color{UniNavy}Khi sinh viên đã làm chủ 3 trụ cột này, các em đã có đủ 100\% nền tảng tư duy để bước sang thế giới Hướng Đối Tượng!}
+  \end{center}
+\end{frame}
+
+% SLIDE 50: CẦU NỐI SANG CHƯƠNG 4 (OOP)
+\begin{frame}{Cầu Nối Tư Duy Sang Chương 4: Lập Trình Hướng Đối Tượng (OOP)}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{\textbf{Hạn Chế Của Lập Trình Thủ Tục}}
+        \small
+        \begin{itemize}
+          \item Dữ liệu (cân nặng, chiều cao) và tính toán nằm \textbf{tách rời nhau}.
+          \item Mọi câu lệnh đều nhồi nhét vào một hàm \texttt{Main()} duy nhất.
+          \item Khó bảo trì khi ứng dụng mở rộng quy mô.
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{\textbf{Đột Phá Hướng Đối Tượng (Chương 4)}}
+        \small
+        \begin{itemize}
+          \item \textbf{Đóng gói (Encapsulation):} Gom Dữ liệu và Hành vi vào một \textbf{Lớp (Class)}.
+          \item \textbf{Thuộc tính (Properties):} Lưu trạng thái đối tượng.
+          \item \textbf{Phương thức (Methods):} Thực hiện thuật toán tính toán.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+  \vskip5pt
+  \begin{center}
+    \small\textbf{\color{UniNavy}Tâm thế: Toàn bộ code hôm nay trong Main() sẽ chuyển vào thân của Methods ở Chương 4!}
+  \end{center}
+\end{frame}
+
+% SLIDE 51: TRANG KẾT THÚC
+\begin{frame}[plain]
+  \begin{center}
+    \vspace{2cm}
+    {\huge\color{UniNavy}\textbf{CHÚC CÁC BẠN SINH VIÊN LỚP IT26M}}\\[0.4cm]
+    {\LARGE\color{CSharpPurple}\textbf{THỰC HÀNH TỐT \& ĐẠT ĐIỂM XUẤT SẮC!}}\\[0.8cm]
+    \begin{tcolorbox}[colback=UniLightBlue!30,colframe=UniNavy,width=0.7\textwidth]
+      \centering
+      \textbf{Khoa Công nghệ Thông tin -- Đại học Đông Á}\\
+      \textit{Kỹ thuật Lập trình / Lập trình C\# \& .NET}\\
+      \texttt{Học kỳ I -- Khóa 2026}
+    \end{tcolorbox}
+  \end{center}
+\end{frame}
+
+\end{document}
