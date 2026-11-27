@@ -1,0 +1,317 @@
+# -*- coding: utf-8 -*-
+"""
+Script to generate the complete script.txt for Buổi 04:
+Bài 4: Biểu Thức, Các Phép Toán, Thao Tác Bit, Chuyển Đổi Kiểu & Câu Lệnh Gán.
+Tương ứng 1-1 với 44 slides trong Slide_Buoi_04_NenTangLapTrinh_CSharp_IT26M_Combine.pdf.
+"""
+
+import os
+
+slides_data = [
+    # Slide 1
+    (
+        "Slide 1: KỸ THUẬT LẬP TRÌNH C# - BÀI 4: BIỂU THỨC, CÁC PHÉP TOÁN, THAO TÁC BIT VÀ CHUYỂN ĐỔI KIỂU DỮ LIỆU",
+        "Chào mừng tất cả các em sinh viên lớp IT26M Khóa 2026 đến với buổi học thứ 4 của học phần Kỹ thuật Lập trình C#! Hôm nay, chúng ta tiếp tục đào sâu Chương 2: Nền tảng về ngôn ngữ lập trình với Bài 4 - một trong những bài học mang tính bản lề và cốt lõi nhất của toàn bộ học phần: Biểu thức, Các phép toán, Thao tác bit, Chuyển đổi kiểu dữ liệu và Câu lệnh gán. Nếu như ở các buổi học trước và buổi thực hành Lab 01, các em đã làm quen với việc gõ lệnh nhập xuất và chạy những đoạn mã đầu tiên, thì buổi học hôm nay sẽ giúp các em giải mã tận gốc cách vi xử lý và bộ nhớ RAM tính toán, xử lý từng bit nhị phân, quy tắc chuyển đổi kiểu dữ liệu và làm chủ hoàn toàn các biểu thức trong C#.",
+        "Dạ chào thầy! Cả lớp IT26M chúng em rất mong chờ bài học hôm nay ạ. Qua buổi thực hành Lab 01 vừa rồi, chúng em đã tự tay viết code và gặp khá nhiều tình huống thú vị như phép chia hai số nguyên bị mất phần thập phân hay băn khoăn về sự khác nhau giữa tăng tiền tố và hậu tố. Chúng em đã mở sẵn Visual Studio và sẵn sàng cùng thầy khám phá bản chất của các phép toán trong C# ạ!"
+    ),
+    # Slide 2
+    (
+        "Slide 2: Bối cảnh Sư phạm: Từ Thực hành Lab 01 đến Buổi 04",
+        "Các em hãy quan sát Slide 2 để nhìn lại chặng đường chúng ta đã đi qua. Trong Lab 01, các em đã xuất sắc hoàn thành việc tạo Solution, sử dụng Console.ReadLine, Console.WriteLine, tính chu vi diện tích và làm quen với câu lệnh rẽ nhánh if. Tuy nhiên, trong quá trình chấm lab, thầy nhận thấy rất nhiều bạn gặp phải 4 rào cản nhận thức lớn: Thứ nhất là cạm bẫy chia nguyên khi viết 5 / 2 ra 2 thay vì 2.5; Thứ hai là nhầm lẫn tai hại giữa dấu gán một dấu bằng và so sánh bằng hai dấu bằng; Thứ ba là bối rối trước toán tử x++ và ++x; Và thứ tư là chưa hình dung được dữ liệu được biểu diễn dưới dạng nhị phân như thế nào. Đó là lý do vì sao ở giai đoạn này, thầy kiên quyết CHƯA dạy Lập trình Hướng đối tượng (OOP). Chúng ta cần tôi luyện thật vững tư duy lập trình thủ tục, nắm chắc mô hình bộ nhớ và toán tử trước khi bước vào các khái niệm trừu tượng cao hơn!",
+        "Dạ thưa thầy, định hướng của thầy rất sát với thực tế học tập của chúng em ạ. Đúng là trong buổi Lab 01, nhiều bạn trong lớp khi viết công thức tính toán đã rất hoang mang vì kết quả ra số nguyên cụt lủn. Việc thầy dành riêng Buổi 4 để giải phẫu chi tiết biểu thức và mô hình ô nhớ RAM sẽ giúp chúng em tự tin hơn rất nhiều khi viết mã nguồn ạ!"
+    ),
+    # Slide 3
+    (
+        "Slide 3: Mục tiêu Bài học & Chuẩn đầu ra (CLOs)",
+        "Dựa trên đề cương chi tiết học phần của Đại học Đông Á, bài học hôm nay đặt ra 5 chuẩn đầu ra cụ thể theo thang đo Bloom: CLO 4.1, các em giải thích được bản chất của Biểu thức (Expressions), phân biệt rõ toán tử, toán hạng và biết chuyển đổi chính xác công thức toán - lý - kinh tế sang C#. CLO 4.2, vận dụng thành thạo và phân biệt chính xác 4 nhóm toán tử: số học chia nguyên vs chia thực, toán tử so sánh, logic đoản mạch và toán tử tăng giảm tiền tố vs hậu tố. CLO 4.3, làm chủ các phép toán Thao tác Bit (Bitwise), hiểu biểu diễn số bù 2 và ứng dụng vào thuật toán kiểm tra chẵn lẻ, nhân chia lũy thừa 2 và kỹ thuật mặt nạ bit quản lý cờ quyền hạn. CLO 4.4, phân tích và thực hiện chuẩn xác Chuyển đổi kiểu dữ liệu ngầm định vs tường minh, phân biệt (type), Convert, TryParse và bảo vệ chương trình chống tràn số bằng checked. Và CLO 4.5, làm chủ toán tử gán phức hợp cùng Bảng thứ tự ưu tiên của C#.",
+        "Dạ thưa thầy, 5 chuẩn đầu ra này bao quát trọn vẹn mọi khía cạnh kỹ thuật từ cấp độ bit nhị phân đến cấp độ biểu thức phức hợp. Chúng em xin hứa sẽ tập trung cao độ để nắm vững toàn bộ kiến thức và kỹ năng của bài học ạ!"
+    ),
+    # Slide 4
+    (
+        "Slide 4: Tiến trình Bài học 3 Tiết (150 Phút Tích hợp)",
+        "Slide 4 trình bày tiến trình 3 tiết học liên tục của chúng ta. Tiết 1 dành 50 phút đi sâu vào Biểu thức và Các phép toán cơ bản: định nghĩa biểu thức, toán tử số học, so sánh, logic đoản mạch, cạm bẫy tiền tố hậu tố ++x và x++, kết thúc bằng Mini-Quiz Checkpoint 1. Tiết 2 dành 50 phút mở ra cánh cửa thế giới nhị phân với Thao tác Bit (Bitwise): mã bù 2, các phép AND, OR, XOR, NOT bit, phép dịch bit, thuật toán tối ưu và kỹ thuật Mặt nạ bit (Bitmasking) phân quyền. Tiết 3 dành 50 phút hoàn thiện kỹ năng Chuyển đổi kiểu dữ liệu, bảo vệ chống tràn số với checked/unchecked, toán tử gán phức hợp, Bảng thứ tự ưu tiên 11 cấp, và thực chiến Mini-Challenge 10 phút tại lớp trước khi tổng kết và nối sang Buổi 5.",
+        "Dạ, cấu trúc phân bổ thời gian rất cân đối và khoa học thầy ạ! Mỗi tiết đều có phần lý thuyết trọng tâm đi kèm ví dụ trực quan và bài tập thực hành ngay tại chỗ. Chúng em đã sẵn sàng bắt đầu Tiết 1 rồi ạ!"
+    ),
+    # Slide 5
+    (
+        "Slide 5: Mục 2.9: Biểu Thức trong C# (Expressions)",
+        "Chúng ta bắt đầu với Mục 2.9 trên Slide 5: Khái niệm Biểu thức. Theo định nghĩa chuẩn khoa học máy tính, biểu thức (Expression) là sự kết hợp có quy tắc cú pháp giữa các Toán hạng (Operands) và Toán tử (Operators) nhằm tính toán và trả về MỘT giá trị duy nhất thuộc MỘT kiểu dữ liệu xác định. Nhìn vào sơ đồ giải phẫu trên slide với câu lệnh: total = price * quantity + tax;: Biến total ở vế trái là toán hạng đích; dấu bằng là toán tử gán; price và quantity là các toán hạng tham gia vào phép nhân; dấu sao là toán tử nhân; tax là toán hạng tham gia phép cộng; và dấu cộng là toán tử cộng. Cả cụm price * quantity + tax chính là một biểu thức số học!",
+        "Dạ thưa thầy, như vậy một biến đơn lẻ như price, hoặc một hằng số như số 10, hay một lời gọi hàm trả về giá trị như Math.Sqrt(16) thì bản thân chúng có được coi là một biểu thức độc lập không ạ?",
+        "Chính xác tuyệt đối! Một biến đơn lẻ, một hằng số literal, hay một lời gọi hàm đều là các biểu thức đơn giản nhất. Khi chúng ta ghép các biểu thức đơn lại với nhau thông qua toán tử, chúng ta tạo ra một biểu thức phức hợp!"
+    ),
+    # Slide 6
+    (
+        "Slide 6: Phân Loại Biểu Thức trong C#",
+        "Slide 6 phân loại biểu thức trong C# thành 5 nhóm thông dụng. Nhóm 1 là Biểu thức Số học (Arithmetic), ví dụ (a + b) * c / 2, kết quả trả về là một số nguyên int hoặc số thực double. Nhóm 2 là Biểu thức Quan hệ (Relational), so sánh độ lớn giữa hai vế như age >= 18, kết quả trả về luôn là kiểu bool (true hoặc false). Nhóm 3 là Biểu thức Logic (Boolean), kết hợp nhiều mệnh đề như score >= 8.0 && gpa > 3.2, trả về bool. Nhóm 4 là Biểu thức Chuỗi (String), ghép nối hoặc nội suy như $\"SV: {name}, Tuoi: {age}\", trả về kiểu string. Và nhóm 5 là Biểu thức Gán (Assignment), như x = y + 10, vừa thực hiện ghi đè giá trị vừa trả về chính giá trị vừa gán. Quy tắc vàng của C# là: Bất kỳ biểu thức nào cũng phải có một kiểu dữ liệu tĩnh xác định ngay tại thời điểm biên dịch!",
+        "Dạ thưa thầy, việc C# kiểm tra kiểu nghiêm ngặt (Strict Type Safety) cho từng biểu thức có lợi ích gì cho lập trình viên so với các ngôn ngữ động như JavaScript hay Python ạ?",
+        "Nó giúp chúng ta phát hiện và ngăn chặn 90% lỗi sai kiểu ngay khi đang gõ code trong Visual Studio! Ví dụ em không thể vô tình lấy một chuỗi văn bản đem nhân với một số thực; trình biên dịch C# sẽ báo lỗi ngay lập tức, không để lỗi lọt ra môi trường thực tế khi người dùng đang sử dụng!"
+    ),
+    # Slide 7
+    (
+        "Slide 7: Chuyển Đổi Công thức Thực tế sang Biểu thức C#",
+        "Tại Slide 7, thầy hướng dẫn các em kỹ năng chuyển đổi từ công thức toán học đại số sang biểu thức C#. Trong đại số, chúng ta quen viết liền như 4ac hay r bình phương, nhưng trong C# bắt buộc phải viết toán tử tường minh! Ví dụ định lý Pythagoras: căn bậc hai của a bình phương cộng b bình phương phải viết là Math.Sqrt(a * a + b * b). Biệt thức Delta bậc hai: b bình phương trừ 4ac phải viết là b * b - 4 * a * c. Công thức tính diện tích Heron tam giác: Math.Sqrt(p * (p - a) * (p - b) * (p - c)). Công thức lãi kép ngân hàng A = P nhân mở ngoặc 1 cộng r đóng ngoặc mũ t: phải dùng hàm Math.Pow(1 + r, t). Thầy đặc biệt lưu ý: Trong C# KHÔNG CÓ toán tử dấu mũ ^ để tính lũy thừa! Dấu ^ trong C# là phép toán XOR trên từng bit nhị phân!",
+        "Dạ thưa thầy, đây là một điểm rất dễ nhầm lẫn ạ! Nhiều bạn trong lớp cứ quen tay gõ b^2 - 4*a*c rồi ngạc nhiên tại sao chương trình chạy ra kết quả kỳ lạ. Bây giờ chúng em đã hiểu dấu ^ là phép toán bitwise, còn lũy thừa thì phải dùng b * b hoặc Math.Pow ạ!"
+    ),
+    # Slide 8
+    (
+        "Slide 8: Tác Dụng Phụ (Side-Effects) trong Biểu Thức",
+        "Slide 8 cảnh báo một hiện tượng rất quan trọng: Tác dụng phụ (Side-Effects) trong biểu thức. Một biểu thức được gọi là có tác dụng phụ nếu ngoài việc trả về giá trị tính toán, nó còn làm thay đổi trạng thái của các ô nhớ trong RAM. Ví dụ như toán tử ++, --, hoặc toán tử gán =. Các em nhìn vào khung bên trái: Viết b = a++ + ++a * a--; là một ví dụ cực kỳ tồi tệ! Biểu thức này vừa đọc vừa sửa biến a liên tục, khiến việc xác định giá trị trở nên vô cùng rối rắm và phụ thuộc vào thứ tự tính toán nội tại. Khung bên phải chỉ ra cách viết chuẩn mực của kỹ sư phần mềm: Tách các bước tăng giảm thành từng dòng lệnh độc lập a++; sau đó mới tính toán b. Đó chính là nguyên lý KISS: Keep It Simple, Stupid - Giữ cho mã nguồn luôn đơn giản và trong sáng!",
+        "Dạ thưa thầy, tức là chúng ta không nên cố tình viết những câu lệnh dồn ép quá nhiều toán tử tăng giảm vào một dòng chỉ để trông cho nguy hiểm, mà phải ưu tiên tính rõ ràng, dễ bảo trì đúng không ạ?",
+        "Hoàn toàn chính xác! Trong các công ty phần mềm lớn, một đoạn code mà đồng nghiệp đọc vào không hiểu ngay thì sẽ bị từ chối ngay trong khâu duyệt mã (Code Review). Viết code sạch là thước đo năng lực của lập trình viên chuyên nghiệp!"
+    ),
+    # Slide 9
+    (
+        "Slide 9: Mục 2.10: Hệ Thống Các Phép Toán trong C# (Operators)",
+        "Bây giờ chúng ta bước sang Mục 2.10 trên Slide 9: Hệ thống các phép toán trong C#. Phép toán có thể phân loại theo hai góc nhìn: Về số lượng toán hạng, ta có toán tử 1 ngôi (Unary) chỉ tác động lên 1 biến như đổi dấu -x, tăng giảm ++x, phủ định !flag, đảo bit ~x, ép kiểu (int)d. Toán tử 2 ngôi (Binary) tác động lên 2 biến như cộng, trừ, nhân, chia, so sánh, logic. Và toán tử 3 ngôi (Ternary) duy nhất là toán tử điều kiện hỏi chấm hai chấm ? :. Về mặt chức năng nghiệp vụ, bài học hôm nay sẽ dẫn dắt các em làm chủ 4 nhóm nòng cốt: Số học nâng cao, So sánh & Logic đoản mạch, Toán tử tăng giảm, và Toán tử thao tác bit.",
+        "Dạ thưa thầy, toán tử 3 ngôi hỏi chấm hai chấm ? : hoạt động cụ thể như thế nào ạ? Thầy có thể cho chúng em một ví dụ ngắn được không ạ?",
+        "Rất đơn giản! Ví dụ câu lệnh: string ketQua = (diem >= 5.0) ? \"Đậu\" : \"Rớt\";. Máy tính sẽ kiểm tra điều kiện trước dấu hỏi chấm: nếu điểm lớn hơn hoặc bằng 5 thì lấy chuỗi \"Đậu\", ngược lại thì lấy chuỗi \"Rớt\" để gán cho biến ketQua. Nó tương đương một cấu trúc if-else thu nhỏ trên một dòng lệnh!"
+    ),
+    # Slide 10
+    (
+        "Slide 10: Toán Tử Số Học: Phép Chia Nguyên vs Chia Thực & Modulo %",
+        "Slide 10 mổ xẻ cạm bẫy tử huyệt mà 99% sinh viên năm nhất đều từng mắc phải: Phép chia số nguyên! Các em nhìn kỹ: Nếu cả hai toán hạng đều là kiểu int, ví dụ int a = 7; int b = 2; thì phép chia a / b LUÔN LUÔN cho ra kết quả kiểu int, nghĩa là phần thập phân bị cắt cụt hoàn toàn! 7 chia 2 chỉ bằng 3. Nguy hiểm hơn, nếu các em viết double div = a / b; thì div vẫn nhận giá trị 3.0, vì phép chia 7/2 đã bị tính ra 3 trước khi gán vào biến double! Muốn có kết quả 3.5, bắt buộc phải ép kiểu ít nhất một toán hạng sang số thực: (double)a / b hoặc viết 7.0 / 2. Bên cạnh đó, toán tử chia lấy dư % (Modulo) cực kỳ lợi hại: dùng để kiểm tra chẵn lẻ n % 2 == 0, lấy chữ số hàng đơn vị n % 10, đổi giây sang giây lẻ trong phút, và xử lý vòng tròn tuần hoàn trong mảng!",
+        "Dạ thưa thầy, vậy là trong C#, kiểu dữ liệu của kết quả phép chia được quyết định bởi kiểu của các toán hạng tham gia, chứ không phụ thuộc vào kiểu của biến nhận kết quả đúng không thầy?",
+        "Em nắm bài rất chuẩn! CPU thực hiện phép tính vế phải trước, ra kết quả rồi mới mang kết quả đó ném sang vế trái. Do đó, phải đảm bảo vế phải có ít nhất một số thực thì phép chia thực mới được kích hoạt!"
+    ),
+    # Slide 11
+    (
+        "Slide 11: Toán Tử So Sánh: Cảnh Báo Bẫy Tử Huyệt \"=\" và \"==\"",
+        "Tại Slide 11, chúng ta khảo sát nhóm toán tử so sánh: nhỏ hơn <, nhỏ hơn hoặc bằng <=, lớn hơn >, lớn hơn hoặc bằng >=, so sánh bằng ==, và so sánh khác !=. Thầy đặc biệt gióng lên hồi chuông cảnh báo về bẫy tử huyệt: Nhầm lẫn giữa dấu gán một dấu bằng = và dấu so sánh bằng hai dấu bằng ==! Dấu = là lệnh ghi đè giá trị vào ô nhớ, còn dấu == là câu hỏi kiểm tra xem hai giá trị có bằng nhau không. Trong C#, nếu viết if (x = 5), trình biên dịch sẽ chặn đứng với lỗi CS0029 vì không thể ép kiểu int sang bool. Điều này giúp C# an toàn hơn C và C++ rất nhiều. Ngoài ra, khi so sánh hai số thực double, do sai số biểu diễn nhị phân IEEE 754, phép tính 0.1 + 0.2 == 0.3 sẽ trả về false! Vì vậy, với số thực, ta luôn so sánh khoảng cách chênh lệch tuyệt đối Math.Abs(a - b) < 1e-9!",
+        "Dạ thưa thầy, thông tin 0.1 + 0.2 == 0.3 trả về false làm em bất ngờ quá ạ! Đó là do số thực trong máy tính bị sai số làm tròn ở các chữ số thập phân vô hạn phía sau đúng không ạ?",
+        "Đúng vậy các em! Giống như trong hệ thập phân ta không thể viết chính xác số 1/3 mà phải viết 0.333333..., thì trong hệ nhị phân, số 0.1 và 0.2 cũng là các phân số tuần hoàn vô hạn. Do đó khi cộng lại sẽ bị lệch một phần rất nhỏ ở đuôi, và ta phải dùng sai số epsilon để so sánh an toàn!"
+    ),
+    # Slide 12
+    (
+        "Slide 12: Toán Tử Logic (Boolean Operators) & Bảng Chân Trị",
+        "Slide 12 giới thiệu các toán tử logic dùng để kết hợp nhiều mệnh đề điều kiện: Toán tử VÀ &&, toán tử HOẶC ||, toán tử PHỦ ĐỊNH !, và toán tử XOR ^. Nhìn vào bảng chân trị: Phép && chỉ đúng khi CẢ HAI vế cùng đúng; ví dụ sinh viên đạt học bổng khi điểm rèn luyện >= 80 VÀ điểm tích lũy >= 3.6. Phép || đúng khi CÓ ÍT NHẤT MỘT vế đúng; ví dụ được miễn thi khi đạt giải quốc gia HOẶC có chứng chỉ IELTS 8.0. Phép ! đảo ngược giá trị: phủ định của đúng là sai, phủ định của sai là đúng; ví dụ if (!isLoggedIn) nghĩa là nếu chưa đăng nhập. Còn phép XOR ^ đúng khi đúng một trong hai nhưng không được cùng đúng.",
+        "Dạ thưa thầy, các toán tử logic này khi kết hợp lại thì có thứ tự ưu tiên như thế nào ạ? Giữa && và || thì toán tử nào được ưu tiên tính trước ạ?",
+        "Toán tử phủ định ! có độ ưu tiên cao nhất trong nhóm logic, tiếp theo đến toán tử VÀ &&, và cuối cùng mới đến toán tử HOẶC ||. Nghĩa là && luôn được tính trước ||, tương tự như phép nhân được tính trước phép cộng trong số học!"
+    ),
+    # Slide 13
+    (
+        "Slide 13: Cơ Chế Đánh Giá Đoản Mạch (Short-Circuit Evaluation)",
+        "Tại Slide 13, thầy giải thích một cơ chế cực kỳ thông minh của C#: Đánh giá đoản mạch (Short-Circuit Evaluation) của toán tử && và ||. Khi gặp toán tử &&, nếu vế trái đã là false, thì toàn bộ biểu thức chắc chắn là false, do đó CPU dừng lại ngay lập tức và KHÔNG BAO GIỜ tính toán vế phải! Ngược lại với toán tử ||, nếu vế trái đã là true, CPU cũng dừng ngay và không chạy vế phải. Ứng dụng sống còn của đoản mạch là phòng chống sập chương trình: Các em nhìn ví dụ: if (b != 0 && (10 / b > 1)). Nếu biến b bằng 0, vế trái b != 0 trả về false; nhờ cơ chế đoản mạch, máy tính không thèm chạy vế phải 10 / b nữa, giúp chương trình tránh được lỗi chia cho 0 DivideByZeroException!",
+        "Dạ thưa thầy, vậy nếu ở đây em vô tình viết một dấu và & thay vì hai dấu và && thì điều gì sẽ xảy ra khi b bằng 0 ạ?",
+        "Một câu hỏi xuất sắc! Toán tử một dấu và & là toán tử logic KHÔNG đoản mạch. Nó bắt buộc phải tính cả hai vế! Khi đó phép chia 10 / b sẽ được thực thi khi b = 0, và chương trình của em sẽ bị sập (crash) ngay lập tức! Vì vậy, trong các câu lệnh điều kiện rẽ nhánh, luôn luôn sử dụng toán tử đoản mạch && và ||!"
+    ),
+    # Slide 14
+    (
+        "Slide 14: Toán Tử Tăng/Giảm: Tiền Tố (++x) vs Hậu Tố (x++)",
+        "Slide 14 làm sáng tỏ một vấn đề kinh điển: Toán tử tăng giảm tiền tố Prefix ++x và hậu tố Postfix x++. Cả hai toán tử này đều có chung mục đích cuối cùng là làm giá trị của biến x tăng lên 1 đơn vị. Tuy nhiên, thời điểm tăng giá trị vào biểu thức thì hoàn toàn trái ngược nhau! Với Tiền tố ++x: Khẩu quyết là 'Tăng trước rồi mới dùng!'. Giá trị của x được tăng lên 1 trước, sau đó giá trị mới được trả ra cho biểu thức. Ví dụ int a = 5; int b = ++a; thì a tăng lên 6 trước, sau đó lấy 6 gán cho b; kết quả cả a và b đều bằng 6. Ngược lại với Hậu tố x++: Khẩu quyết là 'Dùng giá trị cũ trước rồi mới tăng!'. Giá trị hiện tại của x được đưa vào biểu thức trước, sau đó ô nhớ x mới tăng lên 1. Ví dụ int c = 5; int d = c++; thì lấy 5 gán cho d trước, sau đó c mới tăng lên 6; kết quả c bằng 6 nhưng d chỉ bằng 5!",
+        "Dạ thưa thầy, hai câu khẩu quyết của thầy: 'Tăng trước rồi mới dùng' và 'Dùng giá trị cũ trước rồi mới tăng' thực sự quá dễ nhớ và trực quan ạ! Bây giờ thì em không bao giờ sợ nhầm lẫn giữa ++x và x++ nữa rồi ạ!"
+    ),
+    # Slide 15
+    (
+        "Slide 15: Mổ Xẻ Cơ Chế Ô Nhớ RAM: Từng Bước Đánh Giá (Trace Step-by-Step)",
+        "Tại Slide 15, thầy dùng đồ họa mô phỏng trực quan ô nhớ RAM để các em thấy rõ sự dịch chuyển dữ liệu bên trong phần cứng máy tính. Ở kịch bản A (Tiền tố int b = ++a): Ô nhớ a ban đầu chứa giá trị 5, ô nhớ b chưa có giá trị. Bước 1, ALU của vi xử lý tác động vào ô nhớ a, tăng giá trị lên 6. Bước 2, vi xử lý đọc giá trị 6 từ a và ghi vào ô nhớ b; kết thúc câu lệnh, cả a và b đều là 6. Ở kịch bản B (Hậu tố int d = c++): Ô nhớ c ban đầu chứa 5, d chưa có giá trị. Bước 1, vi xử lý đọc giá trị hiện tại là 5 từ c và ghi ngay sang ô nhớ d. Bước 2, ALU mới quay lại tăng giá trị của ô nhớ c lên 6; kết thúc câu lệnh, c là 6 nhưng d vẫn giữ giá trị 5!",
+        "Dạ thưa thầy, nhìn sơ đồ ô nhớ RAM này em thấy mọi thứ sáng tỏ 100% ạ! Máy tính hoạt động theo từng chu kỳ xung nhịp và trật tự ghi đè bộ nhớ, chứ không hề có phép thuật nào ở đây cả!"
+    ),
+    # Slide 16
+    (
+        "Slide 16: Thử Thách Câu Hỏi Bẫy: Giải Mã Biểu Thức Tăng/Giảm Phức Hợp",
+        "Slide 16 đưa ra một câu hỏi phỏng vấn hóc búa để thử thách các em: Cho đoạn mã int x = 10; int result = x++ * 2 + ++x; Hãy tính giá trị của result và x! Nào, các em cùng trace từng bước theo thầy: Bước 1: Ban đầu x bằng 10. Bước 2: Gặp x++, do là hậu tố nên giá trị trả ra biểu thức là 10, ngay sau đó x trong ô nhớ tăng lên 11. Bước 3: Phép nhân có ưu tiên cao hơn, 10 nhân 2 bằng 20. Bước 4: Gặp ++x, x đang là 11 được tăng ngay lên 12 và trả giá trị 12 ra biểu thức. Bước 5: Thực hiện phép cộng 20 cộng 12 bằng 32, gán cho result. Vậy kết quả: result bằng 32, và giá trị cuối cùng của x là 12! Tuy nhiên, thầy nhắc lại: Trong thực tế dự án doanh nghiệp, tuyệt đối không bao giờ viết code đánh đố đồng nghiệp như thế này!",
+        "Dạ thưa thầy, phân tích từng bước thật thú vị ạ! Kết quả 32 và 12 hoàn toàn logic theo đúng quy tắc bộ nhớ. Và chúng em ghi nhớ lời thầy: Chỉ dùng x++ độc lập trên một dòng lệnh hoặc trong bước nhảy của vòng lặp thôi ạ!"
+    ),
+    # Slide 17
+    (
+        "Slide 17: Checkpoint Tiết 1: Trắc Nghiệm Củng Cố Nhận Thức",
+        "Để khép lại Tiết 1, Slide 17 đưa ra 3 câu trắc nghiệm nhanh kiểm tra nhận thức. Câu 1: Giá trị của double val = 9 / 2; là bao nhiêu? Cả lớp hô to đáp án nào! Đúng rồi, đáp án là B: 4.0! Vì 9 chia nguyên cho 2 ra 4, sau đó mới nạp vào kiểu double thành 4.0. Câu 2: Cho int x = 5; bool res = (x > 10 && ++x > 2); Giá trị của x sau đó bằng mấy? Đáp án là A: 5! Vì x > 10 là false, toán tử && đoản mạch dừng lại ngay lập tức nên ++x không hề chạy! Câu 3: Cho int p = 4; int q = p++ + p++; Giá trị của q và p là bao nhiêu? p++ đầu trả về 4, p thành 5; p++ sau trả về 5, p thành 6; tổng q = 4 + 5 = 9, p = 6; đáp án là B! Chúc mừng các em đã nắm bài Tiết 1 rất xuất sắc!",
+        "Dạ thưa thầy, làm đúng cả 3 câu trắc nghiệm này chứng tỏ cả lớp IT26M chúng em đã hiểu rất sâu bản chất toán tử và cơ chế đoản mạch rồi ạ! Chúng em sẵn sàng bước sang Tiết 2 rồi thầy ơi!"
+    ),
+    # Slide 18
+    (
+        "Slide 18: Mục 2.11: Bản Chất Máy Tính: Hệ Nhị Phân & Số Bù 2",
+        "Chào mừng các em bước sang Tiết 2 với Mục 2.11 trên Slide 18: Các phép toán Thao tác Bit (Bitwise Operators). Để trở thành một kỹ sư phần mềm thực thụ, các em không thể chỉ nhìn máy tính ở bề nổi, mà phải hiểu sâu bên dưới phần cứng! Mọi thông tin trong máy tính đều được cấu tạo từ các Bit 0 và 1, biểu thị trạng thái đóng ngắt của transistor. 8 bit tạo thành 1 Byte. Kiểu int trong C# chiếm 4 Bytes = 32 bits. Bit ngoài cùng bên phải là LSB (trọng số thấp nhất), bit ngoài cùng bên trái là MSB (bit dấu: 0 là dương, 1 là âm). Để biểu diễn số âm, máy tính dùng hệ Mã bù 2 (Two's Complement): Muốn biểu diễn số -X, ta lấy dạng nhị phân của X, đảo toàn bộ bit (0 thành 1, 1 thành 0), rồi cộng thêm 1. Ví dụ số +5 là 0000 0101, đảo bit thành 1111 1010, cộng 1 thành 1111 1011 chính là số -5!",
+        "Dạ thưa thầy, tại sao các nhà khoa học máy tính lại chọn hệ mã bù 2 để biểu diễn số âm mà không dùng một bit dấu riêng và giữ nguyên các bit còn lại ạ?",
+        "Một câu hỏi thể hiện tư duy phần cứng rất sâu sắc! Nếu dùng một bit dấu riêng, chúng ta sẽ có hai số 0: số +0 và số -0, gây lãng phí và phức tạp cho mạch điện. Với mã bù 2, số 0 là duy nhất, và điều kỳ diệu là mạch cộng của CPU có thể thực hiện cả phép cộng và phép trừ bằng CÙNG MỘT MẠCH ĐIỆN duy nhất: A - B bản chất là A cộng với bù 2 của B!"
+    ),
+    # Slide 19
+    (
+        "Slide 19: Toán Tử Bitwise: AND Bit (&) và OR Bit (|)",
+        "Slide 19 trình bày hai toán tử thao tác bit căn bản nhất: AND bit (&) và OR bit (|). Chú ý: Ở đây chỉ có MỘT ký tự & hoặc |! Toán tử AND bit (&): Bit kết quả bằng 1 khi và chỉ khi CẢ HAI bit tương ứng đều bằng 1. Nó dùng để lọc hoặc xóa bit về 0. Ví dụ tính 12 & 10: Số 12 là 0000 1100, số 10 là 0000 1010. Đặt phép tính thẳng cột từng bit: 0 & 0 ra 0, 1 & 1 ra 1, 1 & 0 ra 0; kết quả thu được 0000 1000 tức là số 8! Còn toán tử OR bit (|): Bit kết quả bằng 1 khi CÓ ÍT NHẤT MỘT bit bằng 1. Nó dùng để bật bit lên 1 hoặc gộp dữ liệu. Với 12 | 10: 1100 ghép với 1010 cho ra 1110 tức là số 14!",
+        "Dạ thưa thầy, sự khác biệt căn bản giữa toán tử logic && và toán tử bitwise & là gì ạ?",
+        "Toán tử logic && làm việc trên giá trị chân trị true/false của toàn bộ mệnh đề và có cơ chế đoản mạch. Còn toán tử bitwise & làm việc trên từng cặp bit nhị phân độc lập của hai số nguyên và không có khái niệm đoản mạch!"
+    ),
+    # Slide 20
+    (
+        "Slide 20: Toán Tử Bitwise: XOR Bit (^) và NOT Bit (~)",
+        "Tại Slide 20, chúng ta tìm hiểu hai toán tử bitwise tiếp theo: XOR bit (^) và NOT bit (~). Toán tử XOR (^): Cho kết quả bằng 1 khi hai bit KHÁC NHAU, và bằng 0 khi hai bit GIỐNG NHAU. Ví dụ 12 ^ 10 cho kết quả 0000 0110 tức là số 6. XOR có những tính chất toán học cực kỳ kỳ diệu: A XOR A luôn bằng 0; A XOR 0 luôn bằng chính A; và (A XOR B) XOR B sẽ phục hồi lại đúng số A ban đầu! Đây chính là nền tảng của các thuật toán mã hóa đối xứng kinh điển. Tiếp theo là toán tử NOT bit (~): Đảo ngược toàn bộ các bit, 0 thành 1 và 1 thành 0. Trong C#, do số nguyên biểu diễn bằng mã bù 2, nên ta có công thức toán học bất biến: ~x = -(x + 1). Ví dụ ~5 bằng -6, ~0 bằng -1!",
+        "Dạ thưa thầy, công thức ~x = -(x + 1) giải thích tại sao khi em gõ Console.WriteLine(~5) thì màn hình lại in ra -6 đúng không ạ? Giờ em đã hiểu cội nguồn nhị phân của nó rồi ạ!"
+    ),
+    # Slide 21
+    (
+        "Slide 21: Toán Tử Dịch Bit (Shift Operators): << và >>",
+        "Slide 21 giới thiệu nhóm toán tử dịch bit (Shift Operators): Dịch trái << và Dịch phải >>. Dịch trái x << k: Đẩy toàn bộ các bit sang trái k vị trí, và các vị trí trống bên phải luôn được bù bằng số 0. Về mặt toán học, dịch trái k vị trí tương đương với việc NHÂN x với 2 mũ k! Ví dụ số 5 (0000 0101), dịch trái 1 bit thành 0000 1010 tức là 10 (5 nhân 2); dịch trái 3 bit thành 0010 1000 tức là 40 (5 nhân 8). Ngược lại, Dịch phải x >> k: Đẩy toàn bộ các bit sang phải k vị trí. Về mặt toán học, nó tương đương phép CHIA NGUYÊN x cho 2 mũ k! Ví dụ số 40 dịch phải 1 bit ra 20, dịch phải 3 bit ra 5. Điểm mấu chốt: Phép dịch bit được vi xử lý thực thi trong đúng 1 chu kỳ xung nhịp (clock cycle), nhanh hơn rất nhiều so với mạch nhân chia số học!",
+        "Dạ thưa thầy, vậy trong các thuật toán xử lý đồ họa máy tính, xử lý ảnh game hoặc nén dữ liệu đòi hỏi tốc độ khung hình cao, các kỹ sư thường thay phép nhân 2, nhân 4 bằng phép dịch bit << 1, << 2 để tối ưu hóa hiệu năng đúng không ạ?",
+        "Chính xác 100%! Đó là bí quyết tối ưu hóa mã nguồn ở cấp độ vi kiến trúc mà mọi lập trình viên hệ thống đều phải nằm lòng!"
+    ),
+    # Slide 22
+    (
+        "Slide 22: Ứng Dụng Kỹ Thuật 1: Thuật Toán Tối Ưu Bằng Bitwise",
+        "Slide 22 mang đến 3 ứng dụng thực chiến vô cùng thú vị của toán tử bit: Ứng dụng 1: Kiểm tra tính chẵn lẻ siêu tốc! Thay vì dùng n % 2 == 0 phải tốn chu kỳ chia số học, ta viết if ((n & 1) == 0). Vì trong hệ nhị phân, mọi số lẻ đều có bit cuối cùng LSB là 1, số chẵn có bit cuối là 0. AND với 1 sẽ cô lập bit cuối này ngay lập tức! Ứng dụng 2: Kiểm tra một số có phải là lũy thừa của 2 không: bool isPowerOfTwo = (n > 0) && ((n & (n - 1)) == 0). Các số lũy thừa của 2 như 8 (1000) khi trừ 1 sẽ thành 7 (0111); hai số này AND với nhau sẽ triệt tiêu hoàn toàn về 0! Ứng dụng 3: Hoán đổi giá trị hai biến số a và b mà KHÔNG CẦN biến trung gian: a = a ^ b; b = a ^ b; a = a ^ b; Chỉ với 3 dòng lệnh XOR, giá trị hai biến được tráo đổi ngoạn mục mà không tốn thêm một byte RAM phụ!",
+        "Dạ thưa thầy, thuật toán hoán đổi XOR không cần biến phụ và kiểm tra lũy thừa 2 bằng n & (n - 1) quá vi diệu ạ! Em thấy việc hiểu bản chất bit giúp code của mình vừa ngắn gọn, vừa đạt hiệu năng cực đại!"
+    ),
+    # Slide 23
+    (
+        "Slide 23: Ứng Dụng Kỹ Thuật 2: Mặt Nạ Bit (Bitmasking) & Quản Lý Cờ Quyền Hạn",
+        "Slide 23 đưa các em đến bài toán kinh điển trong phát triển hệ điều hành và phần mềm doanh nghiệp: Kỹ thuật Mặt nạ bit (Bitmasking) để quản lý Cờ quyền hạn (Permission Flags). Giả sử tệp tin có 4 quyền: READ, WRITE, EXECUTE, DELETE. Thay vì phải tốn 4 biến bool, ta định nghĩa mỗi quyền là một bit ở vị trí lũy thừa của 2: READ = 1 (bit 0), WRITE = 2 (bit 1), EXECUTE = 4 (bit 2), DELETE = 8 (bit 3). Khi đó, ta có 4 thao tác chuẩn mực: Muốn BẬT quyền, dùng toán tử OR: perm = perm | WRITE; Muốn KIỂM TRA quyền, dùng toán tử AND: bool canWrite = (perm & WRITE) != 0; Muốn TẮT quyền, dùng AND với NOT: perm = perm & (~WRITE); Và muốn ĐẢO quyền (Toggle), dùng toán tử XOR: perm = perm ^ EXECUTE!",
+        "Dạ thưa thầy, kỹ thuật Bitmasking này có phải chính là cách mà hệ điều hành Windows và Linux dùng để lưu quyền truy cập file rwx trong thuộc tính tệp không ạ?",
+        "Chính là nó các em! Toàn bộ bảng phân quyền tập tin của hệ điều hành, cờ thuộc tính HTTP Headers, hay các trạng thái nhân vật trong game engine đều được nén gọn trong một số nguyên bằng kỹ thuật Bitmasking này!"
+    ),
+    # Slide 24
+    (
+        "Slide 24: Mã Nguồn Mẫu: Chương Trình Quản Lý Quyền Hạn Tệp Tin",
+        "Tại Slide 24 là chương trình C# Console hoàn chỉnh minh họa toàn bộ kỹ thuật phân quyền bằng Bitmask. Các em thấy: Ban đầu ta cấp hai quyền READ và WRITE bằng lệnh userPerm = userPerm | READ | WRITE;. Hàm Convert.ToString(userPerm, 2).PadLeft(4, '0') sẽ in ra chuỗi nhị phân 4 bit là 0011 (giá trị thập phân là 3). Tiếp theo, câu lệnh (userPerm & WRITE) != 0 kiểm tra và trả về true khẳng định người dùng có quyền ghi. Sau đó ta tước quyền ghi bằng lệnh userPerm = userPerm & (~WRITE);, chuỗi bit lập tức trở thành 0001 (chỉ còn quyền READ). Cuối cùng ta toggle quyền EXECUTE bằng phép XOR userPerm ^ EXECUTE;, chuỗi bit trở thành 0101. Tất cả diễn ra chuẩn xác tuyệt đối!",
+        "Dạ thưa thầy, mã nguồn mẫu rất rõ ràng ạ. Việc dùng Convert.ToString cơ số 2 giúp chúng em nhìn thấy tận mắt từng bit 0 và 1 thay đổi sau mỗi câu lệnh, rất trực quan và dễ hiểu ạ!"
+    ),
+    # Slide 25
+    (
+        "Slide 25: Checkpoint Tiết 2: Thực Hành Thao Tác Bit Tại Lớp",
+        "Để kết thúc Tiết 2, Slide 25 đưa ra bài tập thực hành 5 phút tại chỗ: Cho số nguyên N và vị trí bit k (từ 0 đến 31). Hãy viết các biểu thức bitwise cho 4 yêu cầu: 1. Tạo mặt nạ bit có bit thứ k bằng 1; 2. Kiểm tra bit thứ k là 0 hay 1; 3. Bật bit thứ k lên 1; 4. Tắt bit thứ k về 0. Lời giải chuẩn mực: Mặt nạ là 1 << k; Kiểm tra là (N & (1 << k)) != 0; Bật bit là N = N | (1 << k); Và tắt bit là N = N & (~(1 << k)). Cả lớp dành 5 phút gõ thử đoạn mã này trên Visual Studio, sau đó chúng ta sẽ giải lao 10 phút trước khi bước vào Tiết 3 với nội dung Ép kiểu và Tràn số!",
+        "Dạ thưa thầy, cả lớp chúng em đã viết thử và chạy thành công trên máy rồi ạ. Phép toán bit thực sự không hề khó như chúng em từng nghĩ khi đã hiểu rõ bản chất. Chúng em xin phép nghỉ giải lao 10 phút để nạp năng lượng cho Tiết 3 ạ!"
+    ),
+    # Slide 26
+    (
+        "Slide 26: Mục 2.12: Bản Chất Hệ Thống Kiểu & Tại Sao Cần Ép Kiểu?",
+        "Chào mừng các em quay trở lại Tiết 3 với Mục 2.12 trên Slide 26: Chuyển đổi kiểu dữ liệu (Type Conversion). C# là một ngôn ngữ kiểm tra kiểu tĩnh mạnh mẽ (Strongly-Typed). Mỗi kiểu dữ liệu được máy tính quản lý với độ dài bit và quy tắc mã hóa hoàn toàn khác nhau: byte chỉ có 8 bit từ 0 đến 255; int có 32 bit lưu số nguyên bù 2; double có 64 bit lưu số thực dấu phẩy động theo chuẩn IEEE 754; còn string lại là một mảng ký tự Unicode trên vùng nhớ Heap. Khi lập trình, chúng ta liên tục phải chuyển đổi qua lại: đổi chuỗi nhập từ bàn phím sang số để tính toán, chuyển số nguyên sang số thực để chia có phần dư, hoặc lưu trữ dữ liệu vào các định dạng nhỏ hơn để truyền qua mạng. Ta có hai cơ chế cốt lõi: Ép kiểu ngầm định (Implicit Widening) và Ép kiểu tường minh (Explicit Narrowing).",
+        "Dạ thưa thầy, vậy nguyên tắc nào quyết định khi nào C# tự động chuyển đổi kiểu, và khi nào bắt buộc chúng ta phải ra lệnh ép kiểu thủ công ạ?",
+        "Nguyên tắc cốt tử là: Bảo toàn dữ liệu! Nếu việc chuyển đổi không bao giờ làm mất mát hay sai lệch dữ liệu, C# sẽ tự động làm. Nhưng nếu có nguy cơ mất phần thập phân hoặc tràn số, C# bắt buộc lập trình viên phải tự chịu trách nhiệm bằng cách viết lệnh ép kiểu tường minh!"
+    ),
+    # Slide 27
+    (
+        "Slide 27: Ép Kiểu Ngầm Định (Implicit Type Conversion / Widening)",
+        "Slide 27 minh họa cơ chế Ép kiểu Ngầm định (Implicit Widening). Cơ chế này diễn ra hoàn toàn tự động khi chuyển từ một kiểu có miền giá trị nhỏ sang kiểu có miền giá trị lớn hơn. Hãy nhìn mũi tên trên slide: byte (8 bit) tự động chuyển được lên short (16 bit), short chuyển lên int (32 bit), int chuyển lên long (64 bit), long chuyển lên float, và float chuyển lên double. Ví dụ: int numInt = 12345; long numLong = numInt; hoàn toàn hợp lệ vì một ô nhớ 64 bit thừa sức chứa trọn vẹn giá trị 32 bit mà không bao giờ mất mát thông tin. Tương tự, gán numInt cho double numDouble cũng hoàn toàn tự động, máy tính sẽ chuyển số 12345 thành số thực 12345.0.",
+        "Dạ thưa thầy, vậy chiều ngược lại từ double về int hay từ long về int có được C# tự động làm không ạ?",
+        "Tuyệt đối không các em nhé! Chiều ngược lại bị chặn đứng hoàn toàn vì nó có thể làm mất dữ liệu, và đó chính là nội dung của Slide 28 tiếp theo!"
+    ),
+    # Slide 28
+    (
+        "Slide 28: Ép Kiểu Tường Minh (Explicit Narrowing / Cast Operator)",
+        "Slide 28 đưa chúng ta đến Ép kiểu Tường minh (Explicit Narrowing). Khi các em muốn ép một kiểu lớn về kiểu nhỏ hơn, hoặc ép số thực về số nguyên, cú pháp bắt buộc phải ghi rõ kiểu đích trong cặp ngoặc đơn: (Kiểu_Đích)giá_trị. Thầy cảnh báo 2 rủi ro tiềm ẩn: Rủi ro thứ nhất là Mất độ chính xác (Precision Loss): Khi viết double pi = 3.14159265; int truncatedPi = (int)pi;, biến truncatedPi chỉ nhận giá trị 3! Toàn bộ phần thập phân phía sau bị cắt bỏ hoàn toàn, chứ không phải làm tròn! Rủi ro thứ hai là Tràn số dữ liệu (Data Overflow): Khi viết int large = 300; byte b = (byte)large;, kiểu byte chỉ chứa tối đa 255; do đó giá trị 300 bị cắt mất các byte cao, chỉ giữ lại byte thấp và kết quả b nhận giá trị 44! Dữ liệu bị biến dạng hoàn toàn mà không có thông báo lỗi nào!",
+        "Dạ thưa thầy, ví dụ ép số 300 về byte ra 44 thực sự là một bài học đắt giá ạ! Nếu một hệ thống tính tiền mà ép kiểu ẩu như vậy thì tài khoản của khách hàng sẽ bị sai lệch nghiêm trọng mà không ai hay biết ạ!"
+    ),
+    # Slide 29
+    (
+        "Slide 29: So Sánh Các Phương Pháp Chuyển Đổi Kiểu",
+        "Slide 29 tổng hợp bảng so sánh 3 phương pháp chuyển đổi thông dụng nhất trong C#: Toán tử ép kiểu (type), Lớp tiện ích Convert, và Phương thức Parse(). Toán tử (type) chỉ dùng giữa các kiểu số tương thích và luôn CẮT CỤT phần thập phân ((int)3.9 = 3). Phương thức Parse() chuyên dùng chuyển từ chuỗi string sang kiểu số, nếu chuỗi chứa chữ cái hoặc bị null thì sẽ văng ngoại lệ làm sập chương trình. Lớp Convert (ví dụ Convert.ToInt32) là công cụ đa năng nhất: nó chuyển đổi được giữa nhiều kiểu khác nhau, xử lý an toàn với null (trả về 0 thay vì sập), và đặc biệt áp dụng cơ chế Làm tròn ngân hàng (Banker's Rounding): Nếu phần thập phân là đúng 0.5, nó sẽ làm tròn về số chẵn gần nhất! Ví dụ Convert.ToInt32(2.5) ra 2, còn Convert.ToInt32(3.5) ra 4 để triệt tiêu sai số lũy kế trong tài chính!",
+        "Dạ thưa thầy, cơ chế làm tròn ngân hàng của lớp Convert thật thông minh ạ! Trong thực tế khi làm việc với chuỗi nhập từ bàn phím thì chúng ta nên ưu tiên phương pháp nào để an toàn nhất ạ?",
+        "Câu hỏi dẫn ngay đến Slide 30 - kỹ thuật lập trình phòng thủ mà mọi kỹ sư phần mềm chuyên nghiệp đều phải sử dụng!"
+    ),
+    # Slide 30
+    (
+        "Slide 30: Kỹ Thuật Lập Trình Phòng Thủ: Phương Thức TryParse()",
+        "Tại Slide 30, thầy giới thiệu phương thức TryParse() - vũ khí tối thượng của kỹ thuật lập trình phòng thủ (Defensive Programming). Vấn đề của int.Parse() là khi người dùng nhập chuỗi không hợp lệ như 'abc', chương trình sẽ bị văng lỗi FormatException và sập ngay lập tức. Để giải quyết triệt để, C# cung cấp int.TryParse(). Cú pháp: if (int.TryParse(input, out int age) && age > 0). Phương thức này trả về giá trị bool: true nếu chuyển đổi thành công và lưu kết quả vào biến age qua từ khóa out; false nếu dữ liệu sai định dạng. Đặc biệt, chương trình KHÔNG BAO GIỜ BỊ SẬP! Ta có thể thông báo nhẹ nhàng cho người dùng nhập lại. Đây là chuẩn mực bắt buộc trong mọi dự án phần mềm chuyên nghiệp!",
+        "Dạ thưa thầy, từ khóa out ở đây có vai trò gì ạ? Em thấy biến int age được khai báo ngay bên trong lời gọi hàm luôn đúng không ạ?",
+        "Chính xác! Đó là tính năng 'out variable declaration' hiện đại của C#. Từ khóa out báo cho hàm TryParse biết rằng hãy đẩy giá trị kết quả sau khi chuyển đổi thành công vào biến age để chúng ta sử dụng ngay phía sau!"
+    ),
+    # Slide 31
+    (
+        "Slide 31: Hiểm Họa Tràn Số (Integer Overflow) & Khối checked / unchecked",
+        "Slide 31 đưa các em đến một lỗ hổng bảo mật và thảm họa tính toán kinh điển: Hiện tượng Tràn số nguyên (Integer Overflow). Trong C#, mặc định các phép tính số học diễn ra ở chế độ unchecked để đạt tốc độ cao nhất. Điều đó có nghĩa là: Nếu các em lấy int max = int.MaxValue (giá trị hơn 2.14 tỷ), rồi cộng thêm 1, máy tính sẽ KHÔNG BÁO LỖI mà âm thầm quay vòng bit, biến kết quả thành số âm cực đại -2,147,483,648! Trong lịch sử ngành hàng không vũ trụ, tên lửa Ariane 5 từng phát nổ chỉ 37 giây sau khi phóng vì một lỗi tràn số tương tự! Để bảo vệ các phép tính nhạy cảm, C# cung cấp từ khóa checked: try { checked { int result = max + 1; } } catch (OverflowException). Khối checked sẽ giám sát chặt chẽ và ném ra ngoại lệ ngay khi có tràn số, ngăn chặn hoàn toàn việc dữ liệu sai lệch lan rộng!",
+        "Dạ thưa thầy, ví dụ về tên lửa Ariane 5 làm chúng em thực sự rùng mình về mức độ nguy hiểm của lỗi tràn số ạ! Từ nay trong các bài toán tài chính hay tính toán dữ liệu lớn, chúng em sẽ luôn có ý thức sử dụng kiểu long và khối checked để bảo vệ hệ thống ạ!"
+    ),
+    # Slide 32
+    (
+        "Slide 32: Tổng Kết 4 Nguyên Tắc Vàng Khi Chuyển Đổi Kiểu Dữ Liệu",
+        "Slide 32 đúc kết 4 nguyên tắc vàng mà các em cần khắc cốt ghi tâm: Nguyên tắc 1: Luôn ưu tiên ép kiểu ngầm định (Widening) để đảm bảo an toàn tuyệt đối cho dữ liệu. Nguyên tắc 2: Muốn phép chia có phần thập phân, bắt buộc phải ép kiểu số thực TRƯỚC phép chia: double avg = (double)sum / count;. Nguyên tắc 3: Luôn sử dụng TryParse() khi xử lý dữ liệu nhập từ người dùng hoặc tệp tin bên ngoài để chống crash phần mềm. Và nguyên tắc 4: Luôn bọc các phép toán nhạy cảm với dữ liệu lớn trong khối checked hoặc chuyển hẳn sang dùng kiểu long hoặc decimal. 4 nguyên tắc này sẽ theo các em suốt toàn bộ sự nghiệp lập trình sau này!",
+        "Dạ thưa thầy, 4 nguyên tắc này cực kỳ súc tích và thực tế ạ. Cả lớp chúng em đã ghi chép cẩn thận vào vở và sẽ áp dụng triệt để trong các bài lab phòng máy ạ!"
+    ),
+    # Slide 33
+    (
+        "Slide 33: Mục 2.13: Bản Chất Câu Lệnh Gán Đơn Thuần (=)",
+        "Chúng ta bước sang Mục 2.13 trên Slide 33: Bản chất của Câu lệnh gán và Biểu thức gán. Cú pháp cơ bản là: variable = expression;. Quy luật thực thi của máy tính diễn ra qua 2 bước dứt khoát: Bước 1: Toàn bộ biểu thức ở vế phải (RHS) được đánh giá và tính toán hoàn chỉnh trước. Bước 2: Kết quả vừa tính được ghi đè vào vị trí ô nhớ của biến ở vế trái (LHS). Do đó, vế trái bắt buộc phải là một biến có vị trí nhớ ghi được (gọi là L-Value). Các em không thể viết 10 = x; vì 10 là hằng số, cũng không thể viết x + 5 = y; vì vế trái là một biểu thức chứ không phải là một ô nhớ đơn lẻ!",
+        "Dạ thưa thầy, như vậy phép gán trong lập trình khác hoàn toàn với dấu bằng trong toán học đúng không ạ? Trong toán học thì x = y tương đương y = x, nhưng trong lập trình thì x = y mang ý nghĩa lấy giá trị của y chép đè vào ô nhớ x ạ!",
+        "Rất chuẩn xác! Dấu gán trong lập trình là một HÀNH ĐỘNG cập nhật trạng thái bộ nhớ theo chiều từ phải sang trái, chứ không phải là sự cân bằng hai vế như đại số!"
+    ),
+    # Slide 34
+    (
+        "Slide 34: Các Toán Tử Gán Phức Hợp (Compound Assignment Operators)",
+        "Slide 34 tổng hợp bảng các toán tử gán phức hợp (Compound Assignments). Để giúp mã nguồn ngắn gọn và tối ưu hóa mã máy, C# cung cấp các toán tử kết hợp: sum += x tương đương sum = sum + x; balance -= fee tương đương balance = balance - fee; factorial *= i tương đương factorial = factorial * i; n /= 10 dùng để cắt bỏ chữ số cuối cùng; sec %= 60 lấy số dư giây lẻ. Đặc biệt, chúng ta có các toán tử gán bitwise: flags &= ~WRITE để tắt cờ; flags |= READ để bật cờ; x <<= 2 để nhân nhanh cho 4; và x >>= 1 để chia nhanh cho 2. Sử dụng gán phức hợp giúp mã nguồn trong sáng hơn và tránh việc phải gõ lặp lại tên biến dài nhiều lần!",
+        "Dạ thưa thầy, ngoài việc viết ngắn gọn hơn thì toán tử gán phức hợp có điểm gì vượt trội về mặt kỹ thuật nữa không ạ?",
+        "Có một điểm cực kỳ tinh tế mà rất ít người biết, và thầy sẽ bật mí ngay tại Slide 35 tiếp theo!"
+    ),
+    # Slide 35
+    (
+        "Slide 35: Điểm Tinh Tế Của Toán Tử Gán Phức Hợp: Tự Động Ép Kiểu",
+        "Slide 35 chỉ ra một hiện tượng thú vị trong C#: Khi các em thực hiện phép cộng trên kiểu byte, ví dụ byte b = 10; b = b + 5;, trình biên dịch C# sẽ báo lỗi ngay lập tức! Lý do là vì mọi phép toán số học trên các kiểu nhỏ hơn int đều tự động bị nâng lên kiểu int, nên b + 5 cho kết quả kiểu int và không thể gán ngược lại cho byte mà không ép kiểu thủ công. Thế nhưng, nếu các em viết b += 5;, chương trình lại biên dịch THÀNH CÔNG 100%! Tại sao? Bởi vì C# quy định toán tử gán phức hợp sẽ TỰ ĐỘNG chèn một phép ép kiểu tường minh ngầm định về kiểu của vế trái: b = (byte)(b + 5);. Đây là một lợi thế kỹ thuật vô cùng tiện lợi của toán tử gán phức hợp!",
+        "Dạ thưa thầy, kiến thức này thực sự quá bất ngờ và thú vị ạ! Giờ em mới hiểu tại sao viết b += 5 lại không bị lỗi mà b = b + 5 lại bị compiler la mắng. Nhờ thầy giải thích mà chúng em hiểu sâu sắc được bản chất của ngôn ngữ C# ạ!"
+    ),
+    # Slide 36
+    (
+        "Slide 36: Biểu Thức Gán Chuỗi (Chained Assignment) & Hướng Kết Hợp",
+        "Tại Slide 36, chúng ta xem xét Biểu thức gán chuỗi (Chained Assignment): a = b = c = 100;. Trong C#, bản thân phép gán cũng là một biểu thức và trả về giá trị của vế phải. Đặc biệt, toán tử gán có Hướng kết hợp từ Phải sang Trái (Right-to-Left Associativity). Các em nhìn mũi tên trên sơ đồ: Bước 1: c = 100 được thực hiện trước, ô nhớ c nhận giá trị 100 và biểu thức này trả về giá trị 100. Bước 2: Giá trị 100 được gán tiếp cho biến b. Bước 3: Giá trị 100 được gán tiếp cho biến a. Kết thúc câu lệnh, cả 3 biến đều nhận giá trị 100. Đây là cách gán khởi tạo giá trị đồng loạt rất gọn gàng!",
+        "Dạ thưa thầy, vậy ngoài phép gán ra thì trong C# còn những toán tử nào có hướng kết hợp từ Phải sang Trái nữa không ạ?",
+        "Các toán tử một ngôi như dấu đổi dấu -, toán tử tăng giảm tiền tố ++, toán tử phủ định !, đảo bit ~, toán tử ép kiểu (type), và toán tử điều kiện ? : đều có hướng kết hợp từ Phải sang Trái. Còn đại đa số các toán tử hai ngôi khác đều kết hợp từ Trái sang Phải!"
+    ),
+    # Slide 37
+    (
+        "Slide 37: Bảng Thứ Tự Ưu Tiên Các Toán Tử (Từ Cao Xuống Thấp)",
+        "Slide 37 là bản đồ định hướng toàn cảnh: Bảng thứ tự ưu tiên của các toán tử trong C# gồm 11 cấp bậc từ cao xuống thấp. Cấp 1 (cao nhất): Toán tử chính như ngoặc đơn (), hậu tố x++, x--. Cấp 2: Toán tử 1 ngôi như tiền tố ++x, đổi dấu, phủ định !, đảo bit ~, ép kiểu (type) (kết hợp Phải sang Trái). Cấp 3: Nhân, chia, chia dư *, /, %. Cấp 4: Cộng, trừ +, -. Cấp 5: Dịch bit <<, >>. Cấp 6: Quan hệ <, <=, >, >=. Cấp 7: Bình đẳng ==, !=. Cấp 8: Bitwise theo thứ tự & rồi đến ^ rồi đến |. Cấp 9: Logic theo thứ tự && rồi đến ||. Cấp 10: Toán tử điều kiện ? :. Và cấp 11 (thấp nhất): Các toán tử gán =, +=, -=...",
+        "Dạ thưa thầy, bảng này rất chi tiết ạ! Nhưng có tới tận 11 cấp bậc như thế này thì làm sao lập trình viên có thể nhớ chính xác tuyệt đối trong mọi tình huống để không viết sai ạ?",
+        "Câu trả lời nằm ở quy tắc vàng của kỹ sư phần mềm tại Slide 39, nhưng trước hết hãy nhìn Slide 38 để hiểu về hướng kết hợp!"
+    ),
+    # Slide 38
+    (
+        "Slide 38: Hướng Kết Hợp Của Toán Tử (Associativity)",
+        "Slide 38 giải thích Hướng kết hợp (Associativity): Khi hai toán tử có CÙNG CẤP ĐỘ ƯU TIÊN đứng cạnh nhau, hướng kết hợp sẽ quyết định toán tử nào chạy trước. Hầu hết các toán tử 2 ngôi kết hợp từ Trái sang Phải (Left-to-Right). Ví dụ: 100 / 10 / 2 sẽ tính 100 / 10 = 10 trước, rồi mới lấy 10 / 2 = 5. Nếu tính từ phải sang trái thì thành 100 / 5 = 20 là sai hoàn toàn! Ngược lại, phép gán kết hợp từ Phải sang Trái như chúng ta vừa phân tích ở slide trước. Hiểu được hướng kết hợp giúp các em đọc và dự đoán chính xác luồng tính toán của mọi biểu thức phức tạp.",
+        "Dạ thưa thầy, như vậy độ ưu tiên quyết định toán tử khác cấp cái nào chạy trước, còn hướng kết hợp quyết định các toán tử cùng cấp cái nào chạy trước đúng không ạ?",
+        "Chính xác! Một định nghĩa không thể chuẩn hơn! Em nắm bản chất vấn đề rất nhanh!"
+    ),
+    # Slide 39
+    (
+        "Slide 39: Quy Tắc Vàng Của Kỹ Sư Phần Mềm: Luôn Dùng Ngoặc Đơn ()",
+        "Và đây là Slide 39 - Quy tắc vàng của kỹ sư phần mềm: Luôn luôn sử dụng dấu ngoặc đơn ()! Trong công nghiệp phần mềm thực tế, không một kiến trúc sư hay trưởng nhóm kỹ thuật nào bắt các em phải nhớ vanh vách 11 cấp ưu tiên để rồi viết ra những dòng code mập mờ, khó hiểu. Hãy nhìn khung bên trái: Viết if (n & 1 == 0) là một thảm họa! Vì toán tử so sánh == có độ ưu tiên cao hơn toán tử bitwise &, nên máy tính sẽ tính (1 == 0) trước thành false, biểu thức trở thành n & false và văng lỗi biên dịch ngay lập tức! Thay vào đó, hãy nhìn khung bên phải: Viết if ((n & 1) == 0) bằng cách bọc cặp ngoặc đơn () quanh phép bitwise. Mã nguồn trở nên sáng sủa, an toàn 100% và không ai có thể hiểu nhầm được. 'Explicit is better than implicit' - Tường minh luôn luôn tốt hơn ngầm định!",
+        "Dạ thưa thầy, lời khuyên của thầy thực sự vô giá ạ! Việc đặt dấu ngoặc đơn () không tốn thêm một byte bộ nhớ nào nhưng lại giúp mã nguồn an toàn tuyệt đối và giúp đồng nghiệp đọc hiểu ngay lập tức ạ!"
+    ),
+    # Slide 40
+    (
+        "Slide 40: Case Study Tổng Hợp: Giải Phẫu Biểu Thức Phức Hợp",
+        "Slide 40 mang đến một Case Study tổng hợp giải phẫu biểu thức: bool check = 5 + 3 * 2 > 10 && (4 << 1) == 8;. Nhìn vào cây cú pháp AST trên slide, máy tính sẽ đánh giá tuần tự theo đúng luật: Bước 1: Cặp ngoặc đơn được ưu tiên số 1, tính (4 << 1) dịch trái ra 8. Bước 2: Phép nhân 3 * 2 ra 6. Bước 3: Phép cộng 5 + 6 ra 11. Bước 4: So sánh quan hệ 11 > 10 ra true. Bước 5: So sánh bình đẳng 8 == 8 ra true. Bước 6: Phép logic đoản mạch true && true trả về kết quả cuối cùng là true, gán vào biến check. Mọi biểu thức dù phức tạp đến đâu trong C# cũng đều được bóc tách tuần tự và chuẩn xác như một cỗ máy đồng hồ tinh xảo!",
+        "Dạ thưa thầy, theo dõi từng bước bóc tách trên cây cú pháp AST giúp chúng em thấy rõ cách mà trình biên dịch C# phân tích câu lệnh. Bây giờ chúng em đã hoàn toàn tự tin đối mặt với mọi biểu thức trong lập trình rồi ạ!"
+    ),
+    # Slide 41
+    (
+        "Slide 41: Thử Thách Tại Lớp: Mini-Challenge (10 Phút)",
+        "Và bây giờ là phần hấp dẫn nhất của buổi học trên Slide 41: Mini-Challenge 10 phút tại phòng máy! Các em hãy mở Visual Studio, tạo Solution mang tên Buoi04_MiniChallenge và hoàn thành 5 nhiệm vụ sau: 1. Nhập số nguyên N từ bàn phím bằng phương thức an toàn int.TryParse(); 2. Kiểm tra N là số chẵn hay số lẻ bằng toán tử bitwise & 1; 3. Dùng phép dịch bit << 3 để nhân 8, và >> 2 để chia 4; 4. Tính trung bình cộng của N với 15 dưới dạng số thực chính xác hai chữ số thập phân; 5. Viết khối try-catch có chứa checked để cộng N với int.MaxValue và bắt lỗi tràn số nếu xảy ra. Thời gian 10 phút bắt đầu, các em hãy tập trung làm bài nào!",
+        "Dạ thưa thầy, đề bài rất hay và tích hợp trọn vẹn toàn bộ các kỹ năng đã học từ đầu buổi đến giờ ạ! Cả lớp IT26M chúng em đang bắt tay vào code ngay đây ạ!"
+    ),
+    # Slide 42
+    (
+        "Slide 42: Lời Giải Mẫu Mini-Challenge",
+        "Hết giờ làm bài! Các em hãy nhìn lên Slide 42 để đối chiếu với Lời giải mẫu chuẩn mực của thầy: Đầu tiên, ta kiểm tra nhập liệu: if (!int.TryParse(Console.ReadLine(), out int n)) { return; }. Yêu cầu 1: Console.WriteLine($\"1. {n} la: {((n & 1) == 0 ? \"So Chan\" : \"So Le\")}\");. Yêu cầu 2: Dịch bit in ra n << 3 và n >> 2. Yêu cầu 3: Ép kiểu chia số thực double avg = (n + 15) / 2.0; in định dạng {avg:F2}. Yêu cầu 4: Khối try { checked { int overflowVal = int.MaxValue + n; } } catch (OverflowException) thông báo khi phát hiện tràn số. Thầy khen ngợi lớp IT26M, hơn 90% các bạn đã hoàn thành bài tập này rất xuất sắc!",
+        "Dạ thưa thầy, đối chiếu với code mẫu của thầy thì nhóm chúng em đã làm đúng toàn bộ cả 5 yêu cầu ạ! Khi chạy thử với số dương, khối checked đã bắt được lỗi tràn số đúng như lý thuyết thầy giảng, cả nhóm chúng em rất phấn khích ạ!"
+    ),
+    # Slide 43
+    (
+        "Slide 43: Hệ Thống Bài Tập Tự Luyện Về Nhà (Homework Projects)",
+        "Slide 43 giao nhiệm vụ rèn luyện về nhà với 3 bài tập lớn: Bài 1: Xây dựng biểu thức hình học và vật lý tính khoảng cách Euclid 2D giữa hai điểm và tính quãng đường rơi tự do s = 0.5 * g * t^2 với g = 9.81, yêu cầu dùng double.TryParse(). Bài 2: Tối ưu thuật toán với Bitwise: hoán đổi 2 số bằng XOR và xây dựng hệ thống quản lý cờ trạng thái sinh viên (Đã nộp học phí, Đã điểm danh, Cán bộ lớp). Bài 3: Phần mềm tài chính tính lãi tiết kiệm ngân hàng cho số tiền hàng tỷ đồng, áp dụng khối checked và so sánh kết quả giữa kiểu int, long và decimal. Quy cách nộp bài: Đóng gói Solution thành file zip MSSV_HoTen_Buoi04.zip và nộp lên Cổng học tập trực tuyến trước buổi học sau!",
+        "Dạ thưa thầy, các bài tập về nhà rất thực tế và mang tính ứng dụng cao ạ. Chúng em sẽ hoàn thành đầy đủ cả 3 bài tập để rèn luyện kỹ năng viết mã chuẩn mực ạ!"
+    ),
+    # Slide 44
+    (
+        "Slide 44: Tổng Kết Chuẩn Đầu Ra & Cầu Nối Sang Buổi 05",
+        "Chúng ta cùng nhìn lại Slide 44 để tổng kết buổi học hôm nay: Các em hãy kiểm tra checklist 5 CLOs: Chúng ta đã làm chủ biểu thức, phân biệt dứt điểm các toán tử số học, so sánh, logic đoản mạch, tiền tố hậu tố ++x và x++; đã khám phá thế giới nhị phân mã bù 2 và kỹ thuật Bitmasking; đã nắm vững cơ chế ép kiểu ngầm định vs tường minh, TryParse() và bảo vệ chống tràn số với checked; và làm chủ toán tử gán cùng bảng thứ tự ưu tiên. Và đây là cầu nối sang Buổi 05: Khi chương trình lớn dần lên, nếu chúng ta cứ viết hàng trăm dòng code dồn hết vào hàm Main(), mã nguồn sẽ trở thành một đống hỗn độn, trùng lặp và cực kỳ khó bảo trì! Làm thế nào để chia nhỏ chương trình thành các Hàm (Functions / Methods) độc lập, tái sử dụng được và truyền tham số an toàn? Đó chính là nội dung bùng nổ của Buổi 05: Hàm và Cấu trúc chương trình! Cảm ơn toàn thể các em sinh viên lớp IT26M đã tham gia buổi học rất tích cực hôm nay!",
+        "Dạ chúng em cảm ơn thầy rất nhiều vì một buổi học tràn đầy năng lượng và kiến thức thực chiến sâu sắc ạ! Bài học hôm nay đã khai sáng cho chúng em rất nhiều về cách máy tính vận hành bên dưới. Chúng em sẽ ôn tập kỹ, làm bài tập về nhà đầy đủ và háo hức chờ đón bài học về Hàm ở Buổi 05 ạ. Chúc thầy nhiều sức khỏe ạ!"
+    )
+]
+
+output_dir = os.path.join("VideoCShape", "Buổi 4")
+os.makedirs(output_dir, exist_ok=True)
+output_path = os.path.join(output_dir, "script.txt")
+
+with open(output_path, "w", encoding="utf-8") as f:
+    for idx, item in enumerate(slides_data):
+        slide_title = item[0]
+        dialogues = item[1:]
+        f.write(f"{slide_title}\n")
+        roles = ["Người 1", "Người 2"]
+        for d_idx, d_text in enumerate(dialogues):
+            role = roles[d_idx % 2]
+            f.write(f"{role}: {d_text}\n")
+        if idx < len(slides_data) - 1:
+            f.write("\n")
+
+file_size = os.path.getsize(output_path)
+print(f"Successfully generated {output_path}")
+print(f"Total slides: {len(slides_data)}")
+print(f"File size: {file_size} bytes ({file_size / 1024:.2f} KB)")

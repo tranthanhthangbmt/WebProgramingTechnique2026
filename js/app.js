@@ -5,9 +5,10 @@
 // ============================================================================
 
 // State Management
+const savedChapter = parseInt(localStorage.getItem('activeChapter'), 10);
 const AppState = {
-  currentTab: 'overview',
-  currentChapter: 1,
+  currentTab: localStorage.getItem('activeTab') || 'overview',
+  currentChapter: (savedChapter && savedChapter >= 1 && savedChapter <= 4) ? savedChapter : 1,
   currentSlide: 1,
   totalSlides: 42,
   currentQuestionIndex: 0,
@@ -22,8 +23,14 @@ const AppState = {
 // DYNAMIC MULTI-CHAPTER DATA GETTERS
 // ============================================================================
 function getCurrentQuiz() {
-  if (AppState.currentChapter === 4) {
+  if (AppState.currentChapter === 6) {
     return (typeof QUIZ_CHAPTER_04 !== 'undefined') ? QUIZ_CHAPTER_04 : [];
+  }
+  if (AppState.currentChapter === 5) {
+    return (typeof QUIZ_CHAPTER_05 !== 'undefined') ? QUIZ_CHAPTER_05 : [];
+  }
+  if (AppState.currentChapter === 4) {
+    return (typeof QUIZ_CHAPTER_04_LAB !== 'undefined') ? QUIZ_CHAPTER_04_LAB : [];
   }
   if (AppState.currentChapter === 3) {
     return (typeof QUIZ_CHAPTER_03 !== 'undefined') ? QUIZ_CHAPTER_03 : [];
@@ -35,8 +42,14 @@ function getCurrentQuiz() {
 }
 
 function getCurrentExercises() {
-  if (AppState.currentChapter === 4) {
+  if (AppState.currentChapter === 6) {
     return (typeof EXERCISES_CHAPTER_04 !== 'undefined') ? EXERCISES_CHAPTER_04 : [];
+  }
+  if (AppState.currentChapter === 5) {
+    return (typeof EXERCISES_CHAPTER_05 !== 'undefined') ? EXERCISES_CHAPTER_05 : [];
+  }
+  if (AppState.currentChapter === 4) {
+    return (typeof EXERCISES_CHAPTER_04_LAB !== 'undefined') ? EXERCISES_CHAPTER_04_LAB : [];
   }
   if (AppState.currentChapter === 3) {
     return (typeof EXERCISES_CHAPTER_03 !== 'undefined') ? EXERCISES_CHAPTER_03 : [];
@@ -48,8 +61,14 @@ function getCurrentExercises() {
 }
 
 function getCurrentTranscripts() {
-  if (AppState.currentChapter === 4) {
+  if (AppState.currentChapter === 6) {
     return (typeof SLIDE_TRANSCRIPTS_CHAPTER_04 !== 'undefined') ? SLIDE_TRANSCRIPTS_CHAPTER_04 : {};
+  }
+  if (AppState.currentChapter === 5) {
+    return (typeof SLIDE_TRANSCRIPTS_CHAPTER_05 !== 'undefined') ? SLIDE_TRANSCRIPTS_CHAPTER_05 : {};
+  }
+  if (AppState.currentChapter === 4) {
+    return (typeof SLIDE_TRANSCRIPTS_CHAPTER_04_LAB !== 'undefined') ? SLIDE_TRANSCRIPTS_CHAPTER_04_LAB : {};
   }
   if (AppState.currentChapter === 3) {
     return (typeof SLIDE_TRANSCRIPTS_CHAPTER_03 !== 'undefined') ? SLIDE_TRANSCRIPTS_CHAPTER_03 : {};
@@ -140,13 +159,24 @@ function initTabs() {
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const targetTab = btn.getAttribute('data-tab');
-      switchTab(targetTab);
+      switchTab(targetTab, true);
     });
   });
+
+  // Khôi phục tab đang chọn từ LocalStorage (không cuộn trang tự động khi vừa load)
+  const savedTab = localStorage.getItem('activeTab');
+  if (savedTab && savedTab !== 'overview') {
+    if (savedTab === 'lab' && AppState.currentChapter !== 3) {
+      switchTab('overview', false);
+    } else {
+      switchTab(savedTab, false);
+    }
+  }
 }
 
-function switchTab(tabId) {
+function switchTab(tabId, shouldScroll = true) {
   AppState.currentTab = tabId;
+  localStorage.setItem('activeTab', tabId);
 
   // Update Buttons
   document.querySelectorAll('.nav-tab-btn').forEach(btn => {
@@ -168,8 +198,10 @@ function switchTab(tabId) {
     }
   });
 
-  // Scroll to top of content smoothly
-  window.scrollTo({ top: 120, behavior: 'smooth' });
+  // Scroll to top of content smoothly (chỉ cuộn khi người dùng click chủ động)
+  if (shouldScroll) {
+    window.scrollTo({ top: 120, behavior: 'smooth' });
+  }
 }
 window.switchTab = switchTab;
 
@@ -179,16 +211,14 @@ window.switchTab = switchTab;
 function initChapterSelector() {
   const selector = document.getElementById('chapterSelector');
   if (selector) {
-    const initialVal = parseInt(selector.value, 10);
-    const labTabBtn = document.getElementById('navTabBtnLab');
-    if (labTabBtn) {
-      labTabBtn.style.display = (initialVal === 3) ? 'inline-flex' : 'none';
-    }
-    if (initialVal >= 2 && initialVal <= 4) {
-      switchChapter(initialVal);
-    } else {
-      updateVideoTab(1);
-    }
+    const savedChapter = parseInt(localStorage.getItem('activeChapter'), 10);
+    const initialVal = (savedChapter && savedChapter >= 1 && savedChapter <= 6)
+      ? savedChapter
+      : (parseInt(selector.value, 10) || 1);
+
+    selector.value = initialVal;
+
+    switchChapter(initialVal);
 
     selector.addEventListener('change', (e) => {
       switchChapter(e.target.value);
@@ -203,12 +233,13 @@ function updateVideoTab(chapterNum) {
   // 1. Iframe video player (Rạp chiếu to toàn màn hình)
   const iframe = document.getElementById('chapterVideoIframe');
   if (iframe) {
-    const targetSrc = `./VideoCShape/Chapter_0${chapterNum}/index.html`;
+    const targetSrc = `${meta.videoDir}/index.html`;
     const normalizedSrc = iframe.src ? iframe.src.replace(/\\/g, '/') : '';
-    if (!normalizedSrc.endsWith(`VideoCShape/Chapter_0${chapterNum}/index.html`)) {
+    const cleanTarget = targetSrc.replace(/^\.\//, '');
+    if (!normalizedSrc.includes(cleanTarget)) {
       iframe.src = targetSrc;
     }
-    iframe.title = `Trình phát Bài giảng Video Chương ${chapterNum}`;
+    iframe.title = `Trình phát Bài giảng Video ${meta.title}`;
   }
 
   // 2. Toolbar buttons in Tab 3
@@ -226,7 +257,7 @@ function updateVideoTab(chapterNum) {
   // 3. Theater top bar badge and buttons
   const badgeTitle = document.getElementById('theaterBadgeTitle');
   if (badgeTitle) {
-    badgeTitle.textContent = `Trình phát Video Bài giảng Chương ${chapterNum} (Toàn màn hình Chuẩn Mặc Định)`;
+    badgeTitle.textContent = `Trình phát Video Bài giảng ${meta.title} (Toàn màn hình Chuẩn Mặc Định)`;
   }
 
   const badgeSubtitle = document.getElementById('theaterBadgeSubtitle');
@@ -324,9 +355,10 @@ function updateChapterStaticContent(chapterNum) {
 
 function switchChapter(ch) {
   const chapterNum = parseInt(ch, 10);
-  if (chapterNum !== 1 && chapterNum !== 2 && chapterNum !== 3 && chapterNum !== 4) return;
+  if (chapterNum < 1 || chapterNum > 6) return;
 
   AppState.currentChapter = chapterNum;
+  localStorage.setItem('activeChapter', chapterNum);
   const meta = getCurrentChapterMeta();
   AppState.totalSlides = meta.totalSlides;
   AppState.currentSlide = 1;
@@ -370,16 +402,12 @@ function switchChapter(ch) {
     }
   }
 
-  // Hiển thị nút Tab Lab 01 riêng cho Chương 3
+  // Ẩn tab lab riêng biệt (vì Lab 01 đã được nâng cấp thành Buổi 4 chính thức)
   const labTabBtn = document.getElementById('navTabBtnLab');
   if (labTabBtn) {
-    if (chapterNum === 3) {
-      labTabBtn.style.display = 'inline-flex';
-    } else {
-      labTabBtn.style.display = 'none';
-      if (AppState.currentTab === 'lab') {
-        switchTab('overview');
-      }
+    labTabBtn.style.display = 'none';
+    if (AppState.currentTab === 'lab') {
+      switchTab('overview');
     }
   }
 

@@ -2406,12 +2406,657 @@ const QUIZ_CHAPTER_04 = [
   }
 ];
 
+
+// ============================================================================
+// BỘ CÂU HỎI TRẮC NGHIỆM BUỔI 4: THỰC HÀNH LAB 01 (20 CÂU CHUẨN HÓA)
+// ============================================================================
+const QUIZ_CHAPTER_04_LAB = [
+  {
+    "id": 1,
+    "category": "Cấu trúc Project & VS",
+    "bloom": "Understand",
+    "question": "Trong môi trường Visual Studio 2022, mối quan hệ giữa Solution (.sln) và Project (.csproj) được quy định như thế nào?",
+    "options": [
+      "Một Project chứa nhiều Solution con bên trong.",
+      "Solution là vùng chứa cấp cao nhất (Container) có thể chứa một hoặc nhiều Project con liên quan.",
+      "Solution và Project là hai tên gọi hoàn toàn đồng nghĩa của cùng một tệp tin.",
+      "Project chỉ chứa mã nguồn C#, còn Solution chỉ chứa hình ảnh và tài nguyên giao diện."
+    ],
+    "correct": 1,
+    "explanation": "Solution (.sln) đóng vai trò là thư mục dự án cấp cao nhất quản lý một hoặc nhiều Project (.csproj) cùng các cấu hình build của giải pháp phần mềm."
+  },
+  {
+    "id": 2,
+    "category": "Phím tắt & Biên dịch",
+    "bloom": "Remember",
+    "question": "Để biên dịch và thực thi ứng dụng Console C# trên Visual Studio mà cửa sổ Console KHÔNG tự động đóng lại sau khi chạy xong, ta dùng phím tắt nào?",
+    "options": [
+      "F5 (Start Debugging)",
+      "Ctrl + F5 (Start Without Debugging)",
+      "Shift + F5 (Stop Debugging)",
+      "Ctrl + Shift + B (Build Solution)"
+    ],
+    "correct": 1,
+    "explanation": "Phím tắt Ctrl + F5 (Start Without Debugging) sẽ giữ cửa sổ Console dừng lại kèm thông báo 'Press any key to close this window...' giúp lập trình viên quan sát kết quả."
+  },
+  {
+    "id": 3,
+    "category": "Bẫy lỗi Cú pháp",
+    "bloom": "Analyze",
+    "question": "Khi biên dịch, trình biên dịch C# báo lỗi 'CS1002: ; expected'. Lỗi này xuất phát từ nguyên nhân nào?",
+    "options": [
+      "Chương trình thiếu cặp ngoặc nhọn đóng lớp class.",
+      "Cuối một câu lệnh thực thi thiếu dấu chấm phẩy (;).",
+      "Khai báo sai tên biến hoặc trùng lặp từ khóa của C#.",
+      "Chưa nạp không gian tên using System; ở đầu tệp."
+    ],
+    "correct": 1,
+    "explanation": "CS1002 là mã lỗi phổ biến nhất của người mới học C#, báo hiệu một câu lệnh C# kết thúc mà thiếu dấu chấm phẩy (;)."
+  },
+  {
+    "id": 4,
+    "category": "Bẫy lỗi Cú pháp",
+    "bloom": "Analyze",
+    "question": "Mã lỗi 'CS1513: } expected' thường xảy ra khi lập trình viên gặp tình huống nào sau đây?",
+    "options": [
+      "Viết hoa sai tên phương thức Main.",
+      "Quên đóng ngoặc nhọn } cho một khối lệnh if, phương thức hoặc lớp class.",
+      "Chia một số nguyên cho số 0.",
+      "Nhập chữ cái vào câu lệnh int.Parse()."
+    ],
+    "correct": 1,
+    "explanation": "CS1513 xảy ra khi số lượng ngoặc mở { nhiều hơn số lượng ngoặc đóng }, thường do quên đóng ngoặc khối lệnh."
+  },
+  {
+    "id": 5,
+    "category": "Luồng I/O Console",
+    "bloom": "Understand",
+    "question": "Phương thức Console.ReadLine() trong C# luôn trả về dữ liệu thuộc kiểu nào?",
+    "options": [
+      "Kiểu số nguyên int 32-bit.",
+      "Kiểu ký tự char đơn lẻ.",
+      "Kiểu chuỗi ký tự string.",
+      "Tự động nhận diện kiểu dữ liệu mà người dùng nhập từ bàn phím."
+    ],
+    "correct": 2,
+    "explanation": "Console.ReadLine() luôn đọc toàn bộ dòng văn bản từ bàn phím dưới dạng chuỗi ký tự (string), bắt buộc phải Parse nếu muốn tính toán số học."
+  },
+  {
+    "id": 6,
+    "category": "Ép kiểu & Parse",
+    "bloom": "Apply",
+    "question": "Nếu người dùng nhập chuỗi \"123a\" vào câu lệnh: int n = int.Parse(Console.ReadLine()); thì điều gì sẽ xảy ra?",
+    "options": [
+      "Biến n nhận giá trị 123 và bỏ qua chữ 'a'.",
+      "Chương trình tự động gán n = 0.",
+      "Chương trình bị ngắt và ném ra ngoại lệ System.FormatException.",
+      "Trình biên dịch báo lỗi cú pháp ngay khi gõ code."
+    ],
+    "correct": 2,
+    "explanation": "int.Parse() yêu cầu chuỗi phải hoàn toàn là các ký tự số hợp lệ; nếu chứa ký tự chữ cái sẽ ném ra ngoại lệ runtime FormatException."
+  },
+  {
+    "id": 7,
+    "category": "Cạm bẫy Số học",
+    "bloom": "Evaluate",
+    "question": "Trong C#, kết quả của biểu thức số học sau là bao nhiêu: double x = 5 / 2; ?",
+    "options": [
+      "2.5",
+      "2.0",
+      "2",
+      "Lỗi biên dịch vì không thể gán int cho double."
+    ],
+    "correct": 1,
+    "explanation": "Vì 5 và 2 đều là số nguyên (int), phép chia 5 / 2 là chia nguyên ra 2. Sau đó giá trị 2 mới được ép ngầm định sang kiểu double thành 2.0. Đây là cạm bẫy kinh điển!"
+  },
+  {
+    "id": 8,
+    "category": "Cạm bẫy Số học",
+    "bloom": "Apply",
+    "question": "Để biểu thức tính nhiệt độ Celsius từ Fahrenheit C = 5/9 * (F - 32) tính đúng kết quả thực trong C#, ta phải viết thế nào?",
+    "options": [
+      "double C = 5 / 9 * (F - 32);",
+      "double C = 5.0 / 9 * (F - 32);",
+      "int C = (double)5 / 9 * (F - 32);",
+      "double C = (5 / 9) * (double)(F - 32);"
+    ],
+    "correct": 1,
+    "explanation": "Viết 5 / 9 sẽ bằng 0 khiến toàn bộ kết quả luôn ra 0. Phải viết 5.0 / 9 hoặc 5 / 9.0 để thực hiện phép chia số thực."
+  },
+  {
+    "id": 9,
+    "category": "Toán tử Số học",
+    "bloom": "Apply",
+    "question": "Kết quả của phép chia lấy dư: int r = 29 % 6; trong C# bằng bao nhiêu?",
+    "options": [
+      "4",
+      "5",
+      "4.83",
+      "1"
+    ],
+    "correct": 1,
+    "explanation": "29 chia cho 6 được thương số nguyên là 4 và phần dư là 5 (29 = 6 * 4 + 5), do đó 29 % 6 = 5."
+  },
+  {
+    "id": 10,
+    "category": "Thuật toán Đổi thời gian",
+    "bloom": "Apply",
+    "question": "Cho biến int totalSeconds = 3665; Công thức nào sau đây tính đúng số phút còn lại (sau khi đã trừ đi số giờ)?",
+    "options": [
+      "int minutes = totalSeconds / 60;",
+      "int minutes = (totalSeconds % 3600) / 60;",
+      "int minutes = totalSeconds % 60;",
+      "int minutes = (totalSeconds / 3600) % 60;"
+    ],
+    "correct": 1,
+    "explanation": "totalSeconds % 3600 lấy phần giây dư sau các giờ tròn (65 giây), chia tiếp cho 60 được 1 phút."
+  },
+  {
+    "id": 11,
+    "category": "Bẫy lỗi Logic",
+    "bloom": "Analyze",
+    "question": "Đoạn mã sau có lỗi gì: if (x = 5) { Console.WriteLine(\"Bang 5\"); } trong C#?",
+    "options": [
+      "Không có lỗi, in ra 'Bang 5'.",
+      "Lỗi biên dịch CS0029 vì dấu = là phép gán trả về int, không thể chuyển đổi sang bool trong biểu thức if.",
+      "Lỗi runtime khi chạy chương trình.",
+      "Chương trình chạy vô tận."
+    ],
+    "correct": 1,
+    "explanation": "Khác với ngôn ngữ C/C++, trong C# câu lệnh if bắt buộc biểu thức điều kiện phải có kiểu bool. Dấu = là phép gán trả về int nên C# chặn ngay bằng lỗi biên dịch CS0029."
+  },
+  {
+    "id": 12,
+    "category": "Bẫy lỗi Logic",
+    "bloom": "Analyze",
+    "question": "Quan sát đoạn mã sau:\\nint score = 4;\\nif (score >= 5);\\n{\\n    Console.WriteLine(\"Đỗ môn\");\\n}\\nKhi chạy, kết quả màn hình là gì?",
+    "options": [
+      "Màn hình không in gì cả vì 4 < 5.",
+      "In ra 'Đỗ môn' vì dấu chấm phẩy ; ngay sau if đã kết thúc câu lệnh if rỗng, khối ngoặc bên dưới luôn được thực thi!",
+      "Lỗi biên dịch do có dấu chấm phẩy sau if.",
+      "Báo lỗi cú pháp CS1002."
+    ],
+    "correct": 1,
+    "explanation": "Đây là cạm bẫy 'Trailing Semicolon': dấu ; kết thúc câu lệnh if rỗng, khiến khối lệnh { ... } phía sau trở thành một khối độc lập và luôn chạy bất chấp điều kiện!"
+  },
+  {
+    "id": 13,
+    "category": "Cạm bẫy Số học",
+    "bloom": "Understand",
+    "question": "Khi thực hiện phép tính int a = 10 / 0; trong C#, kết quả là gì?",
+    "options": [
+      "Biến a nhận giá trị Infinity (vô cực).",
+      "Biến a nhận giá trị 0.",
+      "Chương trình ném ra ngoại lệ System.DivideByZeroException khi chạy.",
+      "Trình biên dịch tự động sửa thành 10 / 1."
+    ],
+    "correct": 2,
+    "explanation": "Phép chia số nguyên cho 0 trong C# luôn gây ra ngoại lệ thời gian chạy System.DivideByZeroException."
+  },
+  {
+    "id": 14,
+    "category": "Cấu trúc Rẽ nhánh",
+    "bloom": "Evaluate",
+    "question": "Cho đoạn mã sau:\\nint a = 10, b = 20;\\nint max = (a > b) ? a : b;\\nGiá trị của biến max sau khi thực thi là:",
+    "options": [
+      "10",
+      "20",
+      "true",
+      "Lỗi cú pháp toán tử ba ngôi"
+    ],
+    "correct": 1,
+    "explanation": "Toán tử điều kiện ba ngôi ? : đánh giá a > b (10 > 20 là false) nên trả về vế sau dấu hai chấm là b (20)."
+  },
+  {
+    "id": 15,
+    "category": "Định dạng Chuỗi",
+    "bloom": "Apply",
+    "question": "Để in giá trị biến double pi = 3.141592; lấy đúng 2 chữ số thập phân dùng String Interpolation, ta viết cú pháp nào?",
+    "options": [
+      "$\"pi = {pi:2}\"",
+      "$\"pi = {pi:F2}\"",
+      "$\"pi = {pi.ToString(2)}\"",
+      "$\"pi = %0.2f\""
+    ],
+    "correct": 1,
+    "explanation": "Cú pháp {pi:F2} định dạng số thực theo dạng Fixed-point với 2 chữ số sau dấu thập phân, cho kết quả 3.14."
+  },
+  {
+    "id": 16,
+    "category": "Thuật toán Tiền điện",
+    "bloom": "Apply",
+    "question": "Một hộ gia đình tiêu thụ 70 kWh điện trong tháng. Với biểu giá: Bậc 1 (0-50 kWh): 1.678 đ/kWh; Bậc 2 (51-100 kWh): 1.734 đ/kWh. Tiền điện chưa thuế được tính theo công thức nào?",
+    "options": [
+      "70 * 1734 = 121,380 VNĐ",
+      "(50 * 1678) + (20 * 1734) = 118,580 VNĐ",
+      "70 * 1678 = 117,460 VNĐ",
+      "(70 - 50) * 1678 = 33,560 VNĐ"
+    ],
+    "correct": 1,
+    "explanation": "Biểu giá điện bậc thang có tính chất lũy tiến: 50 kWh đầu tính theo giá bậc 1 (50 * 1678), 20 kWh vượt tính theo giá bậc 2 (20 * 1734). Tổng là 118,580 VNĐ."
+  },
+  {
+    "id": 17,
+    "category": "Thuật toán Thuế VAT",
+    "bloom": "Apply",
+    "question": "Nếu tiền điện chưa thuế là 100,000 VNĐ và thuế suất GTGT là 8%, tổng tiền thanh toán là bao nhiêu?",
+    "options": [
+      "100,000 VNĐ",
+      "108,000 VNĐ",
+      "110,000 VNĐ",
+      "100,800 VNĐ"
+    ],
+    "correct": 1,
+    "explanation": "Thuế VAT = 100,000 * 0.08 = 8,000 VNĐ. Tổng tiền thanh toán = 100,000 + 8,000 = 108,000 VNĐ."
+  },
+  {
+    "id": 18,
+    "category": "Validation Dữ liệu",
+    "bloom": "Understand",
+    "question": "Trong bài toán nhập chỉ số điện, điều kiện hợp lệ cơ bản giữa chỉ số cũ (soCu) và chỉ số mới (soMoi) là gì?",
+    "options": [
+      "soCu phải lớn hơn soMoi.",
+      "soMoi phải lớn hơn hoặc bằng soCu và cả hai đều không âm (>= 0).",
+      "Tổng soMoi + soCu phải chia hết cho 2.",
+      "Không cần kiểm tra vì người dùng luôn nhập đúng."
+    ],
+    "correct": 1,
+    "explanation": "Chỉ số mới đo sản lượng tiêu thụ sau chỉ số cũ nên bắt buộc soMoi >= soCu và >= 0 để sản lượng tiêu thụ kwh >= 0."
+  },
+  {
+    "id": 19,
+    "category": "Cấu trúc Tam giác",
+    "bloom": "Apply",
+    "question": "Để ba cạnh a, b, c lập thành một tam giác hợp lệ, điều kiện bất đẳng thức tam giác trong C# phải viết thế nào?",
+    "options": [
+      "(a + b > c) || (a + c > b) || (b + c > a)",
+      "(a + b > c) && (a + c > b) && (b + c > a)",
+      "a > 0 || b > 0 || c > 0",
+      "a == b && b == c"
+    ],
+    "correct": 1,
+    "explanation": "Bất đẳng thức tam giác đòi hỏi tổng hai cạnh bất kỳ phải lớn hơn cạnh còn lại: phải đồng thời thỏa mãn cả 3 điều kiện nên dùng toán tử logic &&."
+  },
+  {
+    "id": 20,
+    "category": "Tiêu chuẩn Rubric",
+    "bloom": "Remember",
+    "question": "Trong Rubric đánh giá thực hành phòng máy 10 điểm của học phần, giai đoạn thử thách tính tiền điện bậc thang chiếm bao nhiêu điểm?",
+    "options": [
+      "1.0 Điểm",
+      "2.0 Điểm",
+      "2.5 Điểm",
+      "3.0 Điểm"
+    ],
+    "correct": 3,
+    "explanation": "Theo chuẩn Rubric đào tạo phòng lab: Giai đoạn 1 (2.0đ), Giai đoạn 2 (2.5đ), Giai đoạn 3 (2.5đ), Giai đoạn 4 Thử thách tính tiền điện chiếm 3.0 điểm."
+  }
+];
+
+// ============================================================================
+// BỘ CÂU HỎI TRẮC NGHIỆM BUỔI 5: NỀN TẢNG NGÔN NGỮ (25 CÂU CHUẨN HÓA)
+// ============================================================================
+const QUIZ_CHAPTER_05 = [
+  {
+    "id": 1,
+    "category": "Khái niệm Biểu thức",
+    "bloom": "Understand",
+    "question": "Trong ngôn ngữ C#, một 'Biểu thức' (Expression) được định nghĩa chuẩn xác là gì?",
+    "options": [
+      "Là một dòng chú thích giải thích thuật toán cho lập trình viên.",
+      "Là sự kết hợp giữa các toán tử (operators) và toán hạng (operands) được đánh giá để tính ra một giá trị duy nhất.",
+      "Là một tệp tin mã nguồn có phần mở rộng .cs trong dự án.",
+      "Là một khối lệnh được bao quanh bởi cặp ngoặc nhọn { }."
+    ],
+    "correct": 1,
+    "explanation": "Theo chuẩn C# Language Specification: Biểu thức là chuỗi kết hợp các toán tử và toán hạng tính toán sinh ra một giá trị thuộc kiểu dữ liệu xác định."
+  },
+  {
+    "id": 2,
+    "category": "Toán tử Tăng Tiền tố",
+    "bloom": "Understand",
+    "question": "Toán tử tăng tiền tố (++x) hoạt động theo cơ chế nào trong một biểu thức?",
+    "options": [
+      "Trả về giá trị hiện tại của x cho biểu thức trước, sau đó mới tăng x lên 1.",
+      "Tăng giá trị của biến x lên 1 trước, sau đó mới trả về giá trị mới đã tăng cho biểu thức.",
+      "Chỉ tăng biến x mà không trả về giá trị nào cho biểu thức.",
+      "Nhân đôi giá trị của x trong bộ nhớ RAM."
+    ],
+    "correct": 1,
+    "explanation": "Toán tử tiền tố (++x) thực hiện tăng giá trị biến trước (Pre-increment), rồi mới đưa giá trị mới vào đánh giá biểu thức."
+  },
+  {
+    "id": 3,
+    "category": "Toán tử Tăng Hậu tố",
+    "bloom": "Understand",
+    "question": "Toán tử tăng hậu tố (x++) hoạt động theo cơ chế nào trong một biểu thức?",
+    "options": [
+      "Tăng biến x lên 1 trước rồi trả về giá trị mới.",
+      "Trả về giá trị hiện tại của x cho biểu thức sử dụng trước, sau đó mới tăng giá trị x lên 1.",
+      "Làm giảm giá trị x đi 1 đơn vị.",
+      "Tạo ra một bản sao không thể thay đổi của biến x."
+    ],
+    "correct": 1,
+    "explanation": "Toán tử hậu tố (x++) sử dụng giá trị hiện thời trong biểu thức trước (Post-increment), sau đó biến mới được tăng thêm 1 đơn vị."
+  },
+  {
+    "id": 4,
+    "category": "Truy vết Biểu thức",
+    "bloom": "Apply",
+    "question": "Cho đoạn mã sau:\\nint a = 5;\\nint b = ++a;\\nSau khi thực thi, giá trị của a và b lần lượt là:",
+    "options": [
+      "a = 5, b = 6",
+      "a = 6, b = 5",
+      "a = 6, b = 6",
+      "a = 5, b = 5"
+    ],
+    "correct": 2,
+    "explanation": "++a tăng a từ 5 lên 6 trước, sau đó gán giá trị mới (6) cho b. Kết quả cả a và b đều bằng 6."
+  },
+  {
+    "id": 5,
+    "category": "Truy vết Biểu thức",
+    "bloom": "Apply",
+    "question": "Cho đoạn mã sau:\\nint a = 5;\\nint b = a++;\\nSau khi thực thi, giá trị của a và b lần lượt là:",
+    "options": [
+      "a = 5, b = 6",
+      "a = 6, b = 5",
+      "a = 6, b = 6",
+      "a = 5, b = 5"
+    ],
+    "correct": 1,
+    "explanation": "a++ gán giá trị ban đầu (5) cho b trước, sau đó mới tăng a lên 6. Do đó a = 6, b = 5."
+  },
+  {
+    "id": 6,
+    "category": "Cạm bẫy Side Effects",
+    "bloom": "Analyze",
+    "question": "Đoạn mã sau in ra giá trị gì:\\nint x = 3;\\nint result = ++x + x++;\\nConsole.WriteLine(result);",
+    "options": [
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "correct": 2,
+    "explanation": "++x tăng x lên 4 và trả về 4. Tiếp theo x++ sử dụng giá trị 4 hiện tại rồi mới tăng x lên 5. Kết quả: 4 + 4 = 8."
+  },
+  {
+    "id": 7,
+    "category": "Gán Phức hợp",
+    "bloom": "Understand",
+    "question": "Câu lệnh: x *= y + 2; trong C# tương đương chính xác với câu lệnh nào sau đây?",
+    "options": [
+      "x = x * y + 2;",
+      "x = x * (y + 2);",
+      "x = (x * y) + 2;",
+      "x = x + y * 2;"
+    ],
+    "correct": 1,
+    "explanation": "Toán tử gán phức hợp coi toàn bộ biểu thức bên phải dấu bằng như một khối được bao trong ngoặc: x = x * (y + 2)."
+  },
+  {
+    "id": 8,
+    "category": "Khái niệm Bitwise",
+    "bloom": "Understand",
+    "question": "Các toán tử thao tác bit (Bitwise Operators) trong C# xử lý dữ liệu ở cấp độ nào?",
+    "options": [
+      "Ở cấp độ chuỗi ký tự Unicode trong bộ nhớ Heap.",
+      "Trực tiếp trên từng bit nhị phân (0 và 1) của các kiểu số nguyên trong thanh ghi CPU.",
+      "Ở cấp độ pixel hình ảnh trên giao diện đồ họa.",
+      "Trên các đối tượng tham chiếu của lớp Class."
+    ],
+    "correct": 1,
+    "explanation": "Bitwise operators thao tác trực tiếp trên các bit nhị phân trong ô nhớ, mang lại tốc độ xử lý phần cứng tối đa."
+  },
+  {
+    "id": 9,
+    "category": "Phép toán AND Bit",
+    "bloom": "Apply",
+    "question": "Kết quả của phép tính bitwise: 12 & 10 (trong đó 12 = 1100_2 và 10 = 1010_2) bằng bao nhiêu?",
+    "options": [
+      "14",
+      "8",
+      "2",
+      "0"
+    ],
+    "correct": 1,
+    "explanation": "1100 & 1010 = 1000 (nhị phân). Chuyển sang hệ thập phân là 8."
+  },
+  {
+    "id": 10,
+    "category": "Phép toán OR Bit",
+    "bloom": "Apply",
+    "question": "Kết quả của phép tính bitwise: 12 | 10 (trong đó 12 = 1100_2 và 10 = 1010_2) bằng bao nhiêu?",
+    "options": [
+      "14",
+      "8",
+      "6",
+      "12"
+    ],
+    "correct": 0,
+    "explanation": "1100 | 1010 = 1110 (nhị phân). Chuyển sang hệ thập phân là 14 (8 + 4 + 2)."
+  },
+  {
+    "id": 11,
+    "category": "Phép toán XOR Bit",
+    "bloom": "Apply",
+    "question": "Kết quả của phép tính bitwise: 12 ^ 10 (trong đó 12 = 1100_2 và 10 = 1010_2) bằng bao nhiêu?",
+    "options": [
+      "14",
+      "8",
+      "6",
+      "0"
+    ],
+    "correct": 2,
+    "explanation": "1100 ^ 1010 = 0110 (nhị phân, bit khác nhau ra 1). Chuyển sang hệ thập phân là 6 (4 + 2)."
+  },
+  {
+    "id": 12,
+    "category": "Phép toán NOT Bit",
+    "bloom": "Understand",
+    "question": "Trong hệ biểu diễn số có dấu bù 2 (Two's Complement), phép NOT bit ~x của một số nguyên dương x cho kết quả là:",
+    "options": [
+      "-x",
+      "-(x + 1)",
+      "-(x - 1)",
+      "x"
+    ],
+    "correct": 1,
+    "explanation": "Trong chuẩn mã bù 2, đảo toàn bộ bit của x (~x) tương đương với -(x + 1). Ví dụ ~5 = -6."
+  },
+  {
+    "id": 13,
+    "category": "Phép Dịch Trái",
+    "bloom": "Apply",
+    "question": "Phép dịch trái bit: int result = 5 << 2; trong C# cho kết quả bằng bao nhiêu?",
+    "options": [
+      "10",
+      "20",
+      "25",
+      "2"
+    ],
+    "correct": 1,
+    "explanation": "Dịch trái 2 vị trí tương đương nhân với 2^2 = 4. Do đó 5 * 4 = 20 (nhị phân: 0101 << 2 = 10100_2 = 20)."
+  },
+  {
+    "id": 14,
+    "category": "Phép Dịch Phải",
+    "bloom": "Apply",
+    "question": "Phép dịch phải bit: int result = 40 >> 3; trong C# cho kết quả bằng bao nhiêu?",
+    "options": [
+      "5",
+      "10",
+      "20",
+      "320"
+    ],
+    "correct": 0,
+    "explanation": "Dịch phải 3 vị trí tương đương chia nguyên cho 2^3 = 8. Do đó 40 / 8 = 5."
+  },
+  {
+    "id": 15,
+    "category": "Thuật toán Bitwise",
+    "bloom": "Apply",
+    "question": "Biểu thức bitwise nào sau đây kiểm tra một số nguyên n có phải là số chẵn hay không với tốc độ cao nhất?",
+    "options": [
+      "(n % 2) == 0",
+      "(n & 1) == 0",
+      "(n | 1) == n",
+      "(n >> 1) == 0"
+    ],
+    "correct": 1,
+    "explanation": "Bit cuối cùng (LSB) của số chẵn luôn là 0. Do đó phép AND bit (n & 1) == 0 kiểm tra tính chẵn cực nhanh ở cấp độ CPU mà không cần phép chia."
+  },
+  {
+    "id": 16,
+    "category": "Thuật toán Bitwise",
+    "bloom": "Analyze",
+    "question": "Biểu thức: (n > 0) && ((n & (n - 1)) == 0) dùng để kiểm tra tính chất toán học nào của số nguyên n?",
+    "options": [
+      "n là số nguyên tố.",
+      "n là một lũy thừa của 2 (1, 2, 4, 8, 16, 32...).",
+      "n là số chia hết cho 10.",
+      "n là số chính phương."
+    ],
+    "correct": 1,
+    "explanation": "Lũy thừa của 2 chỉ có đúng 1 bit 1 (ví dụ 8 là 1000). Khi lấy 8 & 7 (1000 & 0111) kết quả sẽ triệt tiêu về 0."
+  },
+  {
+    "id": 17,
+    "category": "Mặt nạ Bit & Enum",
+    "bloom": "Understand",
+    "question": "Để định nghĩa enum hỗ trợ kết hợp nhiều cờ bitwise (Mặt nạ bit - Bitmask), ta cần thêm thuộc tính (Attribute) nào phía trên enum?",
+    "options": [
+      "[Serializable]",
+      "[Flags]",
+      "[Bitmask]",
+      "[Combined]"
+    ],
+    "correct": 1,
+    "explanation": "Thuộc tính [Flags] báo cho trình biên dịch và runtime biết enum này được dùng như một tập cờ bitwise kết hợp, hiển thị tên cờ cách nhau bởi dấu phẩy."
+  },
+  {
+    "id": 18,
+    "category": "Thao tác Bitmask",
+    "bloom": "Apply",
+    "question": "Để BẬT (kích hoạt) một quyền Permission.Write vào biến userPerms hiện có, ta dùng câu lệnh nào?",
+    "options": [
+      "userPerms &= Permission.Write;",
+      "userPerms |= Permission.Write;",
+      "userPerms ^= Permission.Write;",
+      "userPerms = ~Permission.Write;"
+    ],
+    "correct": 1,
+    "explanation": "Toán tử OR bit (|=) dùng để bật các bit của mặt nạ mà không làm thay đổi các bit khác."
+  },
+  {
+    "id": 19,
+    "category": "Thao tác Bitmask",
+    "bloom": "Apply",
+    "question": "Để TẮT (thu hồi) một quyền Permission.Write khỏi biến userPerms, ta dùng câu lệnh nào?",
+    "options": [
+      "userPerms &= ~Permission.Write;",
+      "userPerms |= ~Permission.Write;",
+      "userPerms ^= Permission.Write;",
+      "userPerms -= Permission.Write;"
+    ],
+    "correct": 0,
+    "explanation": "Toán tử &= ~MASK đảo bit của quyền cần xóa thành 0 và giữ các bit khác là 1, dùng phép AND để xóa sạch bit đó."
+  },
+  {
+    "id": 20,
+    "category": "Thao tác Bitmask",
+    "bloom": "Apply",
+    "question": "Để KIỂM TRA xem biến userPerms có chứa quyền Permission.Execute hay không, ta dùng biểu thức nào?",
+    "options": [
+      "(userPerms | Permission.Execute) != 0",
+      "(userPerms & Permission.Execute) == Permission.Execute",
+      "userPerms == Permission.Execute",
+      "userPerms > Permission.Execute"
+    ],
+    "correct": 1,
+    "explanation": "Phép AND (userPerms & MASK) sẽ lọc ra bit cần kiểm tra; nếu bit đó tồn tại kết quả trả về đúng bằng MASK."
+  },
+  {
+    "id": 21,
+    "category": "Ép kiểu Ngầm định",
+    "bloom": "Understand",
+    "question": "Phát biểu nào sau đây là ĐÚNG về ép kiểu ngầm định (Implicit Type Conversion) trong C#?",
+    "options": [
+      "Xảy ra khi chuyển từ kiểu dữ liệu có phạm vi lớn sang kiểu nhỏ hơn.",
+      "Xảy ra tự động khi chuyển từ kiểu có phạm vi/độ chính xác nhỏ sang lớn hơn (ví dụ int sang double), không làm mất dữ liệu.",
+      "Bắt buộc lập trình viên phải ghi rõ kiểu dữ liệu trong dấu ngoặc đơn (type).",
+      "Luôn có nguy cơ ném ra ngoại lệ OverflowException."
+    ],
+    "correct": 1,
+    "explanation": "Ép kiểu ngầm định (Widening conversion) xảy ra tự động vì kiểu đích hoàn toàn chứa trọn vẹn giá trị của kiểu nguồn mà không bị mất dữ liệu."
+  },
+  {
+    "id": 22,
+    "category": "Ép kiểu Tường minh",
+    "bloom": "Understand",
+    "question": "Khi thực hiện câu lệnh: double price = 9.99; int intPrice = (int)price; biến intPrice nhận giá trị là:",
+    "options": [
+      "10 (làm tròn lên)",
+      "9 (cắt cụt phần thập phân)",
+      "9.99",
+      "Báo lỗi biên dịch vì mất dữ liệu"
+    ],
+    "correct": 1,
+    "explanation": "Toán tử ép kiểu tường minh (int) thực hiện chặt cụt (truncation) phần thập phân của số thực, không thực hiện làm tròn toán học."
+  },
+  {
+    "id": 23,
+    "category": "Kiểm soát Tràn số",
+    "bloom": "Understand",
+    "question": "Hiện tượng Tràn số Số học (Arithmetic Overflow) xảy ra khi nào?",
+    "options": [
+      "Khi chia một số thực cho 0.",
+      "Khi kết quả của một phép tính vượt quá giới hạn cực đại (MaxValue) hoặc cực tiểu (MinValue) mà kiểu dữ liệu đó có thể biểu diễn.",
+      "Khi người dùng nhập chuỗi văn bản vào biến số nguyên.",
+      "Khi đặt tên biến quá dài trong mã nguồn C#."
+    ],
+    "correct": 1,
+    "explanation": "Tràn số xảy ra khi số bit của kiểu dữ liệu không đủ để chứa giá trị kết quả, dẫn đến giá trị bị cuộn vòng sai lệch."
+  },
+  {
+    "id": 24,
+    "category": "Từ khóa checked",
+    "bloom": "Apply",
+    "question": "Từ khóa checked trong C# có tác dụng gì trong đoạn mã sau:\\nchecked { int max = int.MaxValue; int res = max + 1; }?",
+    "options": [
+      "Tự động ép kiểu res sang long để chứa đủ giá trị.",
+      "Kích hoạt cơ chế phát hiện tràn số tại thời điểm chạy và ném ra ngoại lệ System.OverflowException.",
+      "Bỏ qua lỗi và gán res = 0.",
+      "Kiểm tra xem biến max có mang giá trị null hay không."
+    ],
+    "correct": 1,
+    "explanation": "Khối lệnh checked ép buộc máy ảo CLR kiểm tra cờ tràn số của CPU; nếu xảy ra tràn số sẽ ném ngay OverflowException để bảo vệ tính toàn vẹn dữ liệu."
+  },
+  {
+    "id": 25,
+    "category": "Bảng Thứ tự Ưu tiên",
+    "bloom": "Evaluate",
+    "question": "Trong C#, toán tử nào sau đây có độ ưu tiên CAO NHẤT trong một biểu thức?",
+    "options": [
+      "Toán tử gán (=, +=)",
+      "Toán tử cộng trừ (+, -)",
+      "Toán tử nhân chia (*, /, %)",
+      "Toán tử nguyên thủy / ngoặc đơn () và tăng hậu tố (x++)"
+    ],
+    "correct": 3,
+    "explanation": "Các toán tử nguyên thủy Primary Operators (như cặp ngoặc tròn (), truy cập thành viên ., tăng giảm hậu tố x++, x--) có độ ưu tiên cấp 1 cao nhất trong C#."
+  }
+];
+
 if (typeof window !== 'undefined') {
   window.QUIZ_CHAPTER_01 = (typeof QUIZ_CHAPTER_01 !== 'undefined') ? QUIZ_CHAPTER_01 : [];
   window.QUIZ_CHAPTER_02 = (typeof QUIZ_CHAPTER_02 !== 'undefined') ? QUIZ_CHAPTER_02 : [];
   window.QUIZ_CHAPTER_03 = (typeof QUIZ_CHAPTER_03 !== 'undefined') ? QUIZ_CHAPTER_03 : [];
   window.QUIZ_CHAPTER_04 = (typeof QUIZ_CHAPTER_04 !== 'undefined') ? QUIZ_CHAPTER_04 : [];
+  window.QUIZ_CHAPTER_04_LAB = (typeof QUIZ_CHAPTER_04_LAB !== 'undefined') ? QUIZ_CHAPTER_04_LAB : [];
+  window.QUIZ_CHAPTER_05 = (typeof QUIZ_CHAPTER_05 !== 'undefined') ? QUIZ_CHAPTER_05 : [];
 }
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { QUIZ_CHAPTER_01, QUIZ_CHAPTER_02, QUIZ_CHAPTER_03, QUIZ_CHAPTER_04 };
+  module.exports = { QUIZ_CHAPTER_01, QUIZ_CHAPTER_02, QUIZ_CHAPTER_03, QUIZ_CHAPTER_04, QUIZ_CHAPTER_04_LAB, QUIZ_CHAPTER_05 };
 }

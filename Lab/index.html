@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Trình chiếu Tài liệu Thực hành Lab 01 — Kỹ thuật Lập trình C#</title>
+  <style>
+    :root {
+      --primary: #68217a;
+      --primary-dark: #4a1557;
+      --secondary: #0f2c59;
+      --accent: #38bdf8;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
+    /* Header Toolbar */
+    .viewer-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      z-index: 10;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .header-badge {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .header-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .header-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    /* Switcher Buttons */
+    .doc-switcher {
+      display: flex;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 3px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      gap: 4px;
+    }
+    .switcher-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+    .switcher-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .switcher-btn.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(104, 33, 122, 0.4);
+    }
+    /* Actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .action-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.38rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .action-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
+    /* PDF Viewer Area */
+    .viewer-body {
+      flex: 1;
+      width: 100%;
+      height: calc(100vh - 60px);
+      position: relative;
+      background: #000;
+    }
+    .viewer-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .header-title { font-size: 0.85rem; }
+      .header-subtitle { display: none; }
+      .viewer-header { padding: 0.4rem 0.6rem; }
+      .switcher-btn { padding: 0.3rem 0.5rem; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="viewer-header">
+    <div class="header-left">
+      <span class="header-badge">Buổi 4: Lab 01</span>
+      <div>
+        <h1 class="header-title" id="currentDocTitle">Slide Bài Giảng Thực Hành Lab (56 Trang HD)</h1>
+        <p class="header-subtitle" id="currentDocMeta">slide Chuong 03 - Lab 01_v2.pdf • Khởi tạo VS, I/O Stream, if...else & Đồ án Tiền điện</p>
+      </div>
+    </div>
+
+    <!-- Bộ chuyển đổi tài liệu -->
+    <div class="doc-switcher">
+      <button class="switcher-btn active" id="btnSlide" onclick="switchDoc('slide')">
+        <span>📊</span> Slide Lab (56 Trang)
+      </button>
+      <button class="switcher-btn" id="btnGuide" onclick="switchDoc('guide')">
+        <span>📘</span> Giáo Trình v2.0 (16 Trang)
+      </button>
+    </div>
+
+    <!-- Thao tác nhanh -->
+    <div class="header-actions">
+      <a id="btnOpenNewTab" href="./slide Chuong 03 - Lab 01_v2.pdf" target="_blank" class="action-btn" title="Mở trong tab mới">
+        <span>🔍</span> Mở Tab Mới
+      </a>
+      <a id="btnDownloadPdf" href="./slide Chuong 03 - Lab 01_v2.pdf" download class="action-btn" title="Tải tệp PDF về máy">
+        <span>📥</span> Tải PDF
+      </a>
+      <button class="action-btn" onclick="toggleFullscreen()" title="Chế độ toàn màn hình">
+        <span>⛶</span> Toàn màn hình
+      </button>
+    </div>
+  </header>
+
+  <main class="viewer-body">
+    <iframe id="pdfFrame" class="viewer-iframe" src="./slide Chuong 03 - Lab 01_v2.pdf#toolbar=1&navpanes=1" title="Tài liệu Thực hành Lab 01"></iframe>
+  </main>
+
+  <script>
+    const DOCS = {
+      slide: {
+        title: "Slide Bài Giảng Thực Hành Lab (56 Trang HD)",
+        meta: "slide Chuong 03 - Lab 01_v2.pdf • Khởi tạo VS, I/O Stream, if...else & Đồ án Tiền điện",
+        file: "./slide Chuong 03 - Lab 01_v2.pdf"
+      },
+      guide: {
+        title: "Giáo Trình Hướng Dẫn Thực Hành Chi Tiết v2.0 (16 Trang)",
+        meta: "Huong-Dan-Thuc-Hanh-Lap-Trinh-CSharp-Chuong-1-den-3-v2.pdf • 4 Giai đoạn phòng máy, Rubric 10đ & 4 Đồ án về nhà",
+        file: "./Huong-Dan-Thuc-Hanh-Lap-Trinh-CSharp-Chuong-1-den-3-v2.pdf"
+      }
+    };
+
+    let activeDoc = 'slide';
+
+    function switchDoc(key) {
+      if (!DOCS[key]) return;
+      activeDoc = key;
+      const data = DOCS[key];
+
+      document.getElementById('currentDocTitle').textContent = data.title;
+      document.getElementById('currentDocMeta').textContent = data.meta;
+      document.getElementById('pdfFrame').src = data.file + '#toolbar=1&navpanes=1';
+      document.getElementById('btnOpenNewTab').href = data.file;
+      document.getElementById('btnDownloadPdf').href = data.file;
+
+      document.getElementById('btnSlide').classList.toggle('active', key === 'slide');
+      document.getElementById('btnGuide').classList.toggle('active', key === 'guide');
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => console.warn(err));
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+  </script>
+</body>
+</html>

@@ -809,12 +809,108 @@ const EXERCISES_CHAPTER_04 = [
 ];
 
 
+
+// ============================================================================
+// BỘ BÀI TẬP BUỔI 4: THỰC HÀNH LAB 01
+// ============================================================================
+const EXERCISES_CHAPTER_04_LAB = [
+  {
+    "id": "lab1-s1",
+    "type": "self-review",
+    "category": "Giai đoạn 1: Chuẩn hóa VS",
+    "number": "Lab 1.1",
+    "title": "Tạo Solution Console .NET & Bắt Lỗi Cú Pháp CS1002, CS1513",
+    "description": "Thực hành khởi tạo Solution và Project Console trong Visual Studio 2022. Sửa 3 lỗi cú pháp cố ý trong mã nguồn: thiếu dấu chấm phẩy, thiếu ngoặc nhọn đóng và gõ sai tên phương thức.",
+    "question": "Khởi tạo Console App đặt tên Lab01_CoBan. Dán đoạn mã có lỗi sau và sử dụng cửa sổ Error List để sửa triệt để 3 lỗi cú pháp:\\nstatic void Main() {\\n    Console.writeline(\"Hello IT26M\")\\n    int a = 10;\\n",
+    "answer": "Sửa lại 3 lỗi:\\n1. Đổi Console.writeline thành Console.WriteLine (C# phân biệt hoa thường).\\n2. Thêm dấu chấm phẩy ; sau câu lệnh in.\\n3. Thêm dấu đóng ngoặc nhọn } để kết thúc phương thức Main.",
+    "solution": "```csharp\\nusing System;\\nclass Program {\\n    static void Main() {\\n        Console.WriteLine(\"Hello IT26M\");\\n        int a = 10;\\n    }\\n}\\n```"
+  },
+  {
+    "id": "lab1-s2",
+    "type": "exercises",
+    "category": "Giai đoạn 2: I/O Stream & Phép chia",
+    "number": "Lab 1.2",
+    "title": "Chuyển Đổi Thời Gian: Đổi Tổng Số Giây Sang Giờ, Phút, Giây",
+    "description": "Áp dụng toán tử chia nguyên / và chia lấy dư % để chuyển đổi một số giây nhập từ bàn phím sang định dạng HH:mm:ss.",
+    "question": "Viết chương trình nhập vào số nguyên dương totalSeconds. Sử dụng toán tử / và % để tính ra số giờ, phút, giây tương ứng và in theo định dạng chuẩn HH:mm:ss.",
+    "solution": "```csharp\\nusing System;\\nclass DoiGiay {\\n    static void Main() {\\n        Console.Write(\"Nhập số giây: \");\\n        int s = int.Parse(Console.ReadLine());\\n        int h = s / 3600;\\n        int m = (s % 3600) / 60;\\n        int sec = s % 60;\\n        Console.WriteLine($\"Thời gian: {h:D2}:{m:D2}:{sec:D2}\");\\n    }\\n}\\n```"
+  },
+  {
+    "id": "lab1-s3",
+    "type": "exercises",
+    "category": "Giai đoạn 3: Rẽ nhánh if...else",
+    "number": "Lab 1.3",
+    "title": "Tính Cước Taxi Lũy Tiến Theo Quãng Đường Km",
+    "description": "Xây dựng thuật toán tính tiền cước taxi với 3 bậc giá: km đầu tiên giá 10.000đ; từ km thứ 2 đến km thứ 5 giá 8.000đ/km; từ km thứ 6 trở đi giá 6.000đ/km.",
+    "question": "Nhập quãng đường di chuyển bằng số thực double km. Tính và hiển thị tổng tiền cước taxi phải trả, định dạng có dấu phẩy phân tách hàng nghìn.",
+    "solution": "```csharp\\nusing System;\\nclass Taxi {\\n    static void Main() {\\n        Console.Write(\"Nhập km: \");\\n        double km = double.Parse(Console.ReadLine());\\n        double tien = 0;\\n        if (km <= 1) tien = km * 10000;\\n        else if (km <= 5) tien = 10000 + (km - 1) * 8000;\\n        else tien = 10000 + 4 * 8000 + (km - 5) * 6000;\\n        Console.WriteLine($\"Tổng cước: {tien:N0} VNĐ\");\\n    }\\n}\\n```"
+  },
+  {
+    "id": "lab1-s4",
+    "type": "making-a-difference",
+    "category": "Giai đoạn 4: Đánh giá Năng lực",
+    "number": "Lab 1.4",
+    "title": "Đồ Án Tiền Điện Bậc Thang & In Hóa Đơn Console (3.0 Điểm)",
+    "description": "Xây dựng hệ thống tính tiền điện sinh hoạt 4 bậc thang lũy tiến kèm thuế VAT 8% và in hóa đơn Console chuẩn mực.",
+    "question": "Nhập chỉ số công tơ cũ và mới. Kiểm tra tính hợp lệ (mới >= cũ). Tính tiền theo 4 bậc giá: 0-50 kWh (1.678đ), 51-100 kWh (1.734đ), 101-200 kWh (2.014đ), trên 200 kWh (2.536đ). Cộng thuế VAT 8% và in bảng hóa đơn chi tiết.",
+    "solution": "Xem chi tiết mã nguồn hoàn chỉnh tại Tab 6: Kho mã nguồn C# (TinhTienDien.cs)."
+  }
+];
+
+// ============================================================================
+// BỘ BÀI TẬP BUỔI 5: NỀN TẢNG NGÔN NGỮ: BIỂU THỨC, BITWISE & ÉP KIỂU
+// ============================================================================
+const EXERCISES_CHAPTER_05 = [
+  {
+    "id": "b5-ex1",
+    "type": "self-review",
+    "category": "Biểu thức & Tăng giảm",
+    "number": "Bài tập 5.1",
+    "title": "Truy Vết Biểu Thức Tiền Tố (++x) vs Hậu Tố (x++)",
+    "description": "Phân tích giá trị của từng biến qua từng bước thực thi khi kết hợp toán tử tăng tiền tố và hậu tố.",
+    "question": "Cho đoạn mã sau:\\nint a = 10;\\nint b = ++a + 5;\\nint c = a++ + ++b;\\nTính giá trị cuối cùng của a, b, c và giải thích chi tiết thời điểm thay đổi giá trị.",
+    "answer": "Bước 1: a ban đầu = 10.\\nBước 2: ++a tăng a lên 11 trước, sau đó b = 11 + 5 = 16.\\nBước 3: c = a++ + ++b: a++ dùng 11 rồi a tăng lên 12; ++b tăng b từ 16 lên 17 rồi dùng 17. Do đó c = 11 + 17 = 28.\\nKết quả cuối cùng: a = 12, b = 17, c = 28."
+  },
+  {
+    "id": "b5-ex2",
+    "type": "exercises",
+    "category": "Thao tác Bit (Bitwise)",
+    "number": "Bài tập 5.2",
+    "title": "Kiểm Tra Chẵn Lẻ & Lũy Thừa 2 Bằng Phép Toán Bit",
+    "description": "Viết các phương thức tối ưu hóa bằng toán tử Bitwise & thay thế cho toán tử số học thông thường.",
+    "question": "Viết chương trình C# chứa 2 hàm:\\n1. IsEvenBitwise(int n): kiểm tra số chẵn bằng toán tử & 1.\\n2. IsPowerOfTwo(int n): kiểm tra n có phải là lũy thừa của 2 không bằng n & (n - 1).",
+    "solution": "```csharp\\nusing System;\\nclass BitwiseAlgo {\\n    static bool IsEvenBitwise(int n) => (n & 1) == 0;\\n    static bool IsPowerOfTwo(int n) => (n > 0) && ((n & (n - 1)) == 0);\\n    static void Main() {\\n        Console.WriteLine($\"16 là lũy thừa 2? {IsPowerOfTwo(16)}\");\\n        Console.WriteLine($\"7 là chẵn? {IsEvenBitwise(7)}\");\\n    }\\n}\\n```"
+  },
+  {
+    "id": "b5-ex3",
+    "type": "making-a-difference",
+    "category": "Mặt nạ Bit (Bitmask)",
+    "number": "Bài tập 5.3",
+    "title": "Thiết Kế Hệ Thống Quản Lý Phân Quyền Người Dùng Bằng Bitmask",
+    "description": "Sử dụng enum với [Flags] và các toán tử bitwise để xây dựng cơ chế quản lý quyền hạn (Read, Write, Execute, Delete, Admin) trong hệ thống doanh nghiệp.",
+    "question": "Tạo enum [Flags] Permissions. Viết các hàm:\\n1. AddPermission(ref Permissions userPerms, Permissions newPerm)\\n2. RemovePermission(ref Permissions userPerms, Permissions permToRemove)\\n3. HasPermission(Permissions userPerms, Permissions permToCheck)",
+    "solution": "```csharp\\nusing System;\\n[Flags]\\nenum Permissions { None = 0, Read = 1 << 0, Write = 1 << 1, Execute = 1 << 2, Delete = 1 << 3 }\\nclass SecuritySystem {\\n    static void AddPerm(ref Permissions p, Permissions add) => p |= add;\\n    static void RemovePerm(ref Permissions p, Permissions rem) => p &= ~rem;\\n    static bool HasPerm(Permissions p, Permissions check) => (p & check) == check;\\n    static void Main() {\\n        Permissions user = Permissions.Read;\\n        AddPerm(ref user, Permissions.Write);\\n        Console.WriteLine($\"Quyền: {user}, Có Execute? {HasPerm(user, Permissions.Execute)}\");\\n    }\\n}\\n```"
+  },
+  {
+    "id": "b5-ex4",
+    "type": "exercises",
+    "category": "Ép kiểu & Chống Tràn số",
+    "number": "Bài tập 5.4",
+    "title": "Ứng Dụng Khối Lệnh Checked Bắt Lỗi Tràn Số Số Học (OverflowException)",
+    "description": "Viết chương trình tính giai thừa n! và sử dụng khối lệnh checked để bắt ngoại lệ OverflowException khi kết quả vượt quá ngưỡng của kiểu int.",
+    "question": "Viết hàm tính giai thừa. Đặt phép nhân trong khối checked { ... }. Cho người dùng nhập n từ bàn phím. Khi tính đến giá trị gây tràn số (ví dụ n = 13 đối với int), hiển thị thông báo cảnh báo ngoại lệ OverflowException.",
+    "solution": "```csharp\\nusing System;\\nclass FactorialChecked {\\n    static void Main() {\\n        Console.Write(\"Nhập n: \");\\n        int n = int.Parse(Console.ReadLine());\\n        try {\\n            checked {\\n                int fact = 1;\\n                for (int i = 1; i <= n; i++) fact *= i;\\n                Console.WriteLine($\"{n}! = {fact}\");\\n            }\\n        } catch (OverflowException) {\\n            Console.WriteLine($\"CẢNH BÁO: Tính {n}! bị tràn số nguyên int 32-bit!\");\\n        }\\n    }\\n}\\n```"
+  }
+];
+
 if (typeof window !== 'undefined') {
   window.EXERCISES_CHAPTER_01 = (typeof EXERCISES_CHAPTER_01 !== 'undefined') ? EXERCISES_CHAPTER_01 : [];
   window.EXERCISES_CHAPTER_02 = (typeof EXERCISES_CHAPTER_02 !== 'undefined') ? EXERCISES_CHAPTER_02 : [];
   window.EXERCISES_CHAPTER_03 = (typeof EXERCISES_CHAPTER_03 !== 'undefined') ? EXERCISES_CHAPTER_03 : [];
   window.EXERCISES_CHAPTER_04 = (typeof EXERCISES_CHAPTER_04 !== 'undefined') ? EXERCISES_CHAPTER_04 : [];
+  window.EXERCISES_CHAPTER_04_LAB = (typeof EXERCISES_CHAPTER_04_LAB !== 'undefined') ? EXERCISES_CHAPTER_04_LAB : [];
+  window.EXERCISES_CHAPTER_05 = (typeof EXERCISES_CHAPTER_05 !== 'undefined') ? EXERCISES_CHAPTER_05 : [];
 }
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { EXERCISES_CHAPTER_01, EXERCISES_CHAPTER_02, EXERCISES_CHAPTER_03, EXERCISES_CHAPTER_04 };
+  module.exports = { EXERCISES_CHAPTER_01, EXERCISES_CHAPTER_02, EXERCISES_CHAPTER_03, EXERCISES_CHAPTER_04, EXERCISES_CHAPTER_04_LAB, EXERCISES_CHAPTER_05 };
 }
