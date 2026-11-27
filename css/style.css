@@ -2203,4 +2203,264 @@ body.dark-theme .tf-choice-btn.active-choice {
   }
 }
 
+/* ==========================================================================
+   MOBILE RESPONSIVE THEATER & VIDEO PLAYER
+   ========================================================================== */
+@media (max-width: 768px) {
+  .theater-player-frame {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    min-height: 220px;
+    max-height: 52vh;
+  }
+
+  .theater-top-bar {
+    padding: 0.5rem 0.75rem;
+    gap: 0.4rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .theater-badge {
+    font-size: 0.8rem;
+    width: 100%;
+  }
+
+  .theater-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .theater-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    flex: 1 1 auto;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Immersive Landscape Mode for Mobile Phones */
+@media (max-width: 920px) and (orientation: landscape) {
+  body.mobile-landscape-active .video-theater-wrapper {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999999 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #000 !important;
+  }
+  body.mobile-landscape-active .theater-top-bar {
+    display: none !important;
+  }
+  body.mobile-landscape-active .theater-player-frame {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    aspect-ratio: auto !important;
+  }
+}
+
+/* ==========================================================================
+   CHẾ ĐỘ 3: ĐỌC CUỘN DỌC TOÀN BỘ SLIDE (CONTINUOUS VERTICAL FEED)
+   ========================================================================== */
+.feed-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.feed-top-toolbar {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 65px;
+  z-index: 30;
+  backdrop-filter: blur(8px);
+}
+
+.feed-badge {
+  background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+  color: #fff;
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.feed-slides-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.feed-slide-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feed-card-header {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.6rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.feed-slide-number {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.feed-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.feed-play-audio-btn {
+  background: var(--accent-green);
+  color: #fff;
+  border: none;
+  padding: 0.32rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s;
+}
+
+.feed-play-audio-btn:hover {
+  filter: brightness(1.1);
+}
+
+.feed-toggle-dialogue-btn {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.32rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.feed-image-container {
+  background: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  cursor: zoom-in;
+  user-select: none;
+  overflow: hidden;
+}
+
+.feed-slide-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.feed-slide-img.is-zoomed {
+  transform: scale(1.75);
+  cursor: zoom-out;
+  z-index: 10;
+}
+
+.feed-zoom-hint {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #38bdf8;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.feed-dialogue-drawer {
+  padding: 1rem 1.25rem;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  display: none;
+}
+
+.feed-dialogue-drawer.is-open {
+  display: block;
+  animation: fadeIn 0.25s ease;
+}
+
+/* Floating Sticky Mobile Audio Bar */
+.mobile-sticky-audio-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 8px 16px calc(10px + env(safe-area-inset-bottom)) 16px;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  z-index: 9999;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  animation: slideUp 0.3s ease;
+}
+
+.mobile-sticky-audio-bar.is-active {
+  display: flex;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
 

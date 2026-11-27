@@ -8,7 +8,7 @@
 const savedChapter = parseInt(localStorage.getItem('activeChapter'), 10);
 const AppState = {
   currentTab: localStorage.getItem('activeTab') || 'overview',
-  currentChapter: (savedChapter && savedChapter >= 1 && savedChapter <= 4) ? savedChapter : 1,
+  currentChapter: (savedChapter && savedChapter >= 1 && savedChapter <= 6) ? savedChapter : 1,
   currentSlide: 1,
   totalSlides: 42,
   currentQuestionIndex: 0,
@@ -16,7 +16,10 @@ const AppState = {
   userAnswers: {}, // questionId -> selectedOptionIndex
   exerciseFilter: 'all',
   theme: localStorage.getItem('theme') || 'light',
-  isPlayingAudio: false
+  isPlayingAudio: false,
+  videoViewMode: 'theater',
+  isFeedAllTranscriptsOpen: false,
+  feedPlayingSlide: null
 };
 
 // ============================================================================
@@ -420,6 +423,9 @@ function switchChapter(ch) {
   // Re-render slide player & transcript
   renderSlide(1);
   renderTheaterTranscript(1);
+  if (AppState.videoViewMode === 'feed') {
+    renderFeedMode();
+  }
 
   // Re-render quiz engine
   renderQuizDashboard();
@@ -578,6 +584,35 @@ function initSlidePlayer() {
       }
     }
   });
+
+  // Touch swipe gestures for mobile on slideDisplayFrame
+  const slideFrame = document.getElementById('slideDisplayFrame');
+  if (slideFrame) {
+    let touchStartX = 0;
+    let touchStartY = 0;
+    slideFrame.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    slideFrame.addEventListener('touchend', (e) => {
+      if (e.changedTouches && e.changedTouches.length === 1) {
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+          if (diffX < 0 && AppState.currentSlide < AppState.totalSlides) {
+            renderSlide(AppState.currentSlide + 1);
+          } else if (diffX > 0 && AppState.currentSlide > 1) {
+            renderSlide(AppState.currentSlide - 1);
+          }
+        }
+      }
+    }, { passive: true });
+  }
 }
 
 function formatTime(seconds) {
@@ -697,24 +732,247 @@ function renderSlide(slideNum) {
 // THEATER VIEW & TRANSCRIPT CONTROLLER
 // ============================================================================
 function setVideoViewMode(mode) {
+  AppState.videoViewMode = mode;
   const theaterContainer = document.getElementById('theaterPlayerContainer');
   const splitContainer = document.getElementById('splitPlayerContainer');
+  const feedContainer = document.getElementById('feedPlayerContainer');
+  const theaterSection = document.getElementById('theaterTranscriptSection');
   const theaterBtn = document.getElementById('viewModeTheaterBtn');
   const splitBtn = document.getElementById('viewModeSplitBtn');
+  const feedBtn = document.getElementById('viewModeFeedBtn');
 
-  if (mode === 'theater') {
-    if (theaterContainer) theaterContainer.style.display = 'block';
-    if (splitContainer) splitContainer.style.display = 'none';
-    if (theaterBtn) theaterBtn.classList.add('active');
-    if (splitBtn) splitBtn.classList.remove('active');
-  } else {
-    if (theaterContainer) theaterContainer.style.display = 'none';
-    if (splitContainer) splitContainer.style.display = 'grid';
-    if (theaterBtn) theaterBtn.classList.remove('active');
-    if (splitBtn) splitBtn.classList.add('active');
+  if (theaterContainer) theaterContainer.style.display = (mode === 'theater') ? 'block' : 'none';
+  if (theaterSection) theaterSection.style.display = (mode === 'theater') ? 'block' : 'none';
+  if (splitContainer) splitContainer.style.display = (mode === 'split') ? 'grid' : 'none';
+  if (feedContainer) feedContainer.style.display = (mode === 'feed') ? 'flex' : 'none';
+
+  if (theaterBtn) theaterBtn.classList.toggle('active', mode === 'theater');
+  if (splitBtn) splitBtn.classList.toggle('active', mode === 'split');
+  if (feedBtn) feedBtn.classList.toggle('active', mode === 'feed');
+
+  if (mode === 'feed') {
+    renderFeedMode();
   }
 }
 window.setVideoViewMode = setVideoViewMode;
+
+function renderFeedMode() {
+  const stream = document.getElementById('feedSlidesStream');
+  if (!stream) return;
+  const meta = getCurrentChapterMeta();
+  const transcripts = getCurrentTranscripts();
+  const badge = document.getElementById('feedSlideBadge');
+  const count = document.getElementById('feedSlideCount');
+  const jumpSelect = document.getElementById('feedJumpSelect');
+
+  if (badge) badge.textContent = `📱 Cuộn Dọc: ${meta.slideName}`;
+  if (count) count.textContent = `(${meta.totalSlides} Slide HD)`;
+
+  if (jumpSelect) {
+    jumpSelect.innerHTML = '';
+    for (let i = 1; i <= meta.totalSlides; i++) {
+      const opt = document.createElement('option');
+      opt.value = i;
+      const title = transcripts[i]?.title || `Slide ${i}`;
+      opt.textContent = `Slide ${i}: ${title.substring(0, 32)}...`;
+      jumpSelect.appendChild(opt);
+    }
+  }
+
+  let html = '';
+  for (let i = 1; i <= meta.totalSlides; i++) {
+    const t = transcripts[i] || {
+      title: `Slide ${i}`,
+      speaker1: "Nội dung thuyết minh giảng viên.",
+      speaker2: "Phản hồi của sinh viên."
+    };
+
+    html += `
+      <article class="feed-slide-card" id="feedSlideCard-${i}" data-slide="${i}">
+        <div class="feed-card-header">
+          <div class="feed-card-title">
+            <span style="background: var(--primary-light); color: var(--primary-navy); padding: 2px 7px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">#${i}</span>
+            <span>${t.title}</span>
+          </div>
+          <div class="feed-card-actions">
+            <button class="feed-play-audio-btn" id="feedAudioBtn-${i}" onclick="playFeedSlideAudio(${i})">
+              ▶️ Nghe
+            </button>
+            <button class="feed-toggle-dialogue-btn" onclick="toggleFeedCardDialogue(${i})">
+              🎙️ Lời thoại
+            </button>
+          </div>
+        </div>
+
+        <div class="feed-image-container" onclick="toggleFeedImageZoom(this)">
+          <img src="${meta.videoDir}/images/slide-${i}.png" 
+               alt="Slide ${i}: ${t.title}" 
+               class="feed-slide-img" 
+               loading="lazy" 
+               onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\\'color:#fff;padding:2rem;text-align:center;\\'>Không thể tải ảnh slide. <a href=\\'${meta.slidePdf}\\' target=\\'_blank\\' style=\\'color:#38bdf8;\\'>Mở file PDF gốc</a></div>';">
+          <span class="feed-zoom-hint">🔍 Chạm phóng to</span>
+        </div>
+
+        <div class="feed-dialogue-drawer" id="feedDrawer-${i}">
+          <div class="transcript-dialogue-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.75rem;">
+            <div class="dialogue-item dialogue-speaker-1" style="margin: 0;">
+              <span class="speaker-label">👨‍🏫 Giảng viên</span>
+              <p style="margin-top: 0.35rem; font-size: 0.88rem; line-height: 1.5;">${t.speaker1}</p>
+            </div>
+            <div class="dialogue-item dialogue-speaker-2" style="margin: 0;">
+              <span class="speaker-label">🧑‍🎓 Sinh viên IT26M</span>
+              <p style="margin-top: 0.35rem; font-size: 0.88rem; line-height: 1.5;">${t.speaker2}</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+  stream.innerHTML = html;
+  updateFeedAudioButtonStates();
+}
+window.renderFeedMode = renderFeedMode;
+
+function jumpToFeedSlide(num) {
+  const card = document.getElementById(`feedSlideCard-${num}`);
+  if (card) {
+    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+window.jumpToFeedSlide = jumpToFeedSlide;
+
+function toggleFeedCardDialogue(num) {
+  const drawer = document.getElementById(`feedDrawer-${num}`);
+  if (drawer) {
+    drawer.classList.toggle('is-open');
+  }
+}
+window.toggleFeedCardDialogue = toggleFeedCardDialogue;
+
+function toggleFeedTranscriptAll() {
+  AppState.isFeedAllTranscriptsOpen = !AppState.isFeedAllTranscriptsOpen;
+  const drawers = document.querySelectorAll('.feed-dialogue-drawer');
+  drawers.forEach(d => {
+    if (AppState.isFeedAllTranscriptsOpen) {
+      d.classList.add('is-open');
+    } else {
+      d.classList.remove('is-open');
+    }
+  });
+}
+window.toggleFeedTranscriptAll = toggleFeedTranscriptAll;
+
+function toggleFeedImageZoom(containerEl) {
+  const img = containerEl.querySelector('.feed-slide-img');
+  const hint = containerEl.querySelector('.feed-zoom-hint');
+  if (img) {
+    img.classList.toggle('is-zoomed');
+    if (hint) {
+      hint.textContent = img.classList.contains('is-zoomed') ? '🔍 Chạm thu nhỏ' : '🔍 Chạm phóng to';
+    }
+  }
+}
+window.toggleFeedImageZoom = toggleFeedImageZoom;
+
+function playFeedSlideAudio(slideNum) {
+  const meta = getCurrentChapterMeta();
+  const transcripts = getCurrentTranscripts();
+  const t = transcripts[slideNum] || { title: `Slide ${slideNum}` };
+  const audioEl = document.getElementById('slideNarrationAudio');
+  const stickyBar = document.getElementById('mobileStickyAudioBar');
+  const stickyTitle = document.getElementById('mobileStickyAudioTitle');
+  const stickyStatus = document.getElementById('mobileStickyAudioStatus');
+  const stickyPlayBtn = document.getElementById('mobileStickyPlayPauseBtn');
+
+  if (!audioEl) return;
+
+  if (AppState.feedPlayingSlide === slideNum && !audioEl.paused) {
+    audioEl.pause();
+    AppState.isPlayingAudio = false;
+    updateFeedAudioButtonStates();
+    if (stickyPlayBtn) stickyPlayBtn.textContent = '▶️';
+    return;
+  }
+
+  AppState.feedPlayingSlide = slideNum;
+  AppState.currentSlide = slideNum;
+  AppState.isPlayingAudio = true;
+  audioEl.src = `${meta.videoDir}/audio/slide_${slideNum}.mp3`;
+
+  if (stickyBar) stickyBar.classList.add('is-active');
+  if (stickyTitle) stickyTitle.textContent = `Slide ${slideNum}: ${t.title}`;
+  if (stickyPlayBtn) stickyPlayBtn.textContent = '⏸️';
+
+  audioEl.play().catch(e => {
+    console.warn("Audio play issue:", e);
+    if (stickyStatus) stickyStatus.textContent = "Không có file âm thanh cho slide này";
+  });
+  updateFeedAudioButtonStates();
+
+  audioEl.ontimeupdate = () => {
+    if (stickyStatus && audioEl.duration) {
+      stickyStatus.textContent = `${formatTime(audioEl.currentTime)} / ${formatTime(audioEl.duration)}`;
+    }
+  };
+
+  audioEl.onended = () => {
+    AppState.isPlayingAudio = false;
+    updateFeedAudioButtonStates();
+    if (stickyPlayBtn) stickyPlayBtn.textContent = '▶️';
+    if (slideNum < meta.totalSlides) {
+      playFeedSlideAudio(slideNum + 1);
+      jumpToFeedSlide(slideNum + 1);
+    } else {
+      AppState.feedPlayingSlide = null;
+    }
+  };
+}
+window.playFeedSlideAudio = playFeedSlideAudio;
+
+function updateFeedAudioButtonStates() {
+  const allBtns = document.querySelectorAll('.feed-play-audio-btn');
+  allBtns.forEach(btn => {
+    const id = btn.id.replace('feedAudioBtn-', '');
+    const num = parseInt(id, 10);
+    if (num === AppState.feedPlayingSlide && AppState.isPlayingAudio) {
+      btn.innerHTML = '⏸️ Tạm dừng';
+      btn.style.background = 'var(--primary-blue)';
+    } else {
+      btn.innerHTML = '▶️ Nghe';
+      btn.style.background = 'var(--accent-green)';
+    }
+  });
+}
+
+function toggleStickyAudioPlay() {
+  const audioEl = document.getElementById('slideNarrationAudio');
+  const stickyPlayBtn = document.getElementById('mobileStickyPlayPauseBtn');
+  if (!audioEl) return;
+  if (audioEl.paused) {
+    audioEl.play().catch(e => console.warn(e));
+    AppState.isPlayingAudio = true;
+    if (stickyPlayBtn) stickyPlayBtn.textContent = '⏸️';
+  } else {
+    audioEl.pause();
+    AppState.isPlayingAudio = false;
+    if (stickyPlayBtn) stickyPlayBtn.textContent = '▶️';
+  }
+  updateFeedAudioButtonStates();
+}
+window.toggleStickyAudioPlay = toggleStickyAudioPlay;
+
+function closeStickyAudio() {
+  const audioEl = document.getElementById('slideNarrationAudio');
+  const stickyBar = document.getElementById('mobileStickyAudioBar');
+  if (audioEl) {
+    audioEl.pause();
+    AppState.isPlayingAudio = false;
+  }
+  AppState.feedPlayingSlide = null;
+  updateFeedAudioButtonStates();
+  if (stickyBar) stickyBar.classList.remove('is-active');
+}
+window.closeStickyAudio = closeStickyAudio;
 
 function initTheaterTranscript() {
   const selectEl = document.getElementById('theaterTranscriptSlideSelect');
